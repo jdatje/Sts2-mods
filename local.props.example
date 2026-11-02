@@ -1,0 +1,9 @@
+<Project>
+    <PropertyGroup>
+        <!-- MegaDot / Godot 4.5.1 mono executable, used by `dotnet publish` to pack images into the .pck -->
+        <GodotPath>C:/megadot/MegaDot_v4.5.1-stable_mono_win64.exe</GodotPath>
+
+        <!-- Only needed if the game is not found automatically through Steam -->
+        <!-- <Sts2Path>D:/SteamLibrary/steamapps/common/Slay the Spire 2</Sts2Path> -->
+    </PropertyGroup>
+</Project>

@@ -1,0 +1,16 @@
+{
+  "BARD-THE_BARD.title": "The Bard",
+  "BARD-THE_BARD.titleObject": "The Bard",
+  "BARD-THE_BARD.description": "A wandering minstrel who fights with rhythm and rhyme.\nPlays [gold]Songs[/gold] that strengthen the whole party.",
+  "BARD-THE_BARD.pronounSubject": "he",
+  "BARD-THE_BARD.pronounObject": "him",
+  "BARD-THE_BARD.pronounPossessive": "his",
+  "BARD-THE_BARD.possessiveAdjective": "his",
+  "BARD-THE_BARD.goldMonologue": "[sine]A coin for the bard? Don't mind if I do![/sine]",
+  "BARD-THE_BARD.eventDeathPrevention": "The show... must... go on!",
+  "BARD-THE_BARD.aromaPrinciple": "[sine][purple]Every legend needs someone to sing it.[/purple][/sine]",
+  "BARD-THE_BARD.cardsModifierTitle": "Bard Cards",
+  "BARD-THE_BARD.cardsModifierDescription": "Bard cards will now appear in rewards and shops.",
+  "BARD-THE_BARD.banter.alive.endTurnPing": "And... scene!",
+  "BARD-THE_BARD.banter.dead.endTurnPing": "..."
+}

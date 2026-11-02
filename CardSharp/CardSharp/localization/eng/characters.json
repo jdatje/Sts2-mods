@@ -1,0 +1,16 @@
+{
+  "CARDSHARP-THE_CARD_SHARP.title": "The Card Sharp",
+  "CARDSHARP-THE_CARD_SHARP.titleObject": "The Card Sharp",
+  "CARDSHARP-THE_CARD_SHARP.description": "A smiling gambler who has never lost a fair game.\nLays every card on the [gold]Table[/gold] and wins with poker hands.",
+  "CARDSHARP-THE_CARD_SHARP.pronounSubject": "she",
+  "CARDSHARP-THE_CARD_SHARP.pronounObject": "her",
+  "CARDSHARP-THE_CARD_SHARP.pronounPossessive": "hers",
+  "CARDSHARP-THE_CARD_SHARP.possessiveAdjective": "her",
+  "CARDSHARP-THE_CARD_SHARP.goldMonologue": "[sine]Gold? Now we're playing for real stakes...[/sine]",
+  "CARDSHARP-THE_CARD_SHARP.eventDeathPrevention": "The house... doesn't win... today.",
+  "CARDSHARP-THE_CARD_SHARP.aromaPrinciple": "[sine][purple]Every hand is a story. I just write the ending.[/purple][/sine]",
+  "CARDSHARP-THE_CARD_SHARP.cardsModifierTitle": "Card Sharp Cards",
+  "CARDSHARP-THE_CARD_SHARP.cardsModifierDescription": "Card Sharp cards will now appear in rewards and shops.",
+  "CARDSHARP-THE_CARD_SHARP.banter.alive.endTurnPing": "Your bet.",
+  "CARDSHARP-THE_CARD_SHARP.banter.dead.endTurnPing": "..."
+}

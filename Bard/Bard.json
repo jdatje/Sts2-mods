@@ -1,0 +1,17 @@
+{
+  "id": "Bard",
+  "name": "The Bard",
+  "author": "Jeroen & Gregor",
+  "description": "A new character: a minstrel who plays Songs. Every card adds a Verse; the Refrain helps the whole party and the Finale scales with Verses. Built for co-op.",
+  "version": "v0.1.0",
+  "min_game_version": "0.107.0",
+  "has_pck": true,
+  "has_dll": true,
+  "dependencies": [
+    {
+      "id": "BaseLib",
+      "min_version": "3.4.7"
+    }
+  ],
+  "affects_gameplay": true
+}

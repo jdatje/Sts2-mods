@@ -1,0 +1,20 @@
+{
+  "GOLEM-CLAY_ARMS_POWER.title": "Clay Arms",
+  "GOLEM-CLAY_ARMS_POWER.description": "Arms Part. Your Attacks deal additional damage.",
+  "GOLEM-CLAY_ARMS_POWER.smartDescription": "Arms Part. Your Attacks deal [blue]{Amount}[/blue] additional damage.",
+  "GOLEM-BOULDER_FISTS_POWER.title": "Boulder Fists",
+  "GOLEM-BOULDER_FISTS_POWER.description": "Arms Part. Whenever you play an Attack, gain Block.",
+  "GOLEM-BOULDER_FISTS_POWER.smartDescription": "Arms Part. Whenever you play an Attack, gain [blue]{Amount}[/blue] [gold]Block[/gold].",
+  "GOLEM-LANTERN_EYE_POWER.title": "Lantern Eye",
+  "GOLEM-LANTERN_EYE_POWER.description": "Head Part. Draw additional cards each turn.",
+  "GOLEM-LANTERN_EYE_POWER.smartDescription": "Head Part. Draw [blue]{Amount}[/blue] additional {Amount:plural:card|cards} each turn.",
+  "GOLEM-ROOTED_LEGS_POWER.title": "Rooted Legs",
+  "GOLEM-ROOTED_LEGS_POWER.description": "Legs Part. At the end of your turn, gain Block.",
+  "GOLEM-ROOTED_LEGS_POWER.smartDescription": "Legs Part. At the end of your turn, gain [blue]{Amount}[/blue] [gold]Block[/gold].",
+  "GOLEM-MUD_CORE_POWER.title": "Mud Core",
+  "GOLEM-MUD_CORE_POWER.description": "Core Part. Block you gain from cards is increased.",
+  "GOLEM-MUD_CORE_POWER.smartDescription": "Core Part. [gold]Block[/gold] you gain from cards is increased by [blue]{Amount}[/blue].",
+  "GOLEM-FURNACE_CORE_POWER.title": "Furnace Core",
+  "GOLEM-FURNACE_CORE_POWER.description": "Core Part. At the start of your turn, gain Energy.",
+  "GOLEM-FURNACE_CORE_POWER.smartDescription": "Core Part. At the start of your turn, gain {Amount:energyIcons()}."
+}

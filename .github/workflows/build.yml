@@ -1,0 +1,60 @@
+name: Build mods
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      game_version:
+        description: "Stub game version (0.107.1 = stable, 0.111.0-beta-41cef1ea = beta)"
+        default: "0.107.1"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GAME_VERSION: ${{ github.event.inputs.game_version || '0.107.1' }}
+      GODOT_VERSION: "4.5.1"
+      DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+
+      - name: Cache Godot
+        id: godot-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/godot
+          key: godot-${{ env.GODOT_VERSION }}-mono-linux
+
+      - name: Download Godot ${{ env.GODOT_VERSION }} mono
+        if: steps.godot-cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/godot && cd ~/godot
+          curl -fsSL -o godot.zip "https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64.zip"
+          unzip -q godot.zip && rm godot.zip
+
+      - name: Build all mods
+        run: |
+          export DOTNET_ROOT="$(dirname "$(readlink -f "$(which dotnet)")")"
+          export GODOT="$HOME/godot/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64/Godot_v${GODOT_VERSION}-stable_mono_linux.x86_64"
+          tools/build-all.sh "$GAME_VERSION"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sts2-mods-${{ env.GAME_VERSION }}
+          path: dist/*.zip
+
+      - name: Release (on tags)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.zip

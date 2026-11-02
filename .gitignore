@@ -1,0 +1,11 @@
+.godot/
+bin/
+obj/
+publish/
+dist/
+.stubs/
+.vs/
+.idea/
+*.user
+local.props
+art/review.html

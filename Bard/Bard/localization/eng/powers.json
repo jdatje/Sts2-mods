@@ -1,0 +1,20 @@
+{
+  "BARD-BATTLE_HYMN_POWER.title": "Battle Hymn",
+  "BARD-BATTLE_HYMN_POWER.description": "Song. Refrain: ALL players gain 3 Block. Finale: deal 2 damage to ALL enemies per Verse.",
+  "BARD-BATTLE_HYMN_POWER.smartDescription": "Song with [blue]{Amount}[/blue] {Amount:plural:Verse|Verses}. Refrain: ALL players gain 3 Block. Finale: deal 2 damage to ALL enemies per Verse.",
+  "BARD-BALLAD_OF_VALOR_POWER.title": "Ballad of Valor",
+  "BARD-BALLAD_OF_VALOR_POWER.description": "Song. Refrain: ALL players gain 2 Vigor. Finale: ALL players gain 2 Block per Verse.",
+  "BARD-BALLAD_OF_VALOR_POWER.smartDescription": "Song with [blue]{Amount}[/blue] {Amount:plural:Verse|Verses}. Refrain: ALL players gain 2 Vigor. Finale: ALL players gain 2 Block per Verse.",
+  "BARD-LULLABY_POWER.title": "Lullaby",
+  "BARD-LULLABY_POWER.description": "Song. Refrain: apply 1 Weak to ALL enemies. Finale: apply 1 Vulnerable to ALL enemies per 3 Verses.",
+  "BARD-LULLABY_POWER.smartDescription": "Song with [blue]{Amount}[/blue] {Amount:plural:Verse|Verses}. Refrain: apply 1 Weak to ALL enemies. Finale: apply 1 Vulnerable to ALL enemies per 3 Verses.",
+  "BARD-JIG_POWER.title": "Jig",
+  "BARD-JIG_POWER.description": "Song. Refrain: draw 1 card. Finale: gain 1 Energy per 5 Verses.",
+  "BARD-JIG_POWER.smartDescription": "Song with [blue]{Amount}[/blue] {Amount:plural:Verse|Verses}. Refrain: draw 1 card. Finale: gain 1 Energy per 5 Verses.",
+  "BARD-REQUIEM_POWER.title": "Requiem",
+  "BARD-REQUIEM_POWER.description": "Song. Refrain: deal 3 damage to ALL enemies. Finale: deal 4 damage to ALL enemies per Verse.",
+  "BARD-REQUIEM_POWER.smartDescription": "Song with [blue]{Amount}[/blue] {Amount:plural:Verse|Verses}. Refrain: deal 3 damage to ALL enemies. Finale: deal 4 damage to ALL enemies per Verse.",
+  "BARD-METRONOME_POWER.title": "Metronome",
+  "BARD-METRONOME_POWER.description": "At the start of your turn, add Verses to your Song.",
+  "BARD-METRONOME_POWER.smartDescription": "At the start of your turn, add [blue]{Amount}[/blue] {Amount:plural:Verse|Verses} to your Song."
+}

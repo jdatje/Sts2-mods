@@ -1,0 +1,7 @@
+<Project>
+    <!--
+      Shared settings for every mod in this repo.
+      Machine-specific paths go in local.props (gitignored). Copy local.props.example to start.
+    -->
+    <Import Project="$(MSBuildThisFileDirectory)local.props" Condition="Exists('$(MSBuildThisFileDirectory)local.props')" />
+</Project>

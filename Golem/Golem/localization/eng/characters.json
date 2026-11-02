@@ -1,0 +1,16 @@
+{
+  "GOLEM-THE_GOLEM.title": "The Golem",
+  "GOLEM-THE_GOLEM.titleObject": "The Golem",
+  "GOLEM-THE_GOLEM.description": "A slab of river clay and old boulders, given a stubborn spark of life.\nBuilds its body from [gold]Parts[/gold] as it climbs.",
+  "GOLEM-THE_GOLEM.pronounSubject": "it",
+  "GOLEM-THE_GOLEM.pronounObject": "it",
+  "GOLEM-THE_GOLEM.pronounPossessive": "its",
+  "GOLEM-THE_GOLEM.possessiveAdjective": "its",
+  "GOLEM-THE_GOLEM.goldMonologue": "[sine]Shiny stones... for the collection...[/sine]",
+  "GOLEM-THE_GOLEM.eventDeathPrevention": "Not... yet... crumbling...",
+  "GOLEM-THE_GOLEM.aromaPrinciple": "[sine][purple]Mud remembers every shape it has ever been...[/purple][/sine]",
+  "GOLEM-THE_GOLEM.cardsModifierTitle": "Golem Cards",
+  "GOLEM-THE_GOLEM.cardsModifierDescription": "Golem cards will now appear in rewards and shops.",
+  "GOLEM-THE_GOLEM.banter.alive.endTurnPing": "GRRRND.",
+  "GOLEM-THE_GOLEM.banter.dead.endTurnPing": "..."
+}
