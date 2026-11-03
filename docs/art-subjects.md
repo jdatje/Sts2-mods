@@ -10,11 +10,11 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 |---|---|---|
 | Strike | Basic Attack | (done) |
 | Defend | Basic Skill | (done) |
-| Slam | Basic Attack | The Golem's two huge boulder fists slamming down into the ground from above, a ring shockwave of mud and rock shards bursting outward, a faint stone barrier forming around it. Background: flat burnt orange field with darker angular streaks. |
-| Clay Arms | Basic Power | A thick arm of wet brown clay, freshly sculpted, with handprint marks pressed into it and a rusted iron band at the shoulder, glowing faintly amber at the seams. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
-| Rubble | Token Skill | A small heap of broken mossy stones and clay chunks, dust still settling, one chunk glinting orange. Background: flat earthy ochre field with darker angular streaks. |
-| Grind | Common Attack | Medium shot: the Golem pinning a dark armoured enemy against a rock wall with one boulder hand and grinding it into the stone, sparks and dust spraying, rock crust forming on its knuckles. Background: flat rust red field with darker angular streaks. |
-| Shoulder Charge | Common Attack | The Golem's huge rounded boulder shoulder with a rusted iron pauldron barrelling forward diagonally, motion arcs behind it, mud splashing. Background: flat deep ochre field with darker angular streaks. |
+| Slam | Basic Attack | (done) |
+| Clay Arms | Basic Power | The Golem's upper body seen from the front, centered: one of its arms is a fresh, thick arm of smooth wet brown clay with finger marks pressed into it, flexed proudly, an amber glow at the shoulder seam where it joins the stone body. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
+| Rubble | Token Skill | (done) |
+| Grind | Common Attack | Low-angle full-body shot of the Golem dragging a dark armoured enemy along a rock wall with one hand, a long trail of sparks and crumbling stone behind them. Show the Golem's whole body; no close-up of a fist. Background: flat rust red field with darker angular streaks. |
+| Shoulder Charge | Common Attack | (done) |
 | Pile Driver | Common Attack | A massive boulder fist driving straight down onto a cracked dark helmet, the ground splitting underneath, debris flying upward. Background: flat dark maroon field with darker angular streaks. |
 | Crumble | Common Skill | Close-up of the Golem's stone arm deliberately crumbling at the edge, chunks of rock peeling off and falling into the Golem's open clay palm. Background: flat cold teal field with darker angular streaks. |
 | Mud Wall | Common Skill | A wall of thick wet mud surging up from the ground in front of the viewer, enemy blades sinking and sticking in it, mud splattering. Background: flat steel blue field with darker angular streaks. |
@@ -158,11 +158,11 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Name | Type | Shows |
 |---|---|---|
 | Strike | Basic Attack | (done) |
-| Defend | Basic Skill | Medium shot of the Card Sharp holding up a wide fan of gold-edged cards like a shield in front of her, her eyes calm under the hat brim, light-beam attacks deflecting off the fan in sparks. Background: flat slate blue field with darker angular streaks. |
-| Ante | Basic Skill | Medium shot of the Card Sharp seated at a green felt table, sliding a small stack of gold chips forward with two fingers while two cards are dealt toward her, a sly look under her hat. Background: flat dark card-table green field with darker angular streaks. |
-| Cut the Deck | Basic Skill | Two black-gloved hands splitting a deck of gold-edged cards in mid-air with a sharp flourish, the cut glinting like a blade. Background: flat charcoal grey field with darker angular streaks. |
-| Joker | Token Skill | A single gold-edged card spinning in the air, its face showing a grinning jester's hat symbol in black and gold, sparkles around it. Background: flat muted gold-ochre field with darker angular streaks. |
-| Hole Card | Common Attack | A black-gloved hand lifting the corner of a face-down gold-backed card on green felt, a bright gleam escaping from underneath. Background: flat deep crimson field with darker angular streaks. |
+| Defend | Basic Skill | (done) |
+| Ante | Basic Skill | (done) |
+| Cut the Deck | Basic Skill | (done) |
+| Joker | Token Skill | (done) |
+| Hole Card | Common Attack | (done) |
 | Lowball | Common Attack | A card thrown low and fast, skimming just above the floor toward the upper right, motion arcs and dust trailing behind it. Background: flat burnt red-orange field with darker angular streaks. |
 | Pocket Pair | Common Skill | Two matching cards with a big spade symbol held tight together between gloved fingers, a faint protective golden shimmer around them. Background: flat cold teal field with darker angular streaks. |
 | Chip Stack | Common Skill | A tall wobbling tower of gold, black and burgundy poker chips forming a wall, light-beam attacks bouncing off it. Background: flat steel blue field with darker angular streaks. |
@@ -300,10 +300,10 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Name | Type | Shows |
 |---|---|---|
 | Strike | Basic Attack | (done) |
-| Defend | Basic Skill | Full-body shot of the Bard ducking behind his raised lute, a ring of glowing golden notes forming a shield in front of him, light-beam attacks bouncing off. Background: flat slate blue field with darker angular streaks. |
-| Battle Hymn | Basic Power | The Bard on a battlefield, head thrown back mid-song, lute raised high, a ring of glowing golden notes forming protective shields around small hooded allies. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
-| Hum | Basic Skill | Close-up of the Bard's face with closed eyes and lips pressed together humming, a single soft golden note floating up, a faint shimmer of protection. Background: flat cold teal field with darker angular streaks. |
-| Ditty | Common Attack | A cheeky little golden music note flying like a dart toward the upper right, the Bard's fingers plucking a lute string at the lower left edge. Background: flat crimson fading to deep violet field with darker angular streaks. |
+| Defend | Basic Skill | (done) |
+| Battle Hymn | Basic Power | (done) |
+| Hum | Basic Skill | (done) |
+| Ditty | Common Attack | (done) |
 | Rally Cry | Common Skill | The Bard standing on a rock, one fist raised, shouting a rallying cry, golden sound rings rippling out over small hooded allies who raise their weapons. Background: flat deep teal fading to navy field with darker angular streaks. |
 | Quick Step | Common Skill | The Bard's feet in pointed purple boots mid-dance step, side-stepping a dark blade, small golden notes kicked up. Background: flat steel blue field with darker angular streaks. |
 | Bass Line | Common Attack | A huge deep sound wave pulsing from the lute's body like a shockwave, the low string vibrating heavily, the ground trembling. Background: flat dark plum field with darker angular streaks. |
