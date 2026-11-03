@@ -132,7 +132,11 @@ def call_gemini(model, key, prompt, aspect):
                 data = json.load(r)
             break
         except urllib.error.HTTPError as e:
-            msg = e.read().decode(errors="replace")[:400]
+            body_txt = e.read().decode(errors="replace")
+            msg = " ".join(body_txt.split())[:500]
+            if e.code == 429 and "limit: 0" in body_txt:
+                raise RuntimeError("No image quota on this key (free tier allows 0 images). Turn on billing for the key's "
+                                   "project in Google AI Studio. Details: " + msg)
             if e.code in (429, 500, 502, 503, 504) and attempt < 4:
                 time.sleep(15 * (attempt + 1))
                 continue
