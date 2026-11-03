@@ -21,6 +21,7 @@ art/review.html. Card art is saved as JPG (portraits), icons as transparent PNG.
 import argparse
 import base64
 import concurrent.futures as cf
+import io
 import json
 import os
 import re
@@ -121,8 +122,26 @@ def aspect_for(kind):
 
 # ----------------------------------------------------------------------------- API
 
-def call_gemini(model, key, prompt, aspect):
-    body = {"contents": [{"parts": [{"text": prompt}]}],
+def style_refs(cfg):
+    """Own character's reference first (keeps the character consistent), then the other characters' references."""
+    refdir = ROOT / "tools" / "art"
+    own = cfg.get("style_ref")
+    paths = ([refdir / own] if own else []) + sorted(p for p in (refdir / "reference" / "style").glob("*.jpg")
+                                                       if not own or p.name != Path(own).name)
+    out = []
+    for p in paths[:3]:
+        im = Image.open(p).convert("RGB")
+        im.thumbnail((768, 768))
+        buf = io.BytesIO(); im.save(buf, "JPEG", quality=85)
+        out.append(base64.b64encode(buf.getvalue()).decode())
+    return out
+
+
+def call_gemini(model, key, prompt, aspect, refs=()):
+    parts = [{"inlineData": {"mimeType": "image/jpeg", "data": r}} for r in refs]
+    if refs:
+        prompt = SHARED.get("style_refs_note", "") + "\n\n" + prompt
+    body = {"contents": [{"parts": parts + [{"text": prompt}]}],
             "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": aspect}}}
     req = urllib.request.Request(f"{API}/models/{model}:generateContent", data=json.dumps(body).encode(),
                                  headers={"x-goog-api-key": key, "Content-Type": "application/json"})
@@ -249,6 +268,7 @@ def main():
     ap.add_argument("--model", default=SHARED["model"])
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--limit", type=int, default=0, help="generate at most N images this run (0 = no limit)")
+    ap.add_argument("--no-refs", action="store_true", help="do not send the style reference images")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--process-only", action="store_true")
     ap.add_argument("--list-models", action="store_true")
@@ -283,7 +303,8 @@ def main():
         sys.exit("GEMINI_API_KEY is not set.")
 
     to_generate = [(a, cfg) for a, cfg in todo
-                   if not args.process_only and (args.force or not (RAW_ROOT / a["mod"] / f"{a['id']}.png").exists())]
+                   if not args.process_only and a["id"] not in cfg.get("keep", [])
+                   and (args.force or not (RAW_ROOT / a["mod"] / f"{a['id']}.png").exists())]
     if args.limit: to_generate = to_generate[:args.limit]
     print(f"generating {len(to_generate)} images with {args.model} ({args.workers} at a time)")
     lock, done, failed = threading.Lock(), [0], []
@@ -293,7 +314,8 @@ def main():
         raw = RAW_ROOT / a["mod"] / f"{a['id']}.png"
         raw.parent.mkdir(parents=True, exist_ok=True)
         try:
-            data = call_gemini(args.model, key, prompt_for(a, cfg), aspect_for(a["kind"]))
+            data = call_gemini(args.model, key, prompt_for(a, cfg), aspect_for(a["kind"]),
+                               [] if args.no_refs else style_refs(cfg))
             Image.open(__import__("io").BytesIO(data)).save(raw)
             process(a, raw)
             status = "ok"
