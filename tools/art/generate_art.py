@@ -47,7 +47,7 @@ API = "https://generativelanguage.googleapis.com/v1beta"
 MODS = {"Golem": "GOLEM", "CardSharp": "CARDSHARP", "Bard": "BARD"}
 SHARED = json.loads((CFG_DIR / "shared.json").read_text(encoding="utf-8"))
 
-ICON = ("A single game icon of {subject}. Centered, filling most of the frame, bold readable silhouette, painted style. "
+ICON = ("A single game icon of {subject}. Centered, filling most of the frame, bold readable silhouette, same ink-and-cel-shading style, thick dark outline around the whole object. "
         "Isolated on a perfectly flat, solid pure magenta (#FF00FF) background with no shadows, no gradient and no other objects.")
 
 
@@ -103,7 +103,7 @@ def prompt_for(a, cfg):
             f"Illustration for a card called \"{a['title']}\" ({a['ctype'].lower()}): {a['text']} "
             f"Show this as one clear, dramatic moment" + (" featuring the character" if a["ctype"] != "Power" or cfg.get("powers_show_character") else "")
             + ". Do not draw any text, cards with writing, or numbers.")
-        return f"{style}\n{who}\nScene: {scene}\nWide landscape composition (4:3), subject clearly readable at small size."
+        return f"{style}\n{SHARED.get('card_layout', '')}\n{who}\nScene: {scene}\nWide landscape composition (4:3), subject clearly readable at small size."
     if kind in ("power", "relic"):
         subject = override or f"an object or symbol that represents \"{a['title']}\" ({a['text']}), in the theme of {cfg['name']}"
         return f"{style}\n" + ICON.format(subject=subject)
