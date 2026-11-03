@@ -11,18 +11,18 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Strike | Basic Attack | (done) |
 | Defend | Basic Skill | (done) |
 | Slam | Basic Attack | (done) |
-| Clay Arms | Basic Power | The Golem's upper body seen from the front, centered: one of its arms is a fresh, thick arm of smooth wet brown clay with finger marks pressed into it, flexed proudly, an amber glow at the shoulder seam where it joins the stone body. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
+| Clay Arms | Basic Power | (done) |
 | Rubble | Token Skill | (done) |
-| Grind | Common Attack | Low-angle full-body shot of the Golem dragging a dark armoured enemy along a rock wall with one hand, a long trail of sparks and crumbling stone behind them. Show the Golem's whole body; no close-up of a fist. Background: flat rust red field with darker angular streaks. |
+| Grind | Common Attack | (done) |
 | Shoulder Charge | Common Attack | (done) |
-| Pile Driver | Common Attack | A massive boulder fist driving straight down onto a cracked dark helmet, the ground splitting underneath, debris flying upward. Background: flat dark maroon field with darker angular streaks. |
-| Crumble | Common Skill | Close-up of the Golem's stone arm deliberately crumbling at the edge, chunks of rock peeling off and falling into the Golem's open clay palm. Background: flat cold teal field with darker angular streaks. |
-| Mud Wall | Common Skill | A wall of thick wet mud surging up from the ground in front of the viewer, enemy blades sinking and sticking in it, mud splattering. Background: flat steel blue field with darker angular streaks. |
-| Quarry | Common Skill | The Golem's clay fingers prying a glowing chunk of stone out of a rough rock face, small pebbles tumbling down. Background: flat earthy ochre field with darker angular streaks. |
-| Heavy Swing | Common Attack | The Golem's arm swinging a huge boulder fist in a wide horizontal arc, the whole frame filled with the fist, large motion arcs and flying gravel. Background: flat blood red fading to brown field with darker angular streaks. |
-| Clay Throw | Common Attack | A wet lump of clay flying through the air toward the upper right, trailing mud droplets, the Golem's open hand just visible at the lower left edge. Background: flat deep ochre field with darker angular streaks. |
-| Stonewall | Common Skill | A tall wall of stacked boulders bound with rusted iron straps rising from the ground, glowing orange cracks in the mortar, light-beam attacks breaking against it. Background: flat slate blue field with darker angular streaks. |
-| Tumble | Common Attack | The Golem curled up into a giant rolling ball of boulders and mud, bowling diagonally through the frame, small dark silhouettes of enemies scattering. Background: flat burnt orange field with darker angular streaks. |
+| Pile Driver | Common Attack | (done) |
+| Crumble | Common Skill | (done) |
+| Mud Wall | Common Skill | (done) |
+| Quarry | Common Skill | (done) |
+| Heavy Swing | Common Attack | (done) |
+| Clay Throw | Common Attack | (done) |
+| Stonewall | Common Skill | (done) |
+| Tumble | Common Attack | (done) |
 | Reinforce | Common Skill | Close-up of rusted iron bands being hammered tight around the Golem's stone forearm, rivets popping into place with small sparks. Background: flat deep teal fading to navy field with darker angular streaks. |
 | Iron Grip | Common Attack | The Golem's boulder hand, wrapped in rusted iron bands, squeezing an enemy's dark sword blade until it bends, metal shards flying. Background: flat rust red field with darker angular streaks. |
 | Rockslide | Common Attack | A cascade of boulders tumbling down a slope from the upper left toward the lower right, dust clouds and flying pebbles. Background: flat deep ochre field with darker angular streaks. |
@@ -163,14 +163,14 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Cut the Deck | Basic Skill | (done) |
 | Joker | Token Skill | (done) |
 | Hole Card | Common Attack | (done) |
-| Lowball | Common Attack | A card thrown low and fast, skimming just above the floor toward the upper right, motion arcs and dust trailing behind it. Background: flat burnt red-orange field with darker angular streaks. |
-| Pocket Pair | Common Skill | Two matching cards with a big spade symbol held tight together between gloved fingers, a faint protective golden shimmer around them. Background: flat cold teal field with darker angular streaks. |
-| Chip Stack | Common Skill | A tall wobbling tower of gold, black and burgundy poker chips forming a wall, light-beam attacks bouncing off it. Background: flat steel blue field with darker angular streaks. |
-| Ante Up | Common Skill | A black-gloved hand pushing a bigger pile of gold chips into the centre while flicking one card away, cards flying. Background: flat dark card-table green field with darker angular streaks. |
-| Snap | Common Attack | Two cards with matching club symbols slapped down together, a sharp snap of white impact lines, a dark enemy mask flinching. Background: flat dark wine red field with darker angular streaks. |
-| Flick | Common Attack | A spray of cards flicked outward in a wide fan from a gloved hand, each card cutting through the air toward several dark silhouettes. Background: flat crimson fading to black field with darker angular streaks. |
-| Bad Beat | Common Skill | A dark enemy's hand of cards crumbling and falling apart, the enemy's shoulders slumping, a gloved hand drawing a fresh card in the foreground. Background: flat dusk purple-grey field with darker angular streaks. |
-| Read the Table | Common Skill | The Card Sharp leaning over a green felt table, eyes narrowed under her black hat, four cards with different suit symbols glowing faintly. Background: flat dark card-table green field with darker angular streaks. |
+| Lowball | Common Attack | (done) |
+| Pocket Pair | Common Skill | (done) |
+| Chip Stack | Common Skill | (done) |
+| Ante Up | Common Skill | (done) |
+| Snap | Common Attack | (done) |
+| Flick | Common Attack | (done) |
+| Bad Beat | Common Skill | (done) |
+| Read the Table | Common Skill | (done) |
 | Cheap Shot | Common Attack | A gloved hand jabbing a card's sharp corner into a gap in a dark enemy's armour, a spark at the point of contact. Background: flat deep crimson field with darker angular streaks. |
 | Hedge | Common Skill | The Card Sharp stepping back behind a raised fan of cards, her other hand already drawing a new card from her sleeve. Background: flat deep teal fading to navy field with darker angular streaks. |
 | Intimidate | Common Skill | The Card Sharp's face half in shadow under her black hat brim, a cold half-smile, gold earring glinting, a dark enemy shrinking back. Background: flat charcoal grey field with darker angular streaks. |
@@ -304,16 +304,16 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Battle Hymn | Basic Power | (done) |
 | Hum | Basic Skill | (done) |
 | Ditty | Common Attack | (done) |
-| Rally Cry | Common Skill | The Bard standing on a rock, one fist raised, shouting a rallying cry, golden sound rings rippling out over small hooded allies who raise their weapons. Background: flat deep teal fading to navy field with darker angular streaks. |
-| Quick Step | Common Skill | The Bard's feet in pointed purple boots mid-dance step, side-stepping a dark blade, small golden notes kicked up. Background: flat steel blue field with darker angular streaks. |
-| Bass Line | Common Attack | A huge deep sound wave pulsing from the lute's body like a shockwave, the low string vibrating heavily, the ground trembling. Background: flat dark plum field with darker angular streaks. |
-| Sharp Note | Common Attack | A single jagged, sharp-edged golden note cutting through the air like a throwing knife, motion arcs behind it. Background: flat deep crimson field with darker angular streaks. |
-| Lilt | Common Skill | The Bard twirling lightly with his cape flaring, golden notes swirling around him like a shield. Background: flat cold teal field with darker angular streaks. |
-| Taunting Tune | Common Skill | The Bard sticking out his tongue and playing a mocking tune at a dark enemy, crooked purple notes bouncing off the enemy's helmet. Background: flat dusty rose-purple field with darker angular streaks. |
-| Chorus Line | Common Attack | A row of glowing golden notes marching side by side across the frame like a kick line, sweeping into small dark enemy silhouettes. Background: flat crimson fading to deep violet field with darker angular streaks. |
-| Second Verse | Common Skill | Close-up of the Bard turning the page of a worn songbook, golden notes lifting off the paper. Background: flat deep violet field with darker angular streaks. |
-| Strum | Common Attack | Close-up of the Bard's hand strumming across all three lute strings in a fast blur, three golden sound arcs flying out. Background: flat burnt red-orange field with darker angular streaks. |
-| Busking | Common Skill | The Bard playing on a street corner, his open feathered cap on the ground filling with gold coins, coins bouncing like small shields. Background: flat steel blue field with darker angular streaks. |
+| Rally Cry | Common Skill | (done) |
+| Quick Step | Common Skill | (done) |
+| Bass Line | Common Attack | (done) |
+| Sharp Note | Common Attack | (done) |
+| Lilt | Common Skill | (done) |
+| Taunting Tune | Common Skill | (done) |
+| Chorus Line | Common Attack | (done) |
+| Second Verse | Common Skill | (done) |
+| Strum | Common Attack | (done) |
+| Busking | Common Skill | (done) |
 | Warm-Up | Common Skill | The Bard stretching his fingers over the lute's fretboard, a few gentle golden notes waking up in the air. Background: flat warm gold-ochre field with darker angular streaks. |
 | Power Chord | Common Attack | The Bard slamming a big chord on the lute with a rock-star pose, a burst of golden energy exploding from the strings. Background: flat wine red field with darker angular streaks. |
 | Drumbeat | Common Attack | A small hand drum hanging at the Bard's hip being struck twice, two pulsing golden impact rings. Background: flat deep crimson field with darker angular streaks. |
