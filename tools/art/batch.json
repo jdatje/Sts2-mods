@@ -1,1 +1,58 @@
-{}
+{
+  "Golem": [
+    {
+      "id": "reinforce",
+      "title": "Reinforce",
+      "kind": "card"
+    },
+    {
+      "id": "iron_grip",
+      "title": "Iron Grip",
+      "kind": "card"
+    },
+    {
+      "id": "rockslide",
+      "title": "Rockslide",
+      "kind": "card"
+    }
+  ],
+  "CardSharp": [
+    {
+      "id": "cheap_shot",
+      "title": "Cheap Shot",
+      "kind": "card"
+    },
+    {
+      "id": "hedge",
+      "title": "Hedge",
+      "kind": "card"
+    },
+    {
+      "id": "intimidate",
+      "title": "Intimidate",
+      "kind": "card"
+    }
+  ],
+  "Bard": [
+    {
+      "id": "warm_up",
+      "title": "Warm-Up",
+      "kind": "card"
+    },
+    {
+      "id": "power_chord",
+      "title": "Power Chord",
+      "kind": "card"
+    },
+    {
+      "id": "drumbeat",
+      "title": "Drumbeat",
+      "kind": "card"
+    },
+    {
+      "id": "falsetto",
+      "title": "Falsetto",
+      "kind": "card"
+    }
+  ]
+}
