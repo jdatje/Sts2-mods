@@ -143,7 +143,7 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 
 | Name | Type | Shows |
 |---|---|---|
-| The Golem |  | the Golem standing tall in a misty cave: brown wet clay body, mossy green-grey boulder fists with glowing orange cracks, rusted iron bands, one glowing amber eye, looking down at the viewer, menacing but loyal |
+| The Golem |  | (done) |
 
 ### Mod image
 
@@ -249,15 +249,15 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 
 | Name | Type | Shows |
 |---|---|---|
-| Table |  | a small round green felt card table with a few face-up cards |
+| Table |  | (done) |
 | Card Shark |  | (done) |
-| Lucky Streak |  | a gold four-leaf clover on a card |
-| Croupier |  | a croupier's rake with a gold chip |
-| Poker Night |  | a candle next to a fan of cards |
-| Card Counter |  | a small brass abacus with chip beads |
-| Bankroll |  | a coin purse bulging with gold chips |
-| Showman |  | a black top hat with a gold band and a card tucked in it |
-| Jokers Wild |  | a black and gold jester hat |
+| Lucky Streak |  | (done) |
+| Croupier |  | (done) |
+| Poker Night |  | (done) |
+| Card Counter |  | (done) |
+| Bankroll |  | (done) |
+| Showman |  | (done) |
+| Jokers Wild |  | (done) |
 | High Stakes |  | (done) |
 | House Edge |  | (done) |
 | Loaded Deck |  | (done) |
@@ -285,7 +285,7 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 
 | Name | Type | Shows |
 |---|---|---|
-| The Card Sharp |  | the Card Sharp leaning on a green-felt card table in a smoky candlelit den: black waistcoat with gold embroidery, white shirt with rolled sleeves, black gloves with gold rings, wide-brimmed black hat with a gold band, fanning gold-edged cards, sly half-smile |
+| The Card Sharp |  | (done) |
 
 ### Mod image
 
@@ -403,35 +403,35 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Anthem |  | (done) |
 | Siren Song |  | (done) |
 | Improvise |  | (done) |
-| Stage Presence |  | a bright stage spotlight |
+| Stage Presence |  | (done) |
 | Accompaniment |  | (done) |
 | Tempo |  | (done) |
-| Perfect Pitch |  | a vibrating golden tuning fork |
+| Perfect Pitch |  | (done) |
 | Virtuoso |  | (done) |
-| Maestro |  | a conductor's baton with a golden tip |
-| Legendary Ballad |  | an ancient open songbook glowing gold |
-| Bardic Inspiration |  | a golden spark shaped like a note |
-| Grand Stage |  | a pair of velvet stage curtains |
-| Muse |  | a glowing golden quill |
+| Maestro |  | (done) |
+| Legendary Ballad |  | (done) |
+| Bardic Inspiration |  | (done) |
+| Grand Stage |  | (done) |
+| Muse |  | (done) |
 
 ### Relic
 
 | Name | Type | Shows |
 |---|---|---|
-| Worn Lute |  | a battered old three-string wooden lute with a crack in its body and a faded purple ribbon tied to the headstock, faint golden notes rising from it |
+| Worn Lute |  | (done) |
 
 ### Character icons
 
 | Name | Type | Shows |
 |---|---|---|
-| The Bard |  | the Bard's face under his purple feathered cap, grinning mischievously, front view |
-| The Bard |  | a small round token of the Bard's purple feathered cap, simple and bold |
+| The Bard |  | (done) |
+| The Bard |  | (done) |
 
 ### Character select
 
 | Name | Type | Shows |
 |---|---|---|
-| The Bard |  | the Bard striking a heroic pose on a tavern table: velvet purple doublet, feathered cap, short wine-red cape, battered three-string lute raised, golden notes swirling |
+| The Bard |  | (done) |
 
 ### Mod image
 

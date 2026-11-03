@@ -344,6 +344,14 @@ def save(im, path, jpg=False):
         im.save(path, optimize=True)
 
 
+def cutout(im):
+    """Icon with transparency already (hand-cleaned)? Just trim it. Otherwise key out the flat background."""
+    if im.mode == "RGBA" and im.getextrema()[3][0] < 255:
+        bbox = im.split()[3].point(lambda v: 255 if v > 128 else 0).getbbox()
+        return im.crop(bbox) if bbox else im
+    return remove_magenta(im)
+
+
 def process(a, raw_path):
     img = ROOT / a["mod"] / a["mod"] / "images"
     kind, aid = a["kind"], a["id"]
@@ -353,17 +361,17 @@ def process(a, raw_path):
         save(big, img / "card_portraits" / "big" / f"{aid}.jpg", jpg=True)
         save(big.resize((250, 190), Image.LANCZOS), img / "card_portraits" / f"{aid}.jpg", jpg=True)
     elif kind == "power":
-        icon = remove_magenta(im)
+        icon = cutout(im)
         save(fit_square(icon, 256), img / "powers" / "big" / f"{aid}.png")
         save(fit_square(icon, 64, pad=0.02), img / "powers" / f"{aid}.png")
     elif kind == "relic":
-        icon = remove_magenta(im)
+        icon = cutout(im)
         small = fit_square(icon, 94, pad=0.08)
         save(fit_square(icon, 256), img / "relics" / "big" / f"{aid}.png")
         save(small, img / "relics" / f"{aid}.png")
         save(outline_of(small), img / "relics" / f"{aid}_outline.png")
     elif kind == "charui_icon":
-        save(fit_square(remove_magenta(im), 128), img / "charui" / f"{aid}_{a['short']}.png")
+        save(fit_square(cutout(im), 128), img / "charui" / f"{aid}_{a['short']}.png")
     elif kind == "charui_portrait":
         port = ImageOps.fit(im.convert("RGB"), (132, 195), Image.LANCZOS)
         save(port, img / "charui" / f"char_select_{a['short']}.png")
@@ -448,7 +456,7 @@ def main():
 
     to_generate = [(a, cfg) for a, cfg in todo
                    if not args.process_only and a["id"] not in cfg.get("keep", [])
-                   and not (ROOT / "tools" / "art" / "reference" / "approved" / a["mod"] / f"{a['id']}.jpg").exists()
+                   and not any((ROOT / "tools" / "art" / "reference" / "approved" / a["mod"]).glob(f"{a['id']}.*"))
                    and (args.force or not (RAW_ROOT / a["mod"] / f"{a['id']}.png").exists())]
     if args.limit: to_generate = to_generate[:args.limit]
     # icons go several to an image (grid) unless --no-grid

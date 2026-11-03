@@ -31,7 +31,7 @@ def cfg_path(mod):
 
 
 def done_ids(mod, cfg):
-    files = {p.stem for p in (APPROVED / mod).glob("*.jpg")} if (APPROVED / mod).exists() else set()
+    files = {p.stem for ext in ("*.jpg", "*.png") for p in (APPROVED / mod).glob(ext)} if (APPROVED / mod).exists() else set()
     return files | set(cfg.get("keep", []))
 
 
@@ -146,10 +146,14 @@ def cmd_install(args):
     a = next((x for x in assets if x["id"] == args.id), None)
     if not a:
         sys.exit(f"unknown id {args.id} for {args.mod}")
-    dest = APPROVED / args.mod / f"{args.id}.jpg"
-    dest.parent.mkdir(parents=True, exist_ok=True)
     from PIL import Image
-    Image.open(args.image).convert("RGB").save(dest, quality=92)
+    src = Image.open(args.image)
+    has_alpha = src.mode == "RGBA" and src.getextrema()[3][0] < 255
+    for old in (APPROVED / args.mod).glob(f"{args.id}.*"):
+        old.unlink()
+    dest = APPROVED / args.mod / f"{args.id}.{'png' if has_alpha else 'jpg'}"
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    src.save(dest) if has_alpha else src.convert("RGB").save(dest, quality=92)
     g.process(a, dest)
     print(f"installed {args.mod}/{args.id} ({a['kind']})")
 
