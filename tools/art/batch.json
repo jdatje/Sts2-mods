@@ -1,57 +1,132 @@
 {
   "Golem": [
     {
-      "id": "reinforce",
-      "title": "Reinforce",
+      "id": "boulder_toss",
+      "title": "Boulder Toss",
       "kind": "card"
     },
     {
-      "id": "iron_grip",
-      "title": "Iron Grip",
+      "id": "mudslinger",
+      "title": "Mudslinger",
       "kind": "card"
     },
     {
-      "id": "rockslide",
-      "title": "Rockslide",
+      "id": "pebble_barrage",
+      "title": "Pebble Barrage",
+      "kind": "card"
+    },
+    {
+      "id": "stone_skin",
+      "title": "Stone Skin",
+      "kind": "card"
+    },
+    {
+      "id": "packed_earth",
+      "title": "Packed Earth",
+      "kind": "card"
+    },
+    {
+      "id": "assemble",
+      "title": "Assemble",
+      "kind": "card"
+    },
+    {
+      "id": "full_body_slam",
+      "title": "Full Body Slam",
+      "kind": "card"
+    },
+    {
+      "id": "mossy_crown",
+      "title": "Mossy Crown",
       "kind": "card"
     }
   ],
   "CardSharp": [
     {
-      "id": "cheap_shot",
-      "title": "Cheap Shot",
+      "id": "quick_draw",
+      "title": "Quick Draw",
       "kind": "card"
     },
     {
-      "id": "hedge",
-      "title": "Hedge",
+      "id": "double_tap",
+      "title": "Double Tap",
       "kind": "card"
     },
     {
-      "id": "intimidate",
-      "title": "Intimidate",
+      "id": "bluff",
+      "title": "Bluff",
+      "kind": "card"
+    },
+    {
+      "id": "poker_face",
+      "title": "Poker Face",
+      "kind": "card"
+    },
+    {
+      "id": "shuffle_up",
+      "title": "Shuffle Up",
+      "kind": "card"
+    },
+    {
+      "id": "deal_in",
+      "title": "Deal In",
+      "kind": "card"
+    },
+    {
+      "id": "card_trick",
+      "title": "Card Trick",
+      "kind": "card"
+    },
+    {
+      "id": "sleight_of_hand",
+      "title": "Sleight of Hand",
       "kind": "card"
     }
   ],
   "Bard": [
     {
-      "id": "warm_up",
-      "title": "Warm-Up",
+      "id": "harmony",
+      "title": "Harmony",
       "kind": "card"
     },
     {
-      "id": "power_chord",
-      "title": "Power Chord",
+      "id": "cadence",
+      "title": "Cadence",
       "kind": "card"
     },
     {
-      "id": "drumbeat",
-      "title": "Drumbeat",
+      "id": "tune_up",
+      "title": "Tune Up",
       "kind": "card"
     },
     {
-      "id": "falsetto",
-      "title": "Falsetto",
+      "id": "discord",
+      "title": "Discord",
+      "kind": "card"
+    },
+    {
+      "id": "jig",
+      "title": "Jig",
+      "kind": "card"
+    },
+    {
+      "id": "war_drums",
+      "title": "War Drums",
+      "kind": "card"
+    },
+    {
+      "id": "sea_shanty",
+      "title": "Sea Shanty",
+      "kind": "card"
+    },
+    {
+      "id": "dirge",
+      "title": "Dirge",
+      "kind": "card"
+    },
+    {
+      "id": "improvise",
+      "title": "Improvise",
       "kind": "card"
     }
   ]

@@ -1,6 +1,6 @@
 {
   "model": "gemini-3.1-flash-image",
-  "style": "Gritty comic-book style illustration for a dark-fantasy deckbuilder. Heavy, slightly rough black ink outlines with ink hatching in the shadows; cel shading with two or three tones per colour; a subtle grunge paper texture; saturated but slightly muted colours. No text, no letters, no numbers, no frame, no border, no watermark, no UI.",
+  "style": "Gritty comic-book style illustration for a dark-fantasy deckbuilder. Heavy, slightly rough black ink outlines with ink hatching in the shadows; cel shading with two or three tones per colour; a subtle grunge paper texture; saturated but slightly muted colours. No text, no letters, no numbers, no frame, no border, no watermark, no signature, no UI.",
   "style_refs_note": "The attached images are style references only. Copy ONLY their rendering style: line weight, ink hatching, cel shading, paper texture and level of detail. Do NOT copy their subject, pose, framing, composition or background colour; every image must look clearly different from them and follow the description below.",
   "background": "Background: a flat colour field crossed by sharp, jagged, diagonal brush-streak shapes in a darker tone.",
   "layouts": {

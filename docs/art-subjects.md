@@ -23,9 +23,9 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Clay Throw | Common Attack | (done) |
 | Stonewall | Common Skill | (done) |
 | Tumble | Common Attack | (done) |
-| Reinforce | Common Skill | Close-up of rusted iron bands being hammered tight around the Golem's stone forearm, rivets popping into place with small sparks. Background: flat deep teal fading to navy field with darker angular streaks. |
-| Iron Grip | Common Attack | The Golem's boulder hand, wrapped in rusted iron bands, squeezing an enemy's dark sword blade until it bends, metal shards flying. Background: flat rust red field with darker angular streaks. |
-| Rockslide | Common Attack | A cascade of boulders tumbling down a slope from the upper left toward the lower right, dust clouds and flying pebbles. Background: flat deep ochre field with darker angular streaks. |
+| Reinforce | Common Skill | (done) |
+| Iron Grip | Common Attack | (done) |
+| Rockslide | Common Attack | (done) |
 | Boulder Toss | Common Attack | The Golem's clay arm at the lower left edge hurling a huge mossy boulder diagonally up to the right, motion arcs trailing the boulder. Background: flat rust red field with darker angular streaks. |
 | Mudslinger | Common Attack | A big splat of thick mud hitting a dark enemy mask full in the face, mud flying everywhere. Background: flat deep ochre field with darker angular streaks. |
 | Pebble Barrage | Common Attack | Three fist-sized stones flying in a spread toward the upper right, each with its own motion arcs, the Golem's flicking clay fingers at the lower left edge. Background: flat burnt orange field with darker angular streaks. |
@@ -171,9 +171,9 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Flick | Common Attack | (done) |
 | Bad Beat | Common Skill | (done) |
 | Read the Table | Common Skill | (done) |
-| Cheap Shot | Common Attack | A gloved hand jabbing a card's sharp corner into a gap in a dark enemy's armour, a spark at the point of contact. Background: flat deep crimson field with darker angular streaks. |
-| Hedge | Common Skill | The Card Sharp stepping back behind a raised fan of cards, her other hand already drawing a new card from her sleeve. Background: flat deep teal fading to navy field with darker angular streaks. |
-| Intimidate | Common Skill | The Card Sharp's face half in shadow under her black hat brim, a cold half-smile, gold earring glinting, a dark enemy shrinking back. Background: flat charcoal grey field with darker angular streaks. |
+| Cheap Shot | Common Attack | (done) |
+| Hedge | Common Skill | (done) |
+| Intimidate | Common Skill | (done) |
 | Quick Draw | Common Attack | A card snapping out from the Card Sharp's gloved fingertips at blinding speed, sharp motion arcs, a gleam on its edge. Background: flat burnt red-orange field with darker angular streaks. |
 | Double Tap | Common Attack | Two cards thrown one right after the other in a straight line, two impact sparks on a dark enemy target. Background: flat dark wine red field with darker angular streaks. |
 | Bluff | Common Skill | The Card Sharp holding up a single face-down card with total confidence, a faint ghostly golden shield shimmering in front of her. Background: flat slate blue field with darker angular streaks. |
@@ -314,10 +314,10 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Second Verse | Common Skill | (done) |
 | Strum | Common Attack | (done) |
 | Busking | Common Skill | (done) |
-| Warm-Up | Common Skill | The Bard stretching his fingers over the lute's fretboard, a few gentle golden notes waking up in the air. Background: flat warm gold-ochre field with darker angular streaks. |
-| Power Chord | Common Attack | The Bard slamming a big chord on the lute with a rock-star pose, a burst of golden energy exploding from the strings. Background: flat wine red field with darker angular streaks. |
-| Drumbeat | Common Attack | A small hand drum hanging at the Bard's hip being struck twice, two pulsing golden impact rings. Background: flat deep crimson field with darker angular streaks. |
-| Falsetto | Common Attack | The Bard singing an impossibly high note, mouth wide open, a piercing beam of golden sound shattering a dark enemy's helmet. Background: flat crimson fading to deep violet field with darker angular streaks. |
+| Warm-Up | Common Skill | (done) |
+| Power Chord | Common Attack | (done) |
+| Drumbeat | Common Attack | (done) |
+| Falsetto | Common Attack | (done) |
 | Harmony | Common Skill | Several small hooded allies standing together under a glowing golden staff of music, each surrounded by a soft shield of light. Background: flat deep teal fading to navy field with darker angular streaks. |
 | Cadence | Common Skill | The Bard finishing a phrase with a flourish of his lute, golden notes settling into a curved protective wall. Background: flat slate blue field with darker angular streaks. |
 | Tune Up | Common Skill | Close-up of the Bard's fingers twisting a tuning peg on the lute's headstock, a little spark of golden light on the string. Background: flat warm gold-ochre field with darker angular streaks. |
