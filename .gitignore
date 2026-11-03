@@ -10,3 +10,6 @@ dist/
 local.props
 art/review.html
 art/raw/
+workshop/*/content/
+workshop/*/mod-uploader.log
+tools/workshop/ModUploader/

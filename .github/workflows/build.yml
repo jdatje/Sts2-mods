@@ -53,6 +53,29 @@ jobs:
           name: sts2-mods-${{ env.GAME_VERSION }}
           path: dist/*.zip
 
+      - name: Workshop upload kit (ModUploader + filled workspaces)
+        run: |
+          python3 tools/workshop/stage.py
+          git clone -q https://github.com/megacrit/sts2-mod-uploader.git /tmp/uploader
+          git -C /tmp/uploader checkout -q d7b7e6b16c413d5a124f474f9e5104ef01f76ab1
+          dotnet publish /tmp/uploader/ModUploader.csproj -c Release -r win-x64 --self-contained true -o /tmp/kit/ModUploader
+          rm -f /tmp/kit/ModUploader/*.pdb
+          cp -r workshop/Golem workshop/CardSharp workshop/Bard /tmp/kit/
+          cat > /tmp/kit/upload-all.bat <<'BAT'
+          @echo off
+          rem Steam must be running and logged in. Uploads/updates all three mods.
+          cd /d "%~dp0"
+          for %%M in (Golem CardSharp Bard) do ModUploader\ModUploader.exe upload -w %%M
+          echo.
+          echo Done. Copy the new mod_id.txt files back into the repo's workshop folders (first upload only).
+          pause
+          BAT
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: workshop-upload-kit
+          path: /tmp/kit
+
       - name: Release (on tags)
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
