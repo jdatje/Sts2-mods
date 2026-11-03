@@ -13,6 +13,22 @@ namespace Bard.BardCode.Songs;
 /// <summary>Marks a card as a Song card (playing it starts a Song; it never adds a Verse itself).</summary>
 public interface ISongCard;
 
+/// <summary>Powers that react to Songs: when one starts, and after each Finale.</summary>
+public interface ISongListener
+{
+    Task AfterSongStarted(PlayerChoiceContext ctx, SongPower song) => Task.CompletedTask;
+    Task AfterFinale(PlayerChoiceContext ctx, SongPower song) => Task.CompletedTask;
+}
+
+/// <summary>Powers that change how Songs behave (Virtuoso, Maestro, Legendary Ballad, Perfect Pitch).</summary>
+public interface ISongModifier
+{
+    int ExtraRefrains => 0;
+    int ExtraFinales => 0;
+    int ExtraMaxVerses => 0;
+    int ExtraStartingVerses => 0;
+}
+
 /// <summary>
 /// A Song is a Power whose amount is its number of Verses (max 15).
 /// Only one Song plays at a time; starting a new one ends the old one and triggers its Finale.
@@ -20,7 +36,7 @@ public interface ISongCard;
 /// </summary>
 public abstract class SongPower : BardPower
 {
-    public const int MaxVerses = 15;
+    public const int BaseMaxVerses = 15;
 
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -28,7 +44,7 @@ public abstract class SongPower : BardPower
     /// <summary>Start of your turn. Should help ALL players.</summary>
     public abstract Task Refrain(PlayerChoiceContext ctx);
 
-    /// <summary>When the Song ends. Scales with Verses (Amount).</summary>
+    /// <summary>When the Song ends (or Medley / Curtain Call). Scales with Verses (Amount).</summary>
     public abstract Task Finale(PlayerChoiceContext ctx);
 
     public int Verses => (int)Amount;
@@ -49,13 +65,20 @@ public abstract class SongPower : BardPower
     {
         if (player != Owner.Player) return;
         Flash();
-        await Refrain(choiceContext);
+        var times = 1 + Owner.Powers.OfType<ISongModifier>().Sum(m => m.ExtraRefrains);
+        for (var i = 0; i < times; i++)
+            await Refrain(choiceContext);
     }
 }
 
 public static class SongCmd
 {
     public static SongPower? Current(Creature bard) => bard.Powers.OfType<SongPower>().FirstOrDefault();
+
+    public static int Verses(Creature bard) => Current(bard)?.Verses ?? 0;
+
+    public static int MaxVerses(Creature bard) =>
+        SongPower.BaseMaxVerses + bard.Powers.OfType<ISongModifier>().Sum(m => m.ExtraMaxVerses);
 
     /// <summary>Ends the current Song (Finale) and starts a new one with the given Verses.</summary>
     public static async Task Start<T>(PlayerChoiceContext ctx, CardModel card, int verses) where T : SongPower
@@ -65,8 +88,26 @@ public static class SongCmd
 
         var lute = card.Owner.Relics.OfType<WornLute>().FirstOrDefault();
         if (lute != null && lute.TryUse()) verses += WornLute.BonusVerses;
+        verses += bard.Powers.OfType<ISongModifier>().Sum(m => m.ExtraStartingVerses);
 
-        await PowerCmd.Apply<T>(ctx, bard, Math.Clamp(verses, 1, SongPower.MaxVerses), bard, card);
+        await PowerCmd.Apply<T>(ctx, bard, Math.Clamp(verses, 1, MaxVerses(bard)), bard, card);
+        var song = Current(bard);
+        if (song == null) return;
+        foreach (var l in bard.Powers.OfType<ISongListener>().ToList())
+            await l.AfterSongStarted(ctx, song);
+    }
+
+    /// <summary>Triggers the current Song's Finale without ending it. Returns false without a Song.</summary>
+    public static async Task<bool> Finale(PlayerChoiceContext ctx, Creature bard, int times)
+    {
+        var song = Current(bard);
+        if (song == null) return false;
+        var total = times * (1 + bard.Powers.OfType<ISongModifier>().Sum(m => m.ExtraFinales));
+        for (var i = 0; i < total; i++)
+            await song.Finale(ctx);
+        foreach (var l in bard.Powers.OfType<ISongListener>().ToList())
+            await l.AfterFinale(ctx, song);
+        return true;
     }
 
     /// <summary>Ends the current Song, triggering its Finale the given number of times.</summary>
@@ -74,8 +115,7 @@ public static class SongCmd
     {
         var song = Current(bard);
         if (song == null) return false;
-        for (var i = 0; i < finales; i++)
-            await song.Finale(ctx);
+        await Finale(ctx, bard, finales);
         await PowerCmd.Remove(song);
         return true;
     }
@@ -85,8 +125,18 @@ public static class SongCmd
     {
         var song = Current(bard);
         if (song == null) return;
-        var room = SongPower.MaxVerses - song.Verses;
-        if (room <= 0) return;
+        var room = MaxVerses(bard) - song.Verses;
+        if (room <= 0 || count <= 0) return;
         await PowerCmd.ModifyAmount(ctx, song, Math.Min(count, room), bard, null, silent: true);
+    }
+
+    /// <summary>Sets the current Song's Verses to an exact number (1..max).</summary>
+    public static async Task SetVerses(PlayerChoiceContext ctx, Creature bard, int verses)
+    {
+        var song = Current(bard);
+        if (song == null) return;
+        var target = Math.Clamp(verses, 1, MaxVerses(bard));
+        if (target != song.Verses)
+            await PowerCmd.ModifyAmount(ctx, song, target - song.Verses, bard, null, silent: true);
     }
 }
