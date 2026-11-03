@@ -1,4 +1,5 @@
-"""Generate Strike card mockups (STS2 card layout) for Golem, Card Sharp and Bard as SVG."""
+"""Banner colour follows rarity in-game (grey = basic/common), not the character.
+Generate Strike card mockups (STS2 card layout) for Golem, Card Sharp and Bard as SVG."""
 
 W, H = 660, 915  # 3x the in-game card
 
@@ -139,8 +140,8 @@ golem = dict(
 
 # ---------------------------------------------------------------- CARD SHARP
 sharp = dict(
-    frame="#1e4a32", frame_light="#3a7a52", frame_dark="#0c2016", trim="#d4a840",
-    panel="#232a24", banner="#6a1a26", banner_light="#a83444", banner_dark="#4a1018", banner_edge="#2a0a10",
+    frame="#221f1e", frame_light="#4a4542", frame_dark="#0a0908", trim="#d4a840",
+    panel="#262321", banner="#6e6a62", banner_light="#a6a198", banner_dark="#4a4640", banner_edge="#2e2a26",
     plaque_edge="#8a7040",
     defs="""
   <radialGradient id="artBg" cx="45%" cy="45%" r="75%">
@@ -178,20 +179,20 @@ sharp = dict(
     desc='<text x="330" y="680" text-anchor="middle" class="gold">7 of Spades</text>'
          '<text x="330" y="735" text-anchor="middle" class="desc">Deal 6 damage.</text>',
     orb="""
-    <circle cx="60" cy="62" r="46" fill="#a01c28" stroke="#3a0a10" stroke-width="5"/>
-    <circle cx="60" cy="62" r="46" fill="none" stroke="#f2e6c8" stroke-width="10" stroke-dasharray="14 14"/>
-    <circle cx="60" cy="62" r="32" fill="#c8303c" stroke="#d4a840" stroke-width="4"/>
+    <circle cx="60" cy="62" r="46" fill="#1a1716" stroke="#0a0808" stroke-width="5"/>
+    <circle cx="60" cy="62" r="40" fill="none" stroke="#d4a840" stroke-width="11" stroke-dasharray="15.7 15.7"/>
+    <circle cx="60" cy="62" r="30" fill="#1a1716" stroke="#d4a840" stroke-width="4"/>
     <text x="60" y="81" text-anchor="middle" class="cost">1</text>""",
 )
 
 # ---------------------------------------------------------------- BARD
 bard = dict(
-    frame="#4a2266", frame_light="#7a46a0", frame_dark="#1e0c2a", trim="#d4a840",
-    panel="#2c2034", banner="#6a1e30", banner_light="#a83850", banner_dark="#480f1e", banner_edge="#2a0812",
+    frame="#33215e", frame_light="#5b3c9e", frame_dark="#140a28", trim="#d4a840",
+    panel="#221c34", banner="#6e6a62", banner_light="#a6a198", banner_dark="#4a4640", banner_edge="#2e2a26",
     plaque_edge="#8a7040",
     defs="""
   <radialGradient id="artBg" cx="50%" cy="40%" r="75%">
-    <stop offset="0" stop-color="#c07ad8"/><stop offset="0.4" stop-color="#5a2a7a"/><stop offset="1" stop-color="#160820"/>
+    <stop offset="0" stop-color="#9a7ae0"/><stop offset="0.4" stop-color="#3e2a80"/><stop offset="1" stop-color="#0e0820"/>
   </radialGradient>
   <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
     <stop offset="0" stop-color="#d8984e"/><stop offset="1" stop-color="#6a3a18"/>

@@ -36,20 +36,20 @@
   </radialGradient>
   <g id="spade"><path d="M0 -14 C-14 -2 -16 6 -8 10 C-4 12 -2 10 -1 8 L-4 16 L4 16 L1 8 C2 10 4 12 8 10 C16 6 14 -2 0 -14 Z" fill="#1a1a1a"/></g>
   <linearGradient id="frameGrad" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#3a7a52"/><stop offset="1" stop-color="#1e4a32"/>
+    <stop offset="0" stop-color="#4a4542"/><stop offset="1" stop-color="#221f1e"/>
   </linearGradient>
   <linearGradient id="banner" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#a83444"/><stop offset="1" stop-color="#6a1a26"/>
+    <stop offset="0" stop-color="#a6a198"/><stop offset="1" stop-color="#6e6a62"/>
   </linearGradient>
 </defs>
   <!-- outer frame -->
-  <rect x="6" y="6" width="648" height="903" rx="30" fill="#0c2016"/>
+  <rect x="6" y="6" width="648" height="903" rx="30" fill="#0a0908"/>
   <rect x="16" y="16" width="628" height="883" rx="24" fill="url(#frameGrad)"/>
   <rect x="16" y="16" width="628" height="883" rx="24" fill="url(#frameTex)" opacity="0.35"/>
-  <rect x="34" y="34" width="592" height="847" rx="14" fill="none" stroke="#0c2016" stroke-width="4" opacity="0.6"/>
+  <rect x="34" y="34" width="592" height="847" rx="14" fill="none" stroke="#0a0908" stroke-width="4" opacity="0.6"/>
 
   <!-- art window: rectangle with a pointed bottom that meets the type plaque -->
-  <path id="win" d="M60 130 L600 130 L600 420 L380 480 L280 480 L60 420 Z" fill="#0c2016"/>
+  <path id="win" d="M60 130 L600 130 L600 420 L380 480 L280 480 L60 420 Z" fill="#0a0908"/>
   <clipPath id="artClip"><path d="M70 140 L590 140 L590 412 L378 470 L282 470 L70 412 Z"/></clipPath>
   <g clip-path="url(#artClip)">
     <rect x="60" y="130" width="540" height="350" fill="url(#artBg)"/>
@@ -75,21 +75,21 @@
     <rect x="60" y="130" width="540" height="350" fill="url(#artVig)"/>
   </g>
   <path d="M70 140 L590 140 L590 412 L378 470 L282 470 L70 412 Z" fill="none" stroke="#d4a840" stroke-width="7"/>
-  <path d="M70 140 L590 140 L590 412 L378 470 L282 470 L70 412 Z" fill="none" stroke="#0c2016" stroke-width="2" opacity="0.7"/>
+  <path d="M70 140 L590 140 L590 412 L378 470 L282 470 L70 412 Z" fill="none" stroke="#0a0908" stroke-width="2" opacity="0.7"/>
 
   <!-- description panel -->
-  <rect x="70" y="520" width="520" height="355" rx="10" fill="#232a24"/>
+  <rect x="70" y="520" width="520" height="355" rx="10" fill="#262321"/>
   <rect x="70" y="520" width="520" height="355" rx="10" fill="url(#frameTex)" opacity="0.18"/>
-  <rect x="70" y="520" width="520" height="355" rx="10" fill="none" stroke="#0c2016" stroke-width="3" opacity="0.7"/>
+  <rect x="70" y="520" width="520" height="355" rx="10" fill="none" stroke="#0a0908" stroke-width="3" opacity="0.7"/>
 
   <!-- type plaque -->
   <path d="M262 462 L398 462 L410 482 L398 502 L262 502 L250 482 Z" fill="url(#plaque)" stroke="#8a7040" stroke-width="3"/>
   <text x="330" y="490" text-anchor="middle" class="type">Attack</text>
 
   <!-- title banner -->
-  <path d="M40 92 L20 62 L92 62 L92 112 Z" fill="#4a1018"/>
-  <path d="M620 92 L640 62 L568 62 L568 112 Z" fill="#4a1018"/>
-  <path d="M70 44 Q330 26 590 44 L600 106 Q330 90 60 106 Z" fill="url(#banner)" stroke="#2a0a10" stroke-width="4"/>
+  <path d="M40 92 L20 62 L92 62 L92 112 Z" fill="#4a4640"/>
+  <path d="M620 92 L640 62 L568 62 L568 112 Z" fill="#4a4640"/>
+  <path d="M70 44 Q330 26 590 44 L600 106 Q330 90 60 106 Z" fill="url(#banner)" stroke="#2e2a26" stroke-width="4"/>
   <path d="M78 54 Q330 38 582 54" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.35"/>
   <text x="330" y="88" text-anchor="middle" class="title">Strike</text>
 
@@ -98,8 +98,8 @@
 
   <!-- energy orb -->
   
-    <circle cx="60" cy="62" r="46" fill="#a01c28" stroke="#3a0a10" stroke-width="5"/>
-    <circle cx="60" cy="62" r="46" fill="none" stroke="#f2e6c8" stroke-width="10" stroke-dasharray="14 14"/>
-    <circle cx="60" cy="62" r="32" fill="#c8303c" stroke="#d4a840" stroke-width="4"/>
+    <circle cx="60" cy="62" r="46" fill="#1a1716" stroke="#0a0808" stroke-width="5"/>
+    <circle cx="60" cy="62" r="40" fill="none" stroke="#d4a840" stroke-width="11" stroke-dasharray="15.7 15.7"/>
+    <circle cx="60" cy="62" r="30" fill="#1a1716" stroke="#d4a840" stroke-width="4"/>
     <text x="60" y="81" text-anchor="middle" class="cost">1</text>
 </svg>
