@@ -120,7 +120,9 @@
     "character_icon": "the Bard's face under his purple feathered cap, grinning mischievously, front view",
     "map_marker": "a small round token of the Bard's purple feathered cap, simple and bold",
     "char_select": "the Bard striking a heroic pose on a tavern table: velvet purple doublet, feathered cap, short wine-red cape, battered three-string lute raised, golden notes swirling",
-    "mod_image": "the Bard playing his lute at the foot of a dark spire, golden music notes rising up its walls"
+    "mod_image": "the Bard playing his lute at the foot of a dark spire, golden music notes rising up its walls",
+    "combat_sprite": "the Bard, clean-shaven, holding his battered medieval lute (pear-shaped body, three strings, bent-back pegbox) ready to play, cape flaring, golden notes around him",
+    "select_bg": "the Bard on a tavern stage in a warm spotlight, mid-song, lute raised, golden music notes swirling up into the dark rafters; velvet purple, wine red and candlelight gold"
   },
   "style_ref": "reference/style/bard_strike.jpg",
   "keep": [

@@ -87,7 +87,9 @@ def discover(mod):
     assets += [dict(id="character_icon", kind="charui_icon", title=cfg["name"]),
                dict(id="map_marker", kind="charui_icon", title=cfg["name"]),
                dict(id="char_select", kind="charui_portrait", title=cfg["name"]),
-               dict(id="mod_image", kind="mod_image", title=cfg["name"])]
+               dict(id="mod_image", kind="mod_image", title=cfg["name"]),
+               dict(id="combat_sprite", kind="combat_sprite", title=cfg["name"]),
+               dict(id="select_bg", kind="select_bg", title=cfg["name"])]
     for a in assets:
         a["mod"], a["short"] = mod, short
     return cfg, assets
@@ -122,6 +124,15 @@ def prompt_for(a, cfg):
         return f"{style}\n{who}\nTall portrait composition (2:3): {override or cfg['portrait']}."
     if kind == "mod_image":
         return f"{style}\n{who}\nSquare composition: {override or cfg['banner']}."
+    if kind == "combat_sprite":
+        return (f"{style}\n{who}\nFull-body game character sprite: {override}. The whole body is visible from head to feet, "
+                "facing to the RIGHT (three-quarter view toward the right side of the image), standing in a ready combat stance, centered "
+                "and filling most of the height. Isolated on a perfectly flat, solid pure magenta (#FF00FF) background: no floor, no ground "
+                "shadow, no scenery, no other objects, no frame.")
+    if kind == "select_bg":
+        return (f"{style}\n{who}\nWide 16:9 character-select backdrop: {override}. The character is large on the RIGHT half of the "
+                "image, cropped at the waist or chest, looking toward the left; the LEFT 40% is a calmer, darker part of the same scene "
+                "(space for a text panel). Atmospheric lighting, no text, no UI, no frame, no border.")
     raise ValueError(kind)
 
 
@@ -228,7 +239,7 @@ def remove_magenta_bbox(cell):
 
 
 def aspect_for(kind):
-    return {"card": "4:3", "charui_portrait": "2:3"}.get(kind, "1:1")
+    return {"card": "4:3", "charui_portrait": "2:3", "combat_sprite": "2:3", "select_bg": "16:9"}.get(kind, "1:1")
 
 
 # ----------------------------------------------------------------------------- API
@@ -378,6 +389,12 @@ def process(a, raw_path):
         save(ImageOps.grayscale(port).point(lambda v: v // 3).convert("RGB"), img / "charui" / f"char_select_{a['short']}_locked.png")
     elif kind == "mod_image":
         save(ImageOps.fit(im.convert("RGB"), (420, 420), Image.LANCZOS), ROOT / a["mod"] / a["mod"] / "mod_image.png")
+    elif kind == "combat_sprite":
+        body = cutout(im)
+        body = ImageOps.contain(body, (420, 460), Image.LANCZOS)   # about the size of the base-game characters
+        save(body, img / "charui" / f"combat_{a['short']}.png")
+    elif kind == "select_bg":
+        save(ImageOps.fit(im.convert("RGB"), (1920, 1080), Image.LANCZOS), img / "charui" / f"select_bg_{a['short']}.jpg", jpg=True)
 
 
 def write_review(all_assets):

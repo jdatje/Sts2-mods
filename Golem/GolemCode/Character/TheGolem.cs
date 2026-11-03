@@ -1,7 +1,8 @@
-﻿using BaseLib.Abstracts;
+using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using Golem.GolemCode.Extensions;
 using Godot;
+using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using Golem.GolemCode.Cards;
@@ -58,4 +59,11 @@ public class TheGolem : PlaceholderCharacterModel
     public override string CustomCharacterSelectIconPath => "char_select_golem.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_golem_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_golem.png".CharacterUiPath();
+
+    // In-combat body: a single painted image (transparent PNG). BaseLib builds the hitbox from the image size.
+    public override NCreatureVisuals? CreateCustomVisuals() =>
+        NodeFactory<NCreatureVisuals>.CreateFromResource("combat_golem.png".CharacterUiPath());
+
+    // Character select backdrop (full screen, like the base characters).
+    public override string CustomCharacterSelectBg => MainFile.ResPath + "/scenes/char_select_bg_golem.tscn";
 }

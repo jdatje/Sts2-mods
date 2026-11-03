@@ -24,6 +24,8 @@
   },
   "models": {
     "default": "gemini-2.5-flash-image",
-    "charui_portrait": "gemini-3.1-flash-image"
+    "charui_portrait": "gemini-3.1-flash-image",
+    "select_bg": "gemini-3.1-flash-image",
+    "combat_sprite": "gemini-3.1-flash-image"
   }
 }

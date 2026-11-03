@@ -2,6 +2,7 @@ using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using Bard.BardCode.Extensions;
 using Godot;
+using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using Bard.BardCode.Cards;
@@ -54,4 +55,11 @@ public class TheBard : PlaceholderCharacterModel
     public override string CustomCharacterSelectIconPath => "char_select_bard.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_bard_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_bard.png".CharacterUiPath();
+
+    // In-combat body: a single painted image (transparent PNG). BaseLib builds the hitbox from the image size.
+    public override NCreatureVisuals? CreateCustomVisuals() =>
+        NodeFactory<NCreatureVisuals>.CreateFromResource("combat_bard.png".CharacterUiPath());
+
+    // Character select backdrop (full screen, like the base characters).
+    public override string CustomCharacterSelectBg => MainFile.ResPath + "/scenes/char_select_bg_bard.tscn";
 }

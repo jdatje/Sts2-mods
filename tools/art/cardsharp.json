@@ -116,7 +116,9 @@
     "map_marker": "a small round token of the Card Sharp's black wide-brimmed hat with its gold band, simple and bold",
     "char_select": "the Card Sharp leaning on a green-felt card table in a smoky candlelit den: black waistcoat with gold embroidery, white shirt with rolled sleeves, black gloves with gold rings, wide-brimmed black hat with a gold band, fanning gold-edged cards, sly half-smile",
     "mod_image": "the Card Sharp at the foot of a dark spire, flicking a single glowing gold-edged card into the air, her black hat tipped low",
-    "all_in": "The Card Sharp shoving every chip she owns into the centre of the table, the whole pile exploding outward as a storm of chips and cards that slams into small dark enemy silhouettes. Background: flat crimson fading to black field with darker angular streaks."
+    "all_in": "The Card Sharp shoving every chip she owns into the centre of the table, the whole pile exploding outward as a storm of chips and cards that slams into small dark enemy silhouettes. Background: flat crimson fading to black field with darker angular streaks.",
+    "combat_sprite": "the Card Sharp, holding a fan of gold-edged cards in one black-gloved hand and a single card ready to throw in the other, hat brim low, sly half-smile",
+    "select_bg": "the Card Sharp leaning toward the viewer over a green-felt card table in a smoky candlelit gambling den, fanning gold-edged cards, eyes glinting under her black hat; dominant black, charcoal and gold with warm candlelight"
   },
   "style_ref": "reference/style/cardsharp_strike.jpg",
   "keep": [

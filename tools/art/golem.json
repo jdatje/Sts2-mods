@@ -122,7 +122,9 @@
     "character_icon": "the Golem's round boulder head with its single glowing amber eye and a little moss on top, front view",
     "map_marker": "a small round token of the Golem's boulder head with its glowing amber eye, simple and bold",
     "char_select": "the Golem standing tall in a misty cave: brown wet clay body, mossy green-grey boulder fists with glowing orange cracks, rusted iron bands, one glowing amber eye, looking down at the viewer, menacing but loyal",
-    "mod_image": "the Golem raising one mossy boulder fist on a pile of rubble at the base of a dark spire, amber eye glowing"
+    "mod_image": "the Golem raising one mossy boulder fist on a pile of rubble at the base of a dark spire, amber eye glowing",
+    "combat_sprite": "the Golem, a hulking clay-and-boulder construct, hunched forward with both huge mossy boulder fists raised, one glowing amber eye",
+    "select_bg": "the Golem looming in a misty underground cave, its mossy boulder head and one glowing amber eye catching warm orange light from glowing cracks in its body, rubble and dripping mud around it; palette of wet clay browns, slate and moss green with amber glow"
   },
   "style_ref": "reference/style/golem_strike.jpg",
   "keep": [
