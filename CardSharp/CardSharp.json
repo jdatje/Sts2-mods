@@ -3,7 +3,7 @@
   "name": "The Card Sharp",
   "author": "Jeroen & Gregor",
   "description": "A new character: a gambler whose cards have suits and ranks. Lay cards on the Table and score poker hands in a Showdown. Co-op friendly.",
-  "version": "v0.2.0",
+  "version": "v0.3.0",
   "min_game_version": "0.107.0",
   "has_pck": true,
   "has_dll": true,
