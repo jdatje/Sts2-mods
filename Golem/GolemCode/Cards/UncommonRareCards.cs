@@ -78,7 +78,7 @@ public sealed class Collapse : GolemCard
 
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay cardPlay)
     {
-        var removed = await PartCmd.RemoveAll(Owner.Creature);
+        var removed = await PartCmd.RemoveAll(ctx, Owner.Creature);
         if (removed > 0)
             await CreatureCmd.GainBlock(Owner.Creature, removed * DynamicVars["PerPart"].BaseValue, ValueProp.Move, cardPlay);
     }

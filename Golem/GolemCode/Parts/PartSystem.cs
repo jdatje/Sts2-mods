@@ -23,6 +23,18 @@ public enum PartSlot
 public abstract class PartPower : GolemPower
 {
     public abstract PartSlot Slot { get; }
+
+    /// <summary>Called right after this Part is installed (e.g. to add a linked vanilla power).</summary>
+    public virtual Task OnInstalled(PlayerChoiceContext ctx) => Task.CompletedTask;
+
+    /// <summary>Called right before this Part is removed (replaced, Collapse, Overhaul...).</summary>
+    public virtual Task OnUninstalled(PlayerChoiceContext ctx) => Task.CompletedTask;
+}
+
+/// <summary>Powers that react whenever their owner installs a Part.</summary>
+public interface IPartListener
+{
+    Task AfterPartInstalled(PlayerChoiceContext ctx, PartPower part);
 }
 
 public static class PartCmd
@@ -35,21 +47,36 @@ public static class PartCmd
 
         var existing = creature.Powers.OfType<PartPower>().Where(p => p.Slot == slot).ToList();
         foreach (var old in existing)
-            await PowerCmd.Remove(old);
+            await Uninstall(ctx, old);
 
         await PowerCmd.Apply<T>(ctx, creature, amount, creature, card);
+        var installed = creature.Powers.OfType<T>().FirstOrDefault();
+        if (installed == null) return;
+
+        await installed.OnInstalled(ctx);
+        foreach (var listener in creature.Powers.OfType<IPartListener>().ToList())
+            await listener.AfterPartInstalled(ctx, installed);
     }
 
     /// <summary>Number of Parts currently installed (0 to 4).</summary>
     public static int Count(Creature? creature) =>
         creature?.Powers.OfType<PartPower>().Count() ?? 0;
 
+    public static bool Has(Creature? creature, PartSlot slot) =>
+        creature?.Powers.OfType<PartPower>().Any(p => p.Slot == slot) ?? false;
+
     /// <summary>Removes all Parts and returns how many were removed.</summary>
-    public static async Task<int> RemoveAll(Creature creature)
+    public static async Task<int> RemoveAll(PlayerChoiceContext ctx, Creature creature)
     {
         var parts = creature.Powers.OfType<PartPower>().ToList();
         foreach (var p in parts)
-            await PowerCmd.Remove(p);
+            await Uninstall(ctx, p);
         return parts.Count;
+    }
+
+    private static async Task Uninstall(PlayerChoiceContext ctx, PartPower part)
+    {
+        await part.OnUninstalled(ctx);
+        await PowerCmd.Remove(part);
     }
 }

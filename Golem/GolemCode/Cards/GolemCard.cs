@@ -1,9 +1,14 @@
-﻿using BaseLib.Abstracts;
+using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using Golem.GolemCode.Character;
 using Golem.GolemCode.Extensions;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Golem.GolemCode.Cards;
 
@@ -17,6 +22,32 @@ namespace Golem.GolemCode.Cards;
 public abstract class GolemCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     ConstructedCardModel(cost, type, rarity, target)
 {
+    // ---- Small helpers so card classes stay short ----
+    protected Task Hit(PlayerChoiceContext ctx, CardPlay play, int hits = 1) =>
+        CommonActions.CardAttack(this, play, hits).Execute(ctx);
+    protected Task<decimal> Guard(CardPlay play) => CommonActions.CardBlock(this, play);
+    protected Task DrawCards(PlayerChoiceContext ctx) => CommonActions.Draw(this, ctx);
+    protected async Task Debuff<T>(PlayerChoiceContext ctx, CardPlay play) where T : PowerModel
+    {
+        if (play.Target != null) await CommonActions.Apply<T>(ctx, play.Target, this);
+    }
+    protected async Task DebuffAll<T>(PlayerChoiceContext ctx) where T : PowerModel
+    {
+        if (Enemies.Count > 0) await CommonActions.Apply<T>(ctx, Enemies, this);
+    }
+    protected Task Buff<T>(PlayerChoiceContext ctx) where T : PowerModel => CommonActions.ApplySelf<T>(ctx, this);
+    protected Task Buff<T>(PlayerChoiceContext ctx, decimal amount) where T : PowerModel =>
+        CommonActions.ApplySelf<T>(ctx, this, amount);
+    protected Task Energy(decimal amount) => PlayerCmd.GainEnergy(amount, Owner);
+    protected Task LoseHp(PlayerChoiceContext ctx, decimal amount) =>
+        CreatureCmd.Damage(ctx, Owner.Creature, amount, DamageProps.cardHpLoss, this);
+    protected Task<decimal> GainBlock(decimal amount, CardPlay play) =>
+        CreatureCmd.GainBlock(Owner.Creature, amount, ValueProp.Move, play);
+    protected IReadOnlyList<Creature> Enemies => CombatState?.HittableEnemies ?? (IReadOnlyList<Creature>)[];
+    protected IReadOnlyList<Creature> Allies =>
+        CombatState?.PlayerCreatures.Where(c => c.IsAlive).ToList() ?? (IReadOnlyList<Creature>)[];
+    protected int V(string name) => DynamicVars[name].IntValue;
+
     //Image size:
     //Normal art: 1000x760 (Using 500x380 should also work, it will simply be scaled.)
     //Full art: 606x852
