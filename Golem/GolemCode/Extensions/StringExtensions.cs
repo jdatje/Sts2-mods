@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 
 namespace Golem.GolemCode.Extensions;
 
@@ -14,6 +14,8 @@ public static class StringExtensions
     {
         path = Path.Join(MainFile.ResPath, "images", "card_portraits", path);
         if (ResourceLoader.Exists(path)) return path;
+        var alt = Path.ChangeExtension(path, Path.GetExtension(path) == ".jpg" ? ".png" : ".jpg");
+        if (ResourceLoader.Exists(alt)) return alt;
         
         MainFile.Logger.Info("Could not find card image path: " + path);
         return Path.Join(MainFile.ResPath, "images", "card_portraits", "card.png");
@@ -23,6 +25,8 @@ public static class StringExtensions
     {
         path = Path.Join(MainFile.ResPath, "images", "card_portraits", "big", path);
         if (ResourceLoader.Exists(path)) return path;
+        var alt = Path.ChangeExtension(path, Path.GetExtension(path) == ".jpg" ? ".png" : ".jpg");
+        if (ResourceLoader.Exists(alt)) return alt;
         
         MainFile.Logger.Info("Could not find big card image path: " + path);
         return Path.Join(MainFile.ResPath, "images", "card_portraits", "big", "card.png");

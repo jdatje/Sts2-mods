@@ -1,0 +1,105 @@
+name: Generate art
+
+# Run from the Actions tab (also works from the GitHub mobile app): Actions -> Generate art -> Run workflow.
+# Needs the repository secret GEMINI_API_KEY (Settings -> Secrets and variables -> Actions).
+# Generated images are committed to main, which triggers the normal build with the new art.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mod:
+        description: "Which mod"
+        type: choice
+        options: [all, Golem, CardSharp, Bard]
+        default: all
+      only:
+        description: "Only these asset ids (comma-separated, e.g. slam,dirge). Empty = everything missing"
+        default: ""
+      kinds:
+        description: "Only these kinds (card,power,relic,charui_icon,charui_portrait,mod_image). Empty = all"
+        default: ""
+      force:
+        description: "Regenerate even if an image was already generated"
+        type: boolean
+        default: false
+      limit:
+        description: "At most this many images (0 = no limit). Use e.g. 6 for a cheap test run"
+        default: "0"
+      model:
+        description: "Gemini image model"
+        default: "gemini-2.5-flash-image"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: art
+  cancel-in-progress: false
+
+jobs:
+  art:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pillow
+
+      - name: Check the API key
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "::error::Add the repository secret GEMINI_API_KEY first (Settings -> Secrets and variables -> Actions)."
+            exit 1
+          fi
+          python tools/art/generate_art.py --list-models
+
+      - name: Restore earlier raw images
+        uses: actions/cache/restore@v4
+        with:
+          path: art/raw
+          key: art-raw-${{ github.run_id }}
+          restore-keys: art-raw-
+
+      - name: Generate
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          ARGS="--mod ${{ inputs.mod }} --model ${{ inputs.model }} --limit ${{ inputs.limit }}"
+          [ -n "${{ inputs.only }}" ] && ARGS="$ARGS --only ${{ inputs.only }}"
+          [ -n "${{ inputs.kinds }}" ] && ARGS="$ARGS --kinds ${{ inputs.kinds }}"
+          [ "${{ inputs.force }}" = "true" ] && ARGS="$ARGS --force"
+          python tools/art/generate_art.py $ARGS
+
+      - name: Save raw images for next runs
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: art/raw
+          key: art-raw-${{ github.run_id }}
+
+      - name: Upload review page and raw images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: art-review-${{ github.run_number }}
+          path: |
+            art/review.html
+            art/raw
+          retention-days: 30
+
+      - name: Commit the art
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add -A Golem/Golem/images CardSharp/CardSharp/images Bard/Bard/images \
+                     Golem/Golem/mod_image.png CardSharp/CardSharp/mod_image.png Bard/Bard/mod_image.png
+          if git diff --cached --quiet; then echo "No new art."; exit 0; fi
+          git commit -m "Art: ${{ inputs.mod }} (${{ inputs.kinds || 'all kinds' }}) via ${{ inputs.model }}"
+          git pull --rebase origin main
+          git push origin HEAD:main

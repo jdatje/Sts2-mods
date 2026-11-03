@@ -1,0 +1,18 @@
+{
+  "name": "The Card Sharp",
+  "palette": "Rich palette of deep card-table green, black and burgundy, with polished gold accents and warm candlelight.",
+  "character": "THE CARD SHARP: a sly, elegant woman gambler in a dark green waistcoat, white shirt with rolled sleeves and a wide-brimmed black hat with a gold band; golden rings, a confident half-smile, playing cards fanned between her fingers. The playing cards she uses are plain-backed with gold edges and show only simple suit symbols, never readable text.",
+  "icon_subject": "the Card Sharp's face under her wide-brimmed hat with a gold band, front view",
+  "portrait": "full portrait of the Card Sharp leaning on a green-felt card table, fanning a hand of cards, in a smoky candlelit gambling den",
+  "banner": "The Card Sharp standing at the foot of a dark spire, flicking a single glowing card into the air",
+  "powers_show_character": false,
+  "overrides": {
+    "joker": "a mischievous jester card spirit bursting out of a plain gold-edged playing card in a swirl of colour",
+    "table_power": "a round green-felt card table seen from above with five face-down cards",
+    "card_shark_power": "a sleek grey shark fin cutting through a stack of playing cards",
+    "marked_deck": "a worn deck of playing cards with tiny gold pinpricks on the back, tied with a red ribbon",
+    "royal_flush": "the Card Sharp throwing five glowing golden cards that explode into a wave of light across a horde of monsters",
+    "showboat": "the Card Sharp spinning on her heel, a ring of razor-sharp playing cards whirling around her",
+    "fifty_two_pickup": "an entire deck of playing cards bursting into the air like shrapnel around a startled monster"
+  }
+}

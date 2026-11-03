@@ -44,7 +44,10 @@ Set `GODOT=/path/to/Godot_v4.5.1-stable_mono` to include the `.pck`. GitHub Acti
 every push; tags `v*` become a Release.
 
 Placeholder images: `python tools/placeholder_art.py` (never overwrites existing images unless `--force`).
-Real art: `Golem/art/generate_art.py` uses the Gemini API (key in `GEMINI_API_KEY`).
+Real art: `tools/art/generate_art.py` makes every card portrait, power icon, relic icon and character image for all
+three mods with the Gemini API. Easiest: run the **Generate art** workflow in the Actions tab (needs the repository
+secret `GEMINI_API_KEY`); it commits the images, which triggers a new build. Prompts and style per character live in
+`tools/art/*.json`. Card portraits are JPG, icons transparent PNG.
 
 ## Layout
 

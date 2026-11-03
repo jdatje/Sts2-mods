@@ -1,0 +1,16 @@
+{
+  "name": "The Bard",
+  "palette": "Warm palette of velvet purple, deep wine red and candlelight gold, with glowing golden musical notes.",
+  "character": "THE BARD: a charismatic, theatrical young man in a velvet purple doublet and a feathered cap, short cape, carrying a battered three-string lute; glowing golden musical notes swirl in the air around him.",
+  "icon_subject": "the Bard's face under his feathered cap, grinning, front view",
+  "portrait": "full portrait of the Bard striking a heroic pose on a tavern table, lute raised, notes swirling",
+  "banner": "The Bard playing his lute at the foot of a dark spire, golden music notes rising up its walls",
+  "powers_show_character": false,
+  "overrides": {
+    "worn_lute": "a battered three-string lute with a crack in its body, warm gold glow",
+    "battle_hymn_power": "a war banner with a golden musical note emblem",
+    "lullaby_power": "a crescent moon wrapped in drifting musical notes",
+    "requiem_power": "a black candle with musical notes rising as smoke",
+    "dirge_power": "a cracked skull crowned with dark musical notes"
+  }
+}

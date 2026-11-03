@@ -92,10 +92,18 @@ def class_to_id(cls):
 
 
 def save(im, path, force):
-    if path.exists() and not force:
+    """Card portraits are JPG (a PNG placeholder of the same name counts as existing art)."""
+    jpg = path.suffix == ".jpg"
+    exists = path.exists() or (jpg and path.with_suffix(".png").exists())
+    if exists and not force:
         return 0
     path.parent.mkdir(parents=True, exist_ok=True)
-    im.save(path)
+    if jpg:
+        im.convert("RGB").save(path, "JPEG", quality=85, optimize=True)
+        if path.with_suffix(".png").exists():
+            path.with_suffix(".png").unlink()
+    else:
+        im.save(path)
     return 1
 
 
@@ -118,8 +126,8 @@ def build(mod, force):
         if cid in suits:
             d.text((500, 330), SUIT_SYMBOL[suits[cid]], font=font(300), fill=accent, anchor="mm")
         centred_text(d, (40, 470, 960, 720), title, font(96), (245, 235, 215))
-        n += save(im, img / "card_portraits" / "big" / f"{cid}.png", force)
-        n += save(im.resize((250, 190), Image.LANCZOS), img / "card_portraits" / f"{cid}.png", force)
+        n += save(im, img / "card_portraits" / "big" / f"{cid}.jpg", force)
+        n += save(im.resize((250, 190), Image.LANCZOS), img / "card_portraits" / f"{cid}.jpg", force)
 
     def icon(text, size, colour):
         im = Image.new("RGBA", (size, size), (0, 0, 0, 0))

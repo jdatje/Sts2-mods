@@ -35,8 +35,8 @@ Start → Play Modded → enable BaseLib + the three mods → restart. For each 
   "once per combat" flags may reset after loading.)
 
 ## 5. Art (optional, 15 min)
-`setx GEMINI_API_KEY "..."`, new terminal, then in `Golem/`: `python art/generate_art.py --list-models`,
-then `python art/generate_art.py`. Review `art/review.html`, rebuild with `dotnet publish`.
+Art is generated on GitHub now: Actions → **Generate art** → Run workflow (needs the `GEMINI_API_KEY`
+repository secret). Download the new build from the Build mods run that follows.
 
 ## 6. Steam Deck + co-op (30 min)
 - Desktop Mode → subscribe to BaseLib → copy the three mod folders to

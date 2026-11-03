@@ -31,9 +31,8 @@ See the root [README](../README.md): one `local.props` for the whole repo, then 
 
 ## Art
 
-`Golem/art/generate_art.py` (run from the `Golem` folder: `python art/generate_art.py`) makes every card portrait, power icon, relic icon and the character
-images with the Gemini API, from the prompts in `art/assets.json`. See the top of that file.
-Your API key is read from the `GEMINI_API_KEY` environment variable; never put it in the repo.
+See the root README: `tools/art/generate_art.py` / the **Generate art** workflow. The Golem's style and
+hand-written prompts are in `tools/art/golem.json`.
 
 ## Multiplayer
 
