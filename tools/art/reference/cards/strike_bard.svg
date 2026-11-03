@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 915" width="660" height="915">
+<defs>
+  <style>
+    .title { font: 700 44px 'Kreon','Georgia',serif; fill:#fff; stroke:#2a2420; stroke-width:7px; paint-order:stroke; letter-spacing:1px; }
+    .type  { font: 700 22px 'Kreon','Georgia',serif; fill:#3a3430; }
+    .desc  { font: 400 36px 'Kreon','Georgia',serif; fill:#f4efe6; stroke:#1a1410; stroke-width:5px; paint-order:stroke; }
+    .gold  { font: 700 32px 'Kreon','Georgia',serif; fill:#f2c94c; stroke:#1a1410; stroke-width:5px; paint-order:stroke; }
+    .cost  { font: 700 54px 'Kreon','Georgia',serif; fill:#fff; stroke:#1a1410; stroke-width:7px; paint-order:stroke; }
+  </style>
+
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
+  <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+  <pattern id="frameTex" width="120" height="120" patternUnits="userSpaceOnUse">
+    <rect width="120" height="120" fill="none"/>
+    <path d="M0 30 Q30 20 60 34 T120 28 M0 80 Q40 70 70 86 T120 78" stroke="#000" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <circle cx="20" cy="55" r="2" fill="#000" opacity="0.4"/><circle cx="95" cy="105" r="2.5" fill="#000" opacity="0.4"/>
+  </pattern>
+  <radialGradient id="artVig" cx="50%" cy="45%" r="70%">
+    <stop offset="0.65" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.55"/>
+  </radialGradient>
+  <linearGradient id="plaque" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#e2ddd4"/><stop offset="1" stop-color="#a9a29a"/>
+  </linearGradient>
+
+  <radialGradient id="artBg" cx="50%" cy="40%" r="75%">
+    <stop offset="0" stop-color="#c07ad8"/><stop offset="0.4" stop-color="#5a2a7a"/><stop offset="1" stop-color="#160820"/>
+  </radialGradient>
+  <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#d8984e"/><stop offset="1" stop-color="#6a3a18"/>
+  </linearGradient>
+  <radialGradient id="noteglow" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#fff0b0"/><stop offset="1" stop-color="#ffb030" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="orbPurple" cx="35%" cy="30%" r="75%">
+    <stop offset="0" stop-color="#c890e8"/><stop offset="1" stop-color="#3a1458"/>
+  </radialGradient>
+  <g id="note"><ellipse cx="0" cy="0" rx="11" ry="8" transform="rotate(-25)" fill="#ffd060"/><rect x="8" y="-38" width="4" height="38" fill="#ffd060"/><path d="M12 -38 q16 6 14 22 q-4 -12 -14 -12z" fill="#ffd060"/></g>
+  <linearGradient id="frameGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#7a46a0"/><stop offset="1" stop-color="#4a2266"/>
+  </linearGradient>
+  <linearGradient id="banner" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#a83850"/><stop offset="1" stop-color="#6a1e30"/>
+  </linearGradient>
+</defs>
+  <!-- outer frame -->
+  <rect x="6" y="6" width="648" height="903" rx="30" fill="#1e0c2a"/>
+  <rect x="16" y="16" width="628" height="883" rx="24" fill="url(#frameGrad)"/>
+  <rect x="16" y="16" width="628" height="883" rx="24" fill="url(#frameTex)" opacity="0.35"/>
+  <rect x="34" y="34" width="592" height="847" rx="14" fill="none" stroke="#1e0c2a" stroke-width="4" opacity="0.6"/>
+
+  <!-- art window: rectangle with a pointed bottom that meets the type plaque -->
+  <path id="win" d="M60 130 L600 130 L600 420 L380 480 L280 480 L60 420 Z" fill="#1e0c2a"/>
+  <clipPath id="artClip"><path d="M70 140 L590 140 L590 412 L378 470 L282 470 L70 412 Z"/></clipPath>
+  <g clip-path="url(#artClip)">
+    <rect x="60" y="130" width="540" height="350" fill="url(#artBg)"/>
+    
+    <!-- golden sound-wave slash -->
+    <path d="M80 430 Q210 190 580 180 Q270 240 140 440 Z" fill="#ffd060" opacity="0.75"/>
+    <path d="M100 430 Q230 220 560 190 Q280 260 158 440 Z" fill="#fff0b0" opacity="0.6"/>
+    <path d="M150 440 Q260 280 520 240" stroke="#fff0b0" stroke-width="3" fill="none" opacity="0.8" stroke-dasharray="2 14" stroke-linecap="round"/>
+    <!-- lute swung like a club -->
+    <g transform="translate(330 270) rotate(-35)">
+      <rect x="-14" y="-200" width="28" height="160" rx="4" fill="#7a4a20"/>
+      <rect x="-22" y="-240" width="44" height="48" rx="8" fill="#5a3010"/>
+      <circle cx="-26" cy="-228" r="5" fill="#e8d8b0"/><circle cx="26" cy="-228" r="5" fill="#e8d8b0"/><circle cx="-26" cy="-206" r="5" fill="#e8d8b0"/><circle cx="26" cy="-206" r="5" fill="#e8d8b0"/>
+      <ellipse cx="0" cy="30" rx="88" ry="110" fill="url(#wood)" stroke="#3a1e0c" stroke-width="4"/>
+      <circle cx="0" cy="0" r="26" fill="#2a1408"/>
+      <circle cx="0" cy="0" r="32" fill="none" stroke="#d4a840" stroke-width="3"/>
+      <rect x="-28" y="88" width="56" height="10" rx="3" fill="#3a1e0c"/>
+      <g stroke="#f2e6c8" stroke-width="2"><path d="M-8 -230 L-8 92"/><path d="M0 -230 L0 92"/><path d="M8 -230 L8 92"/></g>
+      <!-- crack: it's a battered lute -->
+      <path d="M40 60 L58 80 L50 100" stroke="#3a1e0c" stroke-width="3" fill="none"/>
+    </g>
+    <!-- notes bursting from the impact -->
+    <circle cx="480" cy="190" r="60" fill="url(#noteglow)" filter="url(#glow)"/>
+    <g transform="translate(470 210) scale(1.6)"><use href="#note"/></g>
+    <g transform="translate(540 270) scale(1.1)"><use href="#note"/></g>
+    <g transform="translate(520 150) scale(0.9)"><use href="#note"/></g>
+    <g transform="translate(130 210) scale(1.1)"><use href="#note"/></g>
+    
+    <rect x="60" y="130" width="540" height="350" fill="url(#artVig)"/>
+  </g>
+  <path d="M70 140 L590 140 L590 412 L378 470 L282 470 L70 412 Z" fill="none" stroke="#d4a840" stroke-width="7"/>
+  <path d="M70 140 L590 140 L590 412 L378 470 L282 470 L70 412 Z" fill="none" stroke="#1e0c2a" stroke-width="2" opacity="0.7"/>
+
+  <!-- description panel -->
+  <rect x="70" y="520" width="520" height="355" rx="10" fill="#2c2034"/>
+  <rect x="70" y="520" width="520" height="355" rx="10" fill="url(#frameTex)" opacity="0.18"/>
+  <rect x="70" y="520" width="520" height="355" rx="10" fill="none" stroke="#1e0c2a" stroke-width="3" opacity="0.7"/>
+
+  <!-- type plaque -->
+  <path d="M262 462 L398 462 L410 482 L398 502 L262 502 L250 482 Z" fill="url(#plaque)" stroke="#8a7040" stroke-width="3"/>
+  <text x="330" y="490" text-anchor="middle" class="type">Attack</text>
+
+  <!-- title banner -->
+  <path d="M40 92 L20 62 L92 62 L92 112 Z" fill="#480f1e"/>
+  <path d="M620 92 L640 62 L568 62 L568 112 Z" fill="#480f1e"/>
+  <path d="M70 44 Q330 26 590 44 L600 106 Q330 90 60 106 Z" fill="url(#banner)" stroke="#2a0812" stroke-width="4"/>
+  <path d="M78 54 Q330 38 582 54" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.35"/>
+  <text x="330" y="88" text-anchor="middle" class="title">Strike</text>
+
+  <!-- description -->
+  <text x="330" y="712" text-anchor="middle" class="desc">Deal 6 damage.</text>
+
+  <!-- energy orb -->
+  
+    <circle cx="60" cy="62" r="52" fill="url(#noteglow)" opacity="0.7" filter="url(#glow)"/>
+    <circle cx="60" cy="62" r="42" fill="url(#orbPurple)" stroke="#d4a840" stroke-width="5"/>
+    <g transform="translate(86 34) scale(0.6)" opacity="0.6"><use href="#note"/></g>
+    <text x="60" y="81" text-anchor="middle" class="cost">1</text>
+</svg>
