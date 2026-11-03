@@ -13,6 +13,10 @@ for mod in sys.argv[1:] or ["Golem", "CardSharp", "Bard"]:
         found[(m.group(1), "Power")] += 1
     for m in re.finditer(r"class \w+ : (?:PartCard|PowerCard)<\w+>\s*\{[^}]*?base\(\s*\d+\s*,\s*CardRarity\.(\w+)", src):
         found[(m.group(1), "Power")] += 1
+    for m in re.finditer(r"class \w+\(\)\s*:\s*SharpPowerCard<\w+>\(\s*Suit\.\w+\s*,\s*\d+\s*,\s*CardRarity\.(\w+)", src):
+        found[(m.group(1), "Power")] += 1
+    for m in re.finditer(r"class \w+ : SharpPowerCard<\w+>\s*\{[^}]*?base\(\s*Suit\.\w+\s*,\s*\d+\s*,\s*CardRarity\.(\w+)", src):
+        found[(m.group(1), "Power")] += 1
     for m in re.finditer(r"class \w+ : SongCard<\w+>\s*\{[^}]*?base\(\s*\d+\s*,\s*CardRarity\.(\w+)", src):
         found[(m.group(1), "Power")] += 1
     total = collections.Counter()

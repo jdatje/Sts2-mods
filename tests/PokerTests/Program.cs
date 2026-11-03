@@ -1,5 +1,6 @@
 using CardSharp.CardSharpCode.Table;
 TableCard C(int r, Suit s) => new(r, s);
+TableCard W() => new(0, Suit.Spades, true);
 var S=Suit.Spades; var H=Suit.Hearts; var D=Suit.Diamonds; var K=Suit.Clubs;
 var cases = new (string name, TableCard[] cards, HandType want)[] {
  ("high", [C(2,S),C(5,H),C(9,D),C(11,K),C(13,S)], HandType.HighCard),
@@ -18,8 +19,17 @@ var cases = new (string name, TableCard[] cards, HandType want)[] {
  ("4 cards two pair", [C(7,S),C(7,H),C(9,D),C(9,K)], HandType.TwoPair),
  ("4 same suit no flush", [C(2,H),C(5,H),C(9,H),C(11,H)], HandType.HighCard),
  ("1 card", [C(14,S)], HandType.HighCard),
+ ("wild makes pair", [C(7,S),C(2,H),C(9,D),C(11,K),W()], HandType.Pair),
+ ("wild makes straight", [C(5,S),C(6,H),C(8,D),C(9,K),W()], HandType.Straight),
+ ("wild makes flush", [C(2,H),C(5,H),C(9,H),C(11,H),W()], HandType.Flush),
+ ("wild + trips = quads", [C(7,S),C(7,H),C(7,D),C(2,K),W()], HandType.FourOfAKind),
+ ("wild straight flush", [C(5,K),C(6,K),C(7,K),C(9,K),W()], HandType.StraightFlush),
+ ("two wilds + pair = quads", [C(7,S),C(7,H),C(2,D),W(),W()], HandType.FourOfAKind),
+ ("only wilds", [W(),W(),W(),W(),W()], HandType.StraightFlush),
+ ("4 cards with wild", [C(7,S),C(7,H),C(7,D),W()], HandType.FourOfAKind),
 };
 int fail=0;
 foreach (var (n,c,w) in cases){ var got=Poker.Evaluate(c); if(got!=w){fail++; Console.WriteLine($"FAIL {n}: got {got}, want {w}");} }
+Console.WriteLine($"TotalRank={Poker.TotalRank([C(7,S),C(14,H),W()])} (want 21), TiersHigher(Pair,2)={Poker.TiersHigher(HandType.Pair,2)}");
 Console.WriteLine($"Poker tests: {cases.Length-fail}/{cases.Length} passed; OneTierHigher(Pair)={Poker.OneTierHigher(HandType.Pair)}, StraightFlush stays {Poker.OneTierHigher(HandType.StraightFlush)}");
 return fail == 0 ? 0 : 1;

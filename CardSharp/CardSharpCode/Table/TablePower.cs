@@ -3,6 +3,7 @@ using CardSharp.CardSharpCode.Cards;
 using CardSharp.CardSharpCode.Powers;
 using CardSharp.CardSharpCode.Relics;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization;
@@ -24,7 +25,7 @@ public sealed class TablePower : CardSharpPower
 
     public readonly List<TableCard> Cards = [];
 
-    /// <summary>Stack the Deck: the next N cards count as this suit.</summary>
+    /// <summary>Stack the Deck / Flush Out: the next N cards count as this suit.</summary>
     public int SuitOverrideCount;
     public Suit SuitOverride;
 
@@ -33,17 +34,40 @@ public sealed class TablePower : CardSharpPower
     public void Changed() => InvokeDisplayAmountChanged();
 }
 
+/// <summary>Powers that react after each Showdown of their owner.</summary>
+public interface IShowdownListener
+{
+    Task AfterShowdown(PlayerChoiceContext ctx, HandType hand);
+}
+
+/// <summary>Powers that change Showdown damage (percent bonus, e.g. 50 = +50%) or the hand tier.</summary>
+public interface IShowdownModifier
+{
+    int DamageBonusPercent { get; }
+    int TierBonus { get; }
+}
+
 public static class TableCmd
 {
-    public static async Task<TablePower> Get(PlayerChoiceContext ctx, MegaCrit.Sts2.Core.Entities.Creatures.Creature owner)
+    public static TablePower? Find(Creature owner) => owner.Powers.OfType<TablePower>().FirstOrDefault();
+
+    public static IReadOnlyList<TableCard> Cards(Creature owner) =>
+        Find(owner)?.Cards ?? (IReadOnlyList<TableCard>)[];
+
+    public static int Count(Creature owner) => Cards(owner).Count;
+
+    public static bool HasAtLeast(Creature owner, HandType hand) =>
+        Count(owner) > 0 && Poker.Evaluate(Cards(owner)) >= hand;
+
+    public static async Task<TablePower> Get(PlayerChoiceContext ctx, Creature owner)
     {
-        var table = owner.Powers.OfType<TablePower>().FirstOrDefault();
+        var table = Find(owner);
         if (table != null) return table;
         await PowerCmd.Apply<TablePower>(ctx, owner, 1, owner, null, silent: true);
         return owner.Powers.OfType<TablePower>().First();
     }
 
-    public static int ShowdownSize(MegaCrit.Sts2.Core.Entities.Creatures.Creature owner) =>
+    public static int ShowdownSize(Creature owner) =>
         owner.Powers.OfType<CardSharkPower>().Any() ? 4 : 5;
 
     /// <summary>Lay a card on the Table; triggers a Showdown when the Table is full.</summary>
@@ -52,24 +76,38 @@ public static class TableCmd
         var owner = card.Owner.Creature;
         var table = await Get(ctx, owner);
 
-        var suit = card.Suit;
-        if (table.SuitOverrideCount > 0)
+        if (card.IsWild)
         {
-            suit = table.SuitOverride;
-            table.SuitOverrideCount--;
+            table.Cards.Add(new TableCard(0, Suit.Spades, true));
         }
-
-        table.Cards.Add(new TableCard(card.EnsureRank(), suit));
+        else
+        {
+            var suit = card.Suit;
+            if (table.SuitOverrideCount > 0)
+            {
+                suit = table.SuitOverride;
+                table.SuitOverrideCount--;
+            }
+            table.Cards.Add(new TableCard(card.EnsureRank(), suit));
+        }
         table.Changed();
 
         if (table.Cards.Count >= ShowdownSize(owner))
             await Showdown(ctx, card);
     }
 
-    /// <summary>Remove all cards from the Table without scoring. Returns how many were removed.</summary>
-    public static int Clear(MegaCrit.Sts2.Core.Entities.Creatures.Creature owner)
+    /// <summary>Put cards back on the Table without triggering anything (used by Final Hand).</summary>
+    public static async Task Restore(PlayerChoiceContext ctx, Creature owner, IEnumerable<TableCard> cards)
     {
-        var table = owner.Powers.OfType<TablePower>().FirstOrDefault();
+        var table = await Get(ctx, owner);
+        table.Cards.AddRange(cards);
+        table.Changed();
+    }
+
+    /// <summary>Remove all cards from the Table without scoring. Returns how many were removed.</summary>
+    public static int Clear(Creature owner)
+    {
+        var table = Find(owner);
         if (table == null) return 0;
         var n = table.Cards.Count;
         table.Cards.Clear();
@@ -77,26 +115,29 @@ public static class TableCmd
         return n;
     }
 
-    /// <summary>Score the Table, apply the effect, clear the Table.</summary>
-    public static async Task Showdown(PlayerChoiceContext ctx, CardSharpCard source)
+    /// <summary>Score the Table, apply the effect, clear the Table. Returns the hand (or null if the Table was empty).</summary>
+    public static async Task<HandType?> Showdown(PlayerChoiceContext ctx, CardSharpCard source, int extraTiers = 0)
     {
         var player = source.Owner;
         var owner = player.Creature;
-        var table = owner.Powers.OfType<TablePower>().FirstOrDefault();
-        if (table == null || table.Cards.Count == 0) return;
+        var table = Find(owner);
+        if (table == null || table.Cards.Count == 0) return null;
 
         var cards = table.Cards.ToList();
         table.Cards.Clear();
         table.Changed();
 
+        var modifiers = owner.Powers.OfType<IShowdownModifier>().ToList();
         var hand = Poker.Evaluate(cards);
+        var tiers = extraTiers + modifiers.Sum(m => m.TierBonus);
         var marked = player.Relics.OfType<MarkedDeck>().FirstOrDefault();
-        if (marked != null && marked.TryUse()) hand = Poker.OneTierHigher(hand);
+        if (marked != null && marked.TryUse()) tiers++;
+        hand = Poker.TiersHigher(hand, tiers);
 
         TalkCmd.Play(new LocString("powers", "CARDSHARP-SHOWDOWN." + hand), owner, VfxColor.Gold, VfxDuration.Short);
 
         var combat = source.CombatState;
-        if (combat == null) return;
+        if (combat == null) return hand;
         var enemies = combat.HittableEnemies;
 
         var (damage, block, draw, energy) = hand switch
@@ -121,10 +162,13 @@ public static class TableCmd
                 case Suit.Hearts: block += 10; break;
                 case Suit.Diamonds: draw += 2; break;
                 case Suit.Clubs:
-                    await PowerCmd.Apply<WeakPower>(ctx, enemies, 2, owner, null);
+                    if (enemies.Count > 0) await PowerCmd.Apply<WeakPower>(ctx, enemies, 2, owner, null);
                     break;
             }
         }
+
+        var bonus = modifiers.Sum(m => m.DamageBonusPercent);
+        damage = damage * (100 + bonus) / 100;
 
         if (damage > 0 && enemies.Count > 0)
             await CreatureCmd.Damage(ctx, enemies, damage, ValueProp.Unpowered, owner);
@@ -134,5 +178,10 @@ public static class TableCmd
             await CardPileCmd.Draw(ctx, draw, player);
         if (energy > 0)
             await PlayerCmd.GainEnergy(energy, player);
+
+        foreach (var listener in owner.Powers.OfType<IShowdownListener>().ToList())
+            await listener.AfterShowdown(ctx, hand);
+
+        return hand;
     }
 }
