@@ -1,0 +1,83 @@
+{
+  "Golem": [
+    {
+      "id": "slam",
+      "title": "Slam",
+      "kind": "card"
+    },
+    {
+      "id": "clay_arms",
+      "title": "Clay Arms",
+      "kind": "card"
+    },
+    {
+      "id": "rubble",
+      "title": "Rubble",
+      "kind": "card"
+    },
+    {
+      "id": "grind",
+      "title": "Grind",
+      "kind": "card"
+    },
+    {
+      "id": "shoulder_charge",
+      "title": "Shoulder Charge",
+      "kind": "card"
+    }
+  ],
+  "CardSharp": [
+    {
+      "id": "defend_sharp",
+      "title": "Defend",
+      "kind": "card"
+    },
+    {
+      "id": "ante",
+      "title": "Ante",
+      "kind": "card"
+    },
+    {
+      "id": "cut_the_deck",
+      "title": "Cut the Deck",
+      "kind": "card"
+    },
+    {
+      "id": "joker",
+      "title": "Joker",
+      "kind": "card"
+    },
+    {
+      "id": "hole_card",
+      "title": "Hole Card",
+      "kind": "card"
+    }
+  ],
+  "Bard": [
+    {
+      "id": "defend_bard",
+      "title": "Defend",
+      "kind": "card"
+    },
+    {
+      "id": "battle_hymn",
+      "title": "Battle Hymn",
+      "kind": "card"
+    },
+    {
+      "id": "hum",
+      "title": "Hum",
+      "kind": "card"
+    },
+    {
+      "id": "ditty",
+      "title": "Ditty",
+      "kind": "card"
+    },
+    {
+      "id": "rally_cry",
+      "title": "Rally Cry",
+      "kind": "card"
+    }
+  ]
+}

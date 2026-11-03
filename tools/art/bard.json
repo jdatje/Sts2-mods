@@ -8,7 +8,7 @@
   "powers_show_character": false,
   "overrides": {
     "strike_bard": "Close-up of a hand in a purple velvet sleeve entering from the lower left edge, gripping the neck of a battered wooden three-string lute and swinging it like a club diagonally up to the right; a small burst of golden music notes and wood splinters at the point of impact. Background: crimson fading to deep violet with darker angular streaks.",
-    "defend_bard": "Close-up of the Bard's purple-sleeved arm holding his battered lute up like a shield, light-beam attacks deflecting off the wooden body in sparks and golden notes. Background: flat slate blue field with darker angular streaks.",
+    "defend_bard": "Full-body shot of the Bard ducking behind his raised lute, a ring of glowing golden notes forming a shield in front of him, light-beam attacks bouncing off. Background: flat slate blue field with darker angular streaks.",
     "battle_hymn": "The Bard on a battlefield, head thrown back mid-song, lute raised high, a ring of glowing golden notes forming protective shields around small hooded allies. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject.",
     "hum": "Close-up of the Bard's face with closed eyes and lips pressed together humming, a single soft golden note floating up, a faint shimmer of protection. Background: flat cold teal field with darker angular streaks.",
     "ditty": "A cheeky little golden music note flying like a dart toward the upper right, the Bard's fingers plucking a lute string at the lower left edge. Background: flat crimson fading to deep violet field with darker angular streaks.",
@@ -31,7 +31,7 @@
     "tune_up": "Close-up of the Bard's fingers twisting a tuning peg on the lute's headstock, a little spark of golden light on the string. Background: flat warm gold-ochre field with darker angular streaks.",
     "discord": "A twisted, sour purple-and-green note screeching toward a dark enemy, the enemy covering its ears. Background: flat dusty rose-purple field with darker angular streaks.",
     "jig": "The Bard dancing a lively jig on a tavern table, one leg kicked up, mugs and golden notes flying. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject.",
-    "war_drums": "A large war drum with crimson skin being pounded with two mallets, golden shockwaves pulsing outward. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject.",
+    "war_drums": "A large war drum with crimson skin and two crossed mallets, golden shockwave rings pulsing outward. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject.",
     "sea_shanty": "The Bard singing on the deck of a small ship in a storm, swinging a lantern, golden notes riding the waves and healing light glowing. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject.",
     "dirge": "The Bard in a dark hooded cloak playing a slow mournful tune, grey ghostly notes drifting down over small enemy silhouettes like ash. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject.",
     "improvise": "The Bard grinning as golden notes spill out of his lute in a wild, unplanned spiral. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject.",
@@ -43,7 +43,7 @@
     "ballad_shield": "A round shield made entirely of interlocking glowing golden music notes, held up by the Bard's purple-sleeved arm. Background: flat cold teal field with darker angular streaks.",
     "medley": "Many different golden notes from different songs swirling together into one bright knot of light above the lute. Background: flat deep violet field with darker angular streaks.",
     "crowd_pleaser": "The Bard bowing to a cheering crowd of small hooded allies, flowers and golden shields flying toward them. Background: flat deep teal fading to navy field with darker angular streaks.",
-    "lute_bash": "The Bard smashing his lute over a dark enemy's helmet, wood splinters and broken golden notes flying. Background: flat deep crimson field with darker angular streaks.",
+    "lute_bash": "Medium shot from the side of the Bard smashing his battered lute over a dark enemy's helmet, wood splinters and golden notes flying. Background: flat deep crimson field with darker angular streaks.",
     "soothing_melody": "Soft golden notes drifting down like falling petals onto small hooded allies, glowing healing light around them. Background: flat deep violet field with darker angular streaks.",
     "rest_note": "A big glowing golden musical rest symbol floating in front of the Bard like a shield, light-beam attacks bouncing off it. Background: flat steel blue field with darker angular streaks.",
     "high_note": "The Bard on tiptoe, singing to the sky, a towering beam of golden sound erupting upward and crashing down on a dark enemy. Background: flat wine red field with darker angular streaks.",
@@ -126,5 +126,5 @@
   "keep": [
     "strike_bard"
   ],
-  "_keep_note": "Hand-picked art already installed in the mod; never regenerated by the pipeline."
+  "_keep_note": "Fixed art that is not in reference/approved (the Strikes). Approved images in reference/approved/<Mod>/ are also skipped."
 }

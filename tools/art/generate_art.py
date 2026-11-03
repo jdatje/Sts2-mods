@@ -108,7 +108,7 @@ def prompt_for(a, cfg):
         camera = ""
         shots = SHARED.get("shots", {}).get(ctype)
         who_word = cfg["name"].replace("The ", "")
-        shows_character = re.search(rf"{who_word}|\\b(fist|hand|arm|she|he|her|his)\\b", scene, re.I)
+        shows_character = re.search(rf"{who_word}|\\b(she|he|her|his)\\b", scene, re.I)
         if shots and shows_character and not re.search(r"close-up|full-body|wide shot|medium shot|seen from|from above|from the side|low.angle|over-the-shoulder", scene, re.I):
             camera = "Camera: " + shots[sum(map(ord, a["id"])) % len(shots)] + ".\n"
         return (f"{style}\n{layout} {SHARED.get('background', '')}\n{who}\nScene: {scene}\n{camera}"
@@ -313,6 +313,7 @@ def main():
 
     to_generate = [(a, cfg) for a, cfg in todo
                    if not args.process_only and a["id"] not in cfg.get("keep", [])
+                   and not (ROOT / "tools" / "art" / "reference" / "approved" / a["mod"] / f"{a['id']}.jpg").exists()
                    and (args.force or not (RAW_ROOT / a["mod"] / f"{a['id']}.png").exists())]
     if args.limit: to_generate = to_generate[:args.limit]
     print(f"generating {len(to_generate)} images with {args.model} ({args.workers} at a time)")
