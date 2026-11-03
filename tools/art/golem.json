@@ -6,7 +6,7 @@
   "portrait": "full portrait of the Golem standing, menacing but loyal, in a misty cave",
   "banner": "The Golem standing heroically on a pile of rubble at the base of a dark spire, looking up",
   "overrides": {
-    "strike_golem": "A huge boulder fist bound by a rusted iron wrist band, made of wet river clay and mossy stone with glowing orange cracks, punching diagonally from lower left to upper right through a wide molten-orange motion arc; rock shards and mud spray off the point of impact. Background: warm smoky amber to dark brown gradient.",
+    "strike_golem": "Close-up of the Golem's clay arm entering from the lower left edge, ending in a huge boulder fist bound by a rusted iron wrist band, mossy stone with glowing orange cracks, punching diagonally up to the right. A small burst of rock chips and mud at the knuckles. Background: rust red with darker brown angular streaks.",
     "defend_golem": "The Golem crouching behind its raised boulder forearm like a shield, sparks bouncing off the stone.",
     "slam": "The Golem slamming both fists into the ground, shockwave of mud and rock shards.",
     "clay_arms": "Close-up of a freshly sculpted pair of wet clay arms with iron rivets, held up as if just attached, finger marks visible in the clay.",

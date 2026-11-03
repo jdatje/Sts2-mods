@@ -1,4 +1,4 @@
 {
   "model": "gemini-2.5-flash-image",
-  "style": "Stylized hand-painted digital card illustration for a dark-fantasy deckbuilder. Bold, chunky, slightly exaggerated shapes; clean dark ink outlines; confident painterly shading with visible brush texture; high contrast and saturated colour; dramatic rim light; simple soft-gradient background so the subject reads instantly at thumbnail size; strong diagonal composition with a big sweeping motion streak. No text, no letters, no numbers, no card frame, no border, no watermark, no UI."
+  "style": "Stylized hand-painted digital card illustration for a dark-fantasy deckbuilder. Cel-shaded look with flat colour areas, simple painterly texture and thick dark ink outlines; bold, chunky, slightly exaggerated shapes with limited detail; high contrast. One clear subject shown close-up, filling the frame and partly cropped by the edges, with a strong diagonal pose. Simple background: a flat colour field with a few darker angular streak shapes. Readable at thumbnail size. No text, no letters, no numbers, no card frame, no border, no watermark, no UI."
 }
