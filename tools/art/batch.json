@@ -9,12 +9,139 @@
       "id": "grind",
       "title": "Grind",
       "kind": "card"
+    },
+    {
+      "id": "pile_driver",
+      "title": "Pile Driver",
+      "kind": "card"
+    },
+    {
+      "id": "crumble",
+      "title": "Crumble",
+      "kind": "card"
+    },
+    {
+      "id": "mud_wall",
+      "title": "Mud Wall",
+      "kind": "card"
+    },
+    {
+      "id": "quarry",
+      "title": "Quarry",
+      "kind": "card"
+    },
+    {
+      "id": "heavy_swing",
+      "title": "Heavy Swing",
+      "kind": "card"
+    },
+    {
+      "id": "clay_throw",
+      "title": "Clay Throw",
+      "kind": "card"
+    },
+    {
+      "id": "stonewall",
+      "title": "Stonewall",
+      "kind": "card"
+    },
+    {
+      "id": "tumble",
+      "title": "Tumble",
+      "kind": "card"
+    }
+  ],
+  "CardSharp": [
+    {
+      "id": "lowball",
+      "title": "Lowball",
+      "kind": "card"
+    },
+    {
+      "id": "pocket_pair",
+      "title": "Pocket Pair",
+      "kind": "card"
+    },
+    {
+      "id": "chip_stack",
+      "title": "Chip Stack",
+      "kind": "card"
+    },
+    {
+      "id": "ante_up",
+      "title": "Ante Up",
+      "kind": "card"
+    },
+    {
+      "id": "snap",
+      "title": "Snap",
+      "kind": "card"
+    },
+    {
+      "id": "flick",
+      "title": "Flick",
+      "kind": "card"
+    },
+    {
+      "id": "bad_beat",
+      "title": "Bad Beat",
+      "kind": "card"
+    },
+    {
+      "id": "read_the_table",
+      "title": "Read the Table",
+      "kind": "card"
     }
   ],
   "Bard": [
     {
       "id": "rally_cry",
       "title": "Rally Cry",
+      "kind": "card"
+    },
+    {
+      "id": "quick_step",
+      "title": "Quick Step",
+      "kind": "card"
+    },
+    {
+      "id": "bass_line",
+      "title": "Bass Line",
+      "kind": "card"
+    },
+    {
+      "id": "sharp_note",
+      "title": "Sharp Note",
+      "kind": "card"
+    },
+    {
+      "id": "lilt",
+      "title": "Lilt",
+      "kind": "card"
+    },
+    {
+      "id": "taunting_tune",
+      "title": "Taunting Tune",
+      "kind": "card"
+    },
+    {
+      "id": "chorus_line",
+      "title": "Chorus Line",
+      "kind": "card"
+    },
+    {
+      "id": "second_verse",
+      "title": "Second Verse",
+      "kind": "card"
+    },
+    {
+      "id": "strum",
+      "title": "Strum",
+      "kind": "card"
+    },
+    {
+      "id": "busking",
+      "title": "Busking",
       "kind": "card"
     }
   ]
