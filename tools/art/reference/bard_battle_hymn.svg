@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 760" width="1000" height="760">
+<defs>
+  <!--FILTERS-->
+  <radialGradient id="bg" cx="50%" cy="30%" r="85%">
+    <stop offset="0" stop-color="#6a3a7a"/><stop offset="0.5" stop-color="#2e1640"/><stop offset="1" stop-color="#0e0614"/>
+  </radialGradient>
+  <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#4a2a30"/><stop offset="1" stop-color="#180c10"/>
+  </linearGradient>
+  <linearGradient id="velvet" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#9a5ac0"/><stop offset="0.5" stop-color="#6a2e8a"/><stop offset="1" stop-color="#2e1240"/>
+  </linearGradient>
+  <linearGradient id="cape" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#8a1e2e"/><stop offset="1" stop-color="#3a0a14"/>
+  </linearGradient>
+  <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f2c8a0"/><stop offset="1" stop-color="#b47a52"/>
+  </linearGradient>
+  <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#c88a48"/><stop offset="1" stop-color="#6a3a18"/>
+  </linearGradient>
+  <radialGradient id="spot" cx="50%" cy="0%" r="100%">
+    <stop offset="0" stop-color="#ffe6a8" stop-opacity="0.55"/><stop offset="1" stop-color="#ffe6a8" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="noteglow" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#fff0b0"/><stop offset="1" stop-color="#ffb030" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="vig" cx="50%" cy="50%" r="70%">
+    <stop offset="0.6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.75"/>
+  </radialGradient>
+  <g id="note"><ellipse cx="0" cy="0" rx="11" ry="8" transform="rotate(-25)" fill="#ffd060"/><rect x="8" y="-38" width="4" height="38" fill="#ffd060"/><path d="M12 -38 q16 6 14 22 q-4 -12 -14 -12z" fill="#ffd060"/></g>
+  <g id="note2"><ellipse cx="0" cy="0" rx="10" ry="7" transform="rotate(-25)" fill="#ffd060"/><ellipse cx="30" cy="-6" rx="10" ry="7" transform="rotate(-25 30 -6)" fill="#ffd060"/><rect x="7" y="-36" width="4" height="36" fill="#ffd060"/><rect x="37" y="-42" width="4" height="36" fill="#ffd060"/><path d="M7 -36 L41 -42 L41 -34 L7 -28 Z" fill="#ffd060"/></g>
+</defs>
+
+<g filter="url(#paint)">
+  <rect x="-60" y="-60" width="1120" height="880" fill="url(#bg)"/>
+  <!-- battle banners in the background -->
+  <path d="M120 60 L220 60 L220 330 L170 300 L120 330 Z" fill="#6a1424"/>
+  <path d="M780 60 L880 60 L880 330 L830 300 L780 330 Z" fill="#6a1424"/>
+  <g transform="translate(170 180) scale(1.6)"><use href="#note"/></g>
+  <g transform="translate(830 180) scale(1.6)"><use href="#note"/></g>
+  <rect x="110" y="50" width="120" height="12" fill="#c8903a"/><rect x="770" y="50" width="120" height="12" fill="#c8903a"/>
+  <!-- spotlight -->
+  <path d="M380 0 L620 0 L820 760 L180 760 Z" fill="url(#spot)"/>
+  <!-- floor / stage -->
+  <path d="M0 600 Q500 560 1000 600 L1000 760 L0 760 Z" fill="url(#floor)"/>
+  <path d="M0 600 Q500 560 1000 600" stroke="#c8903a" stroke-width="4" fill="none" opacity="0.6"/>
+  <!-- shadowy allies cheering at the sides -->
+  <g fill="#120814" opacity="0.85">
+    <path d="M40 760 L60 610 Q90 560 120 610 L140 760 Z"/><circle cx="90" cy="580" r="30"/><path d="M120 620 L170 520 L182 528 L140 630 Z"/>
+    <path d="M860 760 L880 620 Q910 570 940 620 L960 760 Z"/><circle cx="910" cy="590" r="28"/><path d="M880 630 L840 530 L828 538 L862 640 Z"/>
+  </g>
+
+  <!-- THE BARD -->
+  <!-- cape -->
+  <path d="M420 330 Q330 520 360 690 L640 690 Q670 520 580 330 Z" fill="url(#cape)"/>
+  <!-- legs -->
+  <path d="M455 560 L440 690 L485 690 L495 570 Z" fill="#2a1430"/>
+  <path d="M545 560 L560 690 L515 690 L505 570 Z" fill="#2a1430"/>
+  <path d="M432 690 L492 690 L496 705 L425 705 Z" fill="#3a2010"/><path d="M508 690 L568 690 L575 705 L504 705 Z" fill="#3a2010"/>
+  <!-- doublet -->
+  <path d="M430 340 Q500 310 570 340 L585 580 Q500 600 415 580 Z" fill="url(#velvet)"/>
+  <path d="M500 330 L500 590" stroke="#d4a840" stroke-width="4"/>
+  <g fill="#d4a840"><circle cx="500" cy="380" r="5"/><circle cx="500" cy="430" r="5"/><circle cx="500" cy="480" r="5"/><circle cx="500" cy="530" r="5"/></g>
+  <path d="M415 560 L585 560" stroke="#d4a840" stroke-width="8"/>
+  <!-- head -->
+  <path d="M485 290 L485 330 Q500 340 515 330 L515 290 Z" fill="url(#skin)"/>
+  <ellipse cx="500" cy="245" rx="50" ry="60" fill="url(#skin)"/>
+  <path d="M452 240 Q448 200 480 190 L470 260 Z" fill="#5a2e14"/><path d="M548 240 Q552 200 520 190 L530 260 Z" fill="#5a2e14"/>
+  <!-- singing face -->
+  <path d="M472 238 q10 -7 20 0" stroke="#2a1810" stroke-width="4" fill="none"/>
+  <path d="M510 238 q10 -7 20 0" stroke="#2a1810" stroke-width="4" fill="none"/>
+  <ellipse cx="501" cy="275" rx="12" ry="15" fill="#5a1a1a"/>
+  <path d="M488 265 Q501 260 514 265" stroke="#2a1010" stroke-width="2" fill="none"/>
+  <!-- feathered cap -->
+  <path d="M440 210 Q450 160 505 160 Q565 165 565 215 Q500 195 440 210 Z" fill="#6a2e8a"/>
+  <path d="M440 210 Q500 195 565 215" stroke="#d4a840" stroke-width="5" fill="none"/>
+  <path d="M545 175 Q640 90 690 70 Q640 120 600 170 Q620 130 560 185 Z" fill="#f2e6c8"/>
+  <path d="M560 180 Q630 110 685 74" stroke="#c8b890" stroke-width="2" fill="none"/>
+  <!-- lute held across the body, one arm strumming, one raised -->
+  <ellipse cx="450" cy="470" rx="80" ry="62" transform="rotate(-25 450 470)" fill="url(#wood)"/>
+  <ellipse cx="455" cy="468" rx="18" ry="14" fill="#2a1408"/>
+  <path d="M500 440 L640 330 L655 345 L515 455 Z" fill="#7a4a20"/>
+  <rect x="632" y="300" width="40" height="40" rx="6" transform="rotate(-38 652 320)" fill="#5a3010"/>
+  <g stroke="#f2e6c8" stroke-width="1.5"><path d="M440 478 L648 330"/><path d="M444 486 L652 338"/><path d="M448 494 L656 346"/></g>
+  <path d="M415 400 Q380 470 420 500 L445 480 Q420 455 445 410 Z" fill="url(#velvet)"/>
+  <circle cx="432" cy="492" r="16" fill="url(#skin)"/>
+  <path d="M570 350 Q640 300 650 230 L620 222 Q610 285 555 320 Z" fill="url(#velvet)"/>
+  <circle cx="638" cy="220" r="17" fill="url(#skin)"/>
+
+  <!-- golden notes swirling up, each glowing -->
+  <path d="M300 520 Q240 400 330 300 Q420 200 380 110" stroke="#ffd060" stroke-width="3" fill="none" opacity="0.45"/>
+  <path d="M700 520 Q770 400 680 300 Q600 210 650 110" stroke="#ffd060" stroke-width="3" fill="none" opacity="0.45"/>
+  <g>
+    <circle cx="300" cy="420" r="38" fill="url(#noteglow)" filter="url(#glow)"/><g transform="translate(295 430)"><use href="#note"/></g>
+    <circle cx="350" cy="250" r="40" fill="url(#noteglow)" filter="url(#glow)"/><g transform="translate(335 260)"><use href="#note2"/></g>
+    <circle cx="390" cy="120" r="34" fill="url(#noteglow)" filter="url(#glow)"/><g transform="translate(385 130)"><use href="#note"/></g>
+    <circle cx="720" cy="430" r="38" fill="url(#noteglow)" filter="url(#glow)"/><g transform="translate(715 440)"><use href="#note2"/></g>
+    <circle cx="690" cy="270" r="38" fill="url(#noteglow)" filter="url(#glow)"/><g transform="translate(685 280)"><use href="#note"/></g>
+    <circle cx="640" cy="120" r="34" fill="url(#noteglow)" filter="url(#glow)"/><g transform="translate(635 130)"><use href="#note"/></g>
+  </g>
+  <!-- protective golden shimmer (Refrain: ALL players gain Block) -->
+  <ellipse cx="500" cy="450" rx="250" ry="290" fill="none" stroke="#ffd877" stroke-width="5" opacity="0.35"/>
+  <ellipse cx="500" cy="450" rx="270" ry="310" fill="none" stroke="#ffd877" stroke-width="2" opacity="0.25"/>
+</g>
+<rect width="1000" height="760" fill="url(#vig)"/>
+</svg>

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 760" width="1000" height="760">
+<defs>
+  <!--FILTERS-->
+  <radialGradient id="bg" cx="30%" cy="30%" r="85%">
+    <stop offset="0" stop-color="#5a3a1c"/><stop offset="0.45" stop-color="#2a1a10"/><stop offset="1" stop-color="#0c0806"/>
+  </radialGradient>
+  <linearGradient id="felt" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#1f5a3a"/><stop offset="1" stop-color="#0c2a1a"/>
+  </linearGradient>
+  <radialGradient id="candle" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#fff3c0"/><stop offset="0.3" stop-color="#ffc060"/><stop offset="1" stop-color="#ff8a20" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="coat" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#2f6a48"/><stop offset="1" stop-color="#0f2e1e"/>
+  </linearGradient>
+  <linearGradient id="hat" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#2a2420"/><stop offset="1" stop-color="#0a0807"/>
+  </linearGradient>
+  <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f0c8a0"/><stop offset="1" stop-color="#b07850"/>
+  </linearGradient>
+  <linearGradient id="cardface" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#fffaf0"/><stop offset="1" stop-color="#e8dcc0"/>
+  </linearGradient>
+  <radialGradient id="cardglow" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#ffe9a0"/><stop offset="1" stop-color="#ffb020" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="vig" cx="50%" cy="50%" r="70%">
+    <stop offset="0.6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.75"/>
+  </radialGradient>
+  <g id="spade"><path d="M0 -14 C-14 -2 -16 6 -8 10 C-4 12 -2 10 -1 8 L-4 16 L4 16 L1 8 C2 10 4 12 8 10 C16 6 14 -2 0 -14 Z" fill="#1a1a1a"/></g>
+  <g id="cardback">
+    <rect x="-34" y="-48" width="68" height="96" rx="6" fill="#5a1520" stroke="#d4a840" stroke-width="3"/>
+    <rect x="-26" y="-40" width="52" height="80" rx="3" fill="none" stroke="#d4a840" stroke-width="1.5"/>
+    <path d="M0 -24 L14 0 L0 24 L-14 0 Z" fill="none" stroke="#d4a840" stroke-width="2"/>
+  </g>
+</defs>
+
+<g filter="url(#paint)">
+  <rect x="-60" y="-60" width="1120" height="880" fill="url(#bg)"/>
+  <!-- smoky den: arches and hanging lamp glow -->
+  <path d="M60 0 Q120 260 60 520 L0 520 L0 0 Z" fill="#160e09"/>
+  <path d="M940 0 Q880 260 940 520 L1000 520 L1000 0 Z" fill="#160e09"/>
+  <circle cx="250" cy="170" r="160" fill="url(#candle)" opacity="0.5" filter="url(#glow)"/>
+  <ellipse cx="700" cy="140" rx="260" ry="90" fill="#6a5a50" opacity="0.18" filter="url(#glow)"/>
+  <!-- table -->
+  <path d="M0 520 Q500 470 1000 520 L1000 760 L0 760 Z" fill="url(#felt)"/>
+  <path d="M0 520 Q500 470 1000 520" stroke="#7a4a20" stroke-width="18" fill="none"/>
+  <path d="M0 520 Q500 470 1000 520" stroke="#c8903a" stroke-width="3" fill="none" opacity="0.7"/>
+  <!-- candle on table -->
+  <rect x="150" y="440" width="26" height="80" rx="4" fill="#efe2c4"/>
+  <path d="M163 402 q14 22 0 40 q-14 -18 0 -40 z" fill="#ffd36a"/>
+  <circle cx="163" cy="430" r="70" fill="url(#candle)" filter="url(#glow)"/>
+  <!-- chips -->
+  <g>
+    <ellipse cx="260" cy="610" rx="34" ry="12" fill="#a01c28"/><ellipse cx="260" cy="602" rx="34" ry="12" fill="#c8303c"/>
+    <ellipse cx="260" cy="594" rx="34" ry="12" fill="#d4a840"/><ellipse cx="320" cy="640" rx="34" ry="12" fill="#1a1a1a"/>
+    <ellipse cx="320" cy="632" rx="34" ry="12" fill="#e8e0d0"/>
+  </g>
+  <!-- cards on the table -->
+  <g transform="translate(760 620) rotate(-12)"><use href="#cardback"/></g>
+  <g transform="translate(830 610) rotate(8)"><use href="#cardback"/></g>
+
+  <!-- THE CARD SHARP -->
+  <!-- body / waistcoat -->
+  <path d="M400 760 L420 500 Q500 450 600 500 L630 760 Z" fill="#f2ead8"/>
+  <path d="M420 500 Q470 470 505 520 L520 760 L410 760 Z" fill="url(#coat)"/>
+  <path d="M600 500 Q550 470 515 520 L520 760 L640 760 Z" fill="url(#coat)"/>
+  <g fill="#d4a840"><circle cx="505" cy="580" r="5"/><circle cx="508" cy="630" r="5"/><circle cx="510" cy="680" r="5"/></g>
+  <!-- neck + face -->
+  <path d="M485 430 L485 485 Q510 500 535 485 L535 430 Z" fill="url(#skin)"/>
+  <ellipse cx="510" cy="380" rx="62" ry="78" fill="url(#skin)"/>
+  <!-- hair -->
+  <path d="M448 360 Q440 450 470 500 Q450 470 455 420 Z" fill="#3a1e12"/>
+  <path d="M572 360 Q590 460 560 505 Q575 460 568 420 Z" fill="#3a1e12"/>
+  <!-- face: shadow under brim, smile, eye glint -->
+  <path d="M448 345 Q510 380 572 345 L572 370 Q510 395 448 370 Z" fill="#000" opacity="0.35"/>
+  <path d="M478 372 q12 -6 22 0" stroke="#2a1810" stroke-width="4" fill="none"/>
+  <path d="M522 372 q12 -6 22 0" stroke="#2a1810" stroke-width="4" fill="none"/>
+  <circle cx="533" cy="375" r="2.5" fill="#fff6d0"/>
+  <path d="M485 425 Q512 445 538 422" stroke="#7a2a2a" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M498 420 l8 -4" stroke="#7a2a2a" stroke-width="3"/>
+  <!-- wide-brimmed hat with gold band -->
+  <ellipse cx="510" cy="335" rx="165" ry="38" fill="url(#hat)"/>
+  <path d="M430 330 Q440 245 510 240 Q585 245 592 330 Z" fill="url(#hat)"/>
+  <path d="M432 318 Q510 300 590 318 L592 332 Q510 314 430 332 Z" fill="#d4a840"/>
+  <path d="M350 330 Q510 360 670 330" stroke="#5a4a40" stroke-width="3" fill="none" opacity="0.6"/>
+  <!-- left arm resting on table, fan of cards -->
+  <path d="M420 520 Q340 560 330 610 L370 625 Q385 580 440 555 Z" fill="url(#coat)"/>
+  <circle cx="352" cy="620" r="20" fill="url(#skin)"/>
+  <g transform="translate(345 585)">
+    <g transform="rotate(-35)"><use href="#cardback"/></g>
+    <g transform="rotate(-15)"><use href="#cardback"/></g>
+    <g transform="rotate(5)"><use href="#cardback"/></g>
+  </g>
+  <!-- right arm raised, flicking the glowing hole card -->
+  <path d="M600 510 Q690 470 720 380 L690 365 Q660 440 590 470 Z" fill="url(#coat)"/>
+  <circle cx="712" cy="368" r="20" fill="url(#skin)"/>
+  <g fill="#d4a840"><circle cx="702" cy="360" r="4"/><circle cx="718" cy="372" r="4"/></g>
+  <!-- the hole card, flying, glowing -->
+  <circle cx="810" cy="250" r="110" fill="url(#cardglow)" filter="url(#glow)"/>
+  <g transform="translate(810 250) rotate(25)">
+    <rect x="-40" y="-56" width="80" height="112" rx="7" fill="url(#cardface)" stroke="#d4a840" stroke-width="3"/>
+    <g transform="scale(2.2)"><use href="#spade"/></g>
+  </g>
+  <!-- motion trail -->
+  <path d="M725 355 Q760 300 790 285" stroke="#ffe39a" stroke-width="6" fill="none" opacity="0.6" stroke-linecap="round"/>
+  <path d="M730 340 Q770 280 800 270" stroke="#ffe39a" stroke-width="3" fill="none" opacity="0.5" stroke-linecap="round"/>
+  <!-- rings glint -->
+  <circle cx="352" cy="610" r="3" fill="#ffe39a"/>
+</g>
+<rect width="1000" height="760" fill="url(#vig)"/>
+</svg>
