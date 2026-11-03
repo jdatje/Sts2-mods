@@ -13,13 +13,17 @@ on:
         options: [all, Golem, CardSharp, Bard]
         default: all
       only:
-        description: "Only these asset ids (comma-separated, e.g. slam,dirge). Type sample for the 10-card test set. Empty = everything missing"
+        description: "Type batch for the current review batch (docs/art-next-batch.md). Or asset ids, comma-separated (e.g. slam,dirge). Empty = everything missing"
         default: ""
       kinds:
         description: "Only these kinds (card,power,relic,charui_icon,charui_portrait,mod_image). Empty = all"
         default: ""
       force:
         description: "Regenerate even if an image was already generated"
+        type: boolean
+        default: false
+      commit:
+        description: "Put the images straight into the mods (untick = review first, images only in the run's download)"
         type: boolean
         default: false
       limit:
@@ -73,8 +77,7 @@ jobs:
           ARGS="--mod ${{ inputs.mod }} --model ${{ inputs.model }} --limit ${{ inputs.limit }}"
           ONLY="${{ inputs.only }}"
           # 10-card test set: attacks, Block skills and powers from all three characters
-          [ "$ONLY" = "sample" ] && ONLY="haymaker,earthen_embrace,lantern_eye,defend_golem,fifty_two_pickup,poker_face,defend_sharp,lute_bash,defend_bard,war_drums"
-          [ -n "$ONLY" ] && ARGS="$ARGS --only $ONLY"
+          if [ "$ONLY" = "batch" ]; then ARGS="$ARGS --batch"; elif [ -n "$ONLY" ]; then ARGS="$ARGS --only $ONLY"; fi
           [ -n "${{ inputs.kinds }}" ] && ARGS="$ARGS --kinds ${{ inputs.kinds }}"
           [ "${{ inputs.force }}" = "true" ] && ARGS="$ARGS --force"
           python tools/art/generate_art.py $ARGS
@@ -97,6 +100,7 @@ jobs:
           retention-days: 30
 
       - name: Commit the art
+        if: inputs.commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898699+github-actions[bot]@users.noreply.github.com"

@@ -278,6 +278,7 @@ def main():
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--limit", type=int, default=0, help="generate at most N images this run (0 = no limit)")
     ap.add_argument("--no-refs", action="store_true", help="do not send the style reference images")
+    ap.add_argument("--batch", action="store_true", help="generate the batch in tools/art/batch.json (made by batch.py next); implies --force")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--process-only", action="store_true")
     ap.add_argument("--list-models", action="store_true")
@@ -294,11 +295,17 @@ def main():
         return
 
     mods = list(MODS) if args.mod == "all" else [args.mod]
+    wanted = None
+    if args.batch:
+        batch = json.loads((ROOT / "tools" / "art" / "batch.json").read_text(encoding="utf-8"))
+        wanted = {(m, x["id"]) for m, items in batch.items() for x in items}
+        args.force = True
     all_assets, todo = [], []
     for mod in mods:
         cfg, assets = discover(mod)
         all_assets += assets
         for a in assets:
+            if wanted is not None and (mod, a["id"]) not in wanted: continue
             if args.only and a["id"] not in args.only.split(","): continue
             if args.kinds and a["kind"] not in args.kinds.split(","): continue
             todo.append((a, cfg))
