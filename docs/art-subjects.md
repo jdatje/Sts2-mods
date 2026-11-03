@@ -26,14 +26,14 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Reinforce | Common Skill | (done) |
 | Iron Grip | Common Attack | (done) |
 | Rockslide | Common Attack | (done) |
-| Boulder Toss | Common Attack | The Golem's clay arm at the lower left edge hurling a huge mossy boulder diagonally up to the right, motion arcs trailing the boulder. Background: flat rust red field with darker angular streaks. |
-| Mudslinger | Common Attack | A big splat of thick mud hitting a dark enemy mask full in the face, mud flying everywhere. Background: flat deep ochre field with darker angular streaks. |
-| Pebble Barrage | Common Attack | Three fist-sized stones flying in a spread toward the upper right, each with its own motion arcs, the Golem's flicking clay fingers at the lower left edge. Background: flat burnt orange field with darker angular streaks. |
-| Stone Skin | Common Skill | Close-up of the Golem's clay forearm as plates of grey stone grow over it like armour scales, small glowing seams between the plates. Background: flat cold teal field with darker angular streaks. |
-| Packed Earth | Common Skill | The Golem's two clay palms pressing a slab of dark packed earth into a thick wall, handprints left in it, dirt crumbs falling. Background: flat steel blue field with darker angular streaks. |
-| Assemble | Common Skill | Loose boulders, an iron band and clay chunks floating together into a stone arm, glowing amber lines connecting the pieces. Background: flat dusk purple-grey field with darker angular streaks. |
-| Full Body Slam | Common Attack | The whole Golem leaping and crashing body-first into the ground, seen from a low angle, mud and rock exploding outward in a huge burst. Background: flat dark maroon field with darker angular streaks. |
-| Mossy Crown | Uncommon Power | A crown of moss, small ferns and tiny glowing mushrooms growing on top of a round boulder head, faint protective green glow. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
+| Boulder Toss | Common Attack | (done) |
+| Mudslinger | Common Attack | (done) |
+| Pebble Barrage | Common Attack | (done) |
+| Stone Skin | Common Skill | (done) |
+| Packed Earth | Common Skill | (done) |
+| Assemble | Common Skill | (done) |
+| Full Body Slam | Common Attack | (done) |
+| Mossy Crown | Uncommon Power | (done) |
 | Spring Legs | Uncommon Power | Two thick clay legs with coiled rusted iron springs built into the knees, compressed and ready to jump. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
 | Iron Hooks | Uncommon Power | A boulder fist fitted with large curved rusted iron hooks on the knuckles, gleaming at the tips. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
 | Stomping Legs | Uncommon Power | A huge boulder foot stomping down, the ground cracking in a starburst with orange light pouring from the cracks. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
@@ -174,14 +174,14 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Cheap Shot | Common Attack | (done) |
 | Hedge | Common Skill | (done) |
 | Intimidate | Common Skill | (done) |
-| Quick Draw | Common Attack | A card snapping out from the Card Sharp's gloved fingertips at blinding speed, sharp motion arcs, a gleam on its edge. Background: flat burnt red-orange field with darker angular streaks. |
-| Double Tap | Common Attack | Two cards thrown one right after the other in a straight line, two impact sparks on a dark enemy target. Background: flat dark wine red field with darker angular streaks. |
-| Bluff | Common Skill | The Card Sharp holding up a single face-down card with total confidence, a faint ghostly golden shield shimmering in front of her. Background: flat slate blue field with darker angular streaks. |
-| Poker Face | Common Skill | Close-up of the Card Sharp's calm, perfectly expressionless face, eyes shaded under her black hat, light-beam attacks breaking against an invisible barrier in front of her. Background: flat steel blue field with darker angular streaks. |
-| Shuffle Up | Common Skill | A deck of gold-edged cards riffle-shuffling in a perfect arch between two gloved hands, cards flying up. Background: flat dark card-table green field with darker angular streaks. |
-| Deal In | Common Skill | A single card sliding across green felt toward the viewer, dealt by a gloved hand at the upper left. Background: flat dark card-table green field with darker angular streaks. |
-| Card Trick | Common Skill | A card vanishing from a gloved hand in a puff of golden smoke and reappearing stuck in a dark enemy's helmet. Background: flat dusk purple-grey field with darker angular streaks. |
-| Sleight of Hand | Common Skill | A gloved hand turning a plain card into a card with a single big golden suit symbol in a glittering flash, the change mid-way. Background: flat muted gold-ochre field with darker angular streaks. |
+| Quick Draw | Common Attack | (done) |
+| Double Tap | Common Attack | (done) |
+| Bluff | Common Skill | (done) |
+| Poker Face | Common Skill | (done) |
+| Shuffle Up | Common Skill | (done) |
+| Deal In | Common Skill | (done) |
+| Card Trick | Common Skill | (done) |
+| Sleight of Hand | Common Skill | (done) |
 | Lucky Streak | Uncommon Power | A row of five cards lined up on green felt, each with a glowing gold suit symbol, golden sparkles rising from them. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
 | Croupier | Uncommon Power | A long croupier's rake sliding a pile of gold chips across a felt table, chips stacking into a little wall. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
 | High Stakes | Uncommon Power | A huge tower of gold chips balanced on a single card's edge, glowing with dangerous energy. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
@@ -318,15 +318,15 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Power Chord | Common Attack | (done) |
 | Drumbeat | Common Attack | (done) |
 | Falsetto | Common Attack | (done) |
-| Harmony | Common Skill | Several small hooded allies standing together under a glowing golden staff of music, each surrounded by a soft shield of light. Background: flat deep teal fading to navy field with darker angular streaks. |
-| Cadence | Common Skill | The Bard finishing a phrase with a flourish of his lute, golden notes settling into a curved protective wall. Background: flat slate blue field with darker angular streaks. |
-| Tune Up | Common Skill | Close-up of the Bard's fingers twisting a tuning peg on the lute's headstock, a little spark of golden light on the string. Background: flat warm gold-ochre field with darker angular streaks. |
-| Discord | Common Skill | A twisted, sour purple-and-green note screeching toward a dark enemy, the enemy covering its ears. Background: flat dusty rose-purple field with darker angular streaks. |
-| Jig | Common Power | The Bard dancing a lively jig on a tavern table, one leg kicked up, mugs and golden notes flying. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
-| War Drums | Uncommon Power | A large war drum with crimson skin and two crossed mallets, golden shockwave rings pulsing outward. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
-| Sea Shanty | Uncommon Power | The Bard singing on the deck of a small ship in a storm, swinging a lantern, golden notes riding the waves and healing light glowing. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
-| Dirge | Uncommon Power | The Bard in a dark hooded cloak playing a slow mournful tune, grey ghostly notes drifting down over small enemy silhouettes like ash. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
-| Improvise | Uncommon Power | The Bard grinning as golden notes spill out of his lute in a wild, unplanned spiral. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
+| Harmony | Common Skill | (done) |
+| Cadence | Common Skill | (done) |
+| Tune Up | Common Skill | (done) |
+| Discord | Common Skill | (done) |
+| Jig | Common Power | (done) |
+| War Drums | Uncommon Power | (done) |
+| Sea Shanty | Uncommon Power | (done) |
+| Dirge | Uncommon Power | (done) |
+| Improvise | Uncommon Power | (done) |
 | Stage Presence | Uncommon Power | The Bard alone on a wooden stage in a bright spotlight, arms spread wide, golden notes raining down. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
 | Tempo | Uncommon Power | A swinging golden pendulum of light ticking above the lute, small shields forming at each swing. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
 | Perfect Pitch | Uncommon Power | A single tuning fork vibrating, emitting a perfect ring of golden light. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
