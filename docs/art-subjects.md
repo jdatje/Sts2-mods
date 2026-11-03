@@ -87,57 +87,57 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Rock Bottom | Rare Skill | (done) |
 | Indestructible | Rare Skill | (done) |
 | Crushing Weight | Rare Attack | (done) |
-| Bedrock | Rare Skill | Full-body shot of the Golem kneeling with both boulder hands pressed flat on the ground, glowing orange power rising up through layered bedrock into its arms. Background: flat earthy ochre field with darker angular streaks. |
-| Monolith | Rare Skill | The Golem standing still as a towering carved stone monolith, glowing runes of its parts lit up along its body, attacks breaking against it. Background: flat slate blue field with darker angular streaks. |
-| Final Form | Rare Skill | The fully assembled Golem rising up, clay arms, rooted legs, a mud core and a glowing lantern eye all blazing at once, debris swirling around it. Background: flat dusk purple-grey field with darker angular streaks. |
-| Golem Smash | Rare Attack | Two boulder fists smashing down together in a double hammer blow, two impact bursts, rubble flying. Background: flat burnt orange field with darker angular streaks. |
-| Stone Rain | Rare Attack | A rain of falling boulders and stones streaking down from a dark sky onto small enemy silhouettes, motion streaks on each stone. Background: flat blood red fading to brown field with darker angular streaks. |
-| Shared Foundations | Rare Skill | Several small hooded adventurers standing on a wide stone platform that the Golem is lifting on its back, stone plates forming around each of them. Background: flat cold teal field with darker angular streaks. |
-| Furnace Core | Rare Power | A rusted iron furnace door set in the Golem's chest, swung open, roaring orange fire inside. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
-| Avalanche | Rare Attack | A massive wall of snow, mud and boulders thundering down a slope in three waves onto small enemy silhouettes. Background: flat deep ochre field with darker angular streaks. |
+| Bedrock | Rare Skill | (done) |
+| Monolith | Rare Skill | (done) |
+| Final Form | Rare Skill | (done) |
+| Golem Smash | Rare Attack | (done) |
+| Stone Rain | Rare Attack | (done) |
+| Shared Foundations | Rare Skill | (done) |
+| Furnace Core | Rare Power | (done) |
+| Avalanche | Rare Attack | (done) |
 
 ### Power icons
 
 | Name | Type | Shows |
 |---|---|---|
-| Clay Arms |  | a thick arm of wet brown clay with a rusted iron band |
-| Boulder Fists |  | a mossy boulder fist with glowing orange cracks |
-| Lantern Eye |  | a round boulder head with one glowing amber eye |
-| Rooted Legs |  | a clay leg with roots growing from the foot |
-| Mud Core |  | a ball of swirling mud in a rusted iron cage |
-| Furnace Core |  | a small iron furnace with an open door and fire inside |
-| Mossy Crown |  | a crown made of moss, ferns and small glowing mushrooms |
-| Crystal Skull |  | a skull made of glowing violet crystal |
-| Thinking Stone |  | a smooth stone with a glowing amber spiral carving |
-| Iron Hooks |  | a pair of curved rusted iron hooks |
-| Spiked Knuckles |  | a stone fist with rock spikes on the knuckles |
-| Hammer Arms |  | a heavy stone-and-iron sledgehammer head |
-| Spring Legs |  | a coiled rusted iron spring |
-| Stomping Legs |  | a huge stone foot cracking the ground |
-| Iron Treads |  | a rusted iron tank tread segment |
-| Unmovable Legs |  | a granite leg fused into a block of bedrock |
-| Stone Heart |  | a heart-shaped grey stone with an orange glow inside |
-| Magma Core |  | a cracked stone sphere full of glowing magma |
-| Geode Core |  | a cracked-open geode with purple and amber crystals |
-| Volcanic Core |  | a tiny erupting volcano |
-| Rock Solid |  | a single perfectly round grey boulder |
-| Assembly Line |  | three interlocking stone gears with amber seams |
-| Perfect Form |  | a small stone golem figurine with golden seams |
-| Living Fortress |  | a stone castle tower with moss banners |
-| Self-Repair |  | a cracked stone with golden clay filling the crack |
+| Clay Arms |  | (done) |
+| Boulder Fists |  | (done) |
+| Lantern Eye |  | (done) |
+| Rooted Legs |  | (done) |
+| Mud Core |  | (done) |
+| Furnace Core |  | (done) |
+| Mossy Crown |  | (done) |
+| Crystal Skull |  | (done) |
+| Thinking Stone |  | (done) |
+| Iron Hooks |  | (done) |
+| Spiked Knuckles |  | (done) |
+| Hammer Arms |  | (done) |
+| Spring Legs |  | (done) |
+| Stomping Legs |  | (done) |
+| Iron Treads |  | (done) |
+| Unmovable Legs |  | (done) |
+| Stone Heart |  | (done) |
+| Magma Core |  | (done) |
+| Geode Core |  | (done) |
+| Volcanic Core |  | (done) |
+| Rock Solid |  | (done) |
+| Assembly Line |  | (done) |
+| Perfect Form |  | (done) |
+| Living Fortress |  | (done) |
+| Self-Repair |  | (done) |
 
 ### Relic
 
 | Name | Type | Shows |
 |---|---|---|
-| Heart of Clay |  | a beating heart sculpted from wet red-brown clay, wrapped in a thin rusted iron band, glowing warmly from within |
+| Heart of Clay |  | (done) |
 
 ### Character icons
 
 | Name | Type | Shows |
 |---|---|---|
-| The Golem |  | the Golem's round boulder head with its single glowing amber eye and a little moss on top, front view |
-| The Golem |  | a small round token of the Golem's boulder head with its glowing amber eye, simple and bold |
+| The Golem |  | (done) |
+| The Golem |  | (done) |
 
 ### Character select
 
@@ -149,7 +149,7 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 
 | Name | Type | Shows |
 |---|---|---|
-| The Golem |  | the Golem raising one mossy boulder fist on a pile of rubble at the base of a dark spire, amber eye glowing |
+| The Golem |  | (done) |
 
 ## The Card Sharp
 
@@ -233,24 +233,24 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Reshuffle | Rare Skill | (done) |
 | Marked Aces | Rare Skill | (done) |
 | High Society | Rare Skill | (done) |
-| Final Hand | Rare Skill | The Card Sharp slamming her last hand of cards onto the table, the cards blazing with golden light, a ghostly echo of the same slam behind it. Background: flat dark card-table green field with darker angular streaks. |
-| All or Nothing | Rare Attack | Every chip on the table being shoved forward in one massive pile while a single card flies out like a blade, chips exploding outward. Background: flat deep crimson field with darker angular streaks. |
-| Blackjack | Rare Attack | A gleaming black leather sap club (a blackjack) with a gold handle swung by a gloved hand, two cards fluttering beside it. Background: flat crimson fading to black field with darker angular streaks. |
-| Fake Out | Rare Skill | The Card Sharp turning into a swirl of cards just as a dark enemy blade strikes, her silhouette dissolving into a flurry of cards. Background: flat steel blue field with darker angular streaks. |
-| Big Blind | Rare Skill | A huge shadowy black hat brim sweeping over small dark enemy silhouettes, their eyes covered, cards raining down. Background: flat charcoal grey field with darker angular streaks. |
-| Hot Streak | Rare Skill | Cards bursting into golden flames as they are dealt, a gloved hand catching them, fiery sparks. Background: flat muted gold-ochre field with darker angular streaks. |
-| Last Card | Rare Attack | A single last card held up between two gloved fingers, glowing intensely, an empty table below. Background: flat burnt red-orange field with darker angular streaks. |
-| Raise the Stakes | Rare Attack | A gloved hand pushing a stack of chips higher and higher, the cards in the other hand glowing brighter, a card flying out. Background: flat dark plum field with darker angular streaks. |
-| Shared Fortune | Rare Skill | A golden coin split into several pieces, each flying to a small hooded ally, golden light trailing. Background: flat muted gold-ochre field with darker angular streaks. |
-| All In | Rare Attack | The Card Sharp shoving every chip she owns into the centre of the table, the whole pile exploding outward as a storm of chips and cards that slams into small dark enemy silhouettes. Background: flat crimson fading to black field with darker angular streaks. |
-| Card Shark | Rare Power | A shark fin made of folded gold-edged cards cutting through green felt like water. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
+| Final Hand | Rare Skill | (done) |
+| All or Nothing | Rare Attack | (done) |
+| Blackjack | Rare Attack | (done) |
+| Fake Out | Rare Skill | (done) |
+| Big Blind | Rare Skill | (done) |
+| Hot Streak | Rare Skill | (done) |
+| Last Card | Rare Attack | (done) |
+| Raise the Stakes | Rare Attack | (done) |
+| Shared Fortune | Rare Skill | (done) |
+| All In | Rare Attack | (done) |
+| Card Shark | Rare Power | (done) |
 
 ### Power icons
 
 | Name | Type | Shows |
 |---|---|---|
 | Table |  | a small round green felt card table with a few face-up cards |
-| Card Shark |  | a shark fin made of a folded gold-edged card |
+| Card Shark |  | (done) |
 | Lucky Streak |  | a gold four-leaf clover on a card |
 | Croupier |  | a croupier's rake with a gold chip |
 | Poker Night |  | a candle next to a fan of cards |
@@ -258,28 +258,28 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Bankroll |  | a coin purse bulging with gold chips |
 | Showman |  | a black top hat with a gold band and a card tucked in it |
 | Jokers Wild |  | a black and gold jester hat |
-| High Stakes |  | a tall stack of gold poker chips |
-| House Edge |  | a gold emblem of a house on a green felt circle |
-| Loaded Deck |  | a deck of cards with a glowing hidden compartment |
-| Bluffer |  | a black wide-brimmed hat with a gold band |
-| Side Pot |  | a small pile of gold chips |
-| Pit Boss |  | a big glowing black spade symbol |
-| Diamond Mine |  | a glowing diamond-shaped crystal |
-| Ace Collector |  | a card with one big golden spade |
-| Lady Luck |  | a golden horseshoe with a card |
+| High Stakes |  | (done) |
+| House Edge |  | (done) |
+| Loaded Deck |  | (done) |
+| Bluffer |  | (done) |
+| Side Pot |  | (done) |
+| Pit Boss |  | (done) |
+| Diamond Mine |  | (done) |
+| Ace Collector |  | (done) |
+| Lady Luck |  | (done) |
 
 ### Relic
 
 | Name | Type | Shows |
 |---|---|---|
-| Marked Deck |  | a deck of gold-edged black playing cards with a tiny glowing gold mark on the corner of the top card, tied with a burgundy ribbon |
+| Marked Deck |  | (done) |
 
 ### Character icons
 
 | Name | Type | Shows |
 |---|---|---|
-| The Card Sharp |  | the Card Sharp's face under her wide-brimmed black hat with a gold band, a sly half-smile, one eye glinting, front view |
-| The Card Sharp |  | a small round token of the Card Sharp's black wide-brimmed hat with its gold band, simple and bold |
+| The Card Sharp |  | (done) |
+| The Card Sharp |  | (done) |
 
 ### Character select
 
@@ -291,7 +291,7 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 
 | Name | Type | Shows |
 |---|---|---|
-| The Card Sharp |  | the Card Sharp at the foot of a dark spire, flicking a single glowing gold-edged card into the air, her black hat tipped low |
+| The Card Sharp |  | (done) |
 
 ## The Bard
 
@@ -377,37 +377,37 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Mezzo Forte | Rare Skill | (done) |
 | Harmonic Shield | Rare Skill | (done) |
 | Lifesong | Rare Skill | (done) |
-| Grand Duet | Rare Skill | The Bard and a small hooded ally playing one lute together, golden energy flowing from him into the ally. Background: flat warm gold-ochre field with darker angular streaks. |
-| Thunderous Applause | Rare Attack | Huge ghostly clapping hands made of golden light slamming together over small dark enemy silhouettes, a thunderclap shockwave. Background: flat dark plum field with darker angular streaks. |
-| Battle Cry | Rare Skill | The Bard roaring a battle cry with his lute raised like a war banner, crimson-and-gold sound waves pushing small hooded allies forward. Background: flat dusty rose-purple field with darker angular streaks. |
-| Sonic Boom | Rare Attack | A cone-shaped golden sonic blast exploding from the lute's sound hole, cracking a dark enemy's armour. Background: flat burnt red-orange field with darker angular streaks. |
-| Coda | Rare Skill | The final bar line of a glowing sheet of music, a golden double bar shining brightly, energy bursting out of it. Background: flat indigo field with darker angular streaks. |
-| Opening Act | Rare Skill | Curtains bursting open on a stage, the Bard sliding in on his knees playing his lute, golden notes exploding around him. Background: flat warm gold-ochre field with darker angular streaks. |
-| Requiem | Rare Power | The Bard playing a dark violet lute in a graveyard at night, pale ghostly notes swirling up and striking small dark enemy silhouettes. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
-| Standing Ovation | Rare Skill | A crowd of small hooded allies on their feet cheering, golden shields appearing over each of them, the Bard bowing. Background: flat cold teal field with darker angular streaks. |
+| Grand Duet | Rare Skill | (done) |
+| Thunderous Applause | Rare Attack | (done) |
+| Battle Cry | Rare Skill | (done) |
+| Sonic Boom | Rare Attack | (done) |
+| Coda | Rare Skill | (done) |
+| Opening Act | Rare Skill | (done) |
+| Requiem | Rare Power | (done) |
+| Standing Ovation | Rare Skill | (done) |
 
 ### Power icons
 
 | Name | Type | Shows |
 |---|---|---|
-| Battle Hymn |  | a golden music note with a small sword through it |
-| Ballad of Valor |  | a golden lute crossed with a sword |
-| Lullaby |  | a crescent moon with a sleepy golden note |
-| Jig |  | a dancing pointed purple boot with a golden note |
-| Requiem |  | a pale ghostly music note with a small skull |
-| Metronome |  | a wooden metronome with a golden pendulum |
-| War Drums |  | a crimson war drum with two mallets |
-| Sea Shanty |  | a ship's lantern with a golden note |
-| Dirge |  | a grey wilted rose with a dark note |
-| Ode to Joy |  | a radiant golden sun shaped like a note |
-| Anthem |  | a banner with a golden lute emblem |
-| Siren Song |  | a teal seashell with a glowing note |
-| Improvise |  | a golden note curling into a spiral |
+| Battle Hymn |  | (done) |
+| Ballad of Valor |  | (done) |
+| Lullaby |  | (done) |
+| Jig |  | (done) |
+| Requiem |  | (done) |
+| Metronome |  | (done) |
+| War Drums |  | (done) |
+| Sea Shanty |  | (done) |
+| Dirge |  | (done) |
+| Ode to Joy |  | (done) |
+| Anthem |  | (done) |
+| Siren Song |  | (done) |
+| Improvise |  | (done) |
 | Stage Presence |  | a bright stage spotlight |
-| Accompaniment |  | two golden notes joined together |
-| Tempo |  | a golden pendulum |
+| Accompaniment |  | (done) |
+| Tempo |  | (done) |
 | Perfect Pitch |  | a vibrating golden tuning fork |
-| Virtuoso |  | a lute fretboard with a blur of golden notes |
+| Virtuoso |  | (done) |
 | Maestro |  | a conductor's baton with a golden tip |
 | Legendary Ballad |  | an ancient open songbook glowing gold |
 | Bardic Inspiration |  | a golden spark shaped like a note |
@@ -437,4 +437,4 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 
 | Name | Type | Shows |
 |---|---|---|
-| The Bard |  | the Bard playing his lute at the foot of a dark spire, golden music notes rising up its walls |
+| The Bard |  | (done) |

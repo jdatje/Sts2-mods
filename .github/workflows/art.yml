@@ -51,7 +51,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - run: pip install pillow
+      - run: pip install pillow numpy scipy
 
       - name: Check the API key
         env:

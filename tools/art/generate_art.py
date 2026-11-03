@@ -157,40 +157,74 @@ def grid_prompt(group, cfg):
             "one icon per cell, every icon centered in its own cell with clear empty space around it; icons never touch "
             "each other or the cell edges and never overlap. Each icon is a single object with a bold readable silhouette "
             "and a thick dark outline, in the same ink-and-cel-shading style. The whole background is perfectly flat, solid "
-            "pure magenta (#FF00FF): no grid lines, no borders, no shadows, no text, no numbers.\n" + "\n".join(lines))
+            "pure magenta (#FF00FF): no grid lines, no borders, no shadows, no text, no numbers. Do NOT put the icons on tiles, "
+            f"boxes, cards, panels or frames, and do not add any big central figure: exactly {len(group)} small separate icons "
+            "floating on the magenta and nothing else.\n" + "\n".join(lines))
 
 
 def split_grid(img, group):
-    """Cut a grid image into one raw PNG per icon. Returns {id: Image} for the cells that look clean."""
+    """Cut a grid image into one raw image per icon.
+
+    Finds the separate objects on the flat background (connected components), assigns each to the grid cell
+    its centre falls in, and crops it with a margin. A cell is rejected when it is empty, when its object is
+    much bigger than a cell (layout ignored), or when the object sits on a filled tile/frame.
+    Returns {id: Image (RGB, on the original background)} for the clean cells."""
+    import numpy as np
+    from scipy import ndimage
     cols, rows, _ = grid_shape(len(group))
-    w, h = img.size
+    rgb = img.convert("RGB")
+    w, h = rgb.size
+    bg = background_colour(rgb)
+    mask = np.array(background_alpha(rgb, bg)) > 128
+    mask = ndimage.binary_opening(mask, iterations=2)
+    joined = ndimage.binary_dilation(mask, iterations=6)          # glue nearby bits (notes, sparks) together
+    labels, n = ndimage.label(joined)
+    cw, ch = w / cols, h / rows
+    boxes = {}
+    for sl, idx in zip(ndimage.find_objects(labels), range(1, n + 1)):
+        ys, xs = sl
+        area = int((labels[sl] == idx).sum())
+        if area < cw * ch * 0.01:                                    # specks
+            continue
+        cx, cy = (xs.start + xs.stop) / 2, (ys.start + ys.stop) / 2
+        cell = int(cy // ch) * cols + int(cx // cw)
+        x0, y0, x1, y1 = xs.start, ys.start, xs.stop, ys.stop
+        if cell in boxes:
+            a, b, c, d = boxes[cell]
+            x0, y0, x1, y1 = min(a, x0), min(b, y0), max(c, x1), max(d, y1)
+        boxes[cell] = (x0, y0, x1, y1)
     out = {}
     for i, a in enumerate(group):
-        c, r = i % cols, i // cols
-        cell = img.crop((c * w // cols, r * h // rows, (c + 1) * w // cols, (r + 1) * h // rows)).convert("RGB")
-        cut = remove_magenta(cell.copy())
-        bbox = remove_magenta_bbox(cell)
-        cw, ch = cell.size
-        edge = 3
-        ok = bbox and (bbox[2] - bbox[0]) > cw * 0.25 and (bbox[3] - bbox[1]) > ch * 0.25 \
-            and bbox[0] > edge and bbox[1] > edge and bbox[2] < cw - edge and bbox[3] < ch - edge
-        if ok:
-            out[a["id"]] = cell
+        if i not in boxes:
+            continue
+        x0, y0, x1, y1 = boxes[i]
+        bw, bh = x1 - x0, y1 - y0
+        if bw > cw * 1.15 or bh > ch * 1.15:                         # this object spans several cells
+            continue
+        # filled tile / frame behind the icon: the outer ring of the box is almost all opaque
+        sub = mask[y0:y1, x0:x1]
+        ring = np.concatenate([sub[:3].ravel(), sub[-3:].ravel(), sub[:, :3].ravel(), sub[:, -3:].ravel()])
+        if ring.mean() > 0.6:
+            continue
+        m = int(max(bw, bh) * 0.08)
+        crop = rgb.crop((max(0, x0 - m), max(0, y0 - m), min(w, x1 + m), min(h, y1 + m)))
+        canvas = Image.new("RGB", (crop.width + 2 * m, crop.height + 2 * m), bg)  # guarantee a background border
+        canvas.paste(crop, (m, m))
+        # thin tile frame around the icon: after cutting, all four edges of the trimmed icon are mostly opaque
+        al = np.array(remove_magenta(canvas).split()[3]) > 128
+        if al.shape[0] > 8 and al.shape[1] > 8:
+            sides = [al[:3].mean(), al[-3:].mean(), al[:, :3].mean(), al[:, -3:].mean()]
+            k = max(8, int(min(al.shape) * 0.08))                    # a ring just inside the edge
+            inner = [al[k:k + 3, k:-k].mean(), al[-k - 3:-k, k:-k].mean(), al[k:-k, k:k + 3].mean(), al[k:-k, -k - 3:-k].mean()]
+            if min(sides) > 0.5 and max(inner) < 0.5:                 # thin opaque frame with a see-through inside
+                continue
+        out[a["id"]] = canvas
     return out
 
 
 def remove_magenta_bbox(cell):
-    im = remove_magenta_alpha(cell)
-    return im.getbbox()
-
-
-def remove_magenta_alpha(im):
-    """Alpha mask of non-magenta pixels (fast, via channel math)."""
-    from PIL import ImageChops
-    r, g, b = im.convert("RGB").split()
-    # distance from magenta: max(255-r, 255-b, g)
-    d = ImageChops.lighter(ImageChops.lighter(r.point(lambda v: 255 - v), b.point(lambda v: 255 - v)), g)
-    return d.point(lambda v: 255 if v >= 60 else 0)
+    a = background_alpha(cell).filter(ImageFilter.MinFilter(3)).filter(ImageFilter.MaxFilter(3))
+    return a.point(lambda v: 255 if v > 128 else 0).getbbox()
 
 
 def aspect_for(kind):
@@ -251,20 +285,37 @@ def call_gemini(model, key, prompt, aspect, refs=()):
 
 # ----------------------------------------------------------------------------- processing
 
+def background_colour(im):
+    """Median colour of the image border (Gemini's 'magenta' is often a dark pink with a little noise)."""
+    rgb = im.convert("RGB")
+    w, h = rgb.size
+    px = rgb.load()
+    samples = [px[x, y] for x in range(0, w, 4) for y in (0, 1, 2, h - 3, h - 2, h - 1)] + \
+              [px[x, y] for y in range(0, h, 4) for x in (0, 1, 2, w - 3, w - 2, w - 1)]
+    return tuple(sorted(c[i] for c in samples)[len(samples) // 2] for i in range(3))
+
+
+def background_alpha(im, bg=None, lo=48, hi=90):
+    """Alpha mask: 0 where the pixel is close to the background colour, ramping to 255."""
+    bg = bg or background_colour(im)
+    from PIL import ImageChops
+    r, g, b = im.convert("RGB").split()
+    d = ImageChops.lighter(ImageChops.lighter(r.point(lambda v: abs(v - bg[0])), g.point(lambda v: abs(v - bg[1]))),
+                           b.point(lambda v: abs(v - bg[2])))
+    return d.point(lambda v: 0 if v < lo else 255 if v >= hi else int(255 * (v - lo) / (hi - lo)))
+
+
 def remove_magenta(im):
-    im = im.convert("RGBA")
-    px = im.load()
-    w, h = im.size
-    for y in range(h):
-        for x in range(w):
-            r, g, b, _ = px[x, y]
-            d = max(abs(r - 255), abs(b - 255), g)
-            if d < 60:
-                px[x, y] = (r, g, b, 0)
-            elif d < 110:
-                px[x, y] = (min(r, g + 40), g, min(b, g + 40), int(255 * (d - 60) / 50))
-    bbox = im.getbbox()
-    return im.crop(bbox) if bbox else im
+    """Cut the icon out of its flat background (whatever pink/magenta shade Gemini used) and trim."""
+    rgb = im.convert("RGB")
+    bg = background_colour(rgb)
+    alpha = background_alpha(rgb, bg)
+    # drop specks: anything that isn't solid after a small erode/dilate
+    alpha = alpha.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.MaxFilter(3))
+    out = rgb.convert("RGBA")
+    out.putalpha(alpha)
+    bbox = alpha.point(lambda v: 255 if v > 128 else 0).getbbox()
+    return out.crop(bbox) if bbox else out
 
 
 def fit_square(im, size, pad=0.06):
