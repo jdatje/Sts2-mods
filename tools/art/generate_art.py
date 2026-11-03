@@ -125,6 +125,74 @@ def prompt_for(a, cfg):
     raise ValueError(kind)
 
 
+GRID_KINDS = ("power", "relic", "charui_icon")
+
+
+def model_for(kind, forced=""):
+    """Per-kind model from shared.json 'models' (e.g. expensive model only for the character select portrait)."""
+    if forced:
+        return forced
+    models = SHARED.get("models", {})
+    return models.get(kind, models.get("default", SHARED.get("model", "gemini-2.5-flash-image")))
+
+
+def grid_shape(n):
+    """(cols, rows, aspect) for n icons in one image."""
+    if n <= 1: return 1, 1, "1:1"
+    if n <= 4: return 2, 2, "1:1"
+    if n <= 6: return 3, 2, "3:2"
+    return 3, 3, "1:1"
+
+
+def grid_prompt(group, cfg):
+    cols, rows, _ = grid_shape(len(group))
+    lines = []
+    for i, a in enumerate(group):
+        subject = cfg.get("overrides", {}).get(a["id"]) or (
+            cfg["icon_subject"] if a["kind"] == "charui_icon" else f"an object or symbol that represents \"{a['title']}\" ({a.get('text', '')})")
+        lines.append(f"Row {i // cols + 1}, column {i % cols + 1}: {subject}.")
+    who = cfg["character"] + "\n" if any(a["kind"] == "charui_icon" for a in group) else ""
+    return (f"{SHARED['style']}\n{who}"
+            f"A sheet of {len(group)} separate game icons arranged in an exact grid of {cols} columns and {rows} rows, "
+            "one icon per cell, every icon centered in its own cell with clear empty space around it; icons never touch "
+            "each other or the cell edges and never overlap. Each icon is a single object with a bold readable silhouette "
+            "and a thick dark outline, in the same ink-and-cel-shading style. The whole background is perfectly flat, solid "
+            "pure magenta (#FF00FF): no grid lines, no borders, no shadows, no text, no numbers.\n" + "\n".join(lines))
+
+
+def split_grid(img, group):
+    """Cut a grid image into one raw PNG per icon. Returns {id: Image} for the cells that look clean."""
+    cols, rows, _ = grid_shape(len(group))
+    w, h = img.size
+    out = {}
+    for i, a in enumerate(group):
+        c, r = i % cols, i // cols
+        cell = img.crop((c * w // cols, r * h // rows, (c + 1) * w // cols, (r + 1) * h // rows)).convert("RGB")
+        cut = remove_magenta(cell.copy())
+        bbox = remove_magenta_bbox(cell)
+        cw, ch = cell.size
+        edge = 3
+        ok = bbox and (bbox[2] - bbox[0]) > cw * 0.25 and (bbox[3] - bbox[1]) > ch * 0.25 \
+            and bbox[0] > edge and bbox[1] > edge and bbox[2] < cw - edge and bbox[3] < ch - edge
+        if ok:
+            out[a["id"]] = cell
+    return out
+
+
+def remove_magenta_bbox(cell):
+    im = remove_magenta_alpha(cell)
+    return im.getbbox()
+
+
+def remove_magenta_alpha(im):
+    """Alpha mask of non-magenta pixels (fast, via channel math)."""
+    from PIL import ImageChops
+    r, g, b = im.convert("RGB").split()
+    # distance from magenta: max(255-r, 255-b, g)
+    d = ImageChops.lighter(ImageChops.lighter(r.point(lambda v: 255 - v), b.point(lambda v: 255 - v)), g)
+    return d.point(lambda v: 255 if v >= 60 else 0)
+
+
 def aspect_for(kind):
     return {"card": "4:3", "charui_portrait": "2:3"}.get(kind, "1:1")
 
@@ -274,10 +342,11 @@ def main():
     ap.add_argument("--only", help="comma-separated asset ids")
     ap.add_argument("--kinds", help="comma-separated kinds (card,power,relic,charui_icon,charui_portrait,mod_image)")
     ap.add_argument("--force", action="store_true", help="regenerate even if a raw image exists")
-    ap.add_argument("--model", default=SHARED["model"])
+    ap.add_argument("--model", default="", help="force one model for everything (default: per kind, see shared.json 'models')")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--limit", type=int, default=0, help="generate at most N images this run (0 = no limit)")
     ap.add_argument("--no-refs", action="store_true", help="do not send the style reference images")
+    ap.add_argument("--no-grid", action="store_true", help="one API call per icon instead of up to 9 icons per image")
     ap.add_argument("--batch", action="store_true", help="generate the batch in tools/art/batch.json (made by batch.py next); implies --force")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--process-only", action="store_true")
@@ -312,8 +381,16 @@ def main():
     print(f"{len(todo)} assets selected ({', '.join(mods)})")
 
     if args.dry_run:
-        for a, cfg in todo[:args.limit or len(todo)]:
-            print(f"--- {a['mod']}/{a['id']} ({a['kind']}, {aspect_for(a['kind'])})\n{prompt_for(a, cfg)}\n")
+        sel = todo[:args.limit or len(todo)]
+        for a, cfg in sel:
+            if args.no_grid or a["kind"] not in GRID_KINDS:
+                print(f"--- {a['mod']}/{a['id']} ({a['kind']}, {aspect_for(a['kind'])}, {model_for(a['kind'], args.model)})\n{prompt_for(a, cfg)}\n")
+        if not args.no_grid:
+            for mod in mods:
+                icons = [(a, c) for a, c in sel if a["mod"] == mod and a["kind"] in GRID_KINDS]
+                for i in range(0, len(icons), 9):
+                    grp = [a for a, _ in icons[i:i + 9]]
+                    print(f"=== GRID {mod} ({len(grp)} icons, {grid_shape(len(grp))[2]}, {model_for('power', args.model)})\n{grid_prompt(grp, icons[0][1])}\n")
         return
     if not args.process_only and not key:
         sys.exit("GEMINI_API_KEY is not set.")
@@ -323,28 +400,63 @@ def main():
                    and not (ROOT / "tools" / "art" / "reference" / "approved" / a["mod"] / f"{a['id']}.jpg").exists()
                    and (args.force or not (RAW_ROOT / a["mod"] / f"{a['id']}.png").exists())]
     if args.limit: to_generate = to_generate[:args.limit]
-    print(f"generating {len(to_generate)} images with {args.model} ({args.workers} at a time)")
+    # icons go several to an image (grid) unless --no-grid
+    jobs = []
+    singles = [x for x in to_generate if args.no_grid or x[0]["kind"] not in GRID_KINDS]
+    jobs += [("single", [x]) for x in singles]
+    if not args.no_grid:
+        for mod in mods:
+            icons = [x for x in to_generate if x[0]["mod"] == mod and x[0]["kind"] in GRID_KINDS]
+            for i in range(0, len(icons), 9):
+                jobs.append(("grid", icons[i:i + 9]))
+    print(f"generating {len(to_generate)} assets in {len(jobs)} API calls ({args.workers} at a time); "
+          f"models: {sorted({model_for(x[0]['kind'], args.model) for x in to_generate})}")
     lock, done, failed = threading.Lock(), [0], []
 
-    def work(item):
-        a, cfg = item
-        raw = RAW_ROOT / a["mod"] / f"{a['id']}.png"
-        raw.parent.mkdir(parents=True, exist_ok=True)
+    def work(job):
+        kind, items = job
+        cfg = items[0][1]
+        group = [a for a, _ in items]
+        label = ", ".join(f"{a['mod']}/{a['id']}" for a in group)
         try:
-            data = call_gemini(args.model, key, prompt_for(a, cfg), aspect_for(a["kind"]),
-                               [] if args.no_refs else style_refs(cfg))
-            Image.open(__import__("io").BytesIO(data)).save(raw)
-            process(a, raw)
-            status = "ok"
+            if kind == "single":
+                a = group[0]
+                data = call_gemini(model_for(a["kind"], args.model), key, prompt_for(a, cfg), aspect_for(a["kind"]),
+                                   [] if args.no_refs else style_refs(cfg))
+                raw = RAW_ROOT / a["mod"] / f"{a['id']}.png"
+                raw.parent.mkdir(parents=True, exist_ok=True)
+                Image.open(io.BytesIO(data)).save(raw)
+                process(a, raw)
+                status = "ok"
+            else:
+                _, _, aspect = grid_shape(len(group))
+                data = call_gemini(model_for("power", args.model), key, grid_prompt(group, cfg), aspect,
+                                   [] if args.no_refs else style_refs(cfg))
+                img = Image.open(io.BytesIO(data))
+                sheet = RAW_ROOT / group[0]["mod"] / "grids" / f"{group[0]['id']}_grid.png"
+                sheet.parent.mkdir(parents=True, exist_ok=True)
+                img.save(sheet)
+                cells = split_grid(img, group)
+                bad = []
+                for a in group:
+                    if a["id"] in cells:
+                        raw = RAW_ROOT / a["mod"] / f"{a['id']}.png"
+                        cells[a["id"]].save(raw)
+                        process(a, raw)
+                    else:
+                        bad.append(a["id"])
+                if bad:
+                    with lock: failed.append(f"grid cells not clean, rerun these: {', '.join(bad)}")
+                status = f"ok ({len(cells)}/{len(group)} icons usable)"
         except Exception as e:  # keep going; report at the end
             status = f"FAILED: {e}"
-            with lock: failed.append(f"{a['mod']}/{a['id']}: {e}")
+            with lock: failed.append(f"{label}: {e}")
         with lock:
             done[0] += 1
-            print(f"[{done[0]}/{len(to_generate)}] {a['mod']}/{a['id']} {status}", flush=True)
+            print(f"[{done[0]}/{len(jobs)}] {label} {status}", flush=True)
 
     with cf.ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
-        list(pool.map(work, to_generate))
+        list(pool.map(work, jobs))
 
     if args.process_only:
         for a, _ in todo:
@@ -353,7 +465,7 @@ def main():
     write_review(all_assets)
     print(f"done; {len(failed)} failed")
     for f in failed: print("  " + f)
-    if failed and len(failed) == len(to_generate): sys.exit(1)
+    if failed and len(failed) >= len(jobs): sys.exit(1)
 
 
 if __name__ == "__main__":
