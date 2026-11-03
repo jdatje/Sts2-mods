@@ -1,6 +1,26 @@
 {
   "model": "gemini-3.1-flash-image",
   "style": "Gritty comic-book style illustration for a dark-fantasy deckbuilder. Heavy, slightly rough black ink outlines with ink hatching in the shadows; cel shading with two or three tones per colour; a subtle grunge paper texture; saturated but slightly muted colours. No text, no letters, no numbers, no frame, no border, no watermark, no UI.",
-  "style_refs_note": "The attached images are style references from the same card set. Match their drawing style exactly: line weight, ink hatching, cel shading, paper texture and level of detail. Follow the subject, layout and background described below, not the references.",
-  "card_layout": "One clear subject shown close-up, usually entering from the lower-left edge and moving diagonally toward the upper right, partly cropped by the frame. Background: a flat colour field crossed by sharp, jagged, diagonal brush-streak shapes in a darker tone. White curved motion arcs around anything that moves; a burst of debris, sparks or glowing particles at the point of impact. Readable at thumbnail size."
+  "style_refs_note": "The attached images are style references only. Copy ONLY their rendering style: line weight, ink hatching, cel shading, paper texture and level of detail. Do NOT copy their subject, pose, framing, composition or background colour; every image must look clearly different from them and follow the description below.",
+  "background": "Background: a flat colour field crossed by sharp, jagged, diagonal brush-streak shapes in a darker tone.",
+  "layouts": {
+    "Attack": "Dynamic action moment with a strong diagonal; white curved motion arcs around what moves and a burst of debris, sparks or particles at the point of impact.",
+    "Skill": "A clear defensive or utility moment, calmer than an attack: no punching motion. Add motion arcs only if something actually moves.",
+    "Power": "Centered, iconic composition: the subject sits in the middle like an emblem with soft radiating light. No motion arcs, no impact burst."
+  },
+  "shots": {
+    "Attack": [
+      "full-body action shot of the character",
+      "medium shot from the side",
+      "low-angle shot looking up at the action",
+      "over-the-shoulder shot from behind the character toward the enemy",
+      "close-up, filling the frame"
+    ],
+    "Skill": [
+      "medium shot of the character",
+      "full-body shot",
+      "close-up",
+      "wide shot showing the surroundings"
+    ]
+  }
 }

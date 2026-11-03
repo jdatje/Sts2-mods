@@ -103,7 +103,16 @@ def prompt_for(a, cfg):
             f"Illustration for a card called \"{a['title']}\" ({a['ctype'].lower()}): {a['text']} "
             f"Show this as one clear, dramatic moment" + (" featuring the character" if a["ctype"] != "Power" or cfg.get("powers_show_character") else "")
             + ". Do not draw any text, cards with writing, or numbers.")
-        return f"{style}\n{SHARED.get('card_layout', '')}\n{who}\nScene: {scene}\nWide landscape composition (4:3), subject clearly readable at small size."
+        ctype = a["ctype"] if a["ctype"] in ("Attack", "Skill", "Power") else "Skill"
+        layout = SHARED.get("layouts", {}).get(ctype, "")
+        camera = ""
+        shots = SHARED.get("shots", {}).get(ctype)
+        who_word = cfg["name"].replace("The ", "")
+        shows_character = re.search(rf"{who_word}|\\b(fist|hand|arm|she|he|her|his)\\b", scene, re.I)
+        if shots and shows_character and not re.search(r"close-up|full-body|wide shot|medium shot|seen from|from above|from the side|low.angle|over-the-shoulder", scene, re.I):
+            camera = "Camera: " + shots[sum(map(ord, a["id"])) % len(shots)] + ".\n"
+        return (f"{style}\n{layout} {SHARED.get('background', '')}\n{who}\nScene: {scene}\n{camera}"
+                f"Wide landscape composition (4:3), subject clearly readable at small size.")
     if kind in ("power", "relic"):
         subject = override or f"an object or symbol that represents \"{a['title']}\" ({a['text']}), in the theme of {cfg['name']}"
         return f"{style}\n" + ICON.format(subject=subject)

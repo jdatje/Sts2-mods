@@ -1,7 +1,7 @@
 # Art subjects
 
 What each image will show. Edit a line in `tools/art/<character>.json` under `overrides` to change it;
-everything else (style, character look, reference images) is added automatically. Strikes are already done and stay fixed.
+everything else (style, character look, reference images, layout per card type and a varied camera angle) is added automatically. Strikes are already done and stay fixed.
 
 ## The Golem
 
@@ -10,7 +10,7 @@ everything else (style, character look, reference images) is added automatically
 | Name | Type | Shows |
 |---|---|---|
 | Clay Arms | Basic Power | A thick arm of wet brown clay, freshly sculpted, with handprint marks pressed into it and a rusted iron band at the shoulder, glowing faintly amber at the seams. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
-| Defend | Basic Skill | Close-up of the Golem's mossy boulder forearm raised as a shield, bright light-beam attacks shattering and deflecting off the stone in sparks. Background: flat slate blue field with darker angular streaks. |
+| Defend | Basic Skill | The Golem seen from the front, crouched low behind its raised mossy boulder forearm, its amber eye peering over the top, bright light-beam attacks shattering against the stone in sparks. Background: flat slate blue field with darker angular streaks. |
 | Slam | Basic Attack | The Golem's two huge boulder fists slamming down into the ground from above, a ring shockwave of mud and rock shards bursting outward, a faint stone barrier forming around it. Background: flat burnt orange field with darker angular streaks. |
 | Strike | Basic Attack | (done: approved Gemini image) |
 | Rubble | Token Skill | A small heap of broken mossy stones and clay chunks, dust still settling, one chunk glinting orange. Background: flat earthy ochre field with darker angular streaks. |
@@ -40,12 +40,12 @@ everything else (style, character look, reference images) is added automatically
 | Brace | Uncommon Skill | The Golem crouched low behind its crossed boulder forearms, feet dug into the ground, a second faint ghostly stone barrier behind the first. Background: flat steel blue field with darker angular streaks. |
 | Clay Shield | Uncommon Skill | A round shield of baked clay with a rusted iron rim, held up on a boulder arm, light-beam attacks deflecting off it in sparks. Background: flat cold teal field with darker angular streaks. |
 | Collapse | Uncommon Skill | The Golem's body collapsing inward into a protective pile of boulders, its amber eye peeking out between the stones. Background: flat slate blue field with darker angular streaks. |
-| Earthen Embrace | Uncommon Skill | Two massive arms of earth and boulders rising from the ground and wrapping protectively around the viewer, light-beam attacks bouncing off. Background: flat slate blue field with darker angular streaks. |
+| Earthen Embrace | Uncommon Skill | Wide shot: two huge arms of earth and mossy boulders rising up out of the ground like a wall and curling protectively around a small hooded adventurer, light-beam attacks bouncing off the stone. No fists. Background: flat slate blue field with darker angular streaks. |
 | Earthquake | Uncommon Attack | The ground splitting into jagged plates that tilt upward, orange light pouring from the cracks, tiny dark enemy silhouettes losing their footing. Background: flat blood red fading to brown field with darker angular streaks. |
 | Forge Ahead | Uncommon Skill | The Golem stepping forward through glowing forge sparks, an iron band on its arm still red-hot from the anvil. Background: flat earthy ochre field with darker angular streaks. |
 | Fortify | Uncommon Skill | Thick slabs of slate being slotted over the Golem's chest like armour plating, rusted bolts glowing as they lock in. Background: flat deep teal fading to navy field with darker angular streaks. |
 | Gravel Storm | Uncommon Attack | A swirling storm of gravel and stones whipping through the frame in a spiral, hitting small dark targets. Background: flat deep ochre field with darker angular streaks. |
-| Haymaker | Uncommon Attack | An enormous boulder fist in an over-the-top wind-up punch, filling the frame, huge motion arcs and a massive impact burst at the edge. Background: flat rust red field with darker angular streaks. |
+| Haymaker | Uncommon Attack | Full-body shot of the Golem from the side, torso twisted, one boulder fist pulled far back behind its head in a huge wind-up, a small dark enemy cowering in front of it. Background: flat blood red fading to brown field with darker angular streaks. |
 | Iron Hooks | Uncommon Power | A boulder fist fitted with large curved rusted iron hooks on the knuckles, gleaming at the tips. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
 | Landslide | Uncommon Attack | A whole hillside of mud and boulders sliding down onto a row of small dark enemy silhouettes, a thick stone barrier forming at the front. Background: flat blood red fading to brown field with darker angular streaks. |
 | Lantern Eye | Uncommon Power | A boulder head with a single big glowing amber eye shining like a lantern, light rays spreading outward. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
