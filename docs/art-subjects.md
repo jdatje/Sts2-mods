@@ -56,7 +56,7 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Slag | Uncommon Attack | (done) |
 | Shatter | Uncommon Attack | (done) |
 | Gravel Storm | Uncommon Attack | (done) |
-| Brace | Uncommon Skill | The Golem crouched low behind its crossed boulder forearms, feet dug into the ground, a second faint ghostly stone barrier behind the first. Background: flat steel blue field with darker angular streaks. |
+| Brace | Uncommon Skill | (done) |
 | Clay Shield | Uncommon Skill | (done) |
 | Forge Ahead | Uncommon Skill | (done) |
 | Earthquake | Uncommon Attack | (done) |
@@ -86,7 +86,7 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Earthshaker | Rare Attack | (done) |
 | Rock Bottom | Rare Skill | (done) |
 | Indestructible | Rare Skill | (done) |
-| Crushing Weight | Rare Attack | A gigantic stone slab with iron bands pressing down from above onto a dark enemy, the ground buckling under the weight. Background: flat dark maroon field with darker angular streaks. |
+| Crushing Weight | Rare Attack | (done) |
 | Bedrock | Rare Skill | Full-body shot of the Golem kneeling with both boulder hands pressed flat on the ground, glowing orange power rising up through layered bedrock into its arms. Background: flat earthy ochre field with darker angular streaks. |
 | Monolith | Rare Skill | The Golem standing still as a towering carved stone monolith, glowing runes of its parts lit up along its body, attacks breaking against it. Background: flat slate blue field with darker angular streaks. |
 | Final Form | Rare Skill | The fully assembled Golem rising up, clay arms, rooted legs, a mud core and a glowing lantern eye all blazing at once, debris swirling around it. Background: flat dusk purple-grey field with darker angular streaks. |
@@ -330,7 +330,7 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Stage Presence | Uncommon Power | (done) |
 | Tempo | Uncommon Power | (done) |
 | Perfect Pitch | Uncommon Power | (done) |
-| Accompaniment | Uncommon Power | The Bard playing behind a small hooded ally who swings a sword, golden notes following the sword's arc. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
+| Accompaniment | Uncommon Power | (done) |
 | Verse Strike | Uncommon Attack | (done) |
 | Ballad Shield | Uncommon Skill | (done) |
 | Medley | Uncommon Skill | (done) |
@@ -357,12 +357,12 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Crescendo | Uncommon Skill | (done) |
 | Encore | Uncommon Skill | (done) |
 | Grand Finale | Uncommon Skill | (done) |
-| Metronome | Uncommon Power | A wooden metronome with a golden pendulum ticking, each tick releasing a small golden note. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
+| Metronome | Uncommon Power | (done) |
 | Duet | Uncommon Skill | (done) |
 | Ode to Joy | Rare Power | (done) |
 | Anthem | Rare Power | (done) |
 | Siren Song | Rare Power | (done) |
-| Virtuoso | Rare Power | The Bard's fingers flying across the lute fretboard in a blur, a cascade of golden notes pouring out. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
+| Virtuoso | Rare Power | (done) |
 | Maestro | Rare Power | (done) |
 | Legendary Ballad | Rare Power | (done) |
 | Bardic Inspiration | Rare Power | (done) |
