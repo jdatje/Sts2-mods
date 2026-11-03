@@ -13,11 +13,6 @@
   ],
   "Bard": [
     {
-      "id": "perfect_pitch",
-      "title": "Perfect Pitch",
-      "kind": "card"
-    },
-    {
       "id": "accompaniment",
       "title": "Accompaniment",
       "kind": "card"

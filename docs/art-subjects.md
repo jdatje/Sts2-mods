@@ -329,7 +329,7 @@ What each image will show. Edit a line in `tools/art/<character>.json` under `ov
 | Improvise | Uncommon Power | (done) |
 | Stage Presence | Uncommon Power | (done) |
 | Tempo | Uncommon Power | (done) |
-| Perfect Pitch | Uncommon Power | A single tuning fork vibrating, emitting a perfect ring of golden light. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
+| Perfect Pitch | Uncommon Power | (done) |
 | Accompaniment | Uncommon Power | The Bard playing behind a small hooded ally who swings a sword, golden notes following the sword's arc. Background: flat dark navy field with darker angular streaks and a soft glow behind the subject. |
 | Verse Strike | Uncommon Attack | (done) |
 | Ballad Shield | Uncommon Skill | (done) |
