@@ -43,8 +43,12 @@ public sealed class Ditty : BardCard
 
 public sealed class RallyCry : BardCard
 {
-    public RallyCry() : base(1, CardType.Skill, CardRarity.Common, TargetType.AllAllies) { WithPower<VigorPower>(3, 2); }
-    protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay play) => await BuffAllies<VigorPower>(ctx);
+    public RallyCry() : base(1, CardType.Skill, CardRarity.Common, TargetType.AllAllies) { WithBlock(5, 2); WithPower<VigorPower>(3, 1); }
+    protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay play)
+    {
+        await GuardAllies(play, DynamicVars.Block.BaseValue);
+        await BuffAllies<VigorPower>(ctx);
+    }
 }
 
 public sealed class QuickStep : BardCard
@@ -200,7 +204,7 @@ public sealed class Medley : BardCard
 
 public sealed class CrowdPleaser : BardCard
 {
-    public CrowdPleaser() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.AllAllies) { WithBlock(8, 3); WithCards(1); }
+    public CrowdPleaser() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.AllAllies) { WithBlock(10, 3); WithCards(1); }
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay play) { await GuardAllies(play, DynamicVars.Block.BaseValue); await DrawCards(ctx); }
 }
 
@@ -233,7 +237,7 @@ public sealed class RestNote : BardCard
 {
     public RestNote() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithBlock(4, 3); WithKeywords(CardKeyword.Retain);
+        WithBlock(6, 3); WithKeywords(CardKeyword.Retain);
     }
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay play) => await Guard(play);
 }
@@ -523,9 +527,9 @@ public sealed class BattleCry : BardCard
 {
     public BattleCry() : base(1, CardType.Skill, CardRarity.Rare, TargetType.AllAllies)
     {
-        WithPower<VigorPower>(5, 3); WithKeywords(CardKeyword.Exhaust);
+        WithPower<StrengthPower>(2, 1); WithKeywords(CardKeyword.Exhaust);
     }
-    protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay play) => await BuffAllies<VigorPower>(ctx);
+    protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay play) => await BuffAllies<StrengthPower>(ctx);
 }
 
 public sealed class SonicBoom : BardCard

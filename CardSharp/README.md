@@ -23,29 +23,17 @@ A gambler whose cards have **suits and ranks**.
 Starter: 4 Strike ♠, 4 Defend ♥, Ante ♦ (draw 2), Cut the Deck ♣ (2 Vulnerable). Relic **Marked Deck**:
 your first Showdown each combat counts as one hand higher. HP 68.
 
-## Cards (v0.1)
+## Version 0.2: full card pool, 86 cards
 
-| Card | Suit | Rarity | Cost | Text |
-|---|---|---|---|---|
-| Strike | ♠ | Basic | 1 | Deal 6 damage. |
-| Defend | ♥ | Basic | 1 | Gain 5 Block. |
-| Ante | ♦ | Basic | 1 | Draw 2 cards. |
-| Cut the Deck | ♣ | Basic | 1 | Apply 2 Vulnerable. |
-| Quick Draw | ♠ | Common | 0 | Deal 4 damage. |
-| Double Tap | ♠ | Common | 1 | Deal 5 damage twice. |
-| Bluff | ♥ | Common | 1 | Gain 8 Block. |
-| Poker Face | ♥ | Common | 2 | Gain 15 Block. |
-| Shuffle Up | ♦ | Common | 1 | Gain 3 Block. Draw 2. |
-| Deal In | ♦ | Common | 0 | Draw 1. |
-| Card Trick | ♣ | Common | 1 | Apply 1 Weak and 1 Vulnerable. |
-| Sleight of Hand | ♦ | Common | 1 (0) | A card in your hand becomes an Ace. |
-| Double Down | ♠ | Uncommon | 1 | Deal 7 damage. Laid on the Table twice. |
-| Fold | ♥ | Uncommon | 0 | Clear the Table. 4 Block per card cleared. |
-| Call | ♣ | Uncommon | 1 | Apply 1 Weak. Showdown now. |
-| Cold Deck | ♣ | Uncommon | 1 (0) | Choose a card; your whole hand gets its rank. |
-| Stack the Deck | ♦ | Uncommon | 1 | The next 2 cards count as Diamonds. |
-| Shared Pot | ♦ | Uncommon | 1 | Co-op only. ALL players draw 1. |
-| All In | ♠ | Rare | 2 | 6 damage to ALL enemies per card on the Table. |
-| Card Shark | ♦ | Rare | 2 (1) | Power. Showdowns happen at 4 cards. |
+4 basic, 20 common, 36 uncommon, 26 rare, plus the **Joker** token (wild: counts as any rank and suit).
 
-The hand evaluator is unit-tested in `tests/PokerTests`.
+- **Showdown engines:** powers that trigger on every Showdown (Lucky Streak, Croupier, Poker Night, Card Counter,
+  Bankroll, Showman, Jokers Wild) or make it stronger (High Stakes, High Roller, House Edge, Card Shark).
+- **Rank play:** cards that use their own rank (Hole Card, Lowball, Royal Guard, Court Card), change ranks
+  (Sleight of Hand, Cold Deck, Pair Up, Next in Line, Marked Aces, Reshuffle, Raise the Stakes, Lady Luck,
+  Loaded Deck) or read the whole Table (Royal Flush, High Society, Blackjack, Re-raise).
+- **Suits:** Stack the Deck and Flush Out force flushes; Pit Boss rewards Spades, Diamond Mine rewards Diamonds.
+- **Timing:** Call, Double or Nothing, Jackpot and Final Hand Showdown on demand; Fold and Cash Out clear the Table.
+
+**Full card list:** [docs/cards-cardsharp.md](../docs/cards-cardsharp.md). The hand evaluator (including Jokers)
+is unit-tested in `tests/PokerTests`.

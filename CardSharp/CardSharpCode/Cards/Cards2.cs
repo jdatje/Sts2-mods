@@ -352,7 +352,7 @@ public sealed class PokerChips : CardSharpCard
     public override Suit Suit => Suit.Hearts;
     public PokerChips() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithBlock(5, 3); WithKeywords(CardKeyword.Retain);
+        WithBlock(6, 3); WithKeywords(CardKeyword.Retain);
     }
     protected override async Task Effect(PlayerChoiceContext ctx, CardPlay play) => await Guard(play);
 }
@@ -435,7 +435,7 @@ public sealed class AceUpTheSleeve : CardSharpCard
 public sealed class SuckerBet : CardSharpCard
 {
     public override Suit Suit => Suit.Spades;
-    public SuckerBet() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy) { WithDamage(13, 4); WithVar("HpLoss", 2); }
+    public SuckerBet() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy) { WithDamage(15, 5); WithVar("HpLoss", 2); }
     protected override async Task Effect(PlayerChoiceContext ctx, CardPlay play) { await Hit(ctx, play); await LoseHp(ctx, V("HpLoss")); }
 }
 

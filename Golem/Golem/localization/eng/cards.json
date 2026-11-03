@@ -104,7 +104,7 @@
   "GOLEM-RUMBLE.title": "Rumble",
   "GOLEM-RUMBLE.description": "Deal {Damage:diff()} damage {Repeat:diff()} times.\nGain {Block:diff()} [gold]Block[/gold].",
   "GOLEM-UPHEAVAL.title": "Upheaval",
-  "GOLEM-UPHEAVAL.description": "Lose {HpLoss:diff()} HP.\nGain {Energy:energyIcons()}.",
+  "GOLEM-UPHEAVAL.description": "Lose {HpLoss:diff()} HP.\nGain {Energy:energyIcons()}.\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
   "GOLEM-MUDBATH.title": "Mudbath",
   "GOLEM-MUDBATH.description": "Heal {Heal:diff()} HP.",
   "GOLEM-SLAG.title": "Slag",

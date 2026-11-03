@@ -279,12 +279,13 @@ public sealed class Upheaval : GolemCard
 {
     public Upheaval() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        WithEnergy(2); WithVar("HpLoss", 4, -2); WithKeywords(CardKeyword.Exhaust);
+        WithEnergy(2); WithVar("HpLoss", 3, -1); WithCards(1); WithKeywords(CardKeyword.Exhaust);
     }
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay play)
     {
         await LoseHp(ctx, V("HpLoss"));
         await Energy(DynamicVars.Energy.BaseValue);
+        await DrawCards(ctx);
     }
 }
 
@@ -557,9 +558,9 @@ public sealed class StoneRain : GolemCard
 public sealed class SharedFoundations : GolemCard
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
-    public SharedFoundations() : base(2, CardType.Skill, CardRarity.Rare, TargetType.AllAllies)
+    public SharedFoundations() : base(1, CardType.Skill, CardRarity.Rare, TargetType.AllAllies)
     {
-        WithPower<PlatingPower>(2, 1); WithKeywords(CardKeyword.Exhaust);
+        WithPower<PlatingPower>(3, 1); WithKeywords(CardKeyword.Exhaust);
     }
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay play)
     {

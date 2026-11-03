@@ -8,9 +8,10 @@ Three character mods for Slay the Spire 2, built on [BaseLib](https://github.com
 | [CardSharp](CardSharp/README.md) | The Card Sharp | **Poker**: every card has a suit and a random rank; played cards go on the Table; at 5 cards a **Showdown** scores the poker hand and hits ALL enemies | 68 | Marked Deck |
 | [Bard](Bard/README.md) | The Bard | **Songs**: one Song at a time; every card adds a Verse; the Refrain helps ALL players each turn; the Finale scales with Verses | 70 | Worn Lute |
 
-Status: **v0.1, first playable versions** (~20 cards each, placeholder art). They compile against
-the game's reference assemblies (stable 0.107.1); they haven't been tested in the real game yet.
-See [TONIGHT.md](TONIGHT.md) for the first test session.
+Status: **v0.2, full card pools**: 86 cards per character (4 basic, 20 common, 36 uncommon, 26 rare), with
+placeholder art. v0.1 (about 20 cards each) was tested in game; the v0.2 cards compile against the game's reference
+assemblies (stable 0.107.1) but are new. Card lists: [Golem](docs/cards-golem.md) · [Card Sharp](docs/cards-cardsharp.md)
+· [Bard](docs/cards-bard.md). Balance report: [docs/BALANCE.md](docs/BALANCE.md).
 
 ## Installing (players)
 
@@ -52,6 +53,8 @@ Directory.Build.props   shared MSBuild settings (imports local.props)
 local.props.example     machine-specific paths (copy to local.props, gitignored)
 Golem/ CardSharp/ Bard/ one Godot + C# project per mod (from Alchyr's ModTemplate-StS2)
 tests/PokerTests        unit tests for the Showdown hand evaluator
-tools/                  build-all.sh, fetch-stubs.sh, placeholder_art.py
+tools/                  build-all.sh, fetch-stubs.sh, placeholder_art.py,
+                        card_list.py (docs/cards-*.md), balance_report.py (docs/BALANCE.md), count_cards.py
+docs/                   generated card lists and balance report
 .github/workflows/      CI build
 ```

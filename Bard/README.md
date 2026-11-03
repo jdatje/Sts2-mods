@@ -15,26 +15,30 @@ A minstrel and co-op support character.
 | Jig | Common | Draw 1 card | 1 Energy per 5 Verses |
 | Ballad of Valor | Uncommon | ALL players gain 2 Vigor | ALL players gain 2 Block per Verse |
 | Lullaby | Uncommon | 1 Weak to ALL enemies | 1 Vulnerable to ALL enemies per 3 Verses |
+| War Drums | Uncommon | 1 Vulnerable to ALL enemies | ALL players gain 1 Strength per 5 Verses |
+| Sea Shanty | Uncommon | ALL players heal 1 HP | ALL players heal 1 HP per 2 Verses |
+| Dirge | Uncommon | ALL enemies lose 2 HP | 2 Doom per Verse to ALL enemies |
 | Requiem | Rare (2) | 3 damage to ALL enemies | 4 damage to ALL enemies per Verse |
+| Ode to Joy | Rare (2) | ALL players draw 1 card | ALL players gain 1 Energy per 5 Verses |
+| Anthem | Rare (2) | ALL players gain 1 Plating | ALL players gain 1 Dexterity per 5 Verses |
+| Siren Song | Rare (2) | 2 Weak to ALL enemies | 3 damage to ALL enemies per Verse |
 
 Starter: 4 Strike, 4 Defend, Battle Hymn, Hum. Relic **Worn Lute**: your first Song each combat starts with
 3 extra Verses. HP 70.
 
-## Other cards (v0.1)
+## Version 0.2: full card pool, 86 cards
 
-| Card | Rarity | Cost | Text |
-|---|---|---|---|
-| Hum | Basic | 1 | Gain 4 Block. +1 extra Verse. |
-| Power Chord | Common | 1 | Deal 7 damage. +1 extra Verse. |
-| Drumbeat | Common | 1 | Deal 5 damage twice. |
-| Falsetto | Common | 2 | Deal 18 damage. |
-| Harmony | Common | 1 | ALL players gain 5 Block. |
-| Cadence | Common | 1 | Gain 7 Block. +1 extra Verse. |
-| Tune Up | Common | 0 | Draw 1. +1 extra Verse. |
-| Discord | Common | 1 | Apply 2 Weak. |
-| Crescendo | Uncommon | 1 | Add 4 Verses. |
-| Encore | Uncommon | 1 (0) | Your Song's Refrain triggers now. |
-| Grand Finale | Uncommon | 1 (0) | End your Song; its Finale triggers twice. Exhaust. |
-| Metronome | Uncommon | 1 (0) | Power. Start of turn: +1 Verse. |
-| Duet | Uncommon | 1 | Co-op only. Give another player 8 Block; gain 4. |
-| Standing Ovation | Rare | 2 | ALL players gain 3 Block per Verse. Exhaust. |
+4 basic, 20 common, 36 uncommon, 26 rare.
+
+- **Verse builders and payoffs:** extra-Verse cards (Bass Line, Second Verse, Vocal Warm-Up, Mezzo Forte,
+  Magnum Opus) and cards that scale with Verses (Ditty, Verse Strike, Ballad Shield, High Note, Showstopper,
+  Fortissimo, Harmonic Shield, Coda).
+- **Song engine powers:** Improvise and Grand Stage (on Song start), Stage Presence and Bardic Inspiration
+  (on Finale), Virtuoso (Refrains twice), Maestro (Finales twice), Legendary Ballad (more Verses),
+  Perfect Pitch, Tempo, Muse.
+- **Finale control:** Medley and Curtain Call trigger a Finale without ending the Song; Grand Finale and
+  Swan Song end it for 2 or 3 Finales.
+- **Party support:** healing (Soothing Melody, Lifesong, Sea Shanty), party Block and Vigor, and co-op-only
+  cards (Duet, Inspire, Grand Duet, Accompaniment).
+
+**Full card list:** [docs/cards-bard.md](../docs/cards-bard.md).
