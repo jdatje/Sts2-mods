@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
+using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace CardSharp.CardSharpCode.Table;
@@ -44,6 +45,29 @@ public sealed class TablePower : CardSharpPower
             hand.StringValue = Cards.Count == 0 ? "" : $" ({HandName(Poker.Evaluate(Cards))} so far)";
         InvokeDisplayAmountChanged();
         TableOverlay.Refresh(Owner);
+    }
+
+    /// <summary>The Table never carries over between fights.</summary>
+    public override Task AfterCombatEnd(CombatRoom room)
+    {
+        Reset();
+        TableOverlay.Hide(Owner);
+        return Task.CompletedTask;
+    }
+
+    public override Task BeforeCombatStart()
+    {
+        Reset();
+        return Task.CompletedTask;
+    }
+
+    private void Reset()
+    {
+        Cards.Clear();
+        SuitOverrideCount = 0;
+        if (DynamicVars.TryGetValue("TableCards", out var c) && c is StringVar cards) cards.StringValue = "nothing yet";
+        if (DynamicVars.TryGetValue("TableHand", out var h) && h is StringVar hand) hand.StringValue = "";
+        InvokeDisplayAmountChanged();
     }
 
     public static string Label(TableCard c) => c.Wild ? "Joker" : $"{ShortRank(c.Rank)} {c.Suit}";

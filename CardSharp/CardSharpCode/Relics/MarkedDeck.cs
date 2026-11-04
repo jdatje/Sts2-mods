@@ -29,6 +29,7 @@ public sealed class MarkedDeck : CardSharpRelic
 
     public override Task AfterCombatEnd(CombatRoom room)
     {
+        TableCmd.Clear(Owner.Creature);
         TableOverlay.Hide(Owner.Creature);
         return Task.CompletedTask;
     }
@@ -36,6 +37,7 @@ public sealed class MarkedDeck : CardSharpRelic
     public override Task BeforeCombatStart()
     {
         _usedThisCombat = false;
+        TableCmd.Clear(Owner.Creature);
         return Task.CompletedTask;
     }
 
