@@ -61,6 +61,9 @@ jobs:
           dotnet publish /tmp/uploader/ModUploader.csproj -c Release -r win-x64 --self-contained true -o /tmp/kit/ModUploader
           rm -f /tmp/kit/ModUploader/*.pdb
           cp -r workshop/Golem workshop/CardSharp workshop/Bard /tmp/kit/
+          for M in Golem CardSharp Bard; do
+            printf '@echo off\r\nrem Steam must be running and logged in.\r\ncd /d "%%~dp0"\r\nModUploader\\ModUploader.exe upload -w %s\r\npause\r\n' "$M" > /tmp/kit/upload-$M.bat
+          done
           cat > /tmp/kit/upload-all.bat <<'BAT'
           @echo off
           rem Steam must be running and logged in. Uploads/updates all three mods.

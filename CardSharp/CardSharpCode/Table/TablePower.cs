@@ -43,6 +43,7 @@ public sealed class TablePower : CardSharpPower
         if (DynamicVars.TryGetValue("TableHand", out var h) && h is StringVar hand)
             hand.StringValue = Cards.Count == 0 ? "" : $" ({HandName(Poker.Evaluate(Cards))} so far)";
         InvokeDisplayAmountChanged();
+        TableOverlay.Refresh(Owner);
     }
 
     public static string Label(TableCard c) => c.Wild ? "Joker" : $"{ShortRank(c.Rank)} {c.Suit}";
@@ -151,6 +152,7 @@ public static class TableCmd
         if (table == null || table.Cards.Count == 0) return null;
 
         var cards = table.Cards.ToList();
+        TableOverlay.Freeze(owner, cards);
         table.Cards.Clear();
         table.Changed();
 
@@ -160,6 +162,7 @@ public static class TableCmd
         var marked = player.Relics.OfType<MarkedDeck>().FirstOrDefault();
         if (marked != null && marked.TryUse()) tiers++;
         hand = Poker.TiersHigher(hand, tiers);
+        TableOverlay.ShowdownFlash(owner, cards, hand);
 
         TalkCmd.Play(new LocString("powers", "CARDSHARP-SHOWDOWN." + hand), owner, VfxColor.Gold, VfxDuration.Short);
 

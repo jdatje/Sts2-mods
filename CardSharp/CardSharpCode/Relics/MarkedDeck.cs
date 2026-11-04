@@ -1,4 +1,7 @@
+using CardSharp.CardSharpCode.Table;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace CardSharp.CardSharpCode.Relics;
 
@@ -8,6 +11,13 @@ public sealed class MarkedDeck : CardSharpRelic
     private bool _usedThisCombat;
 
     public override RelicRarity Rarity => RelicRarity.Starter;
+
+    /// <summary>Shows the (empty) Table panel from the first turn on, and keeps it placed above her.</summary>
+    public override Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
+    {
+        if (player == Owner) TableOverlay.Refresh(Owner.Creature);
+        return Task.CompletedTask;
+    }
 
     public override Task BeforeCombatStart()
     {
