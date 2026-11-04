@@ -478,7 +478,11 @@ public sealed class ChipIn : CardSharpCard
 //  RARE — powers
 // =====================================================================
 
-public sealed class CardCounter() : SharpPowerCard<CardCounterPower>(Suit.Diamonds, 2, CardRarity.Rare, 1, 0, -1);
+public sealed class CardCounter : SharpPowerCard<CardCounterPower>
+{
+    // Energy var only for the card text: energyIcons() needs an energy var, not a power var.
+    public CardCounter() : base(Suit.Diamonds, 2, CardRarity.Rare, 1, 0, -1) => WithEnergy(1);
+}
 public sealed class HouseEdge() : SharpPowerCard<HouseEdgePower>(Suit.Spades, 3, CardRarity.Rare, 1, 0, -1);
 public sealed class LadyLuck() : SharpPowerCard<LadyLuckPower>(Suit.Hearts, 2, CardRarity.Rare, 1, 0, -1);
 public sealed class HighRoller() : SharpPowerCard<HighStakesPower>(Suit.Spades, 3, CardRarity.Rare, 100, 0, -1);

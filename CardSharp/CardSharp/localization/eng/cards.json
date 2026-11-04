@@ -126,7 +126,7 @@
   "CARDSHARP-CHIP_IN.title": "Chip In",
   "CARDSHARP-CHIP_IN.description": "[gold]{RankLine}[/gold]\nALL players gain {Block:diff()} [gold]Block[/gold].",
   "CARDSHARP-CARD_COUNTER.title": "Card Counter",
-  "CARDSHARP-CARD_COUNTER.description": "[gold]{RankLine}[/gold]\nWhenever you [gold]Showdown[/gold], gain {CardCounterPower:energyIcons()}.",
+  "CARDSHARP-CARD_COUNTER.description": "[gold]{RankLine}[/gold]\nWhenever you [gold]Showdown[/gold], gain {Energy:energyIcons()}.",
   "CARDSHARP-HOUSE_EDGE.title": "House Edge",
   "CARDSHARP-HOUSE_EDGE.description": "[gold]{RankLine}[/gold]\nYour [gold]Showdown[/gold]s count as {HouseEdgePower:diff()} hand higher.",
   "CARDSHARP-LADY_LUCK.title": "Lady Luck",
