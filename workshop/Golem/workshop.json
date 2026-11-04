@@ -2,7 +2,7 @@
   "title": "The Golem (character)",
   "description": "[h2]The Golem: a new playable character[/h2]\nA hulking construct of river clay and mossy boulders. [b]Parts[/b] are power cards that slot into Head, Arms, Legs and Core; installing a new Part replaces the old one, and many cards scale with how many Parts you have.\n\nHP 80. Starting relic: Heart of Clay. 87 cards.\n\n[h3]Good to know[/h3]\n[list]\n[*]Changes gameplay: everyone in a multiplayer lobby needs the same version.\n[*]Requires BaseLib (subscribed automatically as a required item).\n[*]Personal fan project, not affiliated with Mega Crit.\n[/list]",
   "visibility": "friends_only",
-  "changeNote": "v0.3.0: full card pool, own frame colour, art for every card, icon and relic.",
+  "changeNote": "v0.3.1: character art shown in the shop.",
   "tags": [],
   "dependencies": [
     3737335127

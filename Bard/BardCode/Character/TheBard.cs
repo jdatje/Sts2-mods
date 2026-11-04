@@ -62,4 +62,5 @@ public class TheBard : PlaceholderCharacterModel
 
     // Character select backdrop (full screen, like the base characters).
     public override string CustomCharacterSelectBg => MainFile.ResPath + "/scenes/char_select_bg_bard.tscn";
+    public override string CustomMerchantAnimPath => MainFile.ResPath + "/scenes/merchant_bard.tscn";
 }

@@ -3,7 +3,7 @@
   "name": "The Golem",
   "author": "Jeroen & Gregor",
   "description": "A new character: a rusty, muddy boulder construct that builds its body from Parts (Head, Arms, Legs, Core). Co-op friendly.",
-  "version": "v0.3.0",
+  "version": "v0.3.1",
   "min_game_version": "0.107.0",
   "has_pck": true,
   "has_dll": true,
