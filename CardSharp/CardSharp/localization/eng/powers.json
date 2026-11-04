@@ -1,7 +1,7 @@
 {
   "CARDSHARP-TABLE_POWER.title": "Table",
   "CARDSHARP-TABLE_POWER.description": "Cards you play are laid here. At 5 cards: [gold]Showdown[/gold].",
-  "CARDSHARP-TABLE_POWER.smartDescription": "On the Table: [gold]{TableCards}[/gold]{TableHand}.",
+  "CARDSHARP-TABLE_POWER.smartDescription": "On the Table: [gold]{TableCards}[/gold]{TableHand}.\n\n[gold]Showdown[/gold] damage to ALL enemies:\nHigh card: 5\nPair: 9\nTwo pair: 9 + 8 Block\nThree of a kind: 16\nStraight: 12 + draw 2\nFlush: 14 + suit bonus\nFull house: 22 + 12 Block\nFour of a kind: 32\nStraight flush: 45 + 2 Energy\n\nFlush bonus: Spades +6 damage, Hearts +10 Block, Diamonds draw 2, Clubs 2 Weak.",
   "CARDSHARP-CARD_SHARK_POWER.title": "Card Shark",
   "CARDSHARP-CARD_SHARK_POWER.description": "[gold]Showdowns[/gold] happen at 4 cards instead of 5.",
   "CARDSHARP-CARD_SHARK_POWER.smartDescription": "[gold]Showdowns[/gold] happen at 4 cards instead of 5.",
