@@ -2,7 +2,7 @@
   "title": "The Card Sharp (character)",
   "description": "[h2]The Card Sharp: a new playable character[/h2]\nA sly gambler who plays poker with her own deck. Every card has a [b]rank and suit[/b]; cards you play are laid on the [b]Table[/b], and at five cards a [b]Showdown[/b] deals damage based on the best poker hand.\n\nHP 68. Starting relic: Marked Deck. 87 cards.\n\n[h3]Good to know[/h3]\n[list]\n[*]Changes gameplay: everyone in a multiplayer lobby needs the same version.\n[*]Requires BaseLib (subscribed automatically as a required item).\n[*]Personal fan project, not affiliated with Mega Crit.\n[/list]",
   "visibility": "friends_only",
-  "changeNote": "v0.3.2: fix suit icons overflowing the Table overlay cards.",
+  "changeNote": "v0.3.2: Table overlay fixes (suit icon size, panel now clears after combat).",
   "tags": [],
   "dependencies": [
     3737335127

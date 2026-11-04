@@ -55,8 +55,18 @@ public static class TableOverlay
         root.GetTree().CreateTimer(1.1).Timeout += () =>
         {
             Frozen.Remove(owner);
-            if (GodotObject.IsInstanceValid(root)) Refresh(owner);
+            if (GodotObject.IsInstanceValid(root) && !root.IsQueuedForDeletion()) Refresh(owner);
         };
+    }
+
+    /// <summary>Remove the panel (end of combat).</summary>
+    public static void Hide(Creature owner)
+    {
+        Frozen.Remove(owner);
+        var creatureNode = owner.GetCreatureNode();
+        if (creatureNode == null || !GodotObject.IsInstanceValid(creatureNode)) return;
+        var root = creatureNode.GetNodeOrNull<Control>(NodeName);
+        root?.QueueFree();
     }
 
     // ---------------------------------------------------------------- building

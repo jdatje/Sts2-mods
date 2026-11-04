@@ -2,6 +2,7 @@ using CardSharp.CardSharpCode.Table;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Rooms;
 
 namespace CardSharp.CardSharpCode.Relics;
 
@@ -16,6 +17,19 @@ public sealed class MarkedDeck : CardSharpRelic
     public override Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player == Owner) TableOverlay.Refresh(Owner.Creature);
+        return Task.CompletedTask;
+    }
+
+    /// <summary>Remove the Table panel as soon as the fight is won, so it doesn't linger on the map.</summary>
+    public override Task AfterCombatVictoryEarly(CombatRoom room)
+    {
+        TableOverlay.Hide(Owner.Creature);
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterCombatEnd(CombatRoom room)
+    {
+        TableOverlay.Hide(Owner.Creature);
         return Task.CompletedTask;
     }
 
