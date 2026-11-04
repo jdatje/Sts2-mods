@@ -147,7 +147,7 @@ public static class TableOverlay
 
     private static Control MiniCard(TableCard card, Vector2 pos, bool glow)
     {
-        var p = new Panel { Position = pos, Size = new Vector2(CardW, CardH), MouseFilter = Control.MouseFilterEnum.Ignore };
+        var p = new Panel { Position = pos, Size = new Vector2(CardW, CardH), MouseFilter = Control.MouseFilterEnum.Ignore, ClipContents = true };
         p.AddThemeStyleboxOverride("panel", Box(Cream, glow ? new Color("ffd75e") : Gold, glow ? 4 : 2));
 
         if (card.Wild)
@@ -175,15 +175,18 @@ public static class TableOverlay
     private static TextureRect Icon(string name, Vector2 pos, float size)
     {
         var tex = ResourceLoader.Load<Texture2D>($"{MainFile.ResPath}/images/ui/suit_{name}.png");
-        return new TextureRect
+        // ExpandMode must be set before Size, or Godot clamps Size to the 64px texture.
+        var icon = new TextureRect
         {
-            Texture = tex,
-            Position = pos,
-            Size = new Vector2(size, size),
             ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
             StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
             MouseFilter = Control.MouseFilterEnum.Ignore,
+            Texture = tex,
         };
+        icon.CustomMinimumSize = new Vector2(size, size);
+        icon.Position = pos;
+        icon.Size = new Vector2(size, size);
+        return icon;
     }
 
     private static StyleBoxFlat Box(Color bg, Color border, int width) => new()
