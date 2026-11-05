@@ -126,6 +126,7 @@ public sealed class FurnaceCore : GolemCard
     public FurnaceCore() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithPower<FurnaceCorePower>(1);
+        WithEnergy(1); // card text only: energyIcons() needs an energy var
         WithKeywords(GolemKeywords.Part);
         WithCostUpgradeBy(-1);
         WithEnergyTip();

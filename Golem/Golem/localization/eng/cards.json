@@ -38,7 +38,7 @@
   "GOLEM-LEND_A_HAND.title": "Lend a Hand",
   "GOLEM-LEND_A_HAND.description": "Give another player {Block:diff()} [gold]Block[/gold].",
   "GOLEM-FURNACE_CORE.title": "Furnace Core",
-  "GOLEM-FURNACE_CORE.description": "[gold]Core[/gold]: At the start of your turn, gain {FurnaceCorePower:energyIcons()}.",
+  "GOLEM-FURNACE_CORE.description": "[gold]Core[/gold]: At the start of your turn, gain {Energy:energyIcons()}.",
   "GOLEM-AVALANCHE.title": "Avalanche",
   "GOLEM-AVALANCHE.description": "Deal {Damage:diff()} damage to ALL enemies {Repeat:diff()} times.",
   "GOLEM-RUBBLE.title": "Rubble",

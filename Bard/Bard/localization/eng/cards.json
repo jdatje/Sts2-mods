@@ -72,7 +72,7 @@
   "BARD-DIRGE.title": "Dirge",
   "BARD-DIRGE.description": "Start [gold]Dirge[/gold] with {Verses:diff()} {Verses:plural:Verse|Verses}.\n[gold]Refrain[/gold]: ALL enemies lose 2 HP.\n[gold]Finale[/gold]: Apply 2 [gold]Doom[/gold] per Verse to ALL enemies.",
   "BARD-IMPROVISE.title": "Improvise",
-  "BARD-IMPROVISE.description": "Whenever you start a [gold]Song[/gold], gain {ImprovisePower:energyIcons()}.",
+  "BARD-IMPROVISE.description": "Whenever you start a [gold]Song[/gold], gain {Energy:energyIcons()}.",
   "BARD-STAGE_PRESENCE.title": "Stage Presence",
   "BARD-STAGE_PRESENCE.description": "Whenever a [gold]Finale[/gold] triggers, draw {StagePresencePower:diff()} cards.",
   "BARD-TEMPO.title": "Tempo",

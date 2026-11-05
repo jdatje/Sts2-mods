@@ -158,7 +158,11 @@ public sealed class Dirge : SongCard<DirgePower>
     public Dirge() : base(1, CardRarity.Uncommon) => Song(1, 2);
 }
 
-public sealed class Improvise() : BardPowerCard<ImprovisePower>(1, CardRarity.Uncommon, 1, 0, -1);
+public sealed class Improvise : BardPowerCard<ImprovisePower>
+{
+    // Energy var only for the card text: energyIcons() needs an energy var, not a power var.
+    public Improvise() : base(1, CardRarity.Uncommon, 1, 0, -1) => WithEnergy(1);
+}
 public sealed class StagePresence() : BardPowerCard<StagePresencePower>(1, CardRarity.Uncommon, 2, 1);
 public sealed class Tempo() : BardPowerCard<TempoPower>(1, CardRarity.Uncommon, 1, 1);
 public sealed class PerfectPitch() : BardPowerCard<PerfectPitchPower>(1, CardRarity.Uncommon, 2, 1);
