@@ -328,15 +328,32 @@ def background_alpha(im, bg=None, lo=48, hi=90):
 
 
 def remove_magenta(im):
-    """Cut the icon out of its flat background (whatever pink/magenta shade Gemini used) and trim."""
+    """Cut the icon out of its flat background (whatever pink/magenta shade Gemini used) and trim.
+
+    Only background-coloured areas connected to the image border (or interior pockets that are clearly the
+    background colour) are keyed out, so warm glows and reds inside the icon survive."""
+    import numpy as np
+    from scipy import ndimage
     rgb = im.convert("RGB")
     bg = background_colour(rgb)
-    alpha = background_alpha(rgb, bg)
-    # drop specks: anything that isn't solid after a small erode/dilate
-    alpha = alpha.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.MaxFilter(3))
+    arr = np.asarray(rgb).astype(int)
+    d = np.abs(arr - np.array(bg)).max(axis=2)
+    lo, hi = 48, 90
+    near = d < hi
+    labels, n = ndimage.label(near)
+    border = set(np.unique(np.concatenate([labels[0], labels[-1], labels[:, 0], labels[:, -1]]))) - {0}
+    bgmask = np.isin(labels, list(border)) if border else np.zeros_like(near)
+    if n:
+        means = ndimage.mean(d, labels, index=np.arange(1, n + 1))
+        sizes = ndimage.sum(near, labels, index=np.arange(1, n + 1))
+        pockets = [i + 1 for i, (m, sz) in enumerate(zip(means, sizes)) if m < lo * 0.6 and sz > 30]
+        if pockets: bgmask |= np.isin(labels, pockets)
+    ramp = np.clip((d - lo) * 255 // (hi - lo), 0, 255)
+    alpha = np.where(bgmask, ramp, 255).astype("uint8")
+    alpha_img = Image.fromarray(alpha, "L").filter(ImageFilter.MinFilter(3)).filter(ImageFilter.MaxFilter(3))
     out = rgb.convert("RGBA")
-    out.putalpha(alpha)
-    bbox = alpha.point(lambda v: 255 if v > 128 else 0).getbbox()
+    out.putalpha(alpha_img)
+    bbox = alpha_img.point(lambda v: 255 if v > 128 else 0).getbbox()
     return out.crop(bbox) if bbox else out
 
 
