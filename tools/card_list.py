@@ -42,7 +42,7 @@ def card_info(base, header_args, body):
         values = {}
         if base.startswith("SongCard"):
             sv = re.search(r"Song\((\d+),\s*(\d+)\)", body)
-            if sv: values["Verses"] = int(sv.group(1))
+            if sv: values["Verses"], values["Refrain"] = int(sv.group(1)), int(sv.group(2))
             return nums[0], "Power", rarity, values
         # PartCard / PowerCard / BardPowerCard: (cost, rarity, amount, ...); SharpPowerCard: (suit, cost, rarity, amount, ...)
         cost, amount = nums[0], nums[1] if len(nums) > 1 else 0

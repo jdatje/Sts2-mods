@@ -7,7 +7,7 @@
 | Card | Type | Cost | Text |
 |---|---|---|---|
 | Strike | Attack | 1 | Deal 6 damage. |
-| Battle Hymn | Power | 1 | Song. Start Battle Hymn with 1 Verse. Refrain: ALL players gain 3 Block. Finale: Deal 2 damage to ALL enemies per Verse. |
+| Battle Hymn | Power | 1 | Song. Start Battle Hymn with 1 Verse. Refrain: ALL players gain 3 Block (+1 per 5 Verses). Finale: Deal 2 damage to ALL enemies per Verse. |
 | Defend | Skill | 1 | Gain 5 Block. |
 | Hum | Skill | 1 | Gain 4 Block. Add 1 extra Verse. |
 
@@ -23,7 +23,7 @@
 | Strum | Attack | 1 | Deal 3 damage 3 times. Gain 2 Block. |
 | Bass Line | Attack | 2 | Deal 14 damage. Add 2 extra Verses. |
 | Falsetto | Attack | 2 | Deal 18 damage. |
-| Jig | Power | 1 | Song. Start Jig with 1 Verse. Refrain: Draw 1 card. Finale: Gain 1 Energy per 5 Verses. |
+| Jig | Power | 1 | Song. Start Jig with 1 Verse. Refrain: Draw 1 card (+1 at 10 Verses). Finale: Gain 1 Energy per 5 Verses. |
 | Quick Step | Skill | 0 | Gain 3 Block. Draw 1 card. |
 | Tune Up | Skill | 0 | Draw 1 card. Add 1 extra Verse. |
 | Busking | Skill | 1 | Gain 6 Block. If a Song is playing, gain 4 more. |
@@ -36,7 +36,7 @@
 | Taunting Tune | Skill | 1 | Apply 2 Vulnerable. Add 1 extra Verse. |
 | Warm-Up | Skill | 1 | If no Song is playing, start Battle Hymn with 3 Verses. Otherwise, add 3 Verses. |
 
-## Uncommon (36)
+## Uncommon (35)
 
 | Card | Type | Cost | Text |
 |---|---|---|---|
@@ -48,16 +48,15 @@
 | Verse Strike | Attack | 1 | Deal damage equal to your Verses plus 3. |
 | High Note | Attack | 2 | Deal 16 damage. If you have 10 or more Verses, deal 10 more. |
 | Accompaniment | Power | 1 | Whenever another player plays an Attack, add 1 Verse. *Co-op only.* |
-| Ballad of Valor | Power | 1 | Song. Start Ballad of Valor with 1 Verse. Refrain: ALL players gain 2 Vigor. Finale: ALL players gain 2 Block per Verse. |
-| Dirge | Power | 1 | Song. Start Dirge with 1 Verse. Refrain: ALL enemies lose 2 HP. Finale: Apply 2 Doom per Verse to ALL enemies. |
+| Ballad of Valor | Power | 1 | Song. Start Ballad of Valor with 1 Verse. Refrain: ALL players gain 2 Vigor (+1 per 5 Verses). Finale: ALL players gain 2 Block per Verse. |
+| Dirge | Power | 1 | Song. Start Dirge with 1 Verse. Refrain: ALL enemies lose 2 HP (+1 per 5 Verses). Finale: Apply 2 Doom per Verse to ALL enemies. |
 | Improvise | Power | 1 | Whenever you start a Song, gain 1 Energy. |
-| Lullaby | Power | 1 | Song. Start Lullaby with 1 Verse. Refrain: Apply 1 Weak to ALL enemies. Finale: Apply 1 Vulnerable to ALL enemies per 3 Verses. |
+| Lullaby | Power | 1 | Song. Start Lullaby with 1 Verse. Refrain: Apply 1 Weak to ALL enemies (+1 at 10 Verses). Finale: Apply 1 Vulnerable to ALL enemies per 3 Verses. |
 | Metronome | Power | 1 | At the start of your turn, add 1 Verse. |
 | Perfect Pitch | Power | 1 | Your Songs start with 2 extra Verses. |
-| Sea Shanty | Power | 1 | Song. Start Sea Shanty with 1 Verse. Refrain: ALL players heal 1 HP. Finale: ALL players heal 1 HP per 2 Verses. |
+| Sea Shanty | Power | 1 | Song. Start Sea Shanty with 1 Verse. Refrain: ALL players gain 2 Block (+1 per 5 Verses). Finale: ALL players heal 1 HP per 3 Verses. |
 | Stage Presence | Power | 1 | Whenever a Finale triggers, draw 2 cards. |
 | Tempo | Power | 1 | At the start of your turn, gain 1 Block for every 2 Verses. |
-| War Drums | Power | 1 | Song. Start War Drums with 1 Verse. Refrain: Apply 1 Vulnerable to ALL enemies. Finale: ALL players gain 1 Strength per 5 Verses. |
 | Rest Note | Skill | 0 | Gain 6 Block. *Retain.* |
 | Vocal Warm-Up | Skill | 0 | Add 3 Verses. *Exhaust.* |
 | Ballad Shield | Skill | 1 | Gain Block equal to your Verses plus 3. |
@@ -67,7 +66,7 @@
 | Diminuendo | Skill | 1 | Gain 2 Block per Verse, then your Song drops to 1 Verse. |
 | Duet | Skill | 1 | Give another player 8 Block. Gain 4 Block. *Co-op only.* |
 | Encore | Skill | 1 | Your Song's Refrain triggers now. |
-| Grand Finale | Skill | 1 | End your Song. Its Finale triggers twice. *Exhaust.* |
+| Final Bow | Skill | 1 | End your Song. Its Finale triggers twice. *Exhaust.* |
 | Inspire | Skill | 1 | Another player gains 3 Vigor and 5 Block. *Co-op only.* |
 | Off-Beat | Skill | 1 | Apply 2 Weak to ALL enemies. |
 | Rousing Speech | Skill | 1 | Draw 2 cards. Add 1 extra Verse. |
@@ -77,7 +76,7 @@
 | Medley | Skill | 2 | Your Song's Finale triggers now, without ending the Song. *Exhaust.* |
 | Serenade | Skill | 2 | Gain 15 Block. Add 2 extra Verses. |
 
-## Rare (26)
+## Rare (27)
 
 | Card | Type | Cost | Text |
 |---|---|---|---|
@@ -89,12 +88,13 @@
 | Grand Stage | Power | 1 | Whenever you start a Song, gain 8 Block. |
 | Legendary Ballad | Power | 1 | Your Songs can have 10 more Verses. |
 | Muse | Power | 1 | At the start of your turn, draw 1 card for every 5 Verses. |
-| Anthem | Power | 2 | Song. Start Anthem with 1 Verse. Refrain: ALL players gain 1 Plating. Finale: ALL players gain 1 Dexterity per 5 Verses. |
+| Anthem | Power | 2 | Song. Start Anthem with 1 Verse. Refrain: ALL players gain 1 Plating (+1 at 10 Verses). Finale: ALL players gain 1 Dexterity per 5 Verses. |
 | Bardic Inspiration | Power | 2 | Whenever a Finale triggers, ALL players gain 1 Strength. |
-| Maestro | Power | 2 | Your Finales trigger 1 extra time. |
-| Ode to Joy | Power | 2 | Song. Start Ode to Joy with 1 Verse. Refrain: ALL players draw 1 card. Finale: ALL players gain 1 Energy per 5 Verses. |
-| Requiem | Power | 2 | Song. Start Requiem with 1 Verse. Refrain: Deal 3 damage to ALL enemies. Finale: Deal 4 damage to ALL enemies per Verse. |
-| Siren Song | Power | 2 | Song. Start Siren Song with 1 Verse. Refrain: Apply 2 Weak to ALL enemies. Finale: Deal 3 damage per Verse to ALL enemies. |
+| Ode to Joy | Power | 2 | Song. Start Ode to Joy with 1 Verse. Refrain: ALL players draw 1 card (+1 at 10 Verses). Finale: ALL players gain 1 Energy per 5 Verses. |
+| Requiem | Power | 2 | Song. Start Requiem with 1 Verse. Refrain: Deal 2 damage to ALL enemies (+1 per 5 Verses). Finale: Deal 3 damage to ALL enemies per Verse. |
+| Siren Song | Power | 2 | Song. Start Siren Song with 1 Verse. Refrain: Apply 2 Weak to ALL enemies (+1 at 10 Verses). Finale: Deal 3 damage per Verse to ALL enemies. |
+| War Drums | Power | 2 | Song. Start War Drums with 1 Verse. Refrain: Apply 1 Vulnerable to ALL enemies (+1 at 10 Verses). Finale: ALL players gain 1 Strength per 5 Verses. |
+| Maestro | Power | 3 | Your Finales trigger 1 extra time. |
 | Virtuoso | Power | 3 | Your Refrains trigger 1 extra time. |
 | Coda | Skill | 0 | If your Song has 10 or more Verses, gain 2 Energy and draw 2 cards. |
 | Battle Cry | Skill | 1 | ALL players gain 2 Strength. *Exhaust.* |
@@ -102,8 +102,8 @@
 | Grand Duet | Skill | 1 | Another player gains 1 Energy and draws 2 cards. *Co-op only, Exhaust.* |
 | Mezzo Forte | Skill | 1 | Double your Song's Verses. *Exhaust.* |
 | Opening Act | Skill | 1 | Start Battle Hymn with 5 Verses. *Exhaust, Innate.* |
-| Swan Song | Skill | 1 | End your Song. Its Finale triggers 3 times. *Exhaust.* |
 | Harmonic Shield | Skill | 2 | ALL players gain Block equal to your Verses plus 4. |
 | Lifesong | Skill | 2 | ALL players heal 6 HP. *Exhaust.* |
 | Magnum Opus | Skill | 2 | Your Song reaches its maximum Verses. *Exhaust.* |
 | Standing Ovation | Skill | 2 | ALL players gain 3 Block for each Verse in your Song. *Exhaust.* |
+| Swan Song | Skill | 3 | End your Song. Its Finale triggers 3 times. *Exhaust.* |

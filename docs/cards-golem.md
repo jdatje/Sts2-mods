@@ -8,7 +8,7 @@
 |---|---|---|---|
 | Strike | Attack | 1 | Deal 6 damage. |
 | Slam | Attack | 2 | Deal 10 damage. Gain 5 Block. |
-| Clay Arms | Power | 1 | Part. Arms: Your Attacks deal 2 additional damage. |
+| Clay Arms | Power | 1 | Part. Arms: Your Attacks deal 1 additional damage. |
 | Defend | Skill | 1 | Gain 5 Block. |
 
 ## Common (20)
@@ -50,18 +50,18 @@
 | Seismic Slam | Attack | 2 | Deal 16 damage. Apply 1 Vulnerable. |
 | Earthquake | Attack | 3 | Deal 16 damage to ALL enemies. Apply 1 Weak to ALL enemies. |
 | Assembly Line | Power | 1 | Whenever you install a Part, draw 1 card. |
-| Boulder Fists | Power | 1 | Part. Arms: Whenever you play an Attack, gain 4 Block. |
+| Boulder Fists | Power | 1 | Part. Arms: Whenever you play an Attack, gain 3 Block. |
 | Iron Hooks | Power | 1 | Part. Arms: Your first Attack each turn applies 1 Vulnerable. |
 | Lantern Eye | Power | 1 | Part. Head: Draw 1 additional card each turn. |
 | Magma Core | Power | 1 | Part. Core: Your Attacks deal 3 additional damage. At the end of your turn, lose 1 HP. |
 | Mossy Crown | Power | 1 | Part. Head: At the start of your turn, gain 3 Block. |
 | Mud Core | Power | 1 | Part. Core: Block you gain from cards is increased by 2. |
 | Rock Solid | Power | 1 | Whenever you install a Part, gain 5 Block. |
-| Rooted Legs | Power | 1 | Part. Legs: At the end of your turn, gain 4 Block. |
-| Spiked Knuckles | Power | 1 | Part. Arms: Whenever you play an Attack, deal 2 damage to ALL enemies. |
-| Spring Legs | Power | 1 | Part. Legs: Whenever you play a Skill, gain 2 Block. |
+| Rooted Legs | Power | 1 | Part. Legs: At the end of your turn, gain 3 Block. |
+| Spiked Knuckles | Power | 1 | Part. Arms: Whenever you play an Attack, deal 1 damage to ALL enemies. |
+| Spring Legs | Power | 1 | Part. Legs: Whenever you play a Skill, gain 1 Block. |
 | Stone Heart | Power | 1 | Part. Core: At the end of your turn, gain 1 Plating. |
-| Stomping Legs | Power | 2 | Part. Legs: At the end of your turn, deal 4 damage to ALL enemies. |
+| Stomping Legs | Power | 2 | Part. Legs: At the end of your turn, deal 3 damage to ALL enemies. |
 | Collapse | Skill | 0 | Remove all your Parts. Gain 7 Block for each Part removed. *Exhaust.* |
 | Upheaval | Skill | 0 | Lose 3 HP. Gain 2 Energy. Draw 1 card. *Exhaust.* |
 | Brace | Skill | 1 | Gain 5 Block. Next turn, gain 5 Block. |
@@ -72,7 +72,7 @@
 | Mudbath | Skill | 1 | Heal 5 HP. *Exhaust.* |
 | Overhaul | Skill | 1 | Remove all your Parts. Draw 2 cards for each Part removed. *Exhaust.* |
 | Petrify | Skill | 1 | Apply 2 Weak. Gain 4 Block. |
-| Rebuild | Skill | 1 | Gain 6 Block. If your Arms slot is empty, install Clay Arms. |
+| Rebuild | Skill | 1 | Gain 6 Block. If you have an empty Arms slot, install Clay Arms. |
 | Tremor | Skill | 1 | Apply 1 Weak and 1 Vulnerable to ALL enemies. |
 | Earthen Embrace | Skill | 2 | Gain 18 Block. |
 | Stone Shelter | Skill | 2 | ALL players gain 10 Block. *Co-op only.* |
@@ -88,13 +88,13 @@
 | Avalanche | Attack | 3 | Deal 8 damage to ALL enemies 3 times. |
 | Colossus Slam | Attack | 3 | Deal 24 damage, plus 6 for each Part you have. |
 | Mountainfall | Attack | 3 | Deal 24 damage to ALL enemies. *Exhaust.* |
-| Self-Repair | Power | 1 | At the end of your turn, heal 2 HP. |
+| Self-Repair | Power | 1 | At the end of combat, heal 7 HP. |
 | Thinking Stone | Power | 1 | Part. Head: Whenever you play a Power, draw 2 cards. |
-| Crystal Skull | Power | 2 | Part. Head: Draw 2 additional cards each turn. |
-| Hammer Arms | Power | 2 | Part. Arms: Your Attacks deal 6 additional damage. |
-| Iron Treads | Power | 2 | Part. Legs: At the end of your turn, gain 3 Block for each Part you have. |
+| Hammer Arms | Power | 2 | Part. Arms: Your Attacks deal 4 additional damage. |
+| Iron Treads | Power | 2 | Part. Legs: At the end of your turn, gain 2 Block for each Part you have, 2 less each turn. |
 | Perfect Form | Power | 2 | Whenever you install a Part, gain 1 Strength and 1 Dexterity. |
 | Volcanic Core | Power | 2 | Part. Core: Whenever you play an Attack, deal 3 damage to ALL enemies. |
+| Crystal Skull | Power | 3 | Part. Head: Draw 2 additional cards each turn. |
 | Furnace Core | Power | 3 | Part. Core: At the start of your turn, gain 1 Energy. |
 | Geode Core | Power | 3 | Part. Core: At the start of your turn, gain 1 Strength. |
 | Living Fortress | Power | 3 | At the end of your turn, gain 1 Plating for each Part you have. |

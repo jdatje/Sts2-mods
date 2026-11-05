@@ -53,8 +53,8 @@
 | Lucky Streak | Power | 1 | Diamonds | Whenever you Showdown, draw 2 cards. |
 | Poker Night | Power | 1 | Clubs | Whenever you Showdown, apply 1 Weak and Vulnerable to ALL enemies. |
 | Side Pot | Power | 1 | Diamonds | At the start of your turn, if the Table is empty, draw 2 cards. |
-| High Stakes | Power | 2 | Spades | Showdowns deal 50% more damage. |
-| Pit Boss | Power | 2 | Spades | Whenever you play a Spade, deal 3 damage to ALL enemies. |
+| High Stakes | Power | 2 | Spades | Showdowns deal 50% more damage. Doesn't stack with High Roller. |
+| Pit Boss | Power | 2 | Spades | Whenever you play a Spade, deal 2 damage to ALL enemies. |
 | Ace Up the Sleeve | Skill | 0 | Diamonds | Draw 1 card. It becomes an Ace. |
 | Fold | Skill | 0 | Hearts | Clear the Table. Gain 4 Block for each card cleared. |
 | Poker Chips | Skill | 0 | Hearts | Gain 6 Block. *Retain.* |
@@ -63,7 +63,7 @@
 | Call | Skill | 1 | Clubs | Apply 1 Weak. Showdown now. |
 | Cash Out | Skill | 1 | Diamonds | Clear the Table. Draw 1 card for each card cleared. |
 | Chip In | Skill | 1 | Hearts | ALL players gain 5 Block. *Co-op only.* |
-| Cold Deck | Skill | 1 | Clubs | Choose a card in your Hand. All cards in your Hand get its rank. |
+| Cold Deck | Skill | 1 | Clubs | Choose a card in your Hand. 2 random other cards in your Hand get its rank. |
 | Double or Nothing | Skill | 1 | Diamonds | Showdown now. If it was a Pair or better, gain 2 Energy. |
 | Flush Out | Skill | 1 | Clubs | The next 3 cards you play count as the suit of the last card on the Table. |
 | Kitty | Skill | 1 | Diamonds | Another player draws 2 cards. *Co-op only.* |
@@ -92,11 +92,11 @@
 | Bankroll | Power | 1 | Hearts | Whenever you Showdown, gain 2 Plating. |
 | Diamond Mine | Power | 1 | Diamonds | Whenever you play a Diamond, gain 3 Block. |
 | Card Counter | Power | 2 | Diamonds | Whenever you Showdown, gain 1 Energy. |
-| Card Shark | Power | 2 | Diamonds | Showdowns happen at 4 cards instead of 5. |
 | Jokers Wild | Power | 2 | Diamonds | Whenever you Showdown, add a Joker into your Hand. |
 | Lady Luck | Power | 2 | Hearts | At the start of your turn, 1 random card in your Hand becomes an Ace. |
 | Showman | Power | 2 | Spades | Whenever you Showdown, ALL players gain 5 Block. |
-| High Roller | Power | 3 | Spades | Showdowns deal 100% more damage. |
+| Card Shark | Power | 3 | Diamonds | Showdowns happen at 4 cards instead of 5 and deal 80% damage. 4-card Straights and Flushes count. |
+| High Roller | Power | 3 | Spades | Showdowns deal 100% more damage. Doesn't stack with High Stakes. |
 | House Edge | Power | 3 | Spades | Your Showdowns count as 1 hand higher. |
 | Hot Streak | Skill | 1 | Diamonds | Gain 2 Energy. Draw 2 cards. *Exhaust.* |
 | Reshuffle | Skill | 1 | Diamonds | All cards in your Hand get new ranks. Draw 2 cards. |
