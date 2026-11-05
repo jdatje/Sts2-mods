@@ -29,6 +29,14 @@ var cases = new (string name, TableCard[] cards, HandType want)[] {
  ("4 cards with wild", [C(7,S),C(7,H),C(7,D),W()], HandType.FourOfAKind),
 };
 int fail=0;
+var size4 = new (string name, TableCard[] cards, HandType want)[] {
+ ("4-card flush (Card Shark)", [C(2,H),C(5,H),C(9,H),C(11,H)], HandType.Flush),
+ ("4-card straight (Card Shark)", [C(11,S),C(12,H),C(13,D),C(14,K)], HandType.Straight),
+ ("4-card wheel (Card Shark)", [C(14,S),C(2,H),C(3,D),C(4,K)], HandType.Straight),
+ ("4-card straight flush", [C(5,K),C(6,K),C(7,K),C(8,K)], HandType.StraightFlush),
+ ("3 cards same suit, size 4", [C(2,H),C(5,H),C(9,H)], HandType.HighCard),
+};
+foreach (var (n,c,w) in size4){ var got=Poker.Evaluate(c,4); if(got!=w){fail++; Console.WriteLine($"FAIL {n}: got {got}, want {w}");} }
 foreach (var (n,c,w) in cases){ var got=Poker.Evaluate(c); if(got!=w){fail++; Console.WriteLine($"FAIL {n}: got {got}, want {w}");} }
 Console.WriteLine($"TotalRank={Poker.TotalRank([C(7,S),C(14,H),W()])} (want 21), TiersHigher(Pair,2)={Poker.TiersHigher(HandType.Pair,2)}");
 Console.WriteLine($"Poker tests: {cases.Length-fail}/{cases.Length} passed; OneTierHigher(Pair)={Poker.OneTierHigher(HandType.Pair)}, StraightFlush stays {Poker.OneTierHigher(HandType.StraightFlush)}");

@@ -5,6 +5,7 @@ using CardSharp.CardSharpCode.Relics;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -35,14 +36,19 @@ public sealed class TablePower : CardSharpPower
 
     /// <summary>Hover text: which cards are on the Table and the best hand so far.</summary>
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new StringVar("TableCards", "nothing yet"), new StringVar("TableHand", "")];
+        [new StringVar("TableCards", "nothing yet"), new StringVar("TableHand", ""), new StringVar("TablePot", "")];
 
     public void Changed()
     {
         if (DynamicVars.TryGetValue("TableCards", out var c) && c is StringVar cards)
             cards.StringValue = Cards.Count == 0 ? "nothing yet" : string.Join(", ", Cards.Select(Label));
         if (DynamicVars.TryGetValue("TableHand", out var h) && h is StringVar hand)
-            hand.StringValue = Cards.Count == 0 ? "" : $" ({HandName(Poker.Evaluate(Cards))} so far)";
+            hand.StringValue = Cards.Count == 0 ? "" : $" ({HandName(Poker.Evaluate(Cards, TableCmd.ShowdownSize(Owner)))} so far)";
+        if (DynamicVars.TryGetValue("TablePot", out var pv) && pv is StringVar potVar)
+        {
+            var pot = Owner.Player?.Relics.OfType<IShowdownPot>().Select(r => r.CurrentPot).DefaultIfEmpty(0).Max() ?? 0;
+            potVar.StringValue = pot > 0 ? $"\nNext Showdown: [gold]+{pot}[/gold] from the Pot." : "";
+        }
         InvokeDisplayAmountChanged();
         TableOverlay.Refresh(Owner);
     }
@@ -87,6 +93,13 @@ public sealed class TablePower : CardSharpPower
 }
 
 /// <summary>Powers that react after each Showdown of their owner.</summary>
+/// <summary>Relics that add the growing Pot to Showdown damage. TakePot returns the bonus for this Showdown and grows it.</summary>
+public interface IShowdownPot
+{
+    int TakePot();
+    int CurrentPot { get; }
+}
+
 public interface IShowdownListener
 {
     Task AfterShowdown(PlayerChoiceContext ctx, HandType hand);
@@ -109,7 +122,7 @@ public static class TableCmd
     public static int Count(Creature owner) => Cards(owner).Count;
 
     public static bool HasAtLeast(Creature owner, HandType hand) =>
-        Count(owner) > 0 && Poker.Evaluate(Cards(owner)) >= hand;
+        Count(owner) > 0 && Poker.Evaluate(Cards(owner), ShowdownSize(owner)) >= hand;
 
     public static async Task<TablePower> Get(PlayerChoiceContext ctx, Creature owner)
     {
@@ -168,9 +181,15 @@ public static class TableCmd
     }
 
     /// <summary>Score the Table, apply the effect, clear the Table. Returns the hand (or null if the Table was empty).</summary>
-    public static async Task<HandType?> Showdown(PlayerChoiceContext ctx, CardSharpCard source, int extraTiers = 0)
+    public static Task<HandType?> Showdown(PlayerChoiceContext ctx, CardSharpCard source, int extraTiers = 0) =>
+        Showdown(ctx, source.Owner, extraTiers);
+
+    /// <summary>
+    /// Showdown for a player (also used by potions). High card, Pair and Two pair hit one random enemy;
+    /// Three of a kind and better hit ALL enemies. Damage = hand + Pot + Strength, then % bonuses.
+    /// </summary>
+    public static async Task<HandType?> Showdown(PlayerChoiceContext ctx, Player player, int extraTiers = 0)
     {
-        var player = source.Owner;
         var owner = player.Creature;
         var table = Find(owner);
         if (table == null || table.Cards.Count == 0) return null;
@@ -180,17 +199,18 @@ public static class TableCmd
         table.Cards.Clear();
         table.Changed();
 
+        var size = ShowdownSize(owner);
         var modifiers = owner.Powers.OfType<IShowdownModifier>().ToList();
-        var hand = Poker.Evaluate(cards);
+        var hand = Poker.Evaluate(cards, size);
         var tiers = extraTiers + modifiers.Sum(m => m.TierBonus);
-        var marked = player.Relics.OfType<MarkedDeck>().FirstOrDefault();
-        if (marked != null && marked.TryUse()) tiers++;
+        var coin = player.Relics.OfType<LuckyCoin>().FirstOrDefault();
+        if (coin != null && coin.TryUse()) tiers++;
         hand = Poker.TiersHigher(hand, tiers);
         TableOverlay.ShowdownFlash(owner, cards, hand);
 
         TalkCmd.Play(new LocString("powers", "CARDSHARP-SHOWDOWN." + hand), owner, VfxColor.Gold, VfxDuration.Short);
 
-        var combat = source.CombatState;
+        var combat = owner.CombatState;
         if (combat == null) return hand;
         var enemies = combat.HittableEnemies;
 
@@ -221,11 +241,23 @@ public static class TableCmd
             }
         }
 
-        var bonus = modifiers.Sum(m => m.DamageBonusPercent);
+        // The Pot (Marked Deck / Stacked Deck) grows with every Showdown this combat.
+        var pot = player.Relics.OfType<IShowdownPot>().Select(r => r.TakePot()).DefaultIfEmpty(0).Max();
+        var strength = (int)owner.Powers.OfType<StrengthPower>().Sum(p => p.Amount);
+        damage = Math.Max(0, damage + pot + strength);
+
+        // High Stakes / High Roller don't stack: the strongest bonus counts.
+        var bonus = modifiers.Select(m => m.DamageBonusPercent).DefaultIfEmpty(0).Max();
         damage = damage * (100 + bonus) / 100;
+        if (owner.Powers.OfType<CardSharkPower>().Any()) damage = damage * CardSharkPower.DamagePercent / 100;
 
         if (damage > 0 && enemies.Count > 0)
-            await CreatureCmd.Damage(ctx, enemies, damage, ValueProp.Unpowered, owner);
+        {
+            var targets = hand <= HandType.TwoPair
+                ? (IReadOnlyList<Creature>)[enemies[player.RunState.Rng.CombatCardGeneration.NextInt(0, enemies.Count)]]
+                : enemies;
+            await CreatureCmd.Damage(ctx, targets, damage, ValueProp.Unpowered, owner);
+        }
         if (block > 0)
             await CreatureCmd.GainBlock(owner, block, ValueProp.Unpowered, null);
         if (draw > 0)
@@ -235,7 +267,10 @@ public static class TableCmd
 
         foreach (var listener in owner.Powers.OfType<IShowdownListener>().ToList())
             await listener.AfterShowdown(ctx, hand);
+        foreach (var listener in player.Relics.OfType<IShowdownListener>().ToList())
+            await listener.AfterShowdown(ctx, hand);
 
+        table.Changed();
         return hand;
     }
 }

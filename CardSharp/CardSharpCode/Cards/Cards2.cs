@@ -210,7 +210,7 @@ public sealed class PokerNight() : SharpPowerCard<PokerNightPower>(Suit.Clubs, 1
 public sealed class LoadedDeck() : SharpPowerCard<LoadedDeckPower>(Suit.Diamonds, 1, CardRarity.Uncommon, 1, 0, -1);
 public sealed class Bluffer() : SharpPowerCard<BlufferPower>(Suit.Hearts, 1, CardRarity.Uncommon, 2, 1);
 public sealed class SidePot() : SharpPowerCard<SidePotPower>(Suit.Diamonds, 1, CardRarity.Uncommon, 2, 1);
-public sealed class PitBoss() : SharpPowerCard<PitBossPower>(Suit.Spades, 2, CardRarity.Uncommon, 3, 1);
+public sealed class PitBoss() : SharpPowerCard<PitBossPower>(Suit.Spades, 2, CardRarity.Uncommon, 2, 1);
 
 // =====================================================================
 //  UNCOMMON — skills and attacks
@@ -485,7 +485,7 @@ public sealed class CardCounter : SharpPowerCard<CardCounterPower>
 }
 public sealed class HouseEdge() : SharpPowerCard<HouseEdgePower>(Suit.Spades, 3, CardRarity.Rare, 1, 0, -1);
 public sealed class LadyLuck() : SharpPowerCard<LadyLuckPower>(Suit.Hearts, 2, CardRarity.Rare, 1, 0, -1);
-public sealed class HighRoller() : SharpPowerCard<HighStakesPower>(Suit.Spades, 3, CardRarity.Rare, 100, 0, -1);
+public sealed class HighRoller() : SharpPowerCard<HighRollerPower>(Suit.Spades, 3, CardRarity.Rare, 100, 0, -1);
 public sealed class AceCollector() : SharpPowerCard<AceCollectorPower>(Suit.Diamonds, 1, CardRarity.Rare, 2, 1);
 public sealed class Bankroll() : SharpPowerCard<BankrollPower>(Suit.Hearts, 1, CardRarity.Rare, 2, 1);
 public sealed class Showman() : SharpPowerCard<ShowmanPower>(Suit.Spades, 2, CardRarity.Rare, 5, 2);

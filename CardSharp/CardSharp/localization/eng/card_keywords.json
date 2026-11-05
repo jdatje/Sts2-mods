@@ -1,4 +1,4 @@
 {
   "CARDSHARP-SHOWDOWN.title": "Showdown",
-  "CARDSHARP-SHOWDOWN.description": "The cards on the [gold]Table[/gold] are scored as a poker hand and deal damage to ALL enemies. Then the Table is cleared."
+  "CARDSHARP-SHOWDOWN.description": "The cards on the [gold]Table[/gold] are scored as a poker hand. High card, Pair and Two pair hit a random enemy; Three of a kind and better hit ALL enemies. Your [gold]Strength[/gold] is added once. Then the Table is cleared."
 }

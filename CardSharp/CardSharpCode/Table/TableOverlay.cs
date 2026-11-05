@@ -132,7 +132,7 @@ public static class TableOverlay
 
         var text = showdown is { } h
             ? TablePower.HandName(h) + "!"
-            : cards.Count == 0 ? $"0/{slots}" : $"{cards.Count}/{slots} · {TablePower.HandName(Poker.Evaluate(cards))}";
+            : cards.Count == 0 ? $"0/{slots}" : $"{cards.Count}/{slots} · {TablePower.HandName(Poker.Evaluate(cards, slots))}";
         var label = new Label
         {
             Text = text,

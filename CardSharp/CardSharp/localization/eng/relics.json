@@ -1,5 +1,20 @@
 {
   "CARDSHARP-MARKED_DECK.title": "Marked Deck",
-  "CARDSHARP-MARKED_DECK.description": "Your first [gold]Showdown[/gold] each combat counts as one hand higher.",
-  "CARDSHARP-MARKED_DECK.flavor": "Tiny pinpricks on the backs. You can feel the aces."
+  "CARDSHARP-MARKED_DECK.description": "The Pot: each [gold]Showdown[/gold] deals [blue]2[/blue] more damage than the last this combat, up to [blue]+7[/blue].",
+  "CARDSHARP-MARKED_DECK.flavor": "Tiny pinpricks on the backs. You can feel the aces.",
+  "CARDSHARP-STACKED_DECK.title": "Stacked Deck",
+  "CARDSHARP-STACKED_DECK.description": "The Pot: each [gold]Showdown[/gold] deals [blue]2[/blue] more damage than the last this combat, up to [blue]+10[/blue].",
+  "CARDSHARP-STACKED_DECK.flavor": "Every card is exactly where she wants it. Every single one.",
+  "CARDSHARP-LUCKY_COIN.title": "Lucky Coin",
+  "CARDSHARP-LUCKY_COIN.description": "Your first [gold]Showdown[/gold] each combat counts as [blue]1[/blue] hand higher.",
+  "CARDSHARP-LUCKY_COIN.flavor": "Heads, she wins. Tails, you lose.",
+  "CARDSHARP-DEALERS_BUTTON.title": "Dealer's Button",
+  "CARDSHARP-DEALERS_BUTTON.description": "Whenever you [gold]Showdown[/gold], draw [blue]1[/blue] card.",
+  "CARDSHARP-DEALERS_BUTTON.flavor": "Whoever holds it deals the next hand.",
+  "CARDSHARP-GOLDEN_JOKER.title": "Golden Joker",
+  "CARDSHARP-GOLDEN_JOKER.description": "At the start of each combat, shuffle [blue]2[/blue] [gold]Jokers[/gold] into your draw pile.",
+  "CARDSHARP-GOLDEN_JOKER.flavor": "Gilded, grinning, and never where you left it.",
+  "CARDSHARP-CROUPIERS_RAKE.title": "Croupier's Rake",
+  "CARDSHARP-CROUPIERS_RAKE.description": "Whenever you [gold]Showdown[/gold], gain [blue]2[/blue] [gold]Gold[/gold].",
+  "CARDSHARP-CROUPIERS_RAKE.flavor": "The house always takes its cut."
 }

@@ -230,6 +230,7 @@ public sealed class Call : CardSharpCard
 public sealed class ColdDeck : CardSharpCard
 {
     public override Suit Suit => Suit.Clubs;
+    public const int Count = 2;
     public ColdDeck() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
@@ -240,9 +241,15 @@ public sealed class ColdDeck : CardSharpCard
             c => c is CardSharpCard && c != this, this)).OfType<CardSharpCard>().FirstOrDefault();
         if (chosen == null) return;
         var rank = chosen.EnsureRank();
-        foreach (var c in Owner.PlayerCombatState!.Hand.Cards.OfType<CardSharpCard>())
-            c.SetRank(rank);
-        SetRank(rank); // this card is laid with the same rank too
+        // 2 random other cards in your hand get its rank.
+        var others = Owner.PlayerCombatState!.Hand.Cards.OfType<CardSharpCard>()
+            .Where(c => c != this && c != chosen && !c.IsWild).ToList();
+        for (var i = 0; i < Count && others.Count > 0; i++)
+        {
+            var pick = others[Owner.RunState.Rng.CombatCardGeneration.NextInt(0, others.Count)];
+            others.Remove(pick);
+            pick.SetRank(rank);
+        }
     }
 }
 
@@ -300,7 +307,7 @@ public sealed class AllIn : CardSharpCard
 public sealed class CardShark : CardSharpCard
 {
     public override Suit Suit => Suit.Diamonds;
-    public CardShark() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+    public CardShark() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
         WithCostUpgradeBy(-1);
         WithTip(typeof(CardSharkPower));

@@ -103,6 +103,15 @@ public sealed class JokersWildPower : SimpleSharpPower, IShowdownListener
 /// <summary>Showdowns deal X% more damage.</summary>
 public sealed class HighStakesPower : SimpleSharpPower, IShowdownModifier
 {
+    public override PowerStackType StackType => PowerStackType.Single;
+    public int DamageBonusPercent => (int)Amount;
+    public int TierBonus => 0;
+}
+
+/// <summary>Showdowns deal X% more damage. Doesn't stack with High Stakes: the stronger one counts.</summary>
+public sealed class HighRollerPower : SimpleSharpPower, IShowdownModifier
+{
+    public override PowerStackType StackType => PowerStackType.Single;
     public int DamageBonusPercent => (int)Amount;
     public int TierBonus => 0;
 }

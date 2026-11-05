@@ -1,10 +1,10 @@
 {
   "CARDSHARP-TABLE_POWER.title": "Table",
   "CARDSHARP-TABLE_POWER.description": "Cards you play are laid here. At 5 cards: [gold]Showdown[/gold].",
-  "CARDSHARP-TABLE_POWER.smartDescription": "On the Table: [gold]{TableCards}[/gold]{TableHand}.\n\n[gold]Showdown[/gold] damage to ALL enemies:\nHigh card: 5\nPair: 9\nTwo pair: 9 + 8 Block\nThree of a kind: 16\nStraight: 12 + draw 2\nFlush: 14 + suit bonus\nFull house: 22 + 12 Block\nFour of a kind: 32\nStraight flush: 45 + 2 Energy\n\nFlush bonus: Spades +6 damage, Hearts +10 Block, Diamonds draw 2, Clubs 2 Weak.",
+  "CARDSHARP-TABLE_POWER.smartDescription": "On the Table: [gold]{TableCards}[/gold]{TableHand}.{TablePot}\n\n[gold]Showdown[/gold] damage (+ the Pot and your Strength):\nHigh card: 5\nPair: 9\nTwo pair: 9 + 8 Block\nThree of a kind: 16\nStraight: 12 + draw 2\nFlush: 14 + suit bonus\nFull house: 22 + 12 Block\nFour of a kind: 32\nStraight flush: 45 + 2 Energy\n\nUp to Two pair: a random enemy. Three of a kind and up: ALL enemies.\nFlush bonus: Spades +6 damage, Hearts +10 Block, Diamonds draw 2, Clubs 2 Weak.",
   "CARDSHARP-CARD_SHARK_POWER.title": "Card Shark",
-  "CARDSHARP-CARD_SHARK_POWER.description": "[gold]Showdowns[/gold] happen at 4 cards instead of 5.",
-  "CARDSHARP-CARD_SHARK_POWER.smartDescription": "[gold]Showdowns[/gold] happen at 4 cards instead of 5.",
+  "CARDSHARP-CARD_SHARK_POWER.description": "[gold]Showdowns[/gold] happen at 4 cards and deal 80% damage.",
+  "CARDSHARP-CARD_SHARK_POWER.smartDescription": "[gold]Showdowns[/gold] happen at 4 cards instead of 5 and deal 80% damage. 4-card Straights and Flushes count.",
   "CARDSHARP-SHOWDOWN.HighCard": "High card.",
   "CARDSHARP-SHOWDOWN.Pair": "A pair!",
   "CARDSHARP-SHOWDOWN.TwoPair": "Two pair!",
@@ -37,7 +37,7 @@
   "CARDSHARP-JOKERS_WILD_POWER.smartDescription": "Whenever you Showdown, add [blue]{Amount}[/blue] [gold]Joker{Amount:plural:|s}[/gold] into your [gold]Hand[/gold].",
   "CARDSHARP-HIGH_STAKES_POWER.title": "High Stakes",
   "CARDSHARP-HIGH_STAKES_POWER.description": "Showdowns deal more damage.",
-  "CARDSHARP-HIGH_STAKES_POWER.smartDescription": "Showdowns deal [blue]{Amount}%[/blue] more damage.",
+  "CARDSHARP-HIGH_STAKES_POWER.smartDescription": "Showdowns deal [blue]{Amount}%[/blue] more damage. Doesn't stack with High Roller.",
   "CARDSHARP-HOUSE_EDGE_POWER.title": "House Edge",
   "CARDSHARP-HOUSE_EDGE_POWER.description": "Your Showdowns count as a higher hand.",
   "CARDSHARP-HOUSE_EDGE_POWER.smartDescription": "Your Showdowns count as [blue]{Amount}[/blue] {Amount:plural:hand|hands} higher.",
@@ -61,5 +61,8 @@
   "CARDSHARP-ACE_COLLECTOR_POWER.smartDescription": "Whenever you play an [gold]Ace[/gold], draw [blue]{Amount}[/blue] {Amount:plural:card|cards}.",
   "CARDSHARP-LADY_LUCK_POWER.title": "Lady Luck",
   "CARDSHARP-LADY_LUCK_POWER.description": "At the start of your turn, cards in your Hand become Aces.",
-  "CARDSHARP-LADY_LUCK_POWER.smartDescription": "At the start of your turn, [blue]{Amount}[/blue] random {Amount:plural:card|cards} in your [gold]Hand[/gold] {Amount:plural:becomes an Ace|become Aces}."
+  "CARDSHARP-LADY_LUCK_POWER.smartDescription": "At the start of your turn, [blue]{Amount}[/blue] random {Amount:plural:card|cards} in your [gold]Hand[/gold] {Amount:plural:becomes an Ace|become Aces}.",
+  "CARDSHARP-HIGH_ROLLER_POWER.title": "High Roller",
+  "CARDSHARP-HIGH_ROLLER_POWER.description": "Showdowns deal more damage.",
+  "CARDSHARP-HIGH_ROLLER_POWER.smartDescription": "Showdowns deal [blue]{Amount}%[/blue] more damage. Doesn't stack with High Stakes."
 }

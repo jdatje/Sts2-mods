@@ -46,21 +46,22 @@ public static class Poker
     /// Scores 1 to 5 cards. Straights and flushes need all 5 cards; pairs, trips and quads
     /// work with fewer (for Call and Card Shark).
     /// </summary>
-    public static HandType Evaluate(IReadOnlyList<TableCard> cards)
+    /// <param name="size">Showdown size (5, or 4 with Card Shark): Straights and Flushes need exactly this many cards.</param>
+    public static HandType Evaluate(IReadOnlyList<TableCard> cards, int size = 5)
     {
         if (cards.Count == 0) return HandType.HighCard;
-        if (cards.Any(c => c.Wild)) return EvaluateWithWilds(cards);
-        return EvaluateFixed(cards);
+        if (cards.Any(c => c.Wild)) return EvaluateWithWilds(cards, size);
+        return EvaluateFixed(cards, size);
     }
 
     /// <summary>Tries every rank/suit for each wild card (1 to 3 wilds).</summary>
-    private static HandType EvaluateWithWilds(IReadOnlyList<TableCard> cards)
+    private static HandType EvaluateWithWilds(IReadOnlyList<TableCard> cards, int size)
     {
         var fixedCards = cards.Where(c => !c.Wild).ToList();
         var wilds = cards.Count(c => c.Wild);
         // 4+ wilds: with 5 cards a straight flush is always possible around the one fixed card,
         // with 4 cards the best is four of a kind.
-        if (wilds >= 4) return cards.Count >= 5 ? HandType.StraightFlush : HandType.FourOfAKind;
+        if (wilds >= 4) return cards.Count >= 5 || (size == 4 && cards.Count == 4) ? HandType.StraightFlush : HandType.FourOfAKind;
         var expand = wilds;
 
         var options = new List<TableCard>();
@@ -74,7 +75,7 @@ public static class Poker
             if (best == HandType.StraightFlush) return;
             if (left == 0)
             {
-                var h = EvaluateFixed(hand);
+                var h = EvaluateFixed(hand, size);
                 if (h > best) best = h;
                 return;
             }
@@ -89,13 +90,14 @@ public static class Poker
         return best;
     }
 
-    private static HandType EvaluateFixed(IReadOnlyList<TableCard> cards)
+    private static HandType EvaluateFixed(IReadOnlyList<TableCard> cards, int size = 5)
     {
         if (cards.Count == 0) return HandType.HighCard;
 
         var counts = cards.GroupBy(c => c.Rank).Select(g => g.Count()).OrderByDescending(n => n).ToList();
-        var flush = cards.Count == 5 && cards.All(c => c.Suit == cards[0].Suit);
-        var straight = cards.Count == 5 && IsStraight(cards.Select(c => c.Rank).ToList());
+        var full = cards.Count == 5 || (size == 4 && cards.Count == 4);
+        var flush = full && cards.All(c => c.Suit == cards[0].Suit);
+        var straight = full && IsStraight(cards.Select(c => c.Rank).ToList());
 
         if (straight && flush) return HandType.StraightFlush;
         if (counts[0] == 4) return HandType.FourOfAKind;
@@ -111,10 +113,11 @@ public static class Poker
     private static bool IsStraight(List<int> ranks)
     {
         var distinct = ranks.Distinct().OrderBy(r => r).ToList();
-        if (distinct.Count != 5) return false;
-        if (distinct[4] - distinct[0] == 4) return true;
-        // the wheel: A-2-3-4-5
-        return distinct.SequenceEqual(new[] { 2, 3, 4, 5, 14 });
+        var n = ranks.Count;
+        if (distinct.Count != n || n < 4) return false;
+        if (distinct[n - 1] - distinct[0] == n - 1) return true;
+        // the wheel: A-2-3-4(-5)
+        return n == 5 ? distinct.SequenceEqual(new[] { 2, 3, 4, 5, 14 }) : distinct.SequenceEqual(new[] { 2, 3, 4, 14 });
     }
 
     public static HandType OneTierHigher(HandType t) =>
