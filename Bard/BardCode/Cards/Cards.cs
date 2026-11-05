@@ -10,13 +10,14 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Bard.BardCode.Cards;
 
-/// <summary>Base for Song cards: Power cards that start a Song with some Verses (upgrade = more Verses).</summary>
+/// <summary>Base for Song cards: Power cards that start a Song with some Verses. Upgrade = +1 Refrain.</summary>
 public abstract class SongCard<T>(int cost, CardRarity rarity) : BardCard(cost, CardType.Power, rarity, TargetType.Self), ISongCard
     where T : SongPower
 {
-    protected void Song(int verses, int upgrade)
+    protected void Song(int verses, int refrain)
     {
-        WithVar("Verses", verses, upgrade);
+        WithVar("Verses", verses);
+        WithVar("Refrain", refrain, 1);
         WithKeywords(BardKeywords.Song);
         WithTip(typeof(T));
     }
@@ -51,7 +52,7 @@ public sealed class DefendBard : BardCard
 
 public sealed class BattleHymn : SongCard<BattleHymnPower>
 {
-    public BattleHymn() : base(1, CardRarity.Basic) => Song(1, 2);
+    public BattleHymn() : base(1, CardRarity.Basic) => Song(1, 3);
 }
 
 /// <summary>Gain 4 Block. Add 1 extra Verse.</summary>
@@ -173,7 +174,7 @@ public sealed class Discord : BardCard
 
 public sealed class Jig : SongCard<JigPower>
 {
-    public Jig() : base(1, CardRarity.Common) => Song(1, 2);
+    public Jig() : base(1, CardRarity.Common) => Song(1, 1);
 }
 
 // ================= Uncommon =================
@@ -185,7 +186,7 @@ public sealed class BalladOfValor : SongCard<BalladOfValorPower>
 
 public sealed class Lullaby : SongCard<LullabyPower>
 {
-    public Lullaby() : base(1, CardRarity.Uncommon) => Song(1, 2);
+    public Lullaby() : base(1, CardRarity.Uncommon) => Song(1, 1);
 }
 
 /// <summary>Add 4 Verses.</summary>

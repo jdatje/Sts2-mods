@@ -15,9 +15,11 @@ namespace Bard.BardCode.Songs;
 /// <summary>Refrain: apply 1 Vulnerable to ALL enemies. Finale: ALL players gain 1 Strength per 5 Verses.</summary>
 public sealed class WarDrumsPower : SongPower
 {
+    protected override int DefaultRefrain => 1;
+    protected override bool SlowGrowth => true;
     public override async Task Refrain(PlayerChoiceContext ctx)
     {
-        if (Enemies.Count > 0) await PowerCmd.Apply<VulnerablePower>(ctx, Enemies, 1, Owner, null);
+        if (Enemies.Count > 0) await PowerCmd.Apply<VulnerablePower>(ctx, Enemies, RefrainValue, Owner, null);
     }
     public override async Task Finale(PlayerChoiceContext ctx)
     {
@@ -26,16 +28,19 @@ public sealed class WarDrumsPower : SongPower
     }
 }
 
-/// <summary>Refrain: ALL players heal 1 HP. Finale: ALL players heal 1 HP per 2 Verses.</summary>
+/// <summary>Refrain: ALL players gain 2 Block (+ the Bard's Dexterity). Finale: ALL players heal 1 HP per 3 Verses.</summary>
 public sealed class SeaShantyPower : SongPower
 {
+    protected override int DefaultRefrain => 2;
     public override async Task Refrain(PlayerChoiceContext ctx)
     {
-        foreach (var a in Allies) await CreatureCmd.Heal(a, 1);
+        var block = RefrainValue + Dexterity;
+        if (block <= 0) return;
+        foreach (var a in Allies) await CreatureCmd.GainBlock(a, block, ValueProp.Unpowered, null);
     }
     public override async Task Finale(PlayerChoiceContext ctx)
     {
-        var heal = Verses / 2;
+        var heal = Verses / 3;
         if (heal > 0) foreach (var a in Allies) await CreatureCmd.Heal(a, heal);
     }
 }
@@ -43,9 +48,10 @@ public sealed class SeaShantyPower : SongPower
 /// <summary>Refrain: ALL enemies lose 2 HP. Finale: apply 2 Doom per Verse to ALL enemies.</summary>
 public sealed class DirgePower : SongPower
 {
+    protected override int DefaultRefrain => 2;
     public override async Task Refrain(PlayerChoiceContext ctx)
     {
-        if (Enemies.Count > 0) await CreatureCmd.Damage(ctx, Enemies, 2, ValueProp.Unblockable | ValueProp.Unpowered, Owner);
+        if (Enemies.Count > 0) await CreatureCmd.Damage(ctx, Enemies, RefrainValue, ValueProp.Unblockable | ValueProp.Unpowered, Owner);
     }
     public override async Task Finale(PlayerChoiceContext ctx)
     {
@@ -56,9 +62,11 @@ public sealed class DirgePower : SongPower
 /// <summary>Refrain: ALL players draw 1 card. Finale: ALL players gain 1 Energy per 5 Verses.</summary>
 public sealed class OdeToJoyPower : SongPower
 {
+    protected override int DefaultRefrain => 1;
+    protected override bool SlowGrowth => true;
     public override async Task Refrain(PlayerChoiceContext ctx)
     {
-        foreach (var a in Allies) if (a.Player != null) await CardPileCmd.Draw(ctx, 1, a.Player);
+        foreach (var a in Allies) if (a.Player != null) await CardPileCmd.Draw(ctx, RefrainValue, a.Player);
     }
     public override async Task Finale(PlayerChoiceContext ctx)
     {
@@ -70,8 +78,10 @@ public sealed class OdeToJoyPower : SongPower
 /// <summary>Refrain: ALL players gain 1 Plating. Finale: ALL players gain 1 Dexterity per 5 Verses.</summary>
 public sealed class AnthemPower : SongPower
 {
+    protected override int DefaultRefrain => 1;
+    protected override bool SlowGrowth => true;
     public override async Task Refrain(PlayerChoiceContext ctx) =>
-        await PowerCmd.Apply<PlatingPower>(ctx, Allies, 1, Owner, null);
+        await PowerCmd.Apply<PlatingPower>(ctx, Allies, RefrainValue, Owner, null);
     public override async Task Finale(PlayerChoiceContext ctx)
     {
         var dex = Verses / 5;
@@ -82,9 +92,11 @@ public sealed class AnthemPower : SongPower
 /// <summary>Refrain: apply 2 Weak to ALL enemies. Finale: deal 3 damage per Verse to ALL enemies.</summary>
 public sealed class SirenSongPower : SongPower
 {
+    protected override int DefaultRefrain => 2;
+    protected override bool SlowGrowth => true;
     public override async Task Refrain(PlayerChoiceContext ctx)
     {
-        if (Enemies.Count > 0) await PowerCmd.Apply<WeakPower>(ctx, Enemies, 2, Owner, null);
+        if (Enemies.Count > 0) await PowerCmd.Apply<WeakPower>(ctx, Enemies, RefrainValue, Owner, null);
     }
     public override async Task Finale(PlayerChoiceContext ctx)
     {

@@ -1,6 +1,6 @@
 {
   "BARD-SONG.title": "Song",
-  "BARD-SONG.description": "Only one Song plays at a time. Starting a new Song ends the old one and triggers its [gold]Finale[/gold]. Every other card you play adds a [gold]Verse[/gold] (max 15). At the start of your turn its [gold]Refrain[/gold] triggers.",
+  "BARD-SONG.description": "Only one Song plays at a time. Starting a new Song ends the old one and triggers its [gold]Finale[/gold]. Every other card you play adds a [gold]Verse[/gold] (max 15). At the start of your turn its [gold]Refrain[/gold] triggers; Refrains grow as Verses build up.",
   "BARD-VERSE.title": "Verse",
   "BARD-VERSE.description": "Your current [gold]Song[/gold] grows by one Verse for every non-Song card you play (max 15). Finales scale with Verses."
 }

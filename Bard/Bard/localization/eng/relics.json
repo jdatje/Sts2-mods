@@ -1,5 +1,20 @@
 {
   "BARD-WORN_LUTE.title": "Worn Lute",
   "BARD-WORN_LUTE.description": "Your first [gold]Song[/gold] each combat starts with [blue]3[/blue] extra Verses.",
-  "BARD-WORN_LUTE.flavor": "Three strings, one crack, a thousand taverns."
+  "BARD-WORN_LUTE.flavor": "Three strings, one crack, a thousand taverns.",
+  "BARD-MASTER_LUTE.title": "Master Lute",
+  "BARD-MASTER_LUTE.description": "Your first [gold]Song[/gold] each combat starts with [blue]6[/blue] extra Verses.",
+  "BARD-MASTER_LUTE.flavor": "Restrung with silver, and it remembers every tune.",
+  "BARD-SHEET_MUSIC.title": "Sheet Music",
+  "BARD-SHEET_MUSIC.description": "Whenever you start a [gold]Song[/gold], gain [blue]4[/blue] [gold]Block[/gold].",
+  "BARD-SHEET_MUSIC.flavor": "Dog-eared, wine-stained, annotated in three hands.",
+  "BARD-TUNING_FORK.title": "Tuning Fork",
+  "BARD-TUNING_FORK.description": "Your [gold]Songs[/gold] can have [blue]3[/blue] more Verses.",
+  "BARD-TUNING_FORK.flavor": "It hums a note nobody else can hear.",
+  "BARD-GOLDEN_STRINGS.title": "Golden Strings",
+  "BARD-GOLDEN_STRINGS.description": "While your [gold]Song[/gold] has [blue]10[/blue] or more Verses, its [gold]Refrain[/gold] triggers an extra time.",
+  "BARD-GOLDEN_STRINGS.flavor": "They only sing once the room is listening.",
+  "BARD-BUSKERS_HAT.title": "Busker's Hat",
+  "BARD-BUSKERS_HAT.description": "Whenever a [gold]Finale[/gold] triggers, gain [blue]5[/blue] [gold]Gold[/gold].",
+  "BARD-BUSKERS_HAT.flavor": "Battered, upturned, and never quite empty."
 }

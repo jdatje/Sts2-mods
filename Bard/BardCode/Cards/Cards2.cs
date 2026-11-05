@@ -147,7 +147,7 @@ public sealed class WarmUp : BardCard
 
 public sealed class WarDrums : SongCard<WarDrumsPower>
 {
-    public WarDrums() : base(1, CardRarity.Uncommon) => Song(1, 2);
+    public WarDrums() : base(2, CardRarity.Rare) => Song(1, 1);
 }
 public sealed class SeaShanty : SongCard<SeaShantyPower>
 {
@@ -379,11 +379,11 @@ public sealed class Serenade : BardCard
 
 public sealed class OdeToJoy : SongCard<OdeToJoyPower>
 {
-    public OdeToJoy() : base(2, CardRarity.Rare) => Song(1, 2);
+    public OdeToJoy() : base(2, CardRarity.Rare) => Song(1, 1);
 }
 public sealed class Anthem : SongCard<AnthemPower>
 {
-    public Anthem() : base(2, CardRarity.Rare) => Song(1, 2);
+    public Anthem() : base(2, CardRarity.Rare) => Song(1, 1);
 }
 public sealed class SirenSong : SongCard<SirenSongPower>
 {
@@ -391,7 +391,7 @@ public sealed class SirenSong : SongCard<SirenSongPower>
 }
 
 public sealed class Virtuoso() : BardPowerCard<VirtuosoPower>(3, CardRarity.Rare, 1, 0, -1);
-public sealed class Maestro() : BardPowerCard<MaestroPower>(2, CardRarity.Rare, 1, 0, -1);
+public sealed class Maestro() : BardPowerCard<MaestroPower>(3, CardRarity.Rare, 1, 0, -1);
 public sealed class LegendaryBallad() : BardPowerCard<LegendaryBalladPower>(1, CardRarity.Rare, 10, 5);
 public sealed class BardicInspiration() : BardPowerCard<BardicInspirationPower>(2, CardRarity.Rare, 1, 0, -1);
 public sealed class GrandStage() : BardPowerCard<GrandStagePower>(1, CardRarity.Rare, 8, 4);
@@ -413,9 +413,9 @@ public sealed class Fortissimo : BardCard
 
 public sealed class SwanSong : BardCard
 {
-    public SwanSong() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
+    public SwanSong() : base(3, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
-        WithVar("Times", 3, 1); WithKeywords(CardKeyword.Exhaust); WithTip(BardKeywords.Song);
+        WithVar("Times", 3); WithCostUpgradeBy(-1); WithKeywords(CardKeyword.Exhaust); WithTip(BardKeywords.Song);
     }
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay play) => await SongCmd.End(ctx, Owner.Creature, V("Times"));
 }
