@@ -118,7 +118,15 @@
     "mod_image": "the Card Sharp at the foot of a dark spire, flicking a single glowing gold-edged card into the air, her black hat tipped low",
     "all_in": "The Card Sharp shoving every chip she owns into the centre of the table, the whole pile exploding outward as a storm of chips and cards that slams into small dark enemy silhouettes. Background: flat crimson fading to black field with darker angular streaks.",
     "combat_sprite": "the Card Sharp, holding a fan of gold-edged cards in one black-gloved hand and a single card ready to throw in the other, hat brim low, sly half-smile",
-    "select_bg": "the Card Sharp leaning toward the viewer over a green-felt card table in a smoky candlelit gambling den, fanning gold-edged cards, eyes glinting under her black hat; dominant black, charcoal and gold with warm candlelight"
+    "select_bg": "the Card Sharp leaning toward the viewer over a green-felt card table in a smoky candlelit gambling den, fanning gold-edged cards, eyes glinting under her black hat; dominant black, charcoal and gold with warm candlelight",
+    "stacked_deck": "a tall neat stack of black-and-gold playing cards held by gold clips, with a small pile of gold coins beside it (card backs only, no symbols)",
+    "lucky_coin": "a single shiny gold coin stamped with a four-leaf clover, glinting",
+    "dealers_button": "a round white poker dealer button disc with a gold rim and no letters",
+    "golden_joker": "a gilded jester mask with a wide grin and three little bells",
+    "croupiers_rake": "a long wooden croupier's rake with a brass head, pulling a few gold coins",
+    "wild_spirits": "a potion: a glass bottle of swirling purple and green liquid with a tiny jester hat as the stopper",
+    "fresh_deck": "a potion: a flask of sparkling gold liquid with the silhouette of a blank card floating inside",
+    "liquid_luck": "a potion: a round flask of glowing golden liquid with a four-leaf clover floating inside"
   },
   "style_ref": "reference/style/cardsharp_strike.jpg",
   "keep": [

@@ -83,6 +83,13 @@ def discover(mod):
             rid = key[len(prefix) + 1:-len(".title")].lower()
             desc = relics_loc.get(key.replace(".title", ".description"), "")
             assets.append(dict(id=rid, kind="relic", title=title, text=re.sub(r"\[/?\w+\]|\{\w+\}", "", desc)))
+    potions_file = loc_dir / "potions.json"
+    potions_loc = json.loads(potions_file.read_text(encoding="utf-8")) if potions_file.exists() else {}
+    for key, title in potions_loc.items():
+        if key.endswith(".title"):
+            pid = key[len(prefix) + 1:-len(".title")].lower()
+            desc = potions_loc.get(key.replace(".title", ".description"), "")
+            assets.append(dict(id=pid, kind="potion", title=title, text=re.sub(r"\[/?\w+\]|\{\w+\}", "", desc)))
     short = mod.lower()
     assets += [dict(id="character_icon", kind="charui_icon", title=cfg["name"]),
                dict(id="map_marker", kind="charui_icon", title=cfg["name"]),
@@ -115,6 +122,10 @@ def prompt_for(a, cfg):
             camera = "Camera: " + shots[sum(map(ord, a["id"])) % len(shots)] + ".\n"
         return (f"{style}\n{layout} {SHARED.get('background', '')}\n{who}\nScene: {scene}\n{camera}"
                 f"Wide landscape composition (4:3), subject clearly readable at small size.")
+    if kind == "potion":
+        subject = override or (f"a potion: a small glass bottle or flask with a cork, holding a glowing liquid, that represents "
+                               f"\"{a['title']}\" ({a['text']}), in the theme of {cfg['name']}")
+        return f"{style}\n" + ICON.format(subject=subject)
     if kind in ("power", "relic"):
         subject = override or f"an object or symbol that represents \"{a['title']}\" ({a['text']}), in the theme of {cfg['name']}"
         return f"{style}\n" + ICON.format(subject=subject)
@@ -136,7 +147,7 @@ def prompt_for(a, cfg):
     raise ValueError(kind)
 
 
-GRID_KINDS = ("power", "relic", "charui_icon")
+GRID_KINDS = ("power", "relic", "potion", "charui_icon")
 
 
 def model_for(kind, forced=""):
@@ -381,6 +392,10 @@ def process(a, raw_path):
         save(fit_square(icon, 256), img / "relics" / "big" / f"{aid}.png")
         save(small, img / "relics" / f"{aid}.png")
         save(outline_of(small), img / "relics" / f"{aid}_outline.png")
+    elif kind == "potion":
+        icon = fit_square(cutout(im), 256, pad=0.1)
+        save(icon, img / "potions" / f"{aid}.png")
+        save(outline_of(icon, width=6), img / "potions" / "outline" / f"{aid}.png")
     elif kind == "charui_icon":
         save(fit_square(cutout(im), 128), img / "charui" / f"{aid}_{a['short']}.png")
     elif kind == "charui_portrait":
@@ -416,7 +431,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--mod", choices=list(MODS) + ["all"], default="all")
     ap.add_argument("--only", help="comma-separated asset ids")
-    ap.add_argument("--kinds", help="comma-separated kinds (card,power,relic,charui_icon,charui_portrait,mod_image)")
+    ap.add_argument("--kinds", help="comma-separated kinds (card,power,relic,potion,charui_icon,charui_portrait,mod_image)")
     ap.add_argument("--force", action="store_true", help="regenerate even if a raw image exists")
     ap.add_argument("--model", default="", help="force one model for everything (default: per kind, see shared.json 'models')")
     ap.add_argument("--workers", type=int, default=4)

@@ -18,7 +18,7 @@ ROOT = g.ROOT
 APPROVED = ROOT / "tools" / "art" / "reference" / "approved"
 BATCH_FILE = ROOT / "tools" / "art" / "batch.json"
 RARITY = {"Basic": 0, "Token": 1, "Common": 2, "Uncommon": 3, "Rare": 4}
-KIND_ORDER = {"card": 0, "relic": 1, "power": 2, "charui_icon": 3, "charui_portrait": 4, "mod_image": 5}
+KIND_ORDER = {"card": 0, "relic": 1, "potion": 2, "power": 2, "charui_icon": 3, "charui_portrait": 4, "mod_image": 5}
 SHORT_LAYOUT = {
     "Attack": "Dynamic action, white motion arcs, impact burst.",
     "Skill": "Calm defensive or utility moment, no punching; motion arcs only if something moves.",
@@ -58,7 +58,7 @@ def chat_line(n, a, cfg):
                 r"close-up|full-body|wide shot|medium shot|seen from|from above|from the side|low.angle|over-the-shoulder", scene, re.I):
             camera = shots[sum(map(ord, a["id"])) % len(shots)].capitalize() + ": "
         return f"{n}. {a['title']} ({ctype.lower()}, card art, landscape 4:3): {camera}{scene} {SHORT_LAYOUT[ctype]}"
-    if a["kind"] in ("power", "relic", "charui_icon"):
+    if a["kind"] in ("power", "relic", "potion", "charui_icon"):
         return (f"{n}. {a['title']} ({a['kind'].replace('charui_', '')}, square 1:1): a single game icon of {scene}, centered, thick dark outline, "
                 "on a perfectly flat solid pure magenta (#FF00FF) background with no shadows and no streaks.")
     if a["kind"] == "charui_portrait":
@@ -118,7 +118,7 @@ def cmd_next(args):
 
 def cmd_subjects(_):
     """Rewrite docs/art-subjects.md from the configs."""
-    kinds = {"card": "Cards", "power": "Power icons", "relic": "Relic", "charui_icon": "Character icons",
+    kinds = {"card": "Cards", "power": "Power icons", "relic": "Relic", "potion": "Potion", "charui_icon": "Character icons",
              "charui_portrait": "Character select", "mod_image": "Mod image"}
     out = ["# Art subjects", "", "What each image will show. Edit a line in `tools/art/<character>.json` under `overrides` to change it; "
            "everything else (style, character look, reference images, layout per card type and a varied camera angle) is added "

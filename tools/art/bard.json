@@ -122,7 +122,15 @@
     "char_select": "the Bard striking a heroic pose on a tavern table: velvet purple doublet, feathered cap, short wine-red cape, battered three-string lute raised, golden notes swirling",
     "mod_image": "the Bard playing his lute at the foot of a dark spire, golden music notes rising up its walls",
     "combat_sprite": "the Bard, clean-shaven, holding his battered medieval lute (pear-shaped body, three strings, bent-back pegbox) ready to play, cape flaring, golden notes around him",
-    "select_bg": "the Bard on a tavern stage in a warm spotlight, mid-song, lute raised, golden music notes swirling up into the dark rafters; velvet purple, wine red and candlelight gold"
+    "select_bg": "the Bard on a tavern stage in a warm spotlight, mid-song, lute raised, golden music notes swirling up into the dark rafters; velvet purple, wine red and candlelight gold",
+    "master_lute": "an ornate polished lute with silver strings and gold inlay, softly glowing",
+    "sheet_music": "a curled sheet of old parchment with musical notes and a quill pen",
+    "tuning_fork": "a brass tuning fork vibrating, with curved sound-wave lines around it",
+    "golden_strings": "a loose coil of glowing golden lute strings",
+    "buskers_hat": "an upturned battered feathered hat with gold coins inside",
+    "throat_coat": "a potion: a glass bottle of warm honey-coloured liquid with a lemon slice on its neck",
+    "encore_draught": "a potion: a bottle of violet liquid with musical notes swirling up out of it",
+    "overture_elixir": "a potion: a tall elegant flask of radiant gold liquid with a trumpet-shaped neck"
   },
   "style_ref": "reference/style/bard_strike.jpg",
   "keep": [

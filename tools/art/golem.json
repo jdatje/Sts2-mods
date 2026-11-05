@@ -124,7 +124,15 @@
     "char_select": "the Golem standing tall in a misty cave: brown wet clay body, mossy green-grey boulder fists with glowing orange cracks, rusted iron bands, one glowing amber eye, looking down at the viewer, menacing but loyal",
     "mod_image": "the Golem raising one mossy boulder fist on a pile of rubble at the base of a dark spire, amber eye glowing",
     "combat_sprite": "the Golem, a hulking clay-and-boulder construct, hunched forward with both huge mossy boulder fists raised, one glowing amber eye",
-    "select_bg": "the Golem looming in a misty underground cave, its mossy boulder head and one glowing amber eye catching warm orange light from glowing cracks in its body, rubble and dripping mud around it; palette of wet clay browns, slate and moss green with amber glow"
+    "select_bg": "the Golem looming in a misty underground cave, its mossy boulder head and one glowing amber eye catching warm orange light from glowing cracks in its body, rubble and dripping mud around it; palette of wet clay browns, slate and moss green with amber glow",
+    "heart_of_stone": "a heavy grey stone heart with glowing orange cracks and carved runes, solid and powerful",
+    "masons_chisel": "a stonemason's iron chisel with a worn wooden handle, small stone chips flying off its edge",
+    "spare_parts": "a burlap sack spilling spare clay limbs: a clay hand, a stone forearm and a few bolts",
+    "living_clay": "a lump of wet reddish-brown clay with small creeping tendrils and a faint green glow, as if alive",
+    "spare_socket": "a round carved stone socket ring with bronze bolts and an empty glowing orange cavity in the middle",
+    "quarry_brew": "a potion: a stoppered glass flask filled with murky grey liquid and floating pebbles",
+    "mortar_tonic": "a potion: a squat thick glass bottle of pale grey-white mortar liquid with a tiny trowel tied to its neck",
+    "liquid_clay": "a potion: a round glass flask of swirling reddish-brown clay liquid, a tiny clay hand reaching out of the neck"
   },
   "style_ref": "reference/style/golem_strike.jpg",
   "keep": [
