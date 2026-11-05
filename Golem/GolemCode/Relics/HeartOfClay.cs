@@ -16,6 +16,9 @@ public sealed class HeartOfClay : GolemRelic
 
     public override RelicRarity Rarity => RelicRarity.Starter;
 
+    public override MegaCrit.Sts2.Core.Models.RelicModel GetUpgradeReplacement() =>
+        MegaCrit.Sts2.Core.Models.ModelDb.Relic<HeartOfStone>();
+
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(6, ValueProp.Unpowered)];
 
     public override Task BeforeCombatStart()

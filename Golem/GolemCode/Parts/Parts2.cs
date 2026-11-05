@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Rooms;
 
 namespace Golem.GolemCode.Parts;
 
@@ -131,12 +132,21 @@ public sealed class StompingLegsPower : SimplePart
 /// <summary>LEGS: At the end of your turn, gain X Block for each Part you have.</summary>
 public sealed class IronTreadsPower : SimplePart
 {
+    public const int DecayPerTurn = 2;
+    private int _turns;
     public override PartSlot Slot => PartSlot.Legs;
+    public override Task OnInstalled(PlayerChoiceContext ctx)
+    {
+        _turns = 0;
+        return Task.CompletedTask;
+    }
     public override async Task BeforeSideTurnEnd(PlayerChoiceContext ctx, CombatSide side, IEnumerable<Creature> participants)
     {
         if (!IsMySideEnd(side)) return;
+        var block = Amount * PartCmd.CountAll(Owner) - DecayPerTurn * _turns++;
+        if (block <= 0) return;
         Flash();
-        await CreatureCmd.GainBlock(Owner, Amount * PartCmd.Count(Owner), ValueProp.Unpowered, null);
+        await CreatureCmd.GainBlock(Owner, block, ValueProp.Unpowered, null);
     }
 }
 
@@ -265,9 +275,9 @@ public sealed class LivingFortressPower : SimpleGolemPower
 /// <summary>At the end of your turn, heal X HP.</summary>
 public sealed class SelfRepairPower : SimpleGolemPower
 {
-    public override async Task BeforeSideTurnEnd(PlayerChoiceContext ctx, CombatSide side, IEnumerable<Creature> participants)
+    /// <summary>At the end of combat (on victory), heal X HP.</summary>
+    public override async Task AfterCombatVictoryEarly(CombatRoom room)
     {
-        if (side != Owner.Side) return;
         Flash();
         await CreatureCmd.Heal(Owner, Amount);
     }

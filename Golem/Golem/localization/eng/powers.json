@@ -42,8 +42,8 @@
   "GOLEM-STOMPING_LEGS_POWER.description": "Legs Part. At the end of your turn, deal damage to ALL enemies.",
   "GOLEM-STOMPING_LEGS_POWER.smartDescription": "Legs Part. At the end of your turn, deal [blue]{Amount}[/blue] damage to ALL enemies.",
   "GOLEM-IRON_TREADS_POWER.title": "Iron Treads",
-  "GOLEM-IRON_TREADS_POWER.description": "Legs Part. At the end of your turn, gain Block for each Part.",
-  "GOLEM-IRON_TREADS_POWER.smartDescription": "Legs Part. At the end of your turn, gain [blue]{Amount}[/blue] [gold]Block[/gold] for each Part you have.",
+  "GOLEM-IRON_TREADS_POWER.description": "Legs Part. At the end of your turn, gain Block for each Part, 2 less each turn.",
+  "GOLEM-IRON_TREADS_POWER.smartDescription": "Legs Part. At the end of your turn, gain [blue]{Amount}[/blue] [gold]Block[/gold] for each Part you have, 2 less each turn.",
   "GOLEM-UNMOVABLE_LEGS_POWER.title": "Unmovable Legs",
   "GOLEM-UNMOVABLE_LEGS_POWER.description": "Legs Part. Block is not removed at the start of your turn.",
   "GOLEM-UNMOVABLE_LEGS_POWER.smartDescription": "Legs Part. [gold]Block[/gold] is not removed at the start of your turn.",
@@ -72,6 +72,6 @@
   "GOLEM-LIVING_FORTRESS_POWER.description": "At the end of your turn, gain Plating for each Part.",
   "GOLEM-LIVING_FORTRESS_POWER.smartDescription": "At the end of your turn, gain [blue]{Amount}[/blue] [gold]Plating[/gold] for each Part you have.",
   "GOLEM-SELF_REPAIR_POWER.title": "Self-Repair",
-  "GOLEM-SELF_REPAIR_POWER.description": "At the end of your turn, heal HP.",
-  "GOLEM-SELF_REPAIR_POWER.smartDescription": "At the end of your turn, heal [blue]{Amount}[/blue] HP."
+  "GOLEM-SELF_REPAIR_POWER.description": "At the end of combat, heal HP.",
+  "GOLEM-SELF_REPAIR_POWER.smartDescription": "At the end of combat, heal [blue]{Amount}[/blue] HP."
 }

@@ -1,5 +1,20 @@
 {
   "GOLEM-HEART_OF_CLAY.title": "Heart of Clay",
   "GOLEM-HEART_OF_CLAY.description": "The first time you install a [gold]Part[/gold] each combat, gain [blue]{Block}[/blue] [gold]Block[/gold].",
-  "GOLEM-HEART_OF_CLAY.flavor": "Still warm. Still beating, in its slow, wet way."
+  "GOLEM-HEART_OF_CLAY.flavor": "Still warm. Still beating, in its slow, wet way.",
+  "GOLEM-HEART_OF_STONE.title": "Heart of Stone",
+  "GOLEM-HEART_OF_STONE.description": "The first time you install a [gold]Part[/gold] each combat, gain [blue]10[/blue] [gold]Block[/gold] and draw [blue]2[/blue] cards.",
+  "GOLEM-HEART_OF_STONE.flavor": "The clay has set. It beats slower now, and far harder.",
+  "GOLEM-MASONS_CHISEL.title": "Mason's Chisel",
+  "GOLEM-MASONS_CHISEL.description": "While you have an [gold]Arms[/gold] Part, your Attacks deal [blue]1[/blue] additional damage.",
+  "GOLEM-MASONS_CHISEL.flavor": "Every edge it touches comes out a little sharper.",
+  "GOLEM-SPARE_PARTS.title": "Spare Parts",
+  "GOLEM-SPARE_PARTS.description": "At the start of each combat, install the first [gold]Part[/gold] in your draw pile for free.",
+  "GOLEM-SPARE_PARTS.flavor": "A sack of limbs, labelled in a careful hand.",
+  "GOLEM-LIVING_CLAY.title": "Living Clay",
+  "GOLEM-LIVING_CLAY.description": "At the start of your turn, a random installed [gold]Part[/gold] gains [blue]1[/blue] (at most [blue]5[/blue] per combat).",
+  "GOLEM-LIVING_CLAY.flavor": "It creeps into the cracks and hardens there.",
+  "GOLEM-SPARE_SOCKET.title": "Spare Socket",
+  "GOLEM-SPARE_SOCKET.description": "You have an extra [gold]Core[/gold] slot.",
+  "GOLEM-SPARE_SOCKET.flavor": "Room for a second fire in the chest."
 }

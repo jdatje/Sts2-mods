@@ -16,7 +16,7 @@ public sealed class BoulderFists : GolemCard
 {
     public BoulderFists() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithPower<BoulderFistsPower>(4, 1);
+        WithPower<BoulderFistsPower>(3, 1);
         WithKeywords(GolemKeywords.Part);
     }
 
@@ -43,7 +43,7 @@ public sealed class RootedLegs : GolemCard
 {
     public RootedLegs() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
-        WithPower<RootedLegsPower>(4, 2);
+        WithPower<RootedLegsPower>(3, 1);
         WithKeywords(GolemKeywords.Part);
     }
 

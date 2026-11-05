@@ -177,12 +177,12 @@ public sealed class IronGrip : GolemCard
 // =====================================================================
 
 public sealed class MossyCrown() : PartCard<MossyCrownPower>(1, CardRarity.Uncommon, 3, 2);
-public sealed class SpringLegs() : PartCard<SpringLegsPower>(1, CardRarity.Uncommon, 2, 1);
+public sealed class SpringLegs() : PartCard<SpringLegsPower>(1, CardRarity.Uncommon, 1, 1);
 public sealed class IronHooks() : PartCard<IronHooksPower>(1, CardRarity.Uncommon, 1, 1);
-public sealed class StompingLegs() : PartCard<StompingLegsPower>(2, CardRarity.Uncommon, 4, 2);
+public sealed class StompingLegs() : PartCard<StompingLegsPower>(2, CardRarity.Uncommon, 3, 1);
 public sealed class StoneHeart() : PartCard<StoneHeartPower>(1, CardRarity.Uncommon, 1, 0, -1);
 public sealed class MagmaCore() : PartCard<MagmaCorePower>(1, CardRarity.Uncommon, 3, 1);
-public sealed class SpikedKnuckles() : PartCard<SpikedKnucklesPower>(1, CardRarity.Uncommon, 2, 1);
+public sealed class SpikedKnuckles() : PartCard<SpikedKnucklesPower>(1, CardRarity.Uncommon, 1, 1);
 public sealed class RockSolid() : PowerCard<RockSolidPower>(1, CardRarity.Uncommon, 5, 2);
 public sealed class AssemblyLine() : PowerCard<AssemblyLinePower>(1, CardRarity.Uncommon, 1, 0, -1);
 
@@ -395,10 +395,10 @@ public sealed class StoneShelter : GolemCard
 //  RARE — Parts and powers
 // =====================================================================
 
-public sealed class CrystalSkull() : PartCard<CrystalSkullPower>(2, CardRarity.Rare, 2, 0, -1);
+public sealed class CrystalSkull() : PartCard<CrystalSkullPower>(3, CardRarity.Rare, 2, 0, -1);
 public sealed class ThinkingStone() : PartCard<ThinkingStonePower>(1, CardRarity.Rare, 2, 1);
-public sealed class HammerArms() : PartCard<HammerArmsPower>(2, CardRarity.Rare, 6, 2);
-public sealed class IronTreads() : PartCard<IronTreadsPower>(2, CardRarity.Rare, 3, 1);
+public sealed class HammerArms() : PartCard<HammerArmsPower>(2, CardRarity.Rare, 4, 2);
+public sealed class IronTreads() : PartCard<IronTreadsPower>(2, CardRarity.Rare, 2, 1);
 public sealed class UnmovableLegs : PartCard<UnmovableLegsPower>
 {
     public UnmovableLegs() : base(3, CardRarity.Rare, 1, 0, -1) => WithTip(typeof(BarricadePower));
@@ -407,7 +407,7 @@ public sealed class GeodeCore() : PartCard<GeodeCorePower>(3, CardRarity.Rare, 1
 public sealed class VolcanicCore() : PartCard<VolcanicCorePower>(2, CardRarity.Rare, 3, 1);
 public sealed class PerfectForm() : PowerCard<PerfectFormPower>(2, CardRarity.Rare, 1, 0, -1);
 public sealed class LivingFortress() : PowerCard<LivingFortressPower>(3, CardRarity.Rare, 1, 0, -1);
-public sealed class SelfRepair() : PowerCard<SelfRepairPower>(1, CardRarity.Rare, 2, 1);
+public sealed class SelfRepair() : PowerCard<SelfRepairPower>(1, CardRarity.Rare, 7, 3);
 
 // =====================================================================
 //  RARE — skills and attacks

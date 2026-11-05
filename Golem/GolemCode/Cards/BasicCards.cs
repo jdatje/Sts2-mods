@@ -55,7 +55,7 @@ public sealed class ClayArms : GolemCard
 {
     public ClayArms() : base(1, CardType.Power, CardRarity.Basic, TargetType.Self)
     {
-        WithPower<ClayArmsPower>(2, 1);
+        WithPower<ClayArmsPower>(1, 1);
         WithKeywords(GolemKeywords.Part);
     }
 

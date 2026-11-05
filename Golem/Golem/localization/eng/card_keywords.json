@@ -1,4 +1,4 @@
 {
   "GOLEM-PART.title": "Part",
-  "GOLEM-PART.description": "Installs into one body slot: [gold]Head[/gold], [gold]Arms[/gold], [gold]Legs[/gold] or [gold]Core[/gold]. A new Part replaces the one in the same slot."
+  "GOLEM-PART.description": "Installs into a body slot: 1 [gold]Head[/gold], 1 [gold]Core[/gold], 2 [gold]Arms[/gold], 2 [gold]Legs[/gold]. When those slots are full, a new Part replaces the oldest one. The same Part twice stacks. Cards that count Parts count up to 4."
 }
