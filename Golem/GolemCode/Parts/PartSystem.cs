@@ -79,6 +79,7 @@ public static class PartCmd
         installed.Installs.Add((++_order, amount));
 
         await installed.OnInstalled(ctx);
+        Golem.GolemCode.Visuals.SlotOverlay.Refresh(creature);
         foreach (var listener in creature.Powers.OfType<IPartListener>().ToList())
             await listener.AfterPartInstalled(ctx, installed);
         foreach (var relic in creature.Player?.Relics.OfType<IPartListener>().ToList() ?? [])
@@ -102,6 +103,7 @@ public static class PartCmd
         part.Installs.Remove(entry);
         var delta = Math.Min(entry.Amount, part.Amount - 1);
         if (delta > 0) await PowerCmd.ModifyAmount(ctx, part, -delta, creature, null, silent: true);
+        Golem.GolemCode.Visuals.SlotOverlay.Refresh(creature);
         return true;
     }
 
@@ -131,6 +133,8 @@ public static class PartCmd
     {
         await part.OnUninstalled(ctx);
         part.Installs.Clear();
+        var owner = part.Owner;
         await PowerCmd.Remove(part);
+        Golem.GolemCode.Visuals.SlotOverlay.Refresh(owner);
     }
 }

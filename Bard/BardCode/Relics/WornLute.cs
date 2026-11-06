@@ -3,7 +3,8 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 namespace Bard.BardCode.Relics;
 
 /// <summary>Starter relic. Your first Song each combat starts with 3 extra Verses.</summary>
-public sealed class WornLute : BardRelic, Bard.BardCode.Songs.IFirstSongBonus
+[BaseLib.Utils.Pool(typeof(Bard.BardCode.Character.BardRelicPool))]
+public sealed class WornLute : Bard.BardCode.Visuals.AnimatedStarterRelic, Bard.BardCode.Songs.IFirstSongBonus
 {
     public const int BonusVerses = 3;
     private bool _usedThisCombat;

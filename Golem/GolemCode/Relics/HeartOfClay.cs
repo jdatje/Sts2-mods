@@ -10,7 +10,8 @@ using Golem.GolemCode.Parts;
 namespace Golem.GolemCode.Relics;
 
 /// <summary>Starter relic. The first Part you install each combat also gives 6 Block.</summary>
-public sealed class HeartOfClay : GolemRelic
+[BaseLib.Utils.Pool(typeof(Golem.GolemCode.Character.GolemRelicPool))]
+public sealed class HeartOfClay : Golem.GolemCode.Visuals.AnimatedStarterRelic
 {
     private bool _usedThisCombat;
 
@@ -29,6 +30,7 @@ public sealed class HeartOfClay : GolemRelic
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.AfterCardPlayed(choiceContext, cardPlay);
         if (_usedThisCombat) return;
         if (cardPlay.Card.Owner != Owner) return;
         if (!cardPlay.Card.Keywords.Contains(GolemKeywords.Part)) return;

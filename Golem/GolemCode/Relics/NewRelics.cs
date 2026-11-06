@@ -18,15 +18,12 @@ namespace Golem.GolemCode.Relics;
 
 /// <summary>Ancient (upgraded starter). The first Part you install each combat gives 10 Block and draws 2 cards.</summary>
 [Pool(typeof(SharedRelicPool))]
-public sealed class HeartOfStone : CustomRelicModel, IPartListener
+public sealed class HeartOfStone : Golem.GolemCode.Visuals.AnimatedStarterRelic, IPartListener
 {
     public const int BlockAmount = 10, DrawAmount = 2;
     private bool _usedThisCombat;
 
     public override RelicRarity Rarity => RelicRarity.Ancient;
-    public override string PackedIconPath => "heart_of_stone.png".RelicImagePath();
-    protected override string PackedIconOutlinePath => "heart_of_stone_outline.png".RelicImagePath();
-    protected override string BigIconPath => "heart_of_stone.png".BigRelicImagePath();
 
     public override Task BeforeCombatStart()
     {

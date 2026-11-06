@@ -2,7 +2,7 @@
   "title": "The Bard (character)",
   "description": "[h2]The Bard: a new playable character[/h2]\nA theatrical musician who fights with [b]Songs[/b]. Start a Song, build up [b]Verses[/b], trigger its [b]Refrain[/b] every turn and end with a big [b]Finale[/b]. Strong support for co-op.\n\nHP 70. Starting relic: Worn Lute. 86 cards.\n\n[h3]Good to know[/h3]\n[list]\n[*]Changes gameplay: everyone in a multiplayer lobby needs the same version.\n[*]Requires BaseLib (subscribed automatically as a required item).\n[*]Personal fan project, not affiliated with Mega Crit.\n[/list]",
   "visibility": "friends_only",
-  "changeNote": "v0.4.0 balance update: Refrains grow with Verses, Song upgrades add +1 Refrain, Refrain Block adds Dexterity. Swan Song costs 3, Maestro costs 3, Requiem 3 per Verse, War Drums is rare, Sea Shanty reworked, Grand Finale is now Final Bow. New: 5 relics (incl. Master Lute from the Ancients) and 3 potions.",
+  "changeNote": "v0.4.1: the Bard moves on screen (idle, attack, cast, hit, death).",
   "tags": [],
   "dependencies": [
     3737335127

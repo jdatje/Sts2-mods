@@ -13,15 +13,12 @@ namespace Bard.BardCode.Relics;
 
 /// <summary>Ancient (upgraded starter). Your first Song each combat starts with 6 extra Verses.</summary>
 [Pool(typeof(SharedRelicPool))]
-public sealed class MasterLute : CustomRelicModel, IFirstSongBonus
+public sealed class MasterLute : Bard.BardCode.Visuals.AnimatedStarterRelic, IFirstSongBonus
 {
     public const int BonusVerses = 6;
     private bool _usedThisCombat;
 
     public override RelicRarity Rarity => RelicRarity.Ancient;
-    public override string PackedIconPath => "master_lute.png".RelicImagePath();
-    protected override string PackedIconOutlinePath => "master_lute_outline.png".RelicImagePath();
-    protected override string BigIconPath => "master_lute.png".BigRelicImagePath();
 
     public override Task BeforeCombatStart()
     {
