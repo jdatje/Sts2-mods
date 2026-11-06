@@ -142,7 +142,7 @@
   "GOLEM-PERFECT_FORM.title": "Perfect Form",
   "GOLEM-PERFECT_FORM.description": "Whenever you install a [gold]Part[/gold], gain {PerfectFormPower:diff()} [gold]Strength[/gold] and {PerfectFormPower:diff()} [gold]Dexterity[/gold].",
   "GOLEM-LIVING_FORTRESS.title": "Living Fortress",
-  "GOLEM-LIVING_FORTRESS.description": "At the end of your turn, gain {LivingFortressPower:diff()} [gold]Plating[/gold] for each [gold]Part[/gold] you have.",
+  "GOLEM-LIVING_FORTRESS.description": "At the end of your turn, raise your [gold]Plating[/gold] to {LivingFortressPower:diff()} for each [gold]Part[/gold] you have (all Parts count).",
   "GOLEM-SELF_REPAIR.title": "Self-Repair",
   "GOLEM-SELF_REPAIR.description": "At the end of combat, heal {SelfRepairPower:diff()} HP.",
   "GOLEM-COLOSSUS_SLAM.title": "Colossus Slam",

@@ -69,8 +69,8 @@
   "GOLEM-PERFECT_FORM_POWER.description": "Whenever you install a Part, gain Strength and Dexterity.",
   "GOLEM-PERFECT_FORM_POWER.smartDescription": "Whenever you install a Part, gain [blue]{Amount}[/blue] [gold]Strength[/gold] and [gold]Dexterity[/gold].",
   "GOLEM-LIVING_FORTRESS_POWER.title": "Living Fortress",
-  "GOLEM-LIVING_FORTRESS_POWER.description": "At the end of your turn, gain Plating for each Part.",
-  "GOLEM-LIVING_FORTRESS_POWER.smartDescription": "At the end of your turn, gain [blue]{Amount}[/blue] [gold]Plating[/gold] for each Part you have.",
+  "GOLEM-LIVING_FORTRESS_POWER.description": "At the end of your turn, raise your Plating to 1 per Part you have.",
+  "GOLEM-LIVING_FORTRESS_POWER.smartDescription": "At the end of your turn, raise your [gold]Plating[/gold] to [blue]{Amount}[/blue] for each Part you have (all Parts count).",
   "GOLEM-SELF_REPAIR_POWER.title": "Self-Repair",
   "GOLEM-SELF_REPAIR_POWER.description": "At the end of combat, heal HP.",
   "GOLEM-SELF_REPAIR_POWER.smartDescription": "At the end of combat, heal [blue]{Amount}[/blue] HP."

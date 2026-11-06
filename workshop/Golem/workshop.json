@@ -2,7 +2,7 @@
   "title": "The Golem (character)",
   "description": "[h2]The Golem: a new playable character[/h2]\nA hulking construct of river clay and mossy boulders. [b]Parts[/b] are power cards that slot into Head, Arms, Legs and Core; installing a new Part replaces the old one, and many cards scale with how many Parts you have.\n\nHP 80. Starting relic: Heart of Clay. 87 cards.\n\n[h3]Good to know[/h3]\n[list]\n[*]Changes gameplay: everyone in a multiplayer lobby needs the same version.\n[*]Requires BaseLib (subscribed automatically as a required item).\n[*]Personal fan project, not affiliated with Mega Crit.\n[/list]",
   "visibility": "friends_only",
-  "changeNote": "v0.4.0 balance update: 2 Arms and 2 Legs slots (a full pair replaces its oldest Part, the same Part twice stacks); Part-counting cards count up to 4; lower Arms/Legs numbers; Hammer Arms +4, Self-Repair heals at end of combat, Crystal Skull costs 3, Iron Treads fades. New: 5 relics (incl. Heart of Stone from the Ancients) and 3 potions.",
+  "changeNote": "v0.4.1: Living Fortress raises Plating to 1 per Part (all Parts count) instead of stacking.",
   "tags": [],
   "dependencies": [
     3737335127

@@ -260,15 +260,18 @@ public sealed class PerfectFormPower : SimpleGolemPower, IPartListener
 }
 
 /// <summary>At the end of your turn, gain X Plating for each Part you have.</summary>
+/// <summary>At the end of your turn, raise your Plating to 1 per Part you have (all Parts count).</summary>
 public sealed class LivingFortressPower : SimpleGolemPower
 {
     public override async Task BeforeSideTurnEnd(PlayerChoiceContext ctx, CombatSide side, IEnumerable<Creature> participants)
     {
         if (side != Owner.Side) return;
-        var parts = PartCmd.Count(Owner);
-        if (parts == 0) return;
+        // Raise Plating to (Amount x Parts), counting all Parts (no cap of 4). Doesn't stack beyond that.
+        var target = Amount * PartCmd.CountAll(Owner);
+        var current = Owner.Powers.OfType<PlatingPower>().Sum(p => p.Amount);
+        if (target <= current) return;
         Flash();
-        await PowerCmd.Apply<PlatingPower>(ctx, Owner, Amount * parts, Owner, null);
+        await PowerCmd.Apply<PlatingPower>(ctx, Owner, target - current, Owner, null);
     }
 }
 
