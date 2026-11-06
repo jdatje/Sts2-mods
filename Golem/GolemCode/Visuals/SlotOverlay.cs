@@ -6,7 +6,7 @@ namespace Golem.GolemCode.Visuals;
 
 /// <summary>
 /// Always-visible line above the Golem's head showing its Part slots:
-/// "Head ● · Core ○ · Arms ●○ · Legs ●●" (filled = Part installed, empty = free slot).
+/// "Head (dot) · Core (dot) · Arms (dot dot) · Legs (dot dot)": a filled dot is an installed Part, an empty ring a free slot.
 /// Built from plain Godot nodes attached to the creature's NCreature node, so it moves with the Golem
 /// and every player in co-op sees it.
 /// </summary>
@@ -46,13 +46,30 @@ public static class SlotOverlay
                 var used = PartCmd.Used(owner, slot);
                 var cap = PartCmd.Capacity(owner, slot);
                 for (var d = 0; d < cap; d++)
-                    row.AddChild(Text(d < used ? "●" : "○", d < used ? Cream : Faint, 20));
+                    row.AddChild(Dot(d < used));
             }
         }
         catch (Exception)
         {
             // purely visual; never let it break combat
         }
+    }
+
+    /// <summary>A small circle: filled cream for an installed Part, a faint ring for a free slot.</summary>
+    private static Control Dot(bool filled)
+    {
+        var box = new CenterContainer { MouseFilter = Control.MouseFilterEnum.Ignore, CustomMinimumSize = new Vector2(16, 28) };
+        var dot = new Panel { MouseFilter = Control.MouseFilterEnum.Ignore, CustomMinimumSize = new Vector2(14, 14) };
+        var style = new StyleBoxFlat
+        {
+            BgColor = filled ? Cream : new Color(0, 0, 0, 0.35f),
+            BorderColor = filled ? Gold : Faint,
+            CornerRadiusTopLeft = 7, CornerRadiusTopRight = 7, CornerRadiusBottomLeft = 7, CornerRadiusBottomRight = 7,
+        };
+        style.SetBorderWidthAll(2);
+        dot.AddThemeStyleboxOverride("panel", style);
+        box.AddChild(dot);
+        return box;
     }
 
     public static void Hide(Creature owner)
