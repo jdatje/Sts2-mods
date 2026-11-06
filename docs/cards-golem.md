@@ -60,7 +60,7 @@
 | Rooted Legs | Power | 1 | Part. Legs: At the end of your turn, gain 3 Block. |
 | Spiked Knuckles | Power | 1 | Part. Arms: Whenever you play an Attack, deal 1 damage to ALL enemies. |
 | Spring Legs | Power | 1 | Part. Legs: Whenever you play a Skill, gain 1 Block. |
-| Stone Heart | Power | 1 | Part. Core: At the end of your turn, gain 1 Plating. |
+| Stone Heart | Power | 1 | Part. Core: At the end of your turn, gain 2 Plating, until you have 6 Plating. |
 | Stomping Legs | Power | 2 | Part. Legs: At the end of your turn, deal 3 damage to ALL enemies. |
 | Collapse | Skill | 0 | Remove all your Parts. Gain 7 Block for each Part removed. *Exhaust.* |
 | Upheaval | Skill | 0 | Lose 3 HP. Gain 2 Energy. Draw 1 card. *Exhaust.* |
@@ -97,7 +97,7 @@
 | Crystal Skull | Power | 3 | Part. Head: Draw 2 additional cards each turn. |
 | Furnace Core | Power | 3 | Part. Core: At the start of your turn, gain 1 Energy. |
 | Geode Core | Power | 3 | Part. Core: At the start of your turn, gain 1 Strength. |
-| Living Fortress | Power | 3 | At the end of your turn, gain 1 Plating for each Part you have. |
+| Living Fortress | Power | 3 | At the end of your turn, raise your Plating to 1 for each Part you have (all Parts count). |
 | Unmovable Legs | Power | 3 | Part. Legs: Block is not removed at the start of your turn. |
 | Rock Bottom | Skill | 0 | If your HP is at or below half, gain 2 Energy and draw 2 cards. *Exhaust.* |
 | Bedrock | Skill | 1 | Gain 3 Strength. *Exhaust.* |

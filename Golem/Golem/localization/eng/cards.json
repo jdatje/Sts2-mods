@@ -76,7 +76,7 @@
   "GOLEM-STOMPING_LEGS.title": "Stomping Legs",
   "GOLEM-STOMPING_LEGS.description": "[gold]Legs[/gold]: At the end of your turn, deal {StompingLegsPower:diff()} damage to ALL enemies.",
   "GOLEM-STONE_HEART.title": "Stone Heart",
-  "GOLEM-STONE_HEART.description": "[gold]Core[/gold]: At the end of your turn, gain {StoneHeartPower:diff()} [gold]Plating[/gold].",
+  "GOLEM-STONE_HEART.description": "[gold]Core[/gold]: At the end of your turn, gain {StoneHeartPower:diff()} [gold]Plating[/gold], until you have 6 [gold]Plating[/gold].",
   "GOLEM-MAGMA_CORE.title": "Magma Core",
   "GOLEM-MAGMA_CORE.description": "[gold]Core[/gold]: Your Attacks deal {MagmaCorePower:diff()} additional damage. At the end of your turn, lose 1 HP.",
   "GOLEM-SPIKED_KNUCKLES.title": "Spiked Knuckles",

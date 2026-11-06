@@ -180,7 +180,7 @@ public sealed class MossyCrown() : PartCard<MossyCrownPower>(1, CardRarity.Uncom
 public sealed class SpringLegs() : PartCard<SpringLegsPower>(1, CardRarity.Uncommon, 1, 1);
 public sealed class IronHooks() : PartCard<IronHooksPower>(1, CardRarity.Uncommon, 1, 1);
 public sealed class StompingLegs() : PartCard<StompingLegsPower>(2, CardRarity.Uncommon, 3, 1);
-public sealed class StoneHeart() : PartCard<StoneHeartPower>(1, CardRarity.Uncommon, 1, 0, -1);
+public sealed class StoneHeart() : PartCard<StoneHeartPower>(1, CardRarity.Uncommon, 2, 1);
 public sealed class MagmaCore() : PartCard<MagmaCorePower>(1, CardRarity.Uncommon, 3, 1);
 public sealed class SpikedKnuckles() : PartCard<SpikedKnucklesPower>(1, CardRarity.Uncommon, 1, 1);
 public sealed class RockSolid() : PowerCard<RockSolidPower>(1, CardRarity.Uncommon, 5, 2);

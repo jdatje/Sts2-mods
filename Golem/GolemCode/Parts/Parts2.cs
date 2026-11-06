@@ -168,15 +168,19 @@ public sealed class UnmovableLegsPower : SimplePart
 
 // ===================== CORE =====================
 
-/// <summary>CORE: At the end of your turn, gain X Plating.</summary>
+/// <summary>CORE: At the end of your turn, gain X Plating, until you have 6 Plating.</summary>
 public sealed class StoneHeartPower : SimplePart
 {
+    public const int PlatingCap = 6;
     public override PartSlot Slot => PartSlot.Core;
     public override async Task BeforeSideTurnEnd(PlayerChoiceContext ctx, CombatSide side, IEnumerable<Creature> participants)
     {
         if (!IsMySideEnd(side)) return;
+        var current = Owner.Powers.OfType<PlatingPower>().Sum(p => p.Amount);
+        var add = Math.Min(Amount, PlatingCap - current);
+        if (add <= 0) return;
         Flash();
-        await PowerCmd.Apply<PlatingPower>(ctx, Owner, Amount, Owner, null);
+        await PowerCmd.Apply<PlatingPower>(ctx, Owner, add, Owner, null);
     }
 }
 
