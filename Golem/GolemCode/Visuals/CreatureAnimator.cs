@@ -18,6 +18,11 @@ public static class CreatureAnimator
         public Color BaseModulate;
         public Tween? Idle, Sway, Action;
         public bool Dead;
+        /// <summary>Distance from the body's origin down to its feet (local units), so breathing scales from the feet.</summary>
+        public float Feet;
+        public Vector2 ActionOffset;
+        public float IdleY;
+        public void Apply() => Body.Position = BasePos + ActionOffset + new Vector2(0, IdleY);
     }
 
     private static readonly Dictionary<ulong, State> States = [];
@@ -31,10 +36,18 @@ public static class CreatureAnimator
         if (s == null || s.Dead) return;
         if (s.Idle != null && s.Idle.IsValid()) return;
 
+        void Breathe(float k)
+        {
+            if (!GodotObject.IsInstanceValid(s.Body)) return;
+            var f = new Vector2(1f - 0.01f * k, 1f + 0.02f * k);
+            s.Body.Scale = s.BaseScale * f;
+            s.IdleY = -(f.Y - 1f) * s.Feet * s.BaseScale.Y; // keep the feet on the ground
+            s.Apply();
+        }
         s.Idle = s.Body.CreateTween().SetLoops();
-        s.Idle.TweenProperty(s.Body, "scale", s.BaseScale * new Vector2(0.99f, 1.02f), 1.6f)
+        s.Idle.TweenMethod(Callable.From<float>(Breathe), 0f, 1f, 1.6f)
             .SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.InOut);
-        s.Idle.TweenProperty(s.Body, "scale", s.BaseScale, 1.6f)
+        s.Idle.TweenMethod(Callable.From<float>(Breathe), 1f, 0f, 1.6f)
             .SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.InOut);
 
         s.Sway = s.Body.CreateTween().SetLoops();
@@ -48,10 +61,8 @@ public static class CreatureAnimator
     {
         var s = Begin(creature);
         if (s == null) return;
-        s.Action!.TweenProperty(s.Body, "position", s.BasePos + new Vector2(45, -6), 0.08f)
-            .SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
-        s.Action.TweenProperty(s.Body, "position", s.BasePos, 0.22f)
-            .SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.InOut);
+        Move(s, s.Action!, Vector2.Zero, new Vector2(45, -6), 0.08f, Tween.EaseType.Out);
+        Move(s, s.Action!, new Vector2(45, -6), Vector2.Zero, 0.22f, Tween.EaseType.InOut);
     }
 
     public static void Cast(Creature creature)
@@ -60,11 +71,10 @@ public static class CreatureAnimator
         if (s == null) return;
         var glow = s.BaseModulate.Lerp(Accent, 0.45f);
         s.Action!.SetParallel();
-        s.Action.TweenProperty(s.Body, "position", s.BasePos + new Vector2(0, -12), 0.1f)
-            .SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
+        Move(s, s.Action, Vector2.Zero, new Vector2(0, -12), 0.1f, Tween.EaseType.Out);
         s.Action.TweenProperty(s.Body, "modulate", glow, 0.1f);
-        s.Action.Chain().TweenProperty(s.Body, "position", s.BasePos, 0.2f)
-            .SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.In);
+        s.Action.Chain();
+        Move(s, s.Action, new Vector2(0, -12), Vector2.Zero, 0.2f, Tween.EaseType.In);
         s.Action.TweenProperty(s.Body, "modulate", s.BaseModulate, 0.3f);
     }
 
@@ -74,9 +84,11 @@ public static class CreatureAnimator
         if (s == null) return;
         s.Action!.SetParallel();
         s.Action.TweenProperty(s.Body, "modulate", new Color(1f, 0.45f, 0.45f, s.BaseModulate.A), 0.06f);
-        s.Action.TweenProperty(s.Body, "position", s.BasePos + new Vector2(-16, 0), 0.06f);
-        s.Action.Chain().TweenProperty(s.Body, "position", s.BasePos + new Vector2(6, 0), 0.06f);
-        s.Action.Chain().TweenProperty(s.Body, "position", s.BasePos, 0.08f);
+        Move(s, s.Action, Vector2.Zero, new Vector2(-16, 0), 0.06f, Tween.EaseType.InOut);
+        s.Action.Chain();
+        Move(s, s.Action, new Vector2(-16, 0), new Vector2(6, 0), 0.06f, Tween.EaseType.InOut);
+        s.Action.Chain();
+        Move(s, s.Action, new Vector2(6, 0), Vector2.Zero, 0.08f, Tween.EaseType.InOut);
         s.Action.TweenProperty(s.Body, "modulate", s.BaseModulate, 0.25f);
     }
 
@@ -87,8 +99,8 @@ public static class CreatureAnimator
         s.Dead = true;
         Kill(s.Idle); Kill(s.Sway); Kill(s.Action);
         var t = s.Body.CreateTween().SetParallel();
-        t.TweenProperty(s.Body, "position", s.BasePos + new Vector2(0, 40), 0.9f)
-            .SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.In);
+        t.TweenProperty(s.Body, "scale", s.BaseScale, 0.2f);
+        Move(s, t, s.ActionOffset, new Vector2(0, 40), 0.9f, Tween.EaseType.In);
         t.TweenProperty(s.Body, "modulate", new Color(s.BaseModulate, 0f), 0.9f);
         t.TweenProperty(s.Body, "rotation", 0f, 0.3f);
     }
@@ -116,7 +128,8 @@ public static class CreatureAnimator
         var s = Get(creature);
         if (s == null || s.Dead) return null;
         Kill(s.Action);
-        s.Body.Position = s.BasePos;
+        s.ActionOffset = Vector2.Zero;
+        s.Apply();
         s.Body.Modulate = s.BaseModulate;
         s.Action = s.Body.CreateTween();
         Start(creature);
@@ -135,6 +148,7 @@ public static class CreatureAnimator
             if (States.TryGetValue(id, out var s)) return s;
             if (!create) return null;
             s = new State { Body = body, BasePos = body.Position, BaseScale = body.Scale, BaseModulate = body.Modulate };
+            if (body is Sprite2D sprite) s.Feet = sprite.GetRect().End.Y;
             States[id] = s;
             body.TreeExiting += () => States.Remove(id);
             return s;
@@ -143,6 +157,18 @@ public static class CreatureAnimator
         {
             return null;
         }
+    }
+
+    /// <summary>Tween the action offset (attack lunge, hit shake...) on top of the idle breathing.</summary>
+    private static void Move(State s, Tween t, Vector2 from, Vector2 to, float time, Tween.EaseType ease)
+    {
+        t.TweenMethod(Callable.From<Vector2>(v =>
+            {
+                if (!GodotObject.IsInstanceValid(s.Body)) return;
+                s.ActionOffset = v;
+                s.Apply();
+            }), from, to, time)
+            .SetTrans(Tween.TransitionType.Quad).SetEase(ease);
     }
 
     private static void Kill(Tween? t)
