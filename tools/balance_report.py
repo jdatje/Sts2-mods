@@ -9,7 +9,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-MODS = ["Golem", "CardSharp", "Bard"]
+MODS = ["Golem", "CardSharp", "Bard", "Falconer"]
 
 W = dict(dmg=1.0, aoe=1.5, rnd=0.9, blk=1.2, drw=4.0, nrg=7.0, hp=-1.5, heal=1.5)
 POWERS = {"VulnerablePower": 4.5, "WeakPower": 4.5, "StrengthPower": 6, "DexterityPower": 6, "PlatingPower": 3,

@@ -5,7 +5,7 @@
 set -euo pipefail
 VERSION="${1:-0.107.1}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-MODS=(Golem CardSharp Bard)
+MODS=(Golem CardSharp Bard Falconer)
 cd "$ROOT"
 
 tools/fetch-stubs.sh "$VERSION"

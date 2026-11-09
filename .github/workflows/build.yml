@@ -60,15 +60,15 @@ jobs:
           git -C /tmp/uploader checkout -q d7b7e6b16c413d5a124f474f9e5104ef01f76ab1
           dotnet publish /tmp/uploader/ModUploader.csproj -c Release -r win-x64 --self-contained true -o /tmp/kit/ModUploader
           rm -f /tmp/kit/ModUploader/*.pdb
-          cp -r workshop/Golem workshop/CardSharp workshop/Bard /tmp/kit/
-          for M in Golem CardSharp Bard; do
+          cp -r workshop/Golem workshop/CardSharp workshop/Bard workshop/Falconer /tmp/kit/
+          for M in Golem CardSharp Bard Falconer; do
             printf '@echo off\r\nrem Steam must be running and logged in.\r\ncd /d "%%~dp0"\r\nModUploader\\ModUploader.exe upload -w %s\r\npause\r\n' "$M" > /tmp/kit/upload-$M.bat
           done
           cat > /tmp/kit/upload-all.bat <<'BAT'
           @echo off
           rem Steam must be running and logged in. Uploads/updates all three mods.
           cd /d "%~dp0"
-          for %%M in (Golem CardSharp Bard) do ModUploader\ModUploader.exe upload -w %%M
+          for %%M in (Golem CardSharp Bard Falconer) do ModUploader\ModUploader.exe upload -w %%M
           echo.
           echo Done. Copy the new mod_id.txt files back into the repo's workshop folders (first upload only).
           pause

@@ -33,6 +33,15 @@ ORBS = {
   <circle cx="50" cy="50" r="40" fill="url(#v)" stroke="url(#gold)" stroke-width="6"/>
   <g fill="#ffd060"><ellipse cx="42" cy="64" rx="10" ry="7.5" transform="rotate(-25 42 64)"/><rect x="49" y="30" width="5" height="34"/><path d="M54 30 q16 6 13 22 q-4 -12 -13 -12z"/></g>
   <ellipse cx="34" cy="28" rx="12" ry="5" fill="#fff" opacity="0.3" transform="rotate(-30 34 28)"/>""",
+    "Falconer": """
+  <radialGradient id="l" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#d9a066"/><stop offset="0.55" stop-color="#8a5a2b"/><stop offset="1" stop-color="#2e1c0c"/></radialGradient>
+  <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff0b0"/><stop offset="0.5" stop-color="#ffc050" stop-opacity="0.5"/><stop offset="1" stop-color="#ff9a30" stop-opacity="0"/></radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="49" fill="url(#glow)"/>
+  <circle cx="50" cy="50" r="40" fill="url(#l)" stroke="#2a1a0c" stroke-width="5"/>
+  <path d="M30 72 C40 50 52 34 72 26 C68 44 56 60 34 74 Z" fill="#f2e2c0" stroke="#3a2610" stroke-width="3"/>
+  <path d="M33 72 L66 32" stroke="#3a2610" stroke-width="2.5"/>
+  <ellipse cx="34" cy="28" rx="12" ry="5" fill="#fff" opacity="0.3" transform="rotate(-30 34 28)"/>""",
 }
 
 JS = """

@@ -14,7 +14,7 @@ import argparse, json, shutil, sys, zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-MODS = ["Golem", "CardSharp", "Bard"]
+MODS = ["Golem", "CardSharp", "Bard", "Falconer"]
 
 
 def main():

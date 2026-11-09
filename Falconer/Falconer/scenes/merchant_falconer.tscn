@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Falconer/images/charui/combat_falconer.png" id="1_sprite"]
+
+[node name="MerchantFalconer" type="Node2D"]
+
+[node name="Visuals" type="Sprite2D" parent="."]
+texture = ExtResource("1_sprite")
+offset = Vector2(0, -230)

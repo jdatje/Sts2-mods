@@ -44,7 +44,7 @@ import card_list  # noqa: E402  (reuses the card discovery + text rendering)
 CFG_DIR = ROOT / "tools" / "art"
 RAW_ROOT = ROOT / "art" / "raw"
 API = "https://generativelanguage.googleapis.com/v1beta"
-MODS = {"Golem": "GOLEM", "CardSharp": "CARDSHARP", "Bard": "BARD"}
+MODS = {"Golem": "GOLEM", "CardSharp": "CARDSHARP", "Bard": "BARD", "Falconer": "FALCONER"}
 SHARED = json.loads((CFG_DIR / "shared.json").read_text(encoding="utf-8"))
 
 ICON = ("A single game icon of {subject}. Centered, filling most of the frame, bold readable silhouette, same ink-and-cel-shading style, thick dark outline around the whole object. "
@@ -97,6 +97,7 @@ def discover(mod):
                dict(id="mod_image", kind="mod_image", title=cfg["name"]),
                dict(id="combat_sprite", kind="combat_sprite", title=cfg["name"]),
                dict(id="select_bg", kind="select_bg", title=cfg["name"])]
+    assets += [dict(id=x, kind="charui_icon", title=x) for x in cfg.get("extra_icons", [])]
     for a in assets:
         a["mod"], a["short"] = mod, short
     return cfg, assets

@@ -10,7 +10,7 @@ on:
       mod:
         description: "Which mod"
         type: choice
-        options: [all, Golem, CardSharp, Bard]
+        options: [all, Golem, CardSharp, Bard, Falconer]
         default: all
       only:
         description: "Type batch for the current review batch (docs/art-next-batch.md). Or asset ids, comma-separated (e.g. slam,dirge). Empty = everything missing"
@@ -105,8 +105,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
-          git add -A Golem/Golem/images CardSharp/CardSharp/images Bard/Bard/images \
-                     Golem/Golem/mod_image.png CardSharp/CardSharp/mod_image.png Bard/Bard/mod_image.png
+          git add -A Golem/Golem/images CardSharp/CardSharp/images Bard/Bard/images Falconer/Falconer/images \
+                     Golem/Golem/mod_image.png CardSharp/CardSharp/mod_image.png Bard/Bard/mod_image.png Falconer/Falconer/mod_image.png
           if git diff --cached --quiet; then echo "No new art."; exit 0; fi
           git commit -m "Art: ${{ inputs.mod }} (${{ inputs.kinds || 'all kinds' }})"
           git pull --rebase origin main

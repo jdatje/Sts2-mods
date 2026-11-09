@@ -128,3 +128,30 @@ HoleCard (Common), Lowball (Common), PocketPair (Common), ChipStack (Common), An
 Ditty (Common), BassLine (Common), SharpNote (Common), TauntingTune (Common), ChorusLine (Common), SecondVerse (Common), Busking (Common), WarmUp (Common), VerseStrike (Uncommon), BalladShield (Uncommon), Medley (Uncommon), LuteBash (Uncommon), SoothingMelody (Uncommon), HighNote (Uncommon), Inspire (Uncommon), RousingSpeech (Uncommon), Diminuendo (Uncommon), VocalWarmup (Uncommon), SongAndDance (Uncommon), Counterpoint (Uncommon), Serenade (Uncommon), Fortissimo (Rare), SwanSong (Rare), Showstopper (Rare), MagnumOpus (Rare), CurtainCall (Rare), PowerBallad (Rare), MezzoForte (Rare), HarmonicShield (Rare), Lifesong (Rare), GrandDuet (Rare), Coda (Rare), OpeningAct (Rare), Hum (Basic), PowerChord (Common), Harmony (Common), Cadence (Common), TuneUp (Common), Discord (Common), Crescendo (Uncommon), Encore (Uncommon), GrandFinale (Uncommon), Duet (Uncommon), StandingOvation (Rare)
 
 </details>
+
+## Falconer
+
+14 simple cards scored, 39 to judge manually.
+
+| Card | Rarity | Cost | Value | Expected | Index | Verdict |
+|---|---|---|---|---|---|---|
+| Eyas | Rare | 1 | 0.0 | 19.3 | 0.00 | weak |
+| Hoodwink | Rare | 1 | 0.0 | 14.8 | 0.00 | weak |
+| Lofting | Uncommon | 1 | 0.0 | 16.6 | 0.00 | weak |
+| LooseTheHawk | Basic | 1 | 0.0 | 7.1 | 0.00 | weak |
+| Pellet | Uncommon | 0 | 0.0 | 12.7 | 0.00 | weak |
+| QuickRelease | Common | 0 | 0.0 | 10.1 | 0.00 | weak |
+| Recon | Uncommon | 1 | 0.0 | 13.6 | 0.00 | weak |
+| RingingUp | Uncommon | 1 | 0.0 | 13.6 | 0.00 | weak |
+| Stoop | Uncommon | 2 | 0.0 | 21.5 | 0.00 | weak |
+| StoopAndRise | Rare | 2 | 0.0 | 24.2 | 0.00 | weak |
+| DefendFalconer | Basic | 1 | 6.0 | 7.1 | 0.85 | below |
+| StrikeFalconer | Basic | 1 | 6.0 | 7.1 | 0.85 | below |
+| Tracking | Common | 1 | 10.5 | 11.1 | 0.95 | on curve |
+| Mantle | Uncommon | 1 | 13.2 | 12.1 | 1.09 | on curve |
+
+<details><summary>Judge manually</summary>
+
+WaitForIt (Uncommon), LongFlight (Uncommon), SharedQuarry (Uncommon), DiveBomb (Uncommon), CastOff (Uncommon), WindReading (Uncommon), TalonRake (Uncommon), Bate (Uncommon), HawkEye (Uncommon), Wingover (Uncommon), HackBack (Uncommon), QuarryMark (Uncommon), Apex (Rare), Murmuration (Rare), GrandCast (Rare), Rapture (Rare), NightFlight (Rare), HoodAndJess (Rare), Trophy (Rare), LastLight (Rare), Whistle (Basic), JessStrike (Common), GauntletGuard (Common), SendAfield (Common), LoneHunter (Common), Lure (Common), FetchCard (Common), FeatherStep (Common), Hooded (Common), GloveBash (Common), FieldRations (Common), HawkCall (Common), Brace (Common), FlushOut (Common), MewsCleanup (Common), TiercelFeint (Common), Bells (Common), CreanceLine (Common), OpenCountry (Common)
+
+</details>

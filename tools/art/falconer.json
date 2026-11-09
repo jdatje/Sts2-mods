@@ -1,0 +1,25 @@
+{
+  "name": "The Falconer",
+  "palette": "Earthy palette of weathered tan leather, moss green and slate grey sky, with flashes of amber gold from the falcon's eyes and bells.",
+  "character": "THE FALCONER: a lean, sharp-eyed woman in her thirties with a dark braid, wearing a weathered tan leather coat with many buckles, a moss-green hooded cloak and a thick leather gauntlet on her raised left arm; a slate-grey peregrine falcon with a dark hood-like head, pale barred chest, yellow feet and small brass bells on its legs is either perched on her gauntlet or diving through the air.",
+  "icon_subject": "the Falconer's face under her green hood, the peregrine falcon's head beside her cheek, front view",
+  "portrait": "full portrait of the Falconer standing on a windy cliff, gauntlet raised, the peregrine falcon landing on it with wings spread",
+  "banner": "The Falconer at the foot of a dark spire, her peregrine falcon circling high above its peaks",
+  "powers_show_character": false,
+  "style_ref": "reference/style/bard_strike.jpg",
+  "keep": [],
+  "_keep_note": "Nothing fixed yet.",
+  "extra_icons": [
+    "falcon",
+    "rest_fly"
+  ],
+  "overrides": {
+    "falcon": "A slate-grey peregrine falcon perched in side view facing left, wings folded, dark head, pale barred chest, yellow talons gripping nothing, small brass bells on its legs. Full body, no perch, no gauntlet.",
+    "rest_fly": "A peregrine falcon taking off from a leather gauntlet, wings spread wide, seen from the front.",
+    "strike_falconer": "Close-up of a gloved fist in a tan leather gauntlet swinging a short hunting knife diagonally up to the right, a falcon feather drifting past, sparks at the point of impact. Background: crimson fading to dark brown with darker angular streaks.",
+    "defend_falconer": "The Falconer ducking behind her raised leather-gauntleted arm, her cloak swept up as a shield, blows glancing off. Background: flat slate blue field with darker angular streaks.",
+    "loose_the_hawk": "The Falconer flinging her arm forward as the peregrine falcon launches off her gauntlet toward the upper right, wings snapping open. Background: flat dark navy field with darker angular streaks.",
+    "whistle": "Close-up of the Falconer putting two fingers to her lips and whistling, a falcon silhouette turning back in the sky behind her. Background: flat cold teal field with darker angular streaks.",
+    "stoop": "The peregrine falcon in a near-vertical dive, wings tucked tight, speed lines behind it, plunging onto a dark monster from above. Background: flat crimson field with darker angular streaks."
+  }
+}

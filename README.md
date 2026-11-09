@@ -7,11 +7,12 @@ Three character mods for Slay the Spire 2, built on [BaseLib](https://github.com
 | [Golem](Golem/README.md) | The Golem | **Parts**: power cards that go into Head / Arms / Legs / Core slots; a new Part replaces the old one | 80 | Heart of Clay |
 | [CardSharp](CardSharp/README.md) | The Card Sharp | **Poker**: every card has a suit and a random rank; played cards go on the Table; at 5 cards a **Showdown** scores the poker hand and hits ALL enemies | 68 | Marked Deck |
 | [Bard](Bard/README.md) | The Bard | **Songs**: one Song at a time; every card adds a Verse; the Refrain helps ALL players each turn; the Finale scales with Verses | 70 | Worn Lute |
+| [Falconer](Falconer/README.md) | The Falconer | **Errands**: Send the falcon (Hunt, Stoop, Scout, Fetch, Harry, Forage); Perched vs Alone bonuses; the falcon gains Levels and Traits over the run (rest site: Fly) | 72 | Falconer's Glove |
 
 Status: **v0.2, full card pools**: 86 cards per character (4 basic, 20 common, 36 uncommon, 26 rare), with
 placeholder art. v0.1 (about 20 cards each) was tested in game; the v0.2 cards compile against the game's reference
 assemblies (stable 0.107.1) but are new. Card lists: [Golem](docs/cards-golem.md) · [Card Sharp](docs/cards-cardsharp.md)
-· [Bard](docs/cards-bard.md). Balance report: [docs/BALANCE.md](docs/BALANCE.md).
+· [Bard](docs/cards-bard.md) · [Falconer](docs/cards-falconer.md). Balance report: [docs/BALANCE.md](docs/BALANCE.md).
 
 ## Installing (players)
 
@@ -54,7 +55,7 @@ secret `GEMINI_API_KEY`); it commits the images, which triggers a new build. Pro
 ```
 Directory.Build.props   shared MSBuild settings (imports local.props)
 local.props.example     machine-specific paths (copy to local.props, gitignored)
-Golem/ CardSharp/ Bard/ one Godot + C# project per mod (from Alchyr's ModTemplate-StS2)
+Golem/ CardSharp/ Bard/ Falconer/ one Godot + C# project per mod (from Alchyr's ModTemplate-StS2)
 tests/PokerTests        unit tests for the Showdown hand evaluator
 tools/                  build-all.sh, fetch-stubs.sh, placeholder_art.py,
                         card_list.py (docs/cards-*.md), balance_report.py (docs/BALANCE.md), count_cards.py
