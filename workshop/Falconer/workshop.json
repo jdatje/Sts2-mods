@@ -2,7 +2,7 @@
   "title": "The Falconer (character)",
   "description": "[h2]The Falconer: a new playable character[/h2]\nA hunter and her peregrine falcon. [b]Send[/b] the falcon on [b]Errands[/b] (Hunt, Stoop, Scout, Fetch, Harry, Forage); it comes back with the result. [b]Perched[/b] cards want it home, [b]Alone[/b] cards want it away.\nThe falcon grows over the run: it gains XP and Levels from fights, and learns [b]Traits[/b] at rest sites (new option: Fly). Send cards can target an ally in co-op.\n\nHP 72. Starting relic: Falconer's Glove. 68 cards.\n\n[h3]Good to know[/h3]\n[list]\n[*]Changes gameplay: everyone in a multiplayer lobby needs the same version.\n[*]Requires BaseLib (subscribed automatically as a required item).\n[*]Personal fan project, not affiliated with Mega Crit.\n[/list]",
   "visibility": "friends_only",
-  "changeNote": "v0.1.0: first version of the Falconer.",
+  "changeNote": "v0.1.1: fix crash on game start (rest site text file format).",
   "tags": [],
   "dependencies": [
     3737335127
