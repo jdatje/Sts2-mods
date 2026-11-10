@@ -48,7 +48,8 @@ MODS = {"Golem": "GOLEM", "CardSharp": "CARDSHARP", "Bard": "BARD", "Falconer": 
 SHARED = json.loads((CFG_DIR / "shared.json").read_text(encoding="utf-8"))
 
 ICON = ("A single game icon of {subject}. Centered, filling most of the frame, bold readable silhouette, same ink-and-cel-shading style, thick dark outline around the whole object. "
-        "Isolated on a perfectly flat, solid pure magenta (#FF00FF) background with no shadows, no gradient and no other objects.")
+        "Isolated on a perfectly flat, solid pure magenta (#FF00FF) background with no shadows, no gradient and no other objects. "
+        "Absolutely no text, letters, words, names or labels anywhere in the image.")
 
 
 # ----------------------------------------------------------------------------- discovery
@@ -73,6 +74,12 @@ def discover(mod):
         title = cards_loc.get(key + ".title", name)
         text = card_list.render(cards_loc.get(key + ".description", ""), values)
         assets.append(dict(id=aid, kind="card", title=title, ctype=ctype, rarity=rarity, text=text))
+    seen = {a["id"] for a in assets}
+    for key, title in cards_loc.items():
+        m = re.match(rf"{prefix}-(TRAIT_\w+)\.title$", key)
+        if m and m.group(1).lower() not in seen:
+            text = re.sub(r"\[/?\w+\]", "", cards_loc.get(key.replace(".title", ".description"), ""))
+            assets.append(dict(id=m.group(1).lower(), kind="card", title=title, ctype="Power", rarity="Token", text=text))
     for key, title in powers_loc.items():
         if key.endswith(".title") and "SHOWDOWN." not in key:
             pid = key[len(prefix) + 1:-len(".title")].lower()
