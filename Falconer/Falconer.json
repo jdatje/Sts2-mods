@@ -3,7 +3,7 @@
   "name": "The Falconer",
   "author": "Jeroen & Gregor",
   "description": "A new character: a falconer who sends her falcon on Errands. The falcon gains Levels and Traits over the run. Built for co-op.",
-  "version": "v0.1.1",
+  "version": "v0.1.2",
   "min_game_version": "0.107.0",
   "has_pck": true,
   "has_dll": true,

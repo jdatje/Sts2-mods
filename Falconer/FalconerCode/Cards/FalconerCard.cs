@@ -18,6 +18,21 @@ namespace Falconer.FalconerCode.Cards;
 public abstract class FalconerCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     ConstructedCardModel(cost, type, rarity, target)
 {
+    /// <summary>
+    /// Send cards are built with AnyAlly. AnyAlly has no valid target in solo (and leaves out yourself in co-op),
+    /// so: solo → Self, co-op → AnyPlayer (yourself or an ally).
+    /// </summary>
+    public override TargetType TargetType
+    {
+        get
+        {
+            var t = base.TargetType;
+            if (t != TargetType.AnyAlly) return t;
+            var players = Owner?.RunState?.Players.Count ?? 1;
+            return players > 1 ? TargetType.AnyPlayer : TargetType.Self;
+        }
+    }
+
     // ---- Falcon state ----
     protected Creature Me => Owner.Creature;
     protected bool Perched => FalconCmd.Perched(Owner.Creature);
