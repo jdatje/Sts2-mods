@@ -1,0 +1,17 @@
+{
+  "FALCONER-FALCONERS_GLOVE.title": "Falconer's Glove",
+  "FALCONER-FALCONERS_GLOVE.description": "Shows the falcon's [gold]Level[/gold] (max 10). The falcon gains XP from each won combat (elites 3, bosses 5). Each Level makes [gold]Errands[/gold] 10% stronger. Rest sites get [gold]Fly[/gold]: pick a Trait.",
+  "FALCONER-FALCONERS_GLOVE.flavor": "Well-worn leather, scarred by a hundred landings.",
+  "FALCONER-GILDED_HOOD.title": "Gilded Hood",
+  "FALCONER-GILDED_HOOD.description": "As Falconer's Glove. The first [gold]Errand[/gold] each combat resolves twice. +1 XP per combat.",
+  "FALCONER-GILDED_HOOD.flavor": "Gold thread, and a bird that knows its worth.",
+  "FALCONER-LEATHER_LURE.title": "Leather Lure",
+  "FALCONER-LEATHER_LURE.description": "Whenever you [gold]Recall[/gold], gain [blue]4[/blue] [gold]Block[/gold].",
+  "FALCONER-LEATHER_LURE.flavor": "Swing it twice and she's back.",
+  "FALCONER-SILVER_BELLS.title": "Silver Bells",
+  "FALCONER-SILVER_BELLS.description": "Your first [gold]Errand[/gold] of 2 or more turns each combat is 1 turn faster.",
+  "FALCONER-SILVER_BELLS.flavor": "You always hear where she is.",
+  "FALCONER-FALCON_PERCH.title": "Falcon Perch",
+  "FALCONER-FALCON_PERCH.description": "Whenever you enter a rest site, the falcon gains [blue]2[/blue] XP.",
+  "FALCONER-FALCON_PERCH.flavor": "Every camp needs one."
+}

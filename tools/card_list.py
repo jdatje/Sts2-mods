@@ -9,7 +9,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-MODS = {"Golem": "GOLEM", "CardSharp": "CARDSHARP", "Bard": "BARD"}
+MODS = {"Golem": "GOLEM", "CardSharp": "CARDSHARP", "Bard": "BARD", "Falconer": "FALCONER"}
 ORDER = ["Basic", "Common", "Uncommon", "Rare", "Token"]
 
 

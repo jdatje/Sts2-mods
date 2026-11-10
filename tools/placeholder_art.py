@@ -20,6 +20,7 @@ MODS = {
     "Golem": ("GOLEM", "THE_GOLEM", (110, 82, 60), (215, 140, 60)),
     "CardSharp": ("CARDSHARP", "THE_CARD_SHARP", (24, 90, 60), (201, 162, 39)),
     "Bard": ("BARD", "THE_BARD", (78, 50, 110), (230, 190, 120)),
+    "Falconer": ("FALCONER", "THE_FALCONER", (110, 75, 40), (225, 170, 90)),
 }
 SUIT_COLOURS = {"Spades": (40, 40, 48), "Hearts": (150, 30, 40), "Diamonds": (190, 80, 30), "Clubs": (30, 70, 40)}
 SUIT_SYMBOL = {"Spades": "♠", "Hearts": "♥", "Diamonds": "♦", "Clubs": "♣"}

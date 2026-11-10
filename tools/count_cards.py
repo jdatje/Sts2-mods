@@ -2,7 +2,7 @@
 import re, sys, collections
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
-for mod in sys.argv[1:] or ["Golem", "CardSharp", "Bard"]:
+for mod in sys.argv[1:] or ["Golem", "CardSharp", "Bard", "Falconer"]:
     src = "\n".join(p.read_text(encoding="utf-8") for p in (ROOT / mod).glob(f"{mod}Code/**/*.cs"))
     found = collections.Counter()
     # explicit constructors: base(cost, CardType.X, CardRarity.Y, ...)

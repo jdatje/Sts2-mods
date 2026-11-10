@@ -1,0 +1,16 @@
+{
+  "FALCONER-THE_FALCONER.title": "The Falconer",
+  "FALCONER-THE_FALCONER.titleObject": "The Falconer",
+  "FALCONER-THE_FALCONER.description": "A hunter and her peregrine falcon.\nSends the falcon on [gold]Errands[/gold]; it grows stronger over the run.",
+  "FALCONER-THE_FALCONER.pronounSubject": "she",
+  "FALCONER-THE_FALCONER.pronounObject": "her",
+  "FALCONER-THE_FALCONER.pronounPossessive": "hers",
+  "FALCONER-THE_FALCONER.possessiveAdjective": "her",
+  "FALCONER-THE_FALCONER.goldMonologue": "[sine]Shiny. The bird approves.[/sine]",
+  "FALCONER-THE_FALCONER.eventDeathPrevention": "Not... without... her...",
+  "FALCONER-THE_FALCONER.aromaPrinciple": "[sine][gold]The sky has no walls.[/gold][/sine]",
+  "FALCONER-THE_FALCONER.cardsModifierTitle": "Falconer Cards",
+  "FALCONER-THE_FALCONER.cardsModifierDescription": "Falconer cards will now appear in rewards and shops.",
+  "FALCONER-THE_FALCONER.banter.alive.endTurnPing": "Easy, girl.",
+  "FALCONER-THE_FALCONER.banter.dead.endTurnPing": "..."
+}

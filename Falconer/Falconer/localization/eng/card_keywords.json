@@ -1,0 +1,10 @@
+{
+  "FALCONER-ERRAND.title": "Errand",
+  "FALCONER-ERRAND.description": "[gold]Send[/gold] the falcon away. It returns at the start of a later turn and the Errand resolves:\nHunt (1 turn): 10 damage to a random enemy.\nStoop (2): 24 damage to the enemy with the most HP.\nScout (1): draw 2, gain 4 Block.\nFetch (1): a card from your discard pile to your hand; it costs 0 this turn.\nHarry (2): 1 Weak each turn; 5 damage on return.\nForage (3): gain 1 energy, heal 3.\nSending while Away resolves the old Errand at 50% first. Errands get 10% stronger per Falcon Level.",
+  "FALCONER-PERCHED.title": "Perched",
+  "FALCONER-PERCHED.description": "The falcon is on your glove (not on an Errand).",
+  "FALCONER-ALONE.title": "Alone",
+  "FALCONER-ALONE.description": "The falcon is Away on an Errand.",
+  "FALCONER-RECALL.title": "Recall",
+  "FALCONER-RECALL.description": "The falcon returns now; its Errand resolves at 50%."
+}
