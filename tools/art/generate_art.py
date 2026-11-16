@@ -76,9 +76,9 @@ def discover(mod):
         assets.append(dict(id=aid, kind="card", title=title, ctype=ctype, rarity=rarity, text=text))
     seen = {a["id"] for a in assets}
     for key, title in cards_loc.items():
-        m = re.match(rf"{prefix}-(TRAIT_\w+)\.title$", key)
+        m = re.match(rf"{prefix}-((?:TRAIT|RULE|STANZA)_\w+)\.title$", key)
         if m and m.group(1).lower() not in seen:
-            text = re.sub(r"\[/?\w+\]", "", cards_loc.get(key.replace(".title", ".description"), ""))
+            text = re.sub(r"\{\w+\}", "the Song", re.sub(r"\[/?\w+\]", "", cards_loc.get(key.replace(".title", ".description"), "")))
             assets.append(dict(id=m.group(1).lower(), kind="card", title=title, ctype="Power", rarity="Token", text=text))
     for key, title in powers_loc.items():
         if key.endswith(".title") and "SHOWDOWN." not in key:

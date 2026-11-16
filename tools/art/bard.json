@@ -130,7 +130,13 @@
     "buskers_hat": "an upturned battered feathered hat with gold coins inside",
     "throat_coat": "a potion: a glass bottle of warm honey-coloured liquid with a lemon slice on its neck",
     "encore_draught": "a potion: a bottle of violet liquid with musical notes swirling up out of it",
-    "overture_elixir": "a potion: a tall elegant flask of radiant gold liquid with a trumpet-shaped neck"
+    "overture_elixir": "a potion: a tall elegant flask of radiant gold liquid with a trumpet-shaped neck",
+    "stanza_opening_line": "An open songbook with the first line of golden musical notes lifting off the page into the air. Background: warm tavern candlelight fading to deep purple.",
+    "stanza_echo": "A single golden musical note repeated as fading echo rings spreading outward. Background: warm tavern candlelight fading to deep purple.",
+    "stanza_resonant": "A lute string vibrating with wide shimmering golden waves of sound. Background: warm tavern candlelight fading to deep purple.",
+    "stanza_bright_refrain": "A bright burst of golden musical notes like a sunrise above a lute. Background: warm tavern candlelight fading to deep purple.",
+    "stanza_grand_finale": "A lute held high in a final flourish with a fireworks burst of golden notes. Background: warm tavern candlelight fading to deep purple.",
+    "stanza_lingering": "Soft glowing musical notes drifting slowly in the air after the music stopped, an empty stool beside a resting lute. Background: warm tavern candlelight fading to deep purple."
   },
   "style_ref": "reference/style/bard_strike.jpg",
   "keep": [

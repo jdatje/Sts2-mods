@@ -126,7 +126,17 @@
     "croupiers_rake": "a long wooden croupier's rake with a brass head, pulling a few gold coins",
     "wild_spirits": "a potion: a glass bottle of swirling purple and green liquid with a tiny jester hat as the stopper",
     "fresh_deck": "a potion: a flask of sparkling gold liquid with the silhouette of a blank card floating inside",
-    "liquid_luck": "a potion: a round flask of glowing golden liquid with a four-leaf clover floating inside"
+    "liquid_luck": "a potion: a round flask of glowing golden liquid with a four-leaf clover floating inside",
+    "rule_matched_set": "Two pairs of gold-edged cards (two spades, two hearts) laid on green felt, a ring of golden light spreading outward from them across the whole table. Background: dark green felt with candlelit gold haze.",
+    "rule_full_table": "A crowded card table covered edge to edge with gold-edged cards in matching pairs and triples, stacks of gold chips between them. Background: dark green felt with candlelit gold haze.",
+    "rule_royal_court": "A small golden crown resting on top of a fanned hand of gold-edged cards with ornate gilded borders. Background: dark green felt with candlelit gold haze.",
+    "rule_ace_high": "One gold-edged card with a single huge black spade, glowing, raised high above the table by a black-gloved hand. Background: dark green felt with candlelit gold haze.",
+    "rule_suited": "Four gold-edged cards all showing red hearts fanned neatly, with one face-down card set aside. Background: dark green felt with candlelit gold haze.",
+    "rule_colour_up": "Three gold-edged cards of diamonds glowing with soft red light that spills over the felt like paint. Background: dark green felt with candlelit gold haze.",
+    "rule_gap_filler": "A row of gold-edged cards laid out like stepping stones with one empty gap bridged by a thin golden thread. Background: dark green felt with candlelit gold haze.",
+    "rule_long_run": "A long winding row of gold-edged cards stretching into the distance like a road, glowing at the far end. Background: dark green felt with candlelit gold haze.",
+    "rule_quick_deal": "A blur of three gold-edged cards flicked fast across the table, motion streaks of gold light behind them. Background: dark green felt with candlelit gold haze.",
+    "rule_short_stack": "A tiny stack of four gold chips next to a single gold-edged card, lit by a dramatic spotlight. Background: dark green felt with candlelit gold haze."
   },
   "style_ref": "reference/style/cardsharp_strike.jpg",
   "keep": [
