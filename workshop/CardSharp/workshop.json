@@ -2,7 +2,7 @@
   "title": "The Card Sharp (character)",
   "description": "[h2]The Card Sharp: a new playable character[/h2]\nA sly gambler who plays poker with her own deck. Every card has a [b]rank and suit[/b]; cards you play are laid on the [b]Table[/b], and at five cards a [b]Showdown[/b] deals damage based on the best poker hand.\n\nHP 68. Starting relic: Marked Deck. 87 cards.\n\n[h3]Good to know[/h3]\n[list]\n[*]Changes gameplay: everyone in a multiplayer lobby needs the same version.\n[*]Requires BaseLib (subscribed automatically as a required item).\n[*]Personal fan project, not affiliated with Mega Crit.\n[/list]",
   "visibility": "friends_only",
-  "changeNote": "v0.5.0: the Card Sharp grows through the run. Poker hands gain Levels as you score them (rarer hands level faster). Rest sites get Deal Me In: pick 1 of 3 House Rules. New cards for Flush and Straight decks (Spade Work, Colour Match, Next Card, Ladder, Monochrome, Broadway); Double Tap, Bluff, Poker Face, Marked Cards, Insurance and All or Nothing retired.",
+  "changeNote": "v0.5.0: the Card Sharp grows through the run. Poker hands gain Levels as you score them (rarer hands level faster). Rest sites get Deal Me In: pick 1 of 3 House Rules. New cards for Flush and Straight decks (Spade Work, Colour Match, Next Card, Ladder, Monochrome, Broadway); Double Tap, Bluff, Poker Face, Marked Cards, Insurance and All or Nothing retired. v0.5.1: a new run no longer inherits progress from the previous run.",
   "tags": [],
   "dependencies": [
     3737335127

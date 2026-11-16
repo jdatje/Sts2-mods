@@ -110,7 +110,7 @@
   "FALCONER-EYAS.title": "Eyas",
   "FALCONER-EYAS.description": "The falcon gains {Xp:diff()} XP (permanent).",
   "FALCONER-FALCONERS_PACT.title": "Falconer's Pact",
-  "FALCONER-FALCONERS_PACT.description": "Whenever the falcon returns, draw {FalconersPactPower:diff()} and gain {FalconersPactPower:diff()} energy.",
+  "FALCONER-FALCONERS_PACT.description": "Whenever the falcon returns, draw {FalconersPactPower:diff()} {FalconersPactPower:plural:card|cards} and gain {FalconersPactPower:diff()} energy.",
   "FALCONER-HOODWINK.title": "Hoodwink",
   "FALCONER-HOODWINK.description": "[gold]Recall[/gold] at 100%.",
   "FALCONER-MURMURATION.title": "Murmuration",

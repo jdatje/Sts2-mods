@@ -290,9 +290,9 @@ public sealed class NightFlight : FalconerCard
     protected override async Task OnPlay(PlayerChoiceContext ctx, CardPlay play)
     {
         if (FalconCmd.Away(Me) is not { } a) return;
-        var (errand, forC, harry) = (a.Errand, a.For, a.HarryTarget);
-        await FalconCmd.ReturnNow(ctx, Me, 100);
-        await FalconCmd.Send(ctx, Me, errand, forC, harry);
+        var (errand, forC, harry, flat, chain) = (a.Errand, a.For, a.HarryTarget, a.Flat, a.Chain);
+        await FalconCmd.ReturnNow(ctx, Me, 100, allowChain: false);
+        await FalconCmd.Send(ctx, Me, errand, forC, harry, flat: flat, chain: chain);
     }
 }
 

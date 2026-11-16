@@ -78,10 +78,18 @@ public abstract class GloveRelic : Visuals.AnimatedStarterRelic
     {
         var other = Owner.Relics.OfType<GloveRelic>().FirstOrDefault(r => r != this);
         if (other != null) { FalconXp = other.FalconXp; FalconTraits = other.FalconTraits; }
-        else if (FalconXp == 0 && FalconTraits == 0 && LastKnown.TryGetValue(Owner.NetId, out var s))
+        // Only the Ancient version falls back on the remembered copy: a new starter in a new run must start empty.
+        else if (Rarity == RelicRarity.Ancient && FalconXp == 0 && FalconTraits == 0 && LastKnown.TryGetValue(Owner.NetId, out var s))
         { FalconXp = s.xp; FalconTraits = s.traits; }
         Remember();
         return Task.CompletedTask;
+    }
+
+    /// <summary>Keeps the carry-over copy current (also after loading a save, before an Ancient offers the upgrade).</summary>
+    public override async Task AfterRoomEntered(AbstractRoom room)
+    {
+        await base.AfterRoomEntered(room);
+        Remember();
     }
 
     public bool TakeTwinBrood()

@@ -80,8 +80,9 @@ public static class FalconCmd
     public static async Task Send(PlayerChoiceContext ctx, Creature falconer, Errand errand,
         Creature? forCreature = null, Creature? harryTarget = null, int extraPct = 0, int flat = 0, bool chain = false)
     {
+        // A falcon that is already Away comes back at 50% first. An interrupted Stoop and Rise doesn't fly again.
         var old = Away(falconer);
-        if (old != null) await ReturnNow(ctx, falconer, 50);
+        if (old != null) await ReturnNow(ctx, falconer, 50, allowChain: false);
 
         var turns = Turns(errand);
         var player = falconer.Player;
@@ -118,7 +119,7 @@ public static class FalconCmd
     }
 
     /// <summary>The falcon comes back now and its Errand resolves at the given percentage.</summary>
-    public static async Task ReturnNow(PlayerChoiceContext ctx, Creature falconer, int pct)
+    public static async Task ReturnNow(PlayerChoiceContext ctx, Creature falconer, int pct, bool allowChain = true)
     {
         var away = Away(falconer);
         if (away == null) return;
@@ -126,7 +127,7 @@ public static class FalconCmd
         await PowerCmd.Remove(away);
         FalconOverlay.Land(falconer);
         await ResolveWithRepeats(ctx, falconer, errand, pct, forC, harry, extra, flat);
-        if (chain) await Send(ctx, falconer, errand, forC, null, extra, flat, chain: false);
+        if (chain && allowChain) await Send(ctx, falconer, errand, forC, null, extra, flat, chain: false);
     }
 
     /// <summary>Resolves one Errand, plus the repeats from Sky Sovereign and Twin Brood. Fires AfterReturn once.</summary>
@@ -215,8 +216,11 @@ public static class FalconCmd
     }
 
     /// <summary>While Harrying, at the start of each turn: Weak (and Vulnerable with Terror of the Skies).</summary>
-    public static async Task HarryTick(PlayerChoiceContext ctx, Creature falconer, Creature? target)
+    public static async Task HarryTick(PlayerChoiceContext ctx, Creature falconer, AwayPower away)
     {
+        // The harried enemy died: the falcon picks a new one.
+        if (away.HarryTarget is not { IsAlive: true }) away.HarryTarget = RandomEnemy(falconer);
+        var target = away.HarryTarget;
         if (target is not { IsAlive: true }) return;
         await PowerCmd.Apply<WeakPower>(ctx, target, 1, falconer, null);
         if (Has(falconer.Player, Trait.TerrorOfTheSkies))
@@ -256,7 +260,7 @@ public static class FalconCmd
     {
         var list = Enemies(falconer);
         if (list.Count == 0) return null;
-        return list[falconer.Player!.RunState.Rng.CombatCardGeneration.NextInt(0, list.Count)];
+        return list[falconer.Player!.RunState.Rng.CombatTargets.NextInt(0, list.Count)];
     }
 
     private static Creature? MarkedOrRandom(Creature falconer) =>

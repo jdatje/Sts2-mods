@@ -29,7 +29,7 @@ public sealed class AwayPower : FalconerPower
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext ctx, Player player)
     {
         if (player != Owner.Player) return;
-        if (Errand == Errand.Harry) await FalconCmd.HarryTick(ctx, Owner, HarryTarget);
+        if (Errand == Errand.Harry) await FalconCmd.HarryTick(ctx, Owner, this);
         if (FalconCmd.Has(player, Trait.Patient))
             await CreatureCmd.GainBlock(Owner, 2, ValueProp.Unpowered, null);
         if (Amount <= 1)

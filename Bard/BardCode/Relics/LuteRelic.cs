@@ -126,7 +126,8 @@ public abstract class LuteRelic : Bard.BardCode.Visuals.AnimatedStarterRelic, IF
         if (other != null)
             (SongXpA, SongXpB, SongStanzasA, SongStanzasB, SongStanzasC, Harmonies, PendingStanzas) =
                 (other.SongXpA, other.SongXpB, other.SongStanzasA, other.SongStanzasB, other.SongStanzasC, other.Harmonies, other.PendingStanzas);
-        else if (IsEmpty && LastKnown.TryGetValue(Owner.NetId, out var k))
+        // Only the Ancient version falls back on the remembered copy: a new starter in a new run must start empty.
+        else if (Rarity == MegaCrit.Sts2.Core.Entities.Relics.RelicRarity.Ancient && IsEmpty && LastKnown.TryGetValue(Owner.NetId, out var k))
             (SongXpA, SongXpB, SongStanzasA, SongStanzasB, SongStanzasC, Harmonies, PendingStanzas) = k;
         Changed();
         return Task.CompletedTask;
@@ -177,6 +178,7 @@ public abstract class LuteRelic : Bard.BardCode.Visuals.AnimatedStarterRelic, IF
     public override async Task AfterRoomEntered(AbstractRoom room)
     {
         await base.AfterRoomEntered(room);
+        Remember();
         if (room is CombatRoom || PendingStanzas == 0 || Owner == null) return;
 
         var rng = Owner.PlayerRng.Rewards;

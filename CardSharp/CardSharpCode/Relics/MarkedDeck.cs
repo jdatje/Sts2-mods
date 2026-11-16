@@ -106,13 +106,21 @@ public abstract class PotRelic : CardSharp.CardSharpCode.Visuals.AnimatedStarter
             (HandScoresA, HandScoresB, HandScoresC, HouseRules) =
                 (other.HandScoresA, other.HandScoresB, other.HandScoresC, other.HouseRules);
         }
-        else if (HandScoresA == 0 && HandScoresB == 0 && HandScoresC == 0 && HouseRules == 0
+        // Only the Ancient version falls back on the remembered copy: a new starter in a new run must start empty.
+        else if (Rarity == RelicRarity.Ancient && HandScoresA == 0 && HandScoresB == 0 && HandScoresC == 0 && HouseRules == 0
                  && LastKnown.TryGetValue(Owner.NetId, out var k))
         {
             (HandScoresA, HandScoresB, HandScoresC, HouseRules) = k;
         }
         Remember();
         return Task.CompletedTask;
+    }
+
+    /// <summary>Keeps the carry-over copy current (also after loading a save, before an Ancient offers the upgrade).</summary>
+    public override async Task AfterRoomEntered(AbstractRoom room)
+    {
+        await base.AfterRoomEntered(room);
+        Remember();
     }
 
     /// <summary>"Deal Me In" at rest sites: pick 1 of 3 random House Rules.</summary>
