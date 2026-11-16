@@ -36,19 +36,21 @@ public sealed class TablePower : CardSharpPower
 
     /// <summary>Hover text: which cards are on the Table and the best hand so far.</summary>
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new StringVar("TableCards", "nothing yet"), new StringVar("TableHand", ""), new StringVar("TablePot", "")];
+        [new StringVar("TableCards", "nothing yet"), new StringVar("TableHand", ""), new StringVar("TablePot", ""), new StringVar("TableRewards", "")];
 
     public void Changed()
     {
         if (DynamicVars.TryGetValue("TableCards", out var c) && c is StringVar cards)
             cards.StringValue = Cards.Count == 0 ? "nothing yet" : string.Join(", ", Cards.Select(Label));
         if (DynamicVars.TryGetValue("TableHand", out var h) && h is StringVar hand)
-            hand.StringValue = Cards.Count == 0 ? "" : $" ({HandName(Poker.Evaluate(Cards, TableCmd.ShowdownSize(Owner)))} so far)";
+            hand.StringValue = Cards.Count == 0 ? "" : $" ({HandName(Poker.Evaluate(Cards, TableCmd.ShowdownSize(Owner), HandLevels.Rules(Owner)))} so far)";
         if (DynamicVars.TryGetValue("TablePot", out var pv) && pv is StringVar potVar)
         {
             var pot = Owner.Player?.Relics.OfType<IShowdownPot>().Select(r => r.CurrentPot).DefaultIfEmpty(0).Max() ?? 0;
             potVar.StringValue = pot > 0 ? $"\nNext Showdown: [gold]+{pot}[/gold] from the Pot." : "";
         }
+        if (DynamicVars.TryGetValue("TableRewards", out var rv) && rv is StringVar rewards)
+            rewards.StringValue = RewardsText(Owner);
         InvokeDisplayAmountChanged();
         TableOverlay.Refresh(Owner);
     }
@@ -75,6 +77,46 @@ public sealed class TablePower : CardSharpPower
         if (DynamicVars.TryGetValue("TableHand", out var h) && h is StringVar hand) hand.StringValue = "";
         InvokeDisplayAmountChanged();
     }
+
+    /// <summary>The Showdown rewards with the current Hand Levels, targeting and House Rules (for the tooltip).</summary>
+    public static string RewardsText(Creature owner)
+    {
+        var relic = HandLevels.Relic(owner);
+        var lines = new List<string> { "[gold]Showdown[/gold] damage (+ the Pot and your Strength):" };
+        foreach (var hand in Enum.GetValues<HandType>())
+        {
+            var (dmg, blk, draw, energy) = HandLevels.Base(hand);
+            var lv = relic?.HandLevel(hand) ?? 0;
+            dmg += lv * HandLevels.DamagePerLevel(hand);
+            blk += lv * HandLevels.BlockPerLevel(hand);
+            var extra = blk > 0 ? $" + {blk} Block" : draw > 0 ? $" + draw {draw}" : energy > 0 ? $" + {energy} Energy" : "";
+            if (hand == HandType.Flush) extra = " + suit bonus";
+            var lvText = lv > 0 ? $" [gold]Lv {lv}[/gold]" : "";
+            lines.Add($"{HandName(hand)}{lvText}: {dmg}{extra}");
+        }
+        lines.Add("");
+        lines.Add(relic?.HasRule(HouseRule.MatchedSet) == true
+            ? "High card: a random enemy. Pair and up: ALL enemies."
+            : "Up to Two pair: a random enemy. Three of a kind and up: ALL enemies.");
+        lines.Add("Flush bonus: Spades +6 damage, Hearts +10 Block, Diamonds draw 2, Clubs 2 Weak.");
+        var rules = relic?.OwnedRules.Select(RuleName).ToList() ?? [];
+        if (rules.Count > 0) lines.Add("House Rules: [gold]" + string.Join(", ", rules) + "[/gold].");
+        return string.Join("\n", lines);
+    }
+
+    public static string RuleName(HouseRule r) => r switch
+    {
+        HouseRule.MatchedSet => "Matched Set",
+        HouseRule.FullTable => "Full Table",
+        HouseRule.RoyalCourt => "Royal Court",
+        HouseRule.AceHigh => "Ace High",
+        HouseRule.Suited => "Suited",
+        HouseRule.ColourUp => "Colour Up",
+        HouseRule.GapFiller => "Gap Filler",
+        HouseRule.LongRun => "Long Run",
+        HouseRule.QuickDeal => "Quick Deal",
+        _ => "Short Stack",
+    };
 
     public static string Label(TableCard c) => c.Wild ? "Joker" : $"{ShortRank(c.Rank)} {c.Suit}";
 
@@ -122,7 +164,7 @@ public static class TableCmd
     public static int Count(Creature owner) => Cards(owner).Count;
 
     public static bool HasAtLeast(Creature owner, HandType hand) =>
-        Count(owner) > 0 && Poker.Evaluate(Cards(owner), ShowdownSize(owner)) >= hand;
+        Count(owner) > 0 && Poker.Evaluate(Cards(owner), ShowdownSize(owner), HandLevels.Rules(owner)) >= hand;
 
     public static async Task<TablePower> Get(PlayerChoiceContext ctx, Creature owner)
     {
@@ -132,8 +174,13 @@ public static class TableCmd
         return owner.Powers.OfType<TablePower>().First();
     }
 
-    public static int ShowdownSize(Creature owner) =>
-        owner.Powers.OfType<CardSharkPower>().Any() ? 4 : 5;
+    public static int ShowdownSize(Creature owner)
+    {
+        // Quick Deal: the first Showdown each combat happens at 3 cards.
+        var relic = HandLevels.Relic(owner);
+        if (relic != null && relic.HasRule(HouseRule.QuickDeal) && relic.FirstShowdownPending) return 3;
+        return owner.Powers.OfType<CardSharkPower>().Any() ? 4 : 5;
+    }
 
     /// <summary>Lay a card on the Table; triggers a Showdown when the Table is full.</summary>
     public static async Task Lay(PlayerChoiceContext ctx, CardSharpCard card)
@@ -201,7 +248,9 @@ public static class TableCmd
 
         var size = ShowdownSize(owner);
         var modifiers = owner.Powers.OfType<IShowdownModifier>().ToList();
-        var hand = Poker.Evaluate(cards, size);
+        var rules = HandLevels.Rules(owner);
+        var relic = HandLevels.Relic(player);
+        var hand = Poker.Evaluate(cards, size, rules);
         var tiers = extraTiers + modifiers.Sum(m => m.TierBonus);
         var coin = player.Relics.OfType<LuckyCoin>().FirstOrDefault();
         if (coin != null && coin.TryUse()) tiers++;
@@ -214,19 +263,41 @@ public static class TableCmd
         if (combat == null) return hand;
         var enemies = combat.HittableEnemies;
 
-        var (damage, block, draw, energy) = hand switch
+        var (damage, block, draw, energy) = HandLevels.Base(hand);
+
+        // Hand Level: +25% of the base damage per Level (at least +2); Two pair / Full house also +25% Block.
+        var level = relic?.HandLevel(hand) ?? 0;
+        damage += level * HandLevels.DamagePerLevel(hand);
+        block += level * HandLevels.BlockPerLevel(hand);
+
+        bool Rule(HouseRule r) => relic?.HasRule(r) == true;
+        var fixedCards = cards.Where(c => !c.Wild).ToList();
+        if (Rule(HouseRule.FullTable))
+            damage += 3 * fixedCards.GroupBy(c => c.Rank).Where(g => g.Count() >= 2).Sum(g => g.Count());
+        if (Rule(HouseRule.RoyalCourt))
+            damage += 2 * fixedCards.Count(c => c.Rank >= 11);
+        if (Rule(HouseRule.ShortStack) && cards.Count <= 4)
+            damage += 5;
+        if (Rule(HouseRule.LongRun) && hand == HandType.Straight)
         {
-            HandType.HighCard => (5, 0, 0, 0),
-            HandType.Pair => (9, 0, 0, 0),
-            HandType.TwoPair => (9, 8, 0, 0),
-            HandType.ThreeOfAKind => (16, 0, 0, 0),
-            HandType.Straight => (12, 0, 2, 0),
-            HandType.Flush => (14, 0, 0, 0),
-            HandType.FullHouse => (22, 12, 0, 0),
-            HandType.FourOfAKind => (32, 0, 0, 0),
-            HandType.StraightFlush => (45, 0, 0, 2),
-            _ => (0, 0, 0, 0)
-        };
+            damage *= 2;
+            draw += 1;
+        }
+
+        if (hand != HandType.Flush && hand != HandType.StraightFlush && Rule(HouseRule.ColourUp)
+            && fixedCards.Count > 0 && fixedCards.GroupBy(c => c.Suit).Max(g => g.Count()) >= 3)
+        {
+            // Colour Up: 3+ cards of one suit give half that suit's Flush bonus.
+            switch (Poker.MainSuit(cards))
+            {
+                case Suit.Spades: damage += 3; break;
+                case Suit.Hearts: block += 5; break;
+                case Suit.Diamonds: draw += 1; break;
+                case Suit.Clubs:
+                    if (enemies.Count > 0) await PowerCmd.Apply<WeakPower>(ctx, enemies, 1, owner, null);
+                    break;
+            }
+        }
 
         if (hand == HandType.Flush)
         {
@@ -253,7 +324,8 @@ public static class TableCmd
 
         if (damage > 0 && enemies.Count > 0)
         {
-            var targets = hand <= HandType.TwoPair
+            var single = hand <= HandType.TwoPair && !(Rule(HouseRule.MatchedSet) && hand >= HandType.Pair);
+            var targets = single
                 ? (IReadOnlyList<Creature>)[enemies[player.RunState.Rng.CombatCardGeneration.NextInt(0, enemies.Count)]]
                 : enemies;
             await CreatureCmd.Damage(ctx, targets, damage, ValueProp.Unpowered, owner);
@@ -264,6 +336,8 @@ public static class TableCmd
             await CardPileCmd.Draw(ctx, draw, player);
         if (energy > 0)
             await PlayerCmd.GainEnergy(energy, player);
+
+        relic?.AddScore(hand);
 
         foreach (var listener in owner.Powers.OfType<IShowdownListener>().ToList())
             await listener.AfterShowdown(ctx, hand);

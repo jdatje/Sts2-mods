@@ -29,7 +29,7 @@ public static class TableOverlay
         if (Frozen.Contains(owner)) return;
         var root = Ensure(owner);
         if (root == null) return;
-        Draw(root, TableCmd.Cards(owner), TableCmd.ShowdownSize(owner), null);
+        Draw(owner, root, TableCmd.Cards(owner), TableCmd.ShowdownSize(owner), null);
     }
 
     /// <summary>Call just before the Table is cleared for a Showdown: keeps the scored cards on screen.</summary>
@@ -38,7 +38,7 @@ public static class TableOverlay
         var root = Ensure(owner);
         if (root == null) return;
         Frozen.Add(owner);
-        Draw(root, cards, Math.Max(cards.Count, TableCmd.ShowdownSize(owner)), null);
+        Draw(owner, root, cards, Math.Max(cards.Count, TableCmd.ShowdownSize(owner)), null);
     }
 
     /// <summary>Show the scored hand in gold for about a second, then go back to the live Table.</summary>
@@ -46,7 +46,7 @@ public static class TableOverlay
     {
         var root = Ensure(owner);
         if (root == null) { Frozen.Remove(owner); return; }
-        Draw(root, cards, Math.Max(cards.Count, TableCmd.ShowdownSize(owner)), hand);
+        Draw(owner, root, cards, Math.Max(cards.Count, TableCmd.ShowdownSize(owner)), hand);
 
         var tween = root.CreateTween();
         tween.TweenProperty(root, "scale", new Vector2(1.12f, 1.12f), 0.12f);
@@ -117,7 +117,7 @@ public static class TableOverlay
         return null;
     }
 
-    private static void Draw(Control root, IReadOnlyList<TableCard> cards, int slots, HandType? showdown)
+    private static void Draw(Creature owner, Control root, IReadOnlyList<TableCard> cards, int slots, HandType? showdown)
     {
         foreach (var child in root.GetChildren()) { root.RemoveChild(child); child.QueueFree(); }
 
@@ -132,7 +132,7 @@ public static class TableOverlay
 
         var text = showdown is { } h
             ? TablePower.HandName(h) + "!"
-            : cards.Count == 0 ? $"0/{slots}" : $"{cards.Count}/{slots} · {TablePower.HandName(Poker.Evaluate(cards, slots))}";
+            : cards.Count == 0 ? $"0/{slots}" : $"{cards.Count}/{slots} · {TablePower.HandName(Poker.Evaluate(cards, slots, HandLevels.Rules(owner)))}";
         var label = new Label
         {
             Text = text,

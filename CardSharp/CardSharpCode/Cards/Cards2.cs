@@ -336,10 +336,11 @@ public sealed class CashOut : CardSharpCard
 }
 
 /// <summary>Gain 12 Block. Next turn, gain 6 Block.</summary>
+/// <summary>Retired from the card pool (16 Nov 2026); Token rarity keeps old saves working.</summary>
 public sealed class Insurance : CardSharpCard
 {
     public override Suit Suit => Suit.Hearts;
-    public Insurance() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Insurance() : base(2, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
         WithBlock(12, 3); WithPower<BlockNextTurnPower>(6, 2);
     }
@@ -369,10 +370,11 @@ public sealed class Showboat : CardSharpCard
 }
 
 /// <summary>Apply 1 Vulnerable to ALL enemies. Draw 1 card.</summary>
+/// <summary>Retired from the card pool (16 Nov 2026); Token rarity keeps old saves working.</summary>
 public sealed class MarkedCards : CardSharpCard
 {
     public override Suit Suit => Suit.Clubs;
-    public MarkedCards() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
+    public MarkedCards() : base(1, CardType.Skill, CardRarity.Token, TargetType.AllEnemies)
     {
         WithPower<VulnerablePower>(1, 1); WithCards(1);
     }
@@ -598,11 +600,12 @@ public sealed class FinalHand : CardSharpCard
 }
 
 /// <summary>Deal 30 damage. Clear the Table.</summary>
+/// <summary>Retired from the card pool (16 Nov 2026); Token rarity keeps old saves working.</summary>
 public sealed class AllOrNothing : CardSharpCard
 {
     public override Suit Suit => Suit.Spades;
     protected override int LayCount => 0;
-    public AllOrNothing() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy) { WithDamage(30, 10); }
+    public AllOrNothing() : base(2, CardType.Attack, CardRarity.Token, TargetType.AnyEnemy) { WithDamage(30, 10); }
     protected override async Task Effect(PlayerChoiceContext ctx, CardPlay play)
     {
         await Hit(ctx, play);

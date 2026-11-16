@@ -1,9 +1,9 @@
 {
   "CARDSHARP-MARKED_DECK.title": "Marked Deck",
-  "CARDSHARP-MARKED_DECK.description": "The Pot: each [gold]Showdown[/gold] deals [blue]2[/blue] more damage than the last this combat, up to [blue]+7[/blue].",
+  "CARDSHARP-MARKED_DECK.description": "The Pot: each [gold]Showdown[/gold] deals [blue]2[/blue] more damage than the last this combat, up to [blue]+7[/blue].\nHands gain Levels as you score them. The counter shows your best Hand Level.",
   "CARDSHARP-MARKED_DECK.flavor": "Tiny pinpricks on the backs. You can feel the aces.",
   "CARDSHARP-STACKED_DECK.title": "Stacked Deck",
-  "CARDSHARP-STACKED_DECK.description": "The Pot: each [gold]Showdown[/gold] deals [blue]2[/blue] more damage than the last this combat, up to [blue]+10[/blue].",
+  "CARDSHARP-STACKED_DECK.description": "The Pot: each [gold]Showdown[/gold] deals [blue]2[/blue] more damage than the last this combat, up to [blue]+10[/blue].\nKeeps your Hand Levels and House Rules.",
   "CARDSHARP-STACKED_DECK.flavor": "Every card is exactly where she wants it. Every single one.",
   "CARDSHARP-LUCKY_COIN.title": "Lucky Coin",
   "CARDSHARP-LUCKY_COIN.description": "Your first [gold]Showdown[/gold] each combat counts as [blue]1[/blue] hand higher.",

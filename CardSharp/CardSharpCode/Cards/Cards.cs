@@ -78,10 +78,11 @@ public sealed class QuickDraw : CardSharpCard
 }
 
 /// <summary>Deal 5 damage twice.</summary>
+/// <summary>Retired from the card pool (16 Nov 2026); Token rarity keeps old saves working.</summary>
 public sealed class DoubleTap : CardSharpCard
 {
     public override Suit Suit => Suit.Spades;
-    public DoubleTap() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+    public DoubleTap() : base(1, CardType.Attack, CardRarity.Token, TargetType.AnyEnemy)
     {
         WithDamage(5, 2);
         WithVar("Repeat", 2);
@@ -91,10 +92,11 @@ public sealed class DoubleTap : CardSharpCard
 }
 
 /// <summary>Gain 8 Block.</summary>
+/// <summary>Retired from the card pool (16 Nov 2026); Token rarity keeps old saves working.</summary>
 public sealed class Bluff : CardSharpCard
 {
     public override Suit Suit => Suit.Hearts;
-    public Bluff() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Bluff() : base(1, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
         WithBlock(8, 3);
     }
@@ -103,10 +105,11 @@ public sealed class Bluff : CardSharpCard
 }
 
 /// <summary>Gain 15 Block.</summary>
+/// <summary>Retired from the card pool (16 Nov 2026); Token rarity keeps old saves working.</summary>
 public sealed class PokerFace : CardSharpCard
 {
     public override Suit Suit => Suit.Hearts;
-    public PokerFace() : base(2, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public PokerFace() : base(2, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
         WithBlock(15, 5);
     }

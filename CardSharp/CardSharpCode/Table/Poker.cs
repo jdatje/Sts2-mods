@@ -28,6 +28,12 @@ public enum HandType
 /// </summary>
 public readonly record struct TableCard(int Rank, Suit Suit, bool Wild = false);
 
+/// <summary>House Rules that change how hands are scored.</summary>
+/// <param name="Suited">A Flush needs only 4 cards of one suit (out of 5).</param>
+/// <param name="GapFiller">A Straight may have one gap.</param>
+/// <param name="AceHigh">A High card hand with an Ace counts as a Pair.</param>
+public readonly record struct PokerRules(bool Suited = false, bool GapFiller = false, bool AceHigh = false);
+
 public static class Poker
 {
     public const int MinRank = 2;
@@ -47,15 +53,17 @@ public static class Poker
     /// work with fewer (for Call and Card Shark).
     /// </summary>
     /// <param name="size">Showdown size (5, or 4 with Card Shark): Straights and Flushes need exactly this many cards.</param>
-    public static HandType Evaluate(IReadOnlyList<TableCard> cards, int size = 5)
+    public static HandType Evaluate(IReadOnlyList<TableCard> cards, int size = 5, PokerRules rules = default)
     {
         if (cards.Count == 0) return HandType.HighCard;
-        if (cards.Any(c => c.Wild)) return EvaluateWithWilds(cards, size);
-        return EvaluateFixed(cards, size);
+        var hand = cards.Any(c => c.Wild) ? EvaluateWithWilds(cards, size, rules) : EvaluateFixed(cards, size, rules);
+        if (rules.AceHigh && hand == HandType.HighCard && cards.Any(c => !c.Wild && c.Rank == MaxRank))
+            hand = HandType.Pair;
+        return hand;
     }
 
     /// <summary>Tries every rank/suit for each wild card (1 to 3 wilds).</summary>
-    private static HandType EvaluateWithWilds(IReadOnlyList<TableCard> cards, int size)
+    private static HandType EvaluateWithWilds(IReadOnlyList<TableCard> cards, int size, PokerRules rules)
     {
         var fixedCards = cards.Where(c => !c.Wild).ToList();
         var wilds = cards.Count(c => c.Wild);
@@ -75,7 +83,7 @@ public static class Poker
             if (best == HandType.StraightFlush) return;
             if (left == 0)
             {
-                var h = EvaluateFixed(hand, size);
+                var h = EvaluateFixed(hand, size, rules);
                 if (h > best) best = h;
                 return;
             }
@@ -90,14 +98,15 @@ public static class Poker
         return best;
     }
 
-    private static HandType EvaluateFixed(IReadOnlyList<TableCard> cards, int size = 5)
+    private static HandType EvaluateFixed(IReadOnlyList<TableCard> cards, int size = 5, PokerRules rules = default)
     {
         if (cards.Count == 0) return HandType.HighCard;
 
         var counts = cards.GroupBy(c => c.Rank).Select(g => g.Count()).OrderByDescending(n => n).ToList();
         var full = cards.Count == 5 || (size == 4 && cards.Count == 4);
-        var flush = full && cards.All(c => c.Suit == cards[0].Suit);
-        var straight = full && IsStraight(cards.Select(c => c.Rank).ToList());
+        var maxSuit = cards.GroupBy(c => c.Suit).Max(g => g.Count());
+        var flush = full && (maxSuit == cards.Count || (rules.Suited && cards.Count == 5 && maxSuit >= 4));
+        var straight = full && IsStraight(cards.Select(c => c.Rank).ToList(), rules.GapFiller);
 
         if (straight && flush) return HandType.StraightFlush;
         if (counts[0] == 4) return HandType.FourOfAKind;
@@ -110,14 +119,20 @@ public static class Poker
         return HandType.HighCard;
     }
 
-    private static bool IsStraight(List<int> ranks)
+    private static bool IsStraight(List<int> ranks, bool allowGap = false)
     {
         var distinct = ranks.Distinct().OrderBy(r => r).ToList();
         var n = ranks.Count;
         if (distinct.Count != n || n < 4) return false;
-        if (distinct[n - 1] - distinct[0] == n - 1) return true;
-        // the wheel: A-2-3-4(-5)
-        return n == 5 ? distinct.SequenceEqual(new[] { 2, 3, 4, 5, 14 }) : distinct.SequenceEqual(new[] { 2, 3, 4, 14 });
+        var span = allowGap ? n : n - 1;
+        if (distinct[n - 1] - distinct[0] <= span) return true;
+        // Ace low (the wheel: A-2-3-4(-5))
+        if (distinct[n - 1] == MaxRank)
+        {
+            var low = distinct.Select(r => r == MaxRank ? 1 : r).OrderBy(r => r).ToList();
+            if (low[n - 1] - low[0] <= span) return true;
+        }
+        return false;
     }
 
     public static HandType OneTierHigher(HandType t) =>

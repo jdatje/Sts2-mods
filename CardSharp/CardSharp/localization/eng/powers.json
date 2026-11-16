@@ -1,7 +1,7 @@
 {
   "CARDSHARP-TABLE_POWER.title": "Table",
   "CARDSHARP-TABLE_POWER.description": "Cards you play are laid here. At 5 cards: [gold]Showdown[/gold].",
-  "CARDSHARP-TABLE_POWER.smartDescription": "On the Table: [gold]{TableCards}[/gold]{TableHand}.{TablePot}\n\n[gold]Showdown[/gold] damage (+ the Pot and your Strength):\nHigh card: 5\nPair: 9\nTwo pair: 9 + 8 Block\nThree of a kind: 16\nStraight: 12 + draw 2\nFlush: 14 + suit bonus\nFull house: 22 + 12 Block\nFour of a kind: 32\nStraight flush: 45 + 2 Energy\n\nUp to Two pair: a random enemy. Three of a kind and up: ALL enemies.\nFlush bonus: Spades +6 damage, Hearts +10 Block, Diamonds draw 2, Clubs 2 Weak.",
+  "CARDSHARP-TABLE_POWER.smartDescription": "On the Table: [gold]{TableCards}[/gold]{TableHand}.{TablePot}\n\n{TableRewards}",
   "CARDSHARP-CARD_SHARK_POWER.title": "Card Shark",
   "CARDSHARP-CARD_SHARK_POWER.description": "[gold]Showdowns[/gold] happen at 4 cards and deal 80% damage.",
   "CARDSHARP-CARD_SHARK_POWER.smartDescription": "[gold]Showdowns[/gold] happen at 4 cards instead of 5 and deal 80% damage. 4-card Straights and Flushes count.",
@@ -64,5 +64,8 @@
   "CARDSHARP-LADY_LUCK_POWER.smartDescription": "At the start of your turn, [blue]{Amount}[/blue] random {Amount:plural:card|cards} in your [gold]Hand[/gold] {Amount:plural:becomes an Ace|become Aces}.",
   "CARDSHARP-HIGH_ROLLER_POWER.title": "High Roller",
   "CARDSHARP-HIGH_ROLLER_POWER.description": "Showdowns deal more damage.",
-  "CARDSHARP-HIGH_ROLLER_POWER.smartDescription": "Showdowns deal [blue]{Amount}%[/blue] more damage. Doesn't stack with High Stakes."
+  "CARDSHARP-HIGH_ROLLER_POWER.smartDescription": "Showdowns deal [blue]{Amount}%[/blue] more damage. Doesn't stack with High Stakes.",
+  "CARDSHARP-MONOCHROME_POWER.title": "Monochrome",
+  "CARDSHARP-MONOCHROME_POWER.description": "Whenever you play a card of the same suit as the last card on the Table, draw 1 card.",
+  "CARDSHARP-MONOCHROME_POWER.smartDescription": "Whenever you play a card of the same suit as the last card on the [gold]Table[/gold], draw 1 card (max [blue]2[/blue] per turn for each Monochrome)."
 }

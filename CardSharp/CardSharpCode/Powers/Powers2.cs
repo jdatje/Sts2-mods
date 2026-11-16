@@ -209,3 +209,36 @@ public sealed class LadyLuckPower : SimpleSharpPower
         return Task.CompletedTask;
     }
 }
+
+/// <summary>Whenever you play a card of the same suit as the last card on the Table, draw 1 card (max 2 per turn).</summary>
+public sealed class MonochromePower : SimpleSharpPower
+{
+    public const int MaxPerTurn = 2;
+    private bool _match;
+    private int _drawnThisTurn;
+
+    public override Task BeforeCardPlayed(CardPlay play)
+    {
+        _match = false;
+        if (play.Card.Owner != Owner.Player || play.Card is not CardSharpCard { IsWild: false } card) return Task.CompletedTask;
+        var last = TableCmd.Cards(Owner).LastOrDefault();
+        _match = last.Rank > 0 && (last.Wild || last.Suit == card.Suit);
+        return Task.CompletedTask;
+    }
+
+    public override async Task AfterCardPlayed(PlayerChoiceContext ctx, CardPlay play)
+    {
+        if (!_match || play.Card.Owner != Owner.Player || Owner.Player == null) return;
+        _match = false;
+        if (_drawnThisTurn >= MaxPerTurn * (int)Amount) return;
+        _drawnThisTurn++;
+        Flash();
+        await CardPileCmd.Draw(ctx, 1, Owner.Player);
+    }
+
+    public override Task AfterPlayerTurnStart(PlayerChoiceContext ctx, MegaCrit.Sts2.Core.Entities.Players.Player player)
+    {
+        if (player == Owner.Player) _drawnThisTurn = 0;
+        return Task.CompletedTask;
+    }
+}
