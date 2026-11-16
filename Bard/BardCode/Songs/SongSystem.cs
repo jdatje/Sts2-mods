@@ -159,8 +159,8 @@ public static class SongCmd
         var idx = SongBook.Index(typeof(T));
         if (lute != null && idx >= 0 && lute.HasStanza(idx, Stanza.OpeningLine)) verses += SongBook.OpeningLineVerses;
 
-        foreach (var lute in card.Owner.Relics.OfType<IFirstSongBonus>())
-            verses += lute.TryUse();
+        foreach (var bonus in card.Owner.Relics.OfType<IFirstSongBonus>())
+            verses += bonus.TryUse();
         verses += bard.Powers.OfType<ISongModifier>().Sum(m => m.ExtraStartingVerses);
 
         await PowerCmd.Apply<T>(ctx, bard, Math.Clamp(verses, 1, MaxVerses(bard, typeof(T))), bard, card);
