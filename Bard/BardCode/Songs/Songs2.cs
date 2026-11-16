@@ -23,7 +23,7 @@ public sealed class WarDrumsPower : SongPower
     }
     public override async Task Finale(PlayerChoiceContext ctx)
     {
-        var str = Verses / 5;
+        var str = Fin(Verses / 5);
         if (str > 0) await PowerCmd.Apply<StrengthPower>(ctx, Allies, str, Owner, null);
     }
 }
@@ -40,7 +40,7 @@ public sealed class SeaShantyPower : SongPower
     }
     public override async Task Finale(PlayerChoiceContext ctx)
     {
-        var heal = Verses / 3;
+        var heal = Fin(Verses / 3);
         if (heal > 0) foreach (var a in Allies) await CreatureCmd.Heal(a, heal);
     }
 }
@@ -55,7 +55,7 @@ public sealed class DirgePower : SongPower
     }
     public override async Task Finale(PlayerChoiceContext ctx)
     {
-        if (Enemies.Count > 0) await PowerCmd.Apply<DoomPower>(ctx, Enemies, 2 * Verses, Owner, null);
+        if (Enemies.Count > 0) await PowerCmd.Apply<DoomPower>(ctx, Enemies, Fin(2 * Verses), Owner, null);
     }
 }
 
@@ -70,7 +70,7 @@ public sealed class OdeToJoyPower : SongPower
     }
     public override async Task Finale(PlayerChoiceContext ctx)
     {
-        var e = Verses / 5;
+        var e = Fin(Verses / 5);
         if (e > 0) foreach (var a in Allies) if (a.Player != null) await PlayerCmd.GainEnergy(e, a.Player);
     }
 }
@@ -84,7 +84,7 @@ public sealed class AnthemPower : SongPower
         await PowerCmd.Apply<PlatingPower>(ctx, Allies, RefrainValue, Owner, null);
     public override async Task Finale(PlayerChoiceContext ctx)
     {
-        var dex = Verses / 5;
+        var dex = Fin(Verses / 5);
         if (dex > 0) await PowerCmd.Apply<DexterityPower>(ctx, Allies, dex, Owner, null);
     }
 }
@@ -100,7 +100,7 @@ public sealed class SirenSongPower : SongPower
     }
     public override async Task Finale(PlayerChoiceContext ctx)
     {
-        if (Enemies.Count > 0) await CreatureCmd.Damage(ctx, Enemies, 3 * Verses, ValueProp.Unpowered, Owner);
+        if (Enemies.Count > 0) await CreatureCmd.Damage(ctx, Enemies, Fin(3 * Verses), ValueProp.Unpowered, Owner);
     }
 }
 

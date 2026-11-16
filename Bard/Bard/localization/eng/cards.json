@@ -170,5 +170,17 @@
   "BARD-CODA.title": "Coda",
   "BARD-CODA.description": "If your [gold]Song[/gold] has 10 or more Verses, gain {Energy:energyIcons()} and draw {Cards:diff()} cards.",
   "BARD-OPENING_ACT.title": "Opening Act",
-  "BARD-OPENING_ACT.description": "Start [gold]Battle Hymn[/gold] with {Verses:diff()} Verses."
+  "BARD-OPENING_ACT.description": "Start [gold]Battle Hymn[/gold] with {Verses:diff()} Verses.",
+  "BARD-STANZA_OPENING_LINE.title": "Opening Line",
+  "BARD-STANZA_OPENING_LINE.description": "[gold]Stanza[/gold]. {SongName} starts with [blue]3[/blue] extra Verses.",
+  "BARD-STANZA_ECHO.title": "Echo",
+  "BARD-STANZA_ECHO.description": "[gold]Stanza[/gold]. The first Refrain of {SongName} each time it starts triggers twice.",
+  "BARD-STANZA_RESONANT.title": "Resonant",
+  "BARD-STANZA_RESONANT.description": "[gold]Stanza[/gold]. {SongName} can have [blue]3[/blue] more Verses.",
+  "BARD-STANZA_BRIGHT_REFRAIN.title": "Bright Refrain",
+  "BARD-STANZA_BRIGHT_REFRAIN.description": "[gold]Stanza[/gold]. The Refrain of {SongName} is [blue]1[/blue] stronger.",
+  "BARD-STANZA_GRAND_FINALE.title": "Grand Finale",
+  "BARD-STANZA_GRAND_FINALE.description": "[gold]Stanza[/gold]. The Finale of {SongName} is [blue]15%[/blue] stronger.",
+  "BARD-STANZA_LINGERING.title": "Lingering",
+  "BARD-STANZA_LINGERING.description": "[gold]Stanza[/gold]. When {SongName} ends, its Refrain triggers once more."
 }

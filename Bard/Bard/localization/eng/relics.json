@@ -1,9 +1,9 @@
 {
   "BARD-WORN_LUTE.title": "Worn Lute",
-  "BARD-WORN_LUTE.description": "Your first [gold]Song[/gold] each combat starts with [blue]3[/blue] extra Verses.",
+  "BARD-WORN_LUTE.description": "Your first [gold]Song[/gold] each combat starts with [blue]3[/blue] extra Verses. Songs that reach [blue]5[/blue] Verses in a won fight gain [gold]Mastery[/gold]; at [blue]10[/blue] Verses, pick a [gold]Stanza[/gold]. Starting one Song over another can play a [gold]Harmony[/gold].{LuteProgress}",
   "BARD-WORN_LUTE.flavor": "Three strings, one crack, a thousand taverns.",
   "BARD-MASTER_LUTE.title": "Master Lute",
-  "BARD-MASTER_LUTE.description": "Your first [gold]Song[/gold] each combat starts with [blue]6[/blue] extra Verses.",
+  "BARD-MASTER_LUTE.description": "Your first [gold]Song[/gold] each combat starts with [blue]6[/blue] extra Verses. Songs that reach [blue]5[/blue] Verses in a won fight gain [gold]Mastery[/gold]; at [blue]10[/blue] Verses, pick a [gold]Stanza[/gold]. Starting one Song over another can play a [gold]Harmony[/gold].{LuteProgress}",
   "BARD-MASTER_LUTE.flavor": "Restrung with silver, and it remembers every tune.",
   "BARD-SHEET_MUSIC.title": "Sheet Music",
   "BARD-SHEET_MUSIC.description": "Whenever you start a [gold]Song[/gold], gain [blue]4[/blue] [gold]Block[/gold].",

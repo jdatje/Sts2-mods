@@ -13,26 +13,12 @@ namespace Bard.BardCode.Relics;
 
 /// <summary>Ancient (upgraded starter). Your first Song each combat starts with 6 extra Verses.</summary>
 [Pool(typeof(SharedRelicPool))]
-public sealed class MasterLute : Bard.BardCode.Visuals.AnimatedStarterRelic, IFirstSongBonus
+public sealed class MasterLute : LuteRelic
 {
-    public const int BonusVerses = 6;
-    private bool _usedThisCombat;
+    public const int Bonus = 6;
+    protected override int BonusVerses => Bonus;
 
     public override RelicRarity Rarity => RelicRarity.Ancient;
-
-    public override Task BeforeCombatStart()
-    {
-        _usedThisCombat = false;
-        return Task.CompletedTask;
-    }
-
-    public int TryUse()
-    {
-        if (_usedThisCombat) return 0;
-        _usedThisCombat = true;
-        Flash();
-        return BonusVerses;
-    }
 }
 
 /// <summary>Common. Whenever you start a Song, gain 4 Block.</summary>

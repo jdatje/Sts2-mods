@@ -24,7 +24,7 @@ public sealed class BattleHymnPower : SongPower
     public override async Task Finale(PlayerChoiceContext ctx)
     {
         if (Enemies.Count > 0)
-            await CreatureCmd.Damage(ctx, Enemies, FinalePerVerse * Verses, ValueProp.Unpowered, Owner);
+            await CreatureCmd.Damage(ctx, Enemies, Fin(FinalePerVerse * Verses), ValueProp.Unpowered, Owner);
     }
 }
 
@@ -39,7 +39,7 @@ public sealed class BalladOfValorPower : SongPower
 
     public override async Task Finale(PlayerChoiceContext ctx)
     {
-        var block = FinalePerVerse * Verses + Dexterity;
+        var block = Fin(FinalePerVerse * Verses) + Dexterity;
         if (block <= 0) return;
         foreach (var ally in Allies)
             await CreatureCmd.GainBlock(ally, block, ValueProp.Unpowered, null);
@@ -60,7 +60,7 @@ public sealed class LullabyPower : SongPower
 
     public override async Task Finale(PlayerChoiceContext ctx)
     {
-        var amount = Verses / VersesPerVulnerable;
+        var amount = Fin(Verses / VersesPerVulnerable);
         if (amount > 0 && Enemies.Count > 0) await PowerCmd.Apply<VulnerablePower>(ctx, Enemies, amount, Owner, null);
     }
 }
@@ -79,7 +79,7 @@ public sealed class JigPower : SongPower
 
     public override async Task Finale(PlayerChoiceContext ctx)
     {
-        var energy = Verses / VersesPerEnergy;
+        var energy = Fin(Verses / VersesPerEnergy);
         if (energy > 0 && Owner.Player != null) await PlayerCmd.GainEnergy(energy, Owner.Player);
     }
 }
@@ -97,6 +97,6 @@ public sealed class RequiemPower : SongPower
 
     public override async Task Finale(PlayerChoiceContext ctx)
     {
-        if (Enemies.Count > 0) await CreatureCmd.Damage(ctx, Enemies, FinalePerVerse * Verses, ValueProp.Unpowered, Owner);
+        if (Enemies.Count > 0) await CreatureCmd.Damage(ctx, Enemies, Fin(FinalePerVerse * Verses), ValueProp.Unpowered, Owner);
     }
 }

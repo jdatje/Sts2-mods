@@ -2,30 +2,15 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 
 namespace Bard.BardCode.Relics;
 
-/// <summary>Starter relic. Your first Song each combat starts with 3 extra Verses.</summary>
+/// <summary>Starter relic. Your first Song each combat starts with 3 extra Verses. Holds Song Mastery, Stanzas and Harmonies.</summary>
 [BaseLib.Utils.Pool(typeof(Bard.BardCode.Character.BardRelicPool))]
-public sealed class WornLute : Bard.BardCode.Visuals.AnimatedStarterRelic, Bard.BardCode.Songs.IFirstSongBonus
+public sealed class WornLute : LuteRelic
 {
-    public const int BonusVerses = 3;
-    private bool _usedThisCombat;
+    public const int Bonus = 3;
+    protected override int BonusVerses => Bonus;
 
     public override RelicRarity Rarity => RelicRarity.Starter;
 
-    public override Task BeforeCombatStart()
-    {
-        _usedThisCombat = false;
-        return Task.CompletedTask;
-    }
-
     public override MegaCrit.Sts2.Core.Models.RelicModel GetUpgradeReplacement() =>
         MegaCrit.Sts2.Core.Models.ModelDb.Relic<MasterLute>();
-
-    /// <summary>Called when a Song starts: the bonus Verses the first time each combat, otherwise 0.</summary>
-    public int TryUse()
-    {
-        if (_usedThisCombat) return 0;
-        _usedThisCombat = true;
-        Flash();
-        return BonusVerses;
-    }
 }
