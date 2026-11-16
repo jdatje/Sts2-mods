@@ -17,24 +17,24 @@
 |---|---|---|---|---|
 | Quick Draw | Attack | 0 | Spades | Deal 4 damage. |
 | Cheap Shot | Attack | 1 | Spades | Deal 8 damage. Apply 1 Vulnerable. |
-| Double Tap | Attack | 1 | Spades | Deal 5 damage 2 times. |
 | Flick | Attack | 1 | Spades | Deal 6 damage to ALL enemies. |
 | Hole Card | Attack | 1 | Spades | Deal damage equal to this card's rank. |
 | Lowball | Attack | 1 | Spades | Deal damage equal to 16 minus this card's rank. |
+| Next Card | Attack | 1 | Spades | Deal 7 damage. If this card's rank is one higher than the last card on the Table, deal 7 more. |
 | Snap | Attack | 1 | Spades | Deal 6 damage. If a card on the Table has the same rank, hit twice. |
+| Spade Work | Attack | 1 | Spades | Deal 7 damage, plus 2 for each Spade on the Table. |
 | Ante Up | Skill | 0 | Diamonds | Draw 2 cards, then discard 1 card. |
 | Deal In | Skill | 0 | Diamonds | Draw 1 card. |
 | Bad Beat | Skill | 1 | Clubs | Apply 1 Weak to ALL enemies. Draw 1 card. |
-| Bluff | Skill | 1 | Hearts | Gain 8 Block. |
 | Card Trick | Skill | 1 | Clubs | Apply 1 Weak and 1 Vulnerable. |
 | Chip Stack | Skill | 1 | Hearts | Gain 4 Block, plus 3 for each card on the Table. |
+| Colour Match | Skill | 1 | Hearts | Gain 8 Block. If all cards on the Table share a suit, gain 5 more. |
 | Hedge | Skill | 1 | Hearts | Gain 7 Block. Draw 1 card. |
 | Intimidate | Skill | 1 | Clubs | Apply 2 Weak. Draw 1 card. |
 | Pocket Pair | Skill | 1 | Hearts | Gain 6 Block. If the Table has a Pair or better, gain 6 more. |
 | Read the Table | Skill | 1 | Diamonds | Draw 1 card for each different suit on the Table. |
 | Shuffle Up | Skill | 1 | Diamonds | Gain 3 Block. Draw 2 cards. |
 | Sleight of Hand | Skill | 1 | Diamonds | Choose a card in your Hand. It becomes an Ace. |
-| Poker Face | Skill | 2 | Hearts | Gain 15 Block. |
 
 ## Uncommon (36)
 
@@ -51,6 +51,7 @@
 | Croupier | Power | 1 | Hearts | Whenever you Showdown, gain 8 Block. |
 | Loaded Deck | Power | 1 | Diamonds | Cards that enter your Hand have rank 8 or higher. |
 | Lucky Streak | Power | 1 | Diamonds | Whenever you Showdown, draw 2 cards. |
+| Monochrome | Power | 1 | Diamonds | Whenever you play a card of the same suit as the last card on the Table, draw 1 card (max 2 per turn). |
 | Poker Night | Power | 1 | Clubs | Whenever you Showdown, apply 1 Weak and Vulnerable to ALL enemies. |
 | Side Pot | Power | 1 | Diamonds | At the start of your turn, if the Table is empty, draw 2 cards. |
 | High Stakes | Power | 2 | Spades | Showdowns deal 50% more damage. Doesn't stack with High Roller. |
@@ -67,7 +68,7 @@
 | Double or Nothing | Skill | 1 | Diamonds | Showdown now. If it was a Pair or better, gain 2 Energy. |
 | Flush Out | Skill | 1 | Clubs | The next 3 cards you play count as the suit of the last card on the Table. |
 | Kitty | Skill | 1 | Diamonds | Another player draws 2 cards. *Co-op only.* |
-| Marked Cards | Skill | 1 | Clubs | Apply 1 Vulnerable to ALL enemies. Draw 1 card. |
+| Ladder | Skill | 1 | Diamonds | 2 random cards in your Hand get the next ranks after the last card on the Table. Draw 1 card. |
 | Next in Line | Skill | 1 | Diamonds | Choose a card in your Hand. Its rank becomes one higher than the last card on the Table. Draw 1 card. |
 | Pair Up | Skill | 1 | Clubs | Choose a card in your Hand. It gets the rank of the last card on the Table. |
 | Royal Guard | Skill | 1 | Hearts | Gain Block equal to this card's rank, plus 2. |
@@ -75,7 +76,6 @@
 | Shuffle Tracking | Skill | 1 | Diamonds | Draw 3 cards, then discard 1 card. |
 | Stack the Deck | Skill | 1 | Diamonds | The next 2 cards you play count as Diamonds. |
 | Wild Card | Skill | 1 | Diamonds | Add a Joker into your Hand. |
-| Insurance | Skill | 2 | Hearts | Gain 12 Block. Next turn, gain 6 Block. |
 
 ## Rare (26)
 
@@ -84,7 +84,7 @@
 | Last Card | Attack | 0 | Spades | Deal 10 damage. If your Hand is empty, deal 10 more. |
 | Blackjack | Attack | 1 | Spades | Deal 7 damage. If the ranks on the Table add up to 21 or more, deal 14 more. |
 | All In | Attack | 2 | Spades | Deal 6 damage to ALL enemies for each card on the Table. |
-| All or Nothing | Attack | 2 | Spades | Deal 30 damage. Clear the Table. |
+| Broadway | Attack | 2 | Spades | Deal 6 damage to ALL enemies for each card in the longest run of consecutive ranks on the Table. |
 | Dead Man's Hand | Attack | 2 | Spades | Deal 8 damage. If the Table has Two Pair or better, hit 3 times. |
 | Raise the Stakes | Attack | 2 | Spades | Deal 10 damage. All cards in your Hand go up 1 rank. |
 | Royal Flush | Attack | 2 | Spades | Deal damage equal to the total rank of the cards on the Table to ALL enemies. |
@@ -108,8 +108,14 @@
 | Marked Aces | Skill | 2 | Diamonds | All cards in your Hand become Aces. *Exhaust.* |
 | Final Hand | Skill | 3 | Spades | Showdown now, then Showdown again with the same cards. *Exhaust.* |
 
-## Token (1)
+## Token (7)
 
 | Card | Type | Cost | Suit | Text |
 |---|---|---|---|---|
+| Double Tap | Attack | 1 | Spades | Deal 5 damage 2 times. |
+| All or Nothing | Attack | 2 | Spades | Deal 30 damage. Clear the Table. |
 | Joker | Skill | 0 | Wild | Draw 1 card. Counts as any rank and suit on the Table. *Exhaust.* |
+| Bluff | Skill | 1 | Hearts | Gain 8 Block. |
+| Marked Cards | Skill | 1 | Clubs | Apply 1 Vulnerable to ALL enemies. Draw 1 card. |
+| Insurance | Skill | 2 | Hearts | Gain 12 Block. Next turn, gain 6 Block. |
+| Poker Face | Skill | 2 | Hearts | Gain 15 Block. |
